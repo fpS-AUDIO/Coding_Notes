@@ -1,0 +1,254 @@
+
+
+(!)	ITALIAN LANGUAGE VERSION
+
+
+
+    ///////////////////////////
+    ////// Git e GitHub  //////
+    ///////////////////////////
+
+https://www.youtube.com/watch?v=VJm_AjiTEEc&t=33s&ab_channel=VladMishustin
+
+
+Da wikipedia:
+    Git è un software per il controllo di versione distribuito utilizzabile 
+    da interfaccia a riga di comando, creato da Linus Torvalds nel 2005. 
+    Git nacque per essere un semplice strumento per facilitare lo sviluppo 
+    del kernel Linux ed è diventato uno degli strumenti di controllo versione più diffusi.
+
+
+Git:
+    - controlla tutte le modifiche dei file
+    - si ricorda chi, cosa, quando, commenti...
+    - permette di tornare nelle versioni (commit) precidenti dei file
+    - permette di creare i rami per sviluppare dei feature senza ditruggere ramo principale (master/main)
+
+Git e' uno software gratuito utile per il controllo delle versioni.
+Principalmente per il suo utilizzo viene utilizzato il terminale.
+Sito ufficiale: https://git-scm.com/
+
+GitHub e' una web application che permette di caricare i file dal pc (local) in cloud.
+Praticamente permette di fare backup dei file al quale si puo' accedere chiunqu da ovunque.
+
+Repository = directory controllata da Git con tutte le sue directory children.
+    local e' quella sul computer
+    remote e' quella in cloud caricata da local
+
+
+
+___________________________________________________________________________________
+INSTALLAZIONE e SETUP DI Git
+
+1.  Scaricare e installare Git da https://git-scm.com/download/win
+
+
+
+2.  -Configurazione-
+    Aggiungere Username e Mail
+    Aprire il terminale
+
+>>>git config --global nome-impostazione
+    "git config"            leggere/cambiare configurazione sul pc
+    "--global"              impostazioni valgono per tutti i file
+    "nome-impostazione"     impostazione che vogliamo cambiare 
+
+    git config --global user.name "your-name-here"
+    git config --global user.email "yourmail@mail.com"
+
+
+
+3.  -Repository Locale-
+    Nel terminale aprire la directory che si vuole trasformare in repository.
+
+>>>git init
+    trasforma directory locale in una repository locale
+
+
+
+4.  -Creare Repository remote-
+    Andare sul sito https://github.com/
+    Creare nuova repository
+
+
+5.  -Connettere Locale a GitHub-
+    utilizzando un terminale entrare in repository locale
+
+>>>git remote add origin (HTTPS)
+    connette repository locale a quello remoto
+    "HTTPS" e' url preso da github da repository
+
+>>>git remote remove origin
+    rimuovere repositorio remoto
+
+>>>git remote set-url origin git://new.url.here
+    sostituire repositorio remoto
+
+6.  -Scaricare una copia da remoto-
+    Entrare nella cartella dove si vuole scaricare la copia
+
+>>>git clone (URL remote repository)
+    scarica la copia da remoto a locale
+    e diventa subito repositorio locale
+
+
+
+7.  -Commit-    
+
+>>>git status
+    mostra lo stato di tutte le modifiche dei file non salvati (uncommited) nel repositorio
+
+>>>git add (nome del file/cartella)
+    aggiungere i file alla staging area (index),
+    cioe' prepara i file per essere salvati sul server remoto (commit)
+    note: i file fuori dall'index non faranno parte del commit
+    * seleziona tutto
+
+>>>git commit -m "your message"
+    creare checkpoint esattamente con quella versione e si potra' tornare a questo checkpoint.
+    -m "your message"   -> facoltativo per inserire la descrizione della versione
+
+>>>git log
+    mostra info di tutti i commit in ordine cronologico
+
+>>>git checkout (hash del commit)
+    tornare indietro ad un commit vecchio
+    hash viene mostrato in log
+
+
+
+8.  -Caricare online-
+
+>>>git push (nome_repositorio) (nome_ramo)
+    pubblica commit dal locale al remoto con quel nome in quel ramo
+    "origin"    al posto di nome_repositorio perche' il locale conosce il proprio remoto e lo chiama origin
+    "master"    e' il ramo principale del progetto
+
+>>>git pull (nome_repositorio) (nome_ramo)
+    scarica da quel depositorio remoto TUTTI i commit di quel ramo che non ci sono ancora sul rep. locale
+    example: git pull origin master
+
+
+
+9.  -Rami di Git-
+
+    Un ramo di git e' una seguenza di commit con il proprio nome
+    Quindi c'e' sempre almeno un ramo (master/main)
+    Di solito si usa per aggiungere una feature che potrebbe dare qualche confilitto
+    quando feature non e' ancora finita, testata ed e' senza bug e cosi' il ramo principale
+    rimane sempre sempre "sano".
+
+>>>git branch
+    mostra la lista di rami locali disponibili
+
+>>>git branch (nome_ramo)
+    creare un ramo nuovo
+    usare nome collegato alle modifiche che saranno facoltativo
+
+>>>git chechout (nome_ramo)
+    spostarsi su quel ramo locale
+    tutti i commit  futuri saranno fatti in quel ramo
+
+>>>git push (nome_repositorio) (nome_ramo)
+    nel locale bisogna trovarsi dentro ramo giusto e git pusha quel ramo
+    su quello remoto con quel nome 
+
+
+
+10. -Unione dei rami-
+
+    Una volta che le feature e' pronta, testata e funzionante e vogliamo dare
+    accesso a tutti quelli che lavorano sul ramo master a quella feature bisogna
+    unire quel ramo al ramo master.
+
+    ! bisogna trovarsi dentro ramo al quale verra' aggiunto altro ramo (di solito master).
+    
+>>>git merge (nome_ramo)
+    avviene unione di quel ramo nel ramo dove si trova user
+    questa unione avviene come un commit del ramo dove si trova user
+
+    ! tutto questo avviene sul locale e bisogna pusharlo sul remoto.
+
+>>>git rebase (nome_ramo)
+    sposta tutti i commit da quel ramo al ramo dove si trova user
+    a differenza di "merge" con "rebase" vengono spostati tutti i commit vecchi
+    di quel ramo 
+
+
+
+11. -Update name-
+
+    The default branch has been renamed!
+    main is now named master
+
+    If you have a local clone, you can update it by running the following commands.
+
+>>>git branch -m main master
+>>>git fetch origin
+>>>git branch -u origin/master master
+>>>git remote set-head origin -a
+
+
+
+12. -Delete Local Branch-
+
+>>>git branch -d <branch name>
+
+    Keep in mind, if you're using a terminal other than GitKraken Client, 
+    you won't have immediate visual confirmation that the Git branch has 
+    been properly deleted from your repository.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

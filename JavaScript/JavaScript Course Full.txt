@@ -1,0 +1,420 @@
+
+
+(!)     ENGLISH LANGUAGE VERSION
+
+
+
+///////////////////////////
+//// JAVASCRIPT COURSE ////
+///////////////////////////
+
+
+
+
+00. JAVASCRIPT FUNDAMENTALS (part 1)
+01. JAVASCRIPT FUNDAMENTALS (part 2)
+
+
+
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+00. JAVASCRIPT FUNDAMENTALS (part 1)
+
+
+
+JavaScript is a hight level, objet oriented, multi-paradigm programming language.
+    programming language    ->  instructions for computer
+    hight level             ->  easier language (no memory management)
+    objet oriented          ->  based on objects to store data
+    multi-paradigm          ->  allows to use different styles of programming (imperative and declerative programming)
+
+3 core languages of web development:
+    1.  HTML            (nouns)
+    2.  CSS             (adjectives)
+    3.  JAVASCRIPT      (verbs)
+
+JS has multimple updates. One of the the biggest in last years was in 2015.
+The update is ES6/ES2015    ->  E.S. = ECMAScript
+In 2023 the "modern JS" means all updates after 2015.
+
+
+JS code can be:
+    -   putted inline script in hetml tag       <script>...</script>
+    -   linked in a separate file               <script src="script.js" defer></script>
+                                                defer ->    load in the ened on file (only external files)
+
+
+
+
+
+Just random basics
+----------------------------------------------------------
+;                                       let JS know the instruction is finished (good practice)
+
+console.log();                          show staff on console
+
+alert("Hello world")                    make and alert
+
+// this is a comment
+
+/* this is a multiline comment */
+
+\n                                      new line
+
+\t                                      tab
+
+\                                       escaping character ex: "\"hello\" world"
+
+clear()                                 clear console in browser
+
+prompt("Enter something")               get promt windows (it's like an input from alert)
+                                            ex: let age = promt("Enter your age: ")
+
+
+
+----------------------------------------------------------
+
+
+
+
+
+///////////////
+// variables //
+///////////////
+
+we can store a value in variables
+(value = piece of data)
+
+
+
+var firstName = "Jonas";
+    var is legacy (old) way of declaring variables.
+    it works as "let"
+
+
+let firstName = "Jonas";    
+    let is used to mutate (reassign) the variable subsequently
+    We can declare empty variables.
+
+    example:
+    let birthYear = 1996;
+    birthYear = 1997;
+
+
+const firstName = "Jonas";
+    const is used for variables which are not supposed to change
+    so const is used for immutable variables.
+    We can't declare empty variables.
+
+    example:
+    const birthYear = 1996;
+    birthYear = 1997;
+    // TypeError
+
+
+
+The way of calling variable is called camelCase.
+    camelCase means 1st word is lowercase and other word starts with uppercase 
+    and all the words are connected. camelCase is standard in JS.
+
+Variables:
+    - can't start with a number like "3years"
+    - can contain only letters, numbers, _, $
+    - can't be the same as a reserved keywords like "new"
+    - better don't use "name" 
+    - all in uppercase means it's a constant like:  let PI = 3.1415;
+
+Every value is an object or a primitive value.
+primitive value:
+let firstName = "Jonas";
+
+object:
+let me = {
+    name: "Jonas";
+}
+
+
+primitive data types:
+    - numbers
+        floating point numbers used for decimals and integers
+        23, 23.1
+
+    - strings
+        sequence of character put inside the ""
+        "Hello World"
+
+    - boolean
+        true or false
+
+    - undefined
+        value is taken by a variable that is not yet defined (empty value)  
+        let children;
+
+    - null
+        empty value
+
+    - symbol
+        (ES2015) value is unique and can't ba changed
+
+    - bigInt
+        larger integers than the numbers type can hold
+
+
+(!) JS has dynamic typing
+    We don't need manually define the data type of a value stored in a variable,
+    the data types are determined automatically.
+    Also the variables can be reassigned with different values.
+
+
+typeof  ->  operator which shows the data type of a variable
+    example:
+    console.log(typeof true);
+    // boolean
+
+There is a weird bug in JS.
+When we run:
+    console.log(typeof null);
+    // object   -> but it's not an object
+
+
+
+(!) We need to use "let" when we create a variable,
+    but we don't need to use it to change the value of a variable.
+
+    example:
+    let JavaScriptIsFun = true;
+    JavaScriptIsFun = "YES!";
+
+
+
+
+
+///////////////
+// operators //
+///////////////
+
+operators = allows us to transform values or combine multiple values.
+
+    1.  mathematical operators
+        (+  -   *   /   **)
+
+
+    2.  assignment operators
+        (=  +=  -=  *=  /=  ++  --)
+
+
+    3.  comparison operators
+        (>  <   >=  <=)
+
+
+    4.  equality operators
+        (== ===)
+
+        "2" == 2 (loose equality operator)        
+            // true       ->     do type coercion
+            // which basically means it's trying its best to convert 
+            // both of the objects to similar data types to actually perform the comparison.
+            // !=
+
+        "2" === 2 (strict equality operator)        
+            // false      ->     DO NOT type coercion
+            // comparison based on data type space
+            // !==
+
+
+    5.  boolean logic operators
+
+        AND
+        >>>1 === 1 && 2 === 2
+            // && = and
+
+        OR
+        >>>1 === 1 || 2 === 2
+            //  || = or
+
+        NOT
+        >>>!(1===1)
+            // ! = not 
+
+
+
+
+
+//////////////////////
+// template strings //
+//////////////////////
+
+// data for examples below
+const firstName = "John";
+let ageJohn = 39;
+let currentYear = 2023;
+
+
+Concatenation:
+    console.log("Hello, my name is " + firstName + " and I'm " + ageJohn + " years old");
+
+    console.log("String with \n\
+    multiple \n\
+    lines");
+
+
+Template strings (uses ``):
+    console.log(`Hello, my name is ${firstName} and I'm ${ageJohn} years old`);
+    console.log(`${currentYear - ageJohn}`);
+
+    console.log(`String with
+    multiple
+    lines`);
+
+
+
+
+
+/////////////
+// if else //   ->  official name: Control Structure
+/////////////
+
+
+IF STATEMENT
+if (condition 1){
+       // execute some code;
+}else if (condition 2){
+       // execute some other code;
+}else if (condition 3){
+       // execute some other code;
+...
+}else{
+       // execute some backup code;
+}
+
+
+example:
+
+    // data for example below
+    const age = 16;
+    const isOldEnaugh = age >= 18;
+
+    if (isOldEnaugh) {
+        console.log(`Can start driving`);
+    } else {
+        const yearLeft = 18 - age;
+        console.log(`You're too young, and you can drive in ${yearLeft} years.`)
+    }
+
+
+
+
+
+////////////////////////////////
+// conversation and coerecion //
+////////////////////////////////
+
+type conversion ->  we manually convert from one type to another
+type coerecion  ->  when JavaScript automatically converts types
+
+
+Number()    ->  function is used to convert a value to a number. ...
+String()    ->  function is used to convert a value to a string. ...
+Boolean()   ->  function is used to convert a value to a boolean. ...
+Null()      ->  function is used to convert a value to null.
+
+(!) These functions don't convert original value
+    they just return a new value
+
+example:
+    const inputYear = `1991`;
+    const inputYearNumber = Number(inputYear);
+
+
+
+
+
+/////////////////////////////
+// Truthy and Falsy Values //
+/////////////////////////////
+
+5 falsy values if we convert them in boolean:
+    1.  0
+    2.  `` (empty string)
+    3.  undefined
+    4.  null
+    5.  NaN (not a number)
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+01. JAVASCRIPT FUNDAMENTALS (part 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
