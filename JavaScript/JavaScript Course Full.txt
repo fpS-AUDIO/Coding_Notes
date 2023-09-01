@@ -348,12 +348,97 @@ example:
 
 
 
+//////////////////////////
+// The Switch Statement //
+//////////////////////////
+
+Switch Statement
+    is an alternative way of writing a if/else statement, when all we want 
+    to do is to compare one value to multiple different options.
 
 
+example:
+const day = `monday`;
+
+switch(day) {                               // we are comparing `day`
+    case `monday`:                          // to `Monday` in a strict equality way
+        console.log(`plan studying`);       // so if day === `monday` the code below will be executed
+        console.log(`go coding`);
+        break;                              // without the break the code continues executing and it stops when it find a break
+    case `tuesday`:
+        console.log(`prepare video`);
+        break;
+    case `wednesday`:                       // run the same code for two different values
+    case `thursday`:                        // to do that we need to specidy two cases in a row
+        console.log(`do sport`);
+        break;
+    case `saturday`:
+    case `sunday`:
+        console.log(`engoy weekend`);
+        break;
+    default:                                // default will be executed only if all the other cases fail
+        console.log(`not a valid day`);
+}   
+
+
+
+
+
+////////////////////////////////
+// Statements and Expressions //
+////////////////////////////////
+
+
+expression
+    is a piece of code that produces a value.
+    example: 3 + 4
+    example: 1991
+    example: true && !false
+
+
+statement
+    is like a bigger piece of code that is executed
+    and which does not produce a value on itself
+    example:
+    if (18>10) {
+        const str = `18 is bigger`;
+    }
  
 
 
 
+
+////////////////////////////////////
+// Conditional (ternary) operator //
+//////////////////////////////////// 
+
+conditional operator
+    allows to to write something similar to an if/else statement
+    but just in one line
+
+
+syntax:
+    condition ? code-if-condition-is-true : code-if-condition-is-false(else);
+
+
+example 1:
+    const age = 16;
+    age >= 18 ? console.log(`I like drink wine`) : console.log(`I like drink water`);
+    // output   ->  I like drink water
+
+
+example 2:
+    const drink = age >= 18 ? `wine` : `water`;
+
+
+
+(!) since the ternary operator, is a expression it produces a value,
+    so we can insert it inside of a template literal which accepts only expressions.
+
+    example:
+    console.log(`I like to drink ${age >= 18 ? `wine` : `water`}`);
+    // output   ->  I like to drink water
+ 
 
 
 
@@ -361,6 +446,35 @@ example:
 
 ___________________________________________________________________________________________________________________________________
 01. JAVASCRIPT FUNDAMENTALS (part 2)
+
+
+
+////////////////////////////
+// Activating strict mode //
+////////////////////////////
+
+strict mode
+    is a special mode that we can activate in JavaScript, which makes it easier 
+    for us to write a secure JavaScript code.
+
+(!) To activate the strict mode in JS we need to write in the very first line (1st statement):
+    'use strict';
+
+
+Secure means that strict mode makes it easier for developers to avoid accidental errors.
+It helps us introduce the bugs into our code.
+strict mode:
+    1.  forbids us to do certain things
+    2.  it will actually create visible errors for us
+        (when JS would just fail silently)
+
+
+
+
+
+
+
+
 
 
 
