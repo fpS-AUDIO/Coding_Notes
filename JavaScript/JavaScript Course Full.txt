@@ -100,7 +100,7 @@ let firstName = "Jonas";
     let is used to mutate (reassign) the variable subsequently
     We can declare empty variables.
 
-    example:
+    EXAMPLE:
     let birthYear = 1996;
     birthYear = 1997;
 
@@ -110,7 +110,7 @@ const firstName = "Jonas";
     so const is used for immutable variables.
     We can't declare empty variables.
 
-    example:
+    EXAMPLE:
     const birthYear = 1996;
     birthYear = 1997;
     // TypeError
@@ -171,7 +171,7 @@ primitive data types:
 
 
 typeof  ->  operator which shows the data type of a variable
-    example:
+    EXAMPLE:
     console.log(typeof true);
     // boolean
 
@@ -185,7 +185,7 @@ When we run:
 (!) We need to use "let" when we create a variable,
     but we don't need to use it to change the value of a variable.
 
-    example:
+    EXAMPLE:
     let JavaScriptIsFun = true;
     JavaScriptIsFun = "YES!";
 
@@ -292,7 +292,7 @@ if (condition 1){
 }
 
 
-example:
+EXAMPLE:
 
     // data for example below
     const age = 16;
@@ -325,7 +325,7 @@ Null()      ->  function is used to convert a value to null.
 (!) These functions don't convert original value
     they just return a new value
 
-example:
+EXAMPLE:
     const inputYear = `1991`;
     const inputYearNumber = Number(inputYear);
 
@@ -357,7 +357,7 @@ Switch Statement
     to do is to compare one value to multiple different options.
 
 
-example:
+EXAMPLE:
 const day = `monday`;
 
 switch(day) {                               // we are comparing `day`
@@ -391,15 +391,15 @@ switch(day) {                               // we are comparing `day`
 
 expression
     is a piece of code that produces a value.
-    example: 3 + 4
-    example: 1991
-    example: true && !false
+    EXAMPLE: 3 + 4
+    EXAMPLE: 1991
+    EXAMPLE: true && !false
 
 
 statement
     is like a bigger piece of code that is executed
     and which does not produce a value on itself
-    example:
+    EXAMPLE:
     if (18>10) {
         const str = `18 is bigger`;
     }
@@ -421,13 +421,13 @@ syntax:
     condition ? code-if-condition-is-true : code-if-condition-is-false(else);
 
 
-example 1:
+EXAMPLE #1:
     const age = 16;
     age >= 18 ? console.log(`I like drink wine`) : console.log(`I like drink water`);
     // output   ->  I like drink water
 
 
-example 2:
+EXAMPLE #2:
     const drink = age >= 18 ? `wine` : `water`;
 
 
@@ -435,7 +435,7 @@ example 2:
 (!) since the ternary operator, is a expression it produces a value,
     so we can insert it inside of a template literal which accepts only expressions.
 
-    example:
+    EXAMPLE:
     console.log(`I like to drink ${age >= 18 ? `wine` : `water`}`);
     // output   ->  I like to drink water
  
@@ -446,6 +446,8 @@ example 2:
 
 ___________________________________________________________________________________________________________________________________
 01. JAVASCRIPT FUNDAMENTALS (part 2)
+
+
 
 
 
@@ -460,6 +462,8 @@ strict mode
 (!) To activate the strict mode in JS we need to write in the very first line (1st statement):
     'use strict';
 
+(!) We should always use the strict mode
+
 
 Secure means that strict mode makes it easier for developers to avoid accidental errors.
 It helps us introduce the bugs into our code.
@@ -467,28 +471,191 @@ strict mode:
     1.  forbids us to do certain things
     2.  it will actually create visible errors for us
         (when JS would just fail silently)
+    3.  introduces a short list of variable names that are reserved for features
+        that might be added to the language a bit later (EXAMPLE: let interface)
 
 
 
 
 
+///////////////
+// Functions //
+///////////////
+
+
+functions
+    piece of code that we can reuse over and over again in our code
+--------------------------------------------
+syntax:     (function declaration)
+--------------------------------------------
+function functionName() {
+    // function body
+    console.log(`execute this code when we call func`);             
+}
+
+// calling / runing / invoking function
+functionName()                                                      
 
 
 
 
 
+--------------------------------------------
+input data:     (function declaration)
+--------------------------------------------
+
+function fruitProcessor(apples, oranges) {  
+    // apples, oranges -> input data of a function
+    const juice = `Juice with ${apples} apples and ${oranges} oranges`
+    // return keyword   ->  we can return any value from the function
+    return juice;
+}
+
+const appleJuice = fruitProcessor(4, 0);
+console.log(appleJuice);
+console.log(fruitProcessor(4, 0));
+// Juice with 4 apples and 0 oranges
 
 
 
 
 
+/////////////////////////////////////////
+// Functions Declaration vs expression //
+/////////////////////////////////////////
+
+
+In JavaScript, there are different ways of writing functions.
+
+(!) In examples above we can see function declarations, 
+    because we simply use the function keyword.
 
 
 
 
 
+--------------------------------------------
+function declaration:
+--------------------------------------------
+
+function calculateAge1(birthYear) {
+    return 2023 - birthYear;
+}
+
+const age1 = calculateAge1(1996);
 
 
+
+
+
+--------------------------------------------
+function expression:
+--------------------------------------------
+
+const calculateAge2 = function (birthYear) {
+    return 2023 - birthYear;
+}
+
+const age2 = calculateAge2(1996);
+
+(!) function expression is a function without a name (also called an anonymous function),
+    and it's an expression and remember that an expression produces a value.
+    So we use that value to store it into calcAge2 variable.
+
+
+
+(!) the main practical difference between function declarations and function expressions
+    is that we can call function declarations before they are defined in the code.
+    This is happening because of the process called hoisting.
+    (this doesn't work with the expression)
+
+    so we can write this:
+
+    // calling function
+    const age1 = calculateAge1(1996);
+
+    // defining function
+    function calculateAge1(birthYear) {
+    return 2023 - birthYear;
+    }
+
+
+
+
+
+//////////////////////
+// Arrow Functions  //
+//////////////////////
+    
+Arrow Functions are added to JavaScript in ES6.
+Arrow Functions is a special form of function expression
+that is shorter and faster to write.
+
+
+
+--------------------------------------------
+SYNTAX:
+    variable = parameter => write what need to return;
+
+
+EXAMPLE #1:
+const calculateAge3 = birthYear => 2023 - birthYear;
+const age3 = calculateAge3(1996);
+
+
+
+--------------------------------------------
+(!) we still need to use {} and return if we need to define a code block
+    (have more lines of code)
+
+
+EXAMPLE #2:
+const yearsUntileRetirement = birthYear => {
+    const age = 2023 - birthYear;
+    const retirement = 65 - age;
+    return retirement;
+}
+const retirementYears = yearsUntileRetirement(1996);
+
+
+
+--------------------------------------------
+(!) we need to wrap parameter inside parentheses ()
+    if we have more then 1 parameter.
+
+
+EXAMPLE #3:
+const yearsUntileRetirement = (birthYear, firstName) => {
+    const age = 2023 - birthYear;
+    const retirement = 65 - age;
+    return `${firstName} retires in ${retirement} years`;
+}
+const retirementYears = yearsUntileRetirement(1996, `Alex`);
+console.log(retirementYears);
+
+// or we can just write
+// console.log(yearsUntileRetirement(1996, `Alex`));
+
+
+
+--------------------------------------------
+(!) There is a difference between the arrow function and 
+    traditional functions (function declarations and function expressions).
+    arrow functions don't have `this` keyword
+
+
+
+
+
+///////////////////////////////////////
+// Functions calling other functions //
+///////////////////////////////////////
+
+// NOT FINISHED EXAMPLE!!!!!!
+function fruitProcessor(apples, oranges) {  
+    const juice = `Juice with ${apples} apples and ${oranges} oranges`
+    return juice;
+}
 
 
 
