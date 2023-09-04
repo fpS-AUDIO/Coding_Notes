@@ -12,10 +12,39 @@
 
 
 00. JAVASCRIPT FUNDAMENTALS (part 1)
+        - definition
+        - variables
+        - operators
+        - template strings
+        - if else
+        - conversation and coerecion
+        - Truthy and Falsy Values
+        - The Switch Statement        
+        - Statements and Expressions
+        - Conditional (ternary) operator
+
 01. JAVASCRIPT FUNDAMENTALS (part 2)
-
-
-
+        - Activating strict mode
+        - Functions
+        - Functions Declaration vs expression
+        - Arrow Functions
+        - Functions calling other functions
+        - Arrays
+        - JavaScript Array Methods and Propertie
+        - Objects
+        - Objects methods
+        - Objects built in methods
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
 
 
 
@@ -708,38 +737,321 @@ friends[2] = "Sasha"                                // change the value in that 
 
 
 
+////////////////////////////////////////////
+// JavaScript Array Methods and Propertie //
+////////////////////////////////////////////
+
+array.method(parameter);
+
+
+at()	            Returns an indexed element of an array
+concat()	        Joins arrays and returns an array with the joined arrays
+constructor	        Returns the function that created the Array object's prototype
+copyWithin()	    Copies array elements within the array, to and from specified positions
+entries()	        Returns a key/value pair Array Iteration Object
+every()	            Checks if every element in an array pass a test
+fill()	            Fill the elements in an array with a static value
+filter()	        Creates a new array with every element in an array that pass a test
+find()	            Returns the value of the first element in an array that pass a test
+findIndex()	        Returns the index of the first element in an array that pass a test
+flat()	            Concatenates sub-array elements 
+flatMap()	        Maps all array elements and creates a new flat array
+forEach()	        Calls a function for each array element
+from()	            Creates an array from an object
+includes()	        Check if an array contains the specified element (returns true or false)
+indexOf()	        Search the array for an element and returns its position (index)
+isArray()	        Checks whether an object is an array
+join()	            Joins all elements of an array into a string
+keys()	            Returns a Array Iteration Object, containing the keys of the original array
+lastIndexOf()	    Search the array for an element, starting at the end, and returns its position
+length	            Sets or returns the number of elements in an array
+map()	            Creates a new array with the result of calling a function for each array element
+pop()	            Removes the last element of an array, and returns that element
+prototype	        Allows you to add properties and methods to an Array object
+push()	            Adds new elements to the end of an array, and returns the new length
+reduce()	        Reduce the values of an array to a single value (going left-to-right)
+reduceRight()	    Reduce the values of an array to a single value (going right-to-left)
+reverse()	        Reverses the order of the elements in an array
+shift()	            Removes the first element of an array, and returns that element
+slice()	            Selects a part of an array, and returns the new array
+some()	            Checks if any of the elements in an array pass a test
+sort()	            Sorts the elements of an array
+splice()	        Adds/Removes elements from an array
+toString()	        Converts an array to a string, and returns the result
+unshift()	        Adds new elements to the beginning of an array, and returns the new length
+valueOf()	        Returns the primitive value of an array
+
+
+example:            let boolResult = friends.includes(`Steven`);
+
+--------------------------------------------
 
 
 
 
 
+/////////////
+// Objects //
+/////////////
+
+
+Object
+    In Objects we define key:value pairs like dictionaries in python.
+    Objects can hold different types of data.
+    Every key:value pair is 1 property.
+    Object()    Turns the input into an object.
+
+
+SYNTAX:
+variable = {
+    key: value;
+}
+
+
+
+EXAMPLE:
+const john = {
+    firstName: `John`,                          // property 1
+    lastName: `Wick`,                           // property 2 ...
+    age: 2023 - 1996,                           
+    job: `hacker`,
+    friends: [`Bander`, `Lila`, `Mattia`]
+}
+
+
+
+// get property
+console.log(john.lastName);
+console.log(john[`lastName`]); 
+
+// add property
+john.location = `China`;
+john[`location`] = `China`;
+
+
+(!) inside [] we can put any expression
+    EXAMPLE:
+    const nameKey = `Name`;
+    console.log(john[`last` + nameKey]); 
+    console.log(john[`first` + nameKey]); 
 
 
 
 
 
+/////////////////////
+// Objects methods //
+/////////////////////
+
+Any function that is attached to an object is called a method.
+
+(!) if functions are another type of value means that we can 
+    create a key value pair in which the value is a function,
+    so we can add functions inside an object.
+    
+    That works because the expression produces the value,
+    and function declaration will NOT work.
+
+
+
+const john = {
+
+    firstName: `John`,                                      // string value
+    lastName: `Wick`,                           
+    birthYear: 1996,                           
+    job: `hacker`,
+    friends: [`Bander`, `Lila`, `Mattia`],                  // array value
+    hasDriverLicense: true,                                 // boolean value
+
+
+
+    // key(name-of-function): function-expression
+    calcAge: function (birthYear) {                         // function value
+        return 2023 - birthYear;
+    },
+
+
+
+    // using `this`
+    calcAge2: function () {
+        return 2023 - this.birthYear;
+    },
+
+
+
+    // most efficient solution
+    calcAge3: function () {
+
+        // creating a new property with this.age
+        this.age = 2023 - this.birthYear;    
+        return this.age;
+    }
+}
+
+
+(!) `this` keyword is basically equal to the object on which the method is called
+    (it is equal to the object calling the method)
+
+
+
+// access to function property
+john.calcAge(1996);
+john[`calcAge`](1996);
+
+
+// access to function property using `this`
+john.calcAge2();
+
+
+// calling the func property creating the new property and 
+// then acceess directly to the new property
+john.calcAge3();
+john.age
 
 
 
 
 
+//////////////////////////////
+// Objects built in methods //
+//////////////////////////////
+
+
+Object.assign()
+        Copies the values of all enumerable own properties from one or 
+        more source objects to a target object.
+
+Object.create()
+        Creates a new object with the specified prototype object and properties.
+
+Object.defineProperties()
+        Adds the named properties described by the given descriptors to an object.
+
+Object.defineProperty()
+        Adds the named property described by a given descriptor to an object.
+
+Object.entries()
+        Returns an array containing all of the [key, value] pairs of a 
+        given object's own enumerable string properties.
+
+Object.freeze()
+        Freezes an object. Other code cannot delete or change its properties.
+
+Object.fromEntries()
+        Returns a new object from an iterable of [key, value] pairs. 
+        (This is the reverse of Object.entries).
+
+Object.getOwnPropertyDescriptor()
+        Returns a property descriptor for a named property on an object.
+
+Object.getOwnPropertyDescriptors()
+        Returns an object containing all own property descriptors for an object.
+
+Object.getOwnPropertyNames()
+        Returns an array containing the names of all of the given object's
+        own enumerable and non-enumerable properties.
+
+Object.getOwnPropertySymbols()
+        Returns an array of all symbol properties found directly upon a given object.
+
+Object.getPrototypeOf()
+        Returns the prototype (internal [[Prototype]] property) of the specified object.
+
+Object.groupBy() Experimental
+        Groups the elements of a given iterable according to the string values 
+        returned by a provided callback function. The returned object has separate 
+        properties for each group, containing arrays with the elements in the group.
+
+Object.hasOwn()
+        Returns true if the specified object has the indicated property as its
+        own property, or false if the property is inherited or does not exist.
+
+Object.is()
+        Compares if two values are the same value. Equates all NaN values 
+        (which differs from both IsLooselyEqual used by == and IsStrictlyEqual used by ===).
+
+Object.isExtensible()
+        Determines if extending of an object is allowed.
+
+Object.isFrozen()
+        Determines if an object was frozen.
+
+Object.isSealed()
+        Determines if an object is sealed.
+
+Object.keys()
+        Returns an array containing the names of all of the given 
+        object's own enumerable string properties.
+
+Object.preventExtensions()
+        Prevents any extensions of an object.
+
+Object.seal()
+        Prevents other code from deleting properties of an object.
+
+Object.setPrototypeOf()
+        Sets the object's prototype (its internal [[Prototype]] property).
+
+Object.values()
+        Returns an array containing the values that correspond to all of a 
+        given object's own enumerable string properties.
 
 
 
+--------------------------------------------
+Instance properties
+
+(!) These properties are defined on Object.prototype and shared by all Object instances.
+
+(OLD) Object.prototype.__proto__
+        Points to the object which was used as prototype when the object was instantiated.
+
+Object.prototype.constructor
+        The constructor function that created the instance object. 
+        For plain Object instances, the initial value is the Object constructor. 
+        Instances of other constructors each inherit the constructor property 
+        from their respective Constructor.prototype object.
 
 
+--------------------------------------------
+Instance methods
 
 
+(OLD) Object.prototype.__defineGetter__()
+        Associates a function with a property that, when accessed, 
+        executes that function and returns its return value.
 
+(OLD) Object.prototype.__defineSetter__()
+        Associates a function with a property that, when set, 
+        executes that function which modifies the property.
 
+(OLD) Object.prototype.__lookupGetter__()
+        Returns the function bound as a getter to the specified property.
 
+(OLD) Object.prototype.__lookupSetter__()
+        Returns the function bound as a setter to the specified property.
 
+Object.prototype.hasOwnProperty()
+        Returns a boolean indicating whether an object contains the 
+        specified property as a direct property of that object and not 
+        inherited through the prototype chain.
 
+Object.prototype.isPrototypeOf()
+        Returns a boolean indicating whether the object this method 
+        is called upon is in the prototype chain of the specified object.
 
+Object.prototype.propertyIsEnumerable()
+        Returns a boolean indicating whether the specified property is 
+        the object's enumerable own property.
 
+Object.prototype.toLocaleString()
+        Calls toString().
 
+Object.prototype.toString()
+        Returns a string representation of the object.
 
-
+Object.prototype.valueOf()
+        Returns the primitive value of the specified object.
 
 
 
