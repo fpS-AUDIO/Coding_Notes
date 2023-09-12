@@ -61,7 +61,7 @@
         - a high level overview of JS
         - JS engine and runtime
         - execution contexts and the call stack
-        - 
+        - scope and the scope chain
         - 
         - 
         - 
@@ -1667,7 +1667,7 @@ With node.js we can build server side applications without eny browser.
 
 any JavaScript engine always contains:
     1.  call stack = where the code is executed using something called execution contexts
-    2.  heap = is an unstructured memory pool which stores all the objects that our application needs
+    2.  memory heap = is an unstructured memory pool which stores all the objects that our application needs
 
 
 
@@ -1809,8 +1809,8 @@ EXECUTION CONTEXT
 
 
 After finish of executing top level code, functions starts executing.
-For each and ECERY FUNCTION call a NEW EXECUTION CONTEXT will be created,
-with all information need to run that function (same for methods)
+For each and EVERY FUNCTION call a NEW EXECUTION CONTEXT will be created,
+with all information need to run that function (indeed same for methods)
 
 (!)  All these execution contexts together makes the CALL STACK.
 
@@ -1831,6 +1831,120 @@ Inside the execution contexts thare are:
 
 1. Variable environment
         stores all the variables, functions and arguments object
+
+2. Scope chain
+        it basically consists of references to variables that are located outside of the current function.
+        And to keep track of the scope chain, it is stored in each execution context.
+        
+3. `this` keyword
+
+
+(!) All these content of execution context is created during the so-called
+    creation phase which happens right before execution.
+
+(!) Arrow functions DON'T have: `this` keyword and `arguments object`.
+    Instead they use them from their closest regular function parent.
+
+
+
+--------------------------------------------
+--------------------------------------------
+    What is the Call Stack?
+--------------------------------------------
+
+The Call Stack is basically a place where execution contexts get stacked on top of each other,
+in order to keep track of where we are in the programs execution.
+
+In easy word the call stack is like a map with order of what should be executed.
+
+
+
+
+
+///////////////////////////////
+// scope and the scope chain //
+///////////////////////////////
+
+
+SCOPING
+    controls how our program's variables are organized and accessed by the JavaScript engine.
+    like "where we can access the certain variable and where not?"
+
+In JS we have "lexical scoping".
+Lexical scoping means that the way variables are organized and accessed
+    is entirely controlled by the placement of functions and of blocks in the programs code.
+
+SCOPE
+    is the space or environment in which a certain variable is declared.
+
+
+SCOPE OF A VARIABLE 
+    is the region of our code where a ceratin variable can be accessed.
+
+
+SCOPE can be:
+    1. global scope
+        top level code outsude of any function or block {}
+        it's accessible everywhere
+
+    2. function scope (local scope)
+        each function create this scope
+        the variables are accessible fron this functions
+        so these variables are NOT acceessible outside of the function
+
+    3. block scope
+        blocks {} creates own scopes since ES6
+        variables are accessible only inside block
+        this apllies only to `let` and `const` variables
+        `var` variable is still accessible outside the block scope
+        Since ES6 all function are also block scoped (only in `strict mode`)
+
+
+(!) SCOPE CHAIN
+    The variables which are not declared in the current scope will be
+    searched in the parent scope, but never in child or siblings scopes!
+    This process is called `variable lookup`.
+
+
+
+--------------------------------------------
+--------------------------------------------
+    Scope Chain  VS.  Call Stack
+--------------------------------------------
+
+The scope chain has nothing to do with the order of the execution contexts in the call stack.
+The scope chain does get the variable environments from the execution context
+The order of function calls is not relevant to the scope chain at all.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
