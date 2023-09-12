@@ -3,11 +3,21 @@
 (!)     ENGLISH LANGUAGE VERSION
 
 
+(!)     Some of examples are coming from Jonas Schmedtmann's 
+        complete JavaScript course on Udemy.
+        I recommend this course to everyone! it's really good.
+        And it's not an advertising but it's just my personal opinion.
 
-///////////////////////////
-//// JAVASCRIPT COURSE ////
-///////////////////////////
 
+
+
+
+
+        //////////////////////////
+        //////////////////////////
+        //// JAVASCRIPT NOTES ////
+        //////////////////////////
+        //////////////////////////
 
 
 
@@ -34,19 +44,38 @@
         - Objects
         - Objects methods
         - Objects built in methods
-        - 
-        - 
-        - 
-        - 
-        - 
-        - 
-        - 
-        - 
-        - 
-        - 
-        - 
+        - the for loop
+        - the while loop
 
+02. DEVELOPER SKILLS AND EDITOR SETUP
+        - setting up prettier
+        - snippets
+        - install node.js and dev environment
 
+03. DOM AND EVENTS FUNDAMENTALS     
+        - basics
+        - handling click events
+        - modal window and more about events
+
+04. HOW JAVASCRIPT WORKS BEHIND THE SCENES        
+        - a high level overview of JS
+        - JS engine and runtime
+        - execution contexts and the call stack
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
 
 
 
@@ -85,6 +114,9 @@ Just random basics
 ;                                       let JS know the instruction is finished (good practice)
 
 console.log();                          show staff on console
+console.warn();                         show waring on console
+console.error();                        show error on console
+console.table(objectName);              show table of an object on console
 
 alert("Hello world")                    make and alert
 
@@ -103,11 +135,19 @@ clear()                                 clear console in browser
 prompt("Enter something")               get promt windows (it's like an input from alert)
                                             ex: let age = promt("Enter your age: ")
 
+debugger;                               statement to open debuger tool in this point
+                                        (it's like put a breakpoint in debugger)
 
 
+                                        
 ----------------------------------------------------------
 
 
+(!) DRY = don't repeat yourself
+    It's a principle to don't repeat the same code
+
+    Refactoring = means to restructure the code but without changing how it works.
+    We do refactoring to improve the code and to eliminate duplicate code.
 
 
 
@@ -1052,6 +1092,753 @@ Object.prototype.toString()
 
 Object.prototype.valueOf()
         Returns the primitive value of the specified object.
+
+
+
+
+
+//////////////////
+// the for loop //
+//////////////////
+
+
+
+for(a; b; c) {
+    // some code
+}
+
+    a   ->  initial counter 
+    b   ->  logical condition that is evaluated before each iteration of loop
+            if the condition is true the next iteration will run.
+    c   ->  increase the counter after each iteration
+
+
+(!) continue    -> exit the current iteration of the loop and contunue to the next one
+    break       -> completely terminate the whole loop
+
+
+
+EXAMPLE #1:     // basics
+for(let rep = 1; rep <= 10; rep++){
+    console.log(`Doing the repition number ${rep}`);
+}
+
+
+
+EXAMPLE #2:     // normal
+const friends = [`Michael`, `Steven`, `Peter`, 13];
+const dataTypes1 = [];
+const dataTypes2 = [];
+
+for(let i = 0; i < friends.length; i++){
+    console.log(friends[i]);
+    dataTypes1[i] = typeof friends[i];
+    dataTypes2.push(typeof friends[i]);
+}
+
+
+
+EXAMPLE #3:     // advanced
+const years = [1996, `Sasha`, 1998, 2004, 1989];
+const ages = [];
+
+for(let i = 0; i < years.length; i++){
+    if(typeof years[i] !== `number`) continue;
+    ages.push(2023 - years[i]);
+}
+
+
+
+EXAMPLE #4:     // loop backwards
+const years = [1996, `Sasha`, 1998, 2004, 1989];
+
+for(let i = years.length -1; i >= 0; i--){
+    console.log(years[i]);
+}
+
+
+
+EXAMPLE #4:     // loop inside a loop
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`------------starting exercise #${exercise}`);
+    for (let repitition = 1; repitition < 6; repitition++){
+        console.log(`Exercise #${exercise}. Lifting the weith of repitition #${repitition}`);
+    }
+}
+
+
+
+
+
+////////////////////
+// the while loop //
+////////////////////
+
+The while loop has only the condition to be checked.
+And it's running until the condion is true.
+It doest'y need a counter, so it can be used in a larger variety of situations.
+(and we can always specify the counter manually creating the variabile outside 
+the loop and then increase after every iteration)
+
+
+// creating a random number between 1-6
+let dice = Math.trunc(Math.random() * 6) +1;
+
+while(dice !== 6) {
+    console.log(`You rolled ${dice}`);
+    dice = Math.trunc(Math.random() * 6) +1;
+    if (dice === 6) {
+        console.log(`Nice the dice is ${dice} and the loop is ending...`)
+    }
+}
+ 
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+02. DEVELOPER SKILLS AND EDITOR SETUP
+
+
+
+
+
+/////////////////////////
+// setting up prettier //
+/////////////////////////
+
+
+Prettier is an opinionated code formatter which means that it makes 
+assumptions about how good code should look like.
+
+1.  This tool is available as a VS Code extension. Download it.
+
+2.  Now define Prettier as the default formatter of our code.
+    settings > search: default formatter -> select esbenp.prettier-vscode
+    (also chech `format on save` is on)
+
+3.  We can configure the Prettier by creating a file ".prettierrc" inside the project folder
+    go to prettie website > options > configuratin prettier documentation
+    then inside the folder we can change the default behavior of this tool.
+
+    EXAMPLE:
+    {
+        "singleQuotes": true,
+        "arrowParens": "avoid"
+    }
+
+
+
+
+
+//////////////
+// snippets //
+//////////////
+
+Snippets make the coding faster.
+
+in vs code:
+
+1.  file > preferences > user snippets > new global snippets file... > anyCustomName
+
+2.  In this file we can define a the snippets.#
+
+    EXAMPLE:
+	"Print to console": {
+		"scope": "javascript,typescript",
+		"prefix": "cl",
+		"body": ["console.log();"],
+		"description": "Log output to console"
+    }
+
+    Now you write `cl` + ENTER  ->  console.log();
+
+
+
+
+
+/////////////////////////////////////////
+// install node.js and dev environment //
+/////////////////////////////////////////
+
+To automatically reload changes on save while coding we can download live server extension.
+There is a more professional way of running Live Server by using Node.js
+Node.js is a JavaScript runtime.
+
+1.  google node.js 
+    download and install node.js from the official website
+
+2.  after installing it will become available as a program in terminal.
+
+    in terminal: `node -v` to see the version and be sure node.js is installed
+    in terminal: `npm install live-server -g`
+    in terminal: `live-server`
+        it will then open the index.html file by default in the current folder
+ 
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+03. DOM AND EVENTS FUNDAMENTALS 
+
+
+
+
+
+////////////
+// basics //
+////////////
+
+DOM = Document Object Model
+    Structured representation of HTML documents. 
+    It allows JS to acceess HTML elements and style to manipulate them.
+
+The DOM is automatically created by the browser as soon as the HTML page loads.
+And it's stored in a tree structure.
+In this tree, each HTML element is one object.
+
+The Document is the entry point to the DOM (main element of the tree).
+Usually the first child is the HTML element, which is the root of html files.
+And it hase the method querySelector() to selec an element.
+
+
+
+(!) JavaScript is actually just a dialect of the ECMAScript specification,
+    and all this DOM related stuff is not in there, so DOM is not a part of JS.
+
+    DOM and DOM methods are part of something called the web APIs.
+    The web APIs are like libraries (written in JS) that browsers implement and that 
+    we can access from our JavaScript code.
+    And API stands for Application Programming Interface.
+
+--------------------------------------------
+
+in console of a browser in a website:
+document                    =>     return HTML text of the page
+console.dir(document)       =>     return DOM with all the properties and values
+
+
+HTML elements are the properties of the DOM (Object)
+Some of important document attriburtes:
+       document.URL     --      This is the actual URL of the website
+       document.body    --      This is everything inside of the body
+       document.head    --      This is everything in the head of the page
+       documnet.links   --      These are all the links on the page
+
+There are many methodas to grab elements form the DOM:
+       document.getElementById()                 => as the parameter, pass an id of HTML element                => ex: document.getElementById("pickme")
+       document.getElementsByClassName()         => as the parameter, pass a class of HTML elements             => ex: document.getElementsByClassName("myul")
+       document.getElementsByTagName()           => pass the tag like anchor tag                                => ex: document.getElementsByTagName("li")
+       document.querySelector()                  => returns the first object matching the CSS style selector    => ex: document.querySelector("#pickme")
+       document.querySelectorAll()               => returns all objects matching the CSS style selector         => ex: document.querySelectorAll(".myul")
+
+
+
+EXAMPLE:
+    // document . selector Method . element . element attribute
+    document.querySelector(`.number`).textContent = 22;
+
+    // `value` property for input feld
+    document.querySelector(`.input`).value = 13;
+
+
+
+(!) To change the style we need to grab the element
+    then apply to `style` attriburte
+    then set the new value inside the ` `
+
+    use the camelCase notation instead of -
+    for example:
+    wrong:      background-color
+    correct:    backgroundColor   
+
+    EXAMPLE:
+    document.querySelector(`body`).style.backgroundColor = `white`;
+
+--------------------------------------------
+
+
+
+
+
+///////////////////////////
+// handling click events //
+///////////////////////////
+
+
+Event = something that happens on the page
+        (mouse click, mouse moving, key press...)
+
+Event listener = allows to wait a certain event to happen nd then react to it.
+
+To do:
+1.  need to select an element on which an evenet should happen
+
+2.  then we need to add the event listener method on that element
+
+    SYNTAX: 
+    element.addEventListener(x, y)
+    x   ->  type of the event
+    y   ->  event handler (function VALUE with code that should happen on event)
+
+
+
+3.  EXAMPLE #1:
+    document.querySelector(`.btn`).addEventListener(`click`, function () {
+    //    `.btn` is our button element
+    //    `click` is the event
+    //    the code below is event handler function value
+    console.log(document.querySelector(`.guess`).value);
+
+    // (!)    we DON'T need to call the event handler function
+    //        JavaScript engine will call this function as soon as the event happens
+    });
+
+
+    EXAMPLE #2:
+    document.getElementById("myBtn").addEventListener("click", displayDate);
+
+
+
+
+
+////////////////////////////////////////
+// modal window and more about events //
+////////////////////////////////////////
+
+
+The best way to make changes on the website is working with the css classes,
+because change every value of every property is really inefficient.
+
+
+--------------------------------------------
+EXAMPLES of classes:
+
+
+/* CLASSES TO MAKE MODAL WORK */
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/*  <div class="overlay hidden"></div>  */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+--------------------------------------------
+
+
+(!) To work with classes we can use Element.classList is a read-only property
+    which returns a list of class attributes of the element.
+
+    We can modify the tokens of the list using:
+    -   add()
+    -   remove()
+    -   replace()
+    -   toggle()
+    -   contains()
+
+    syntax: element.classList.method(`class-name`)
+            DON'T USE . # (we are not selecting elements)
+
+
+
+EXAMPLE:
+
+// eterating thrue the list of `btnsOpenModal` buttons list
+for (let i = 0; i < btnsOpenModal.length; i++) {
+  // add EventListener for every element of the list
+  btnsOpenModal[i].addEventListener(`click`, function () {
+    modal.classList.remove(`hidden`);
+    overlay.classList.remove(`hidden`);
+  });
+}
+
+--------------------------------------------
+
+(!) keyboard events are global events because they don't happen on a specific element.
+    And for global events like keyboard events we usually listen on the whole document.
+
+    // this will happen for EVERY key pressed
+    document.addEventListener(`keydown`, function);
+
+    there are 3 type of keyboard event:
+        1. `keydown`    just press down the key
+        2. `keypress`   fired continuously as the finger is on the key
+        3. `keyup`      when lift off the finger 
+
+
+
+(!) information about which key was pressed is stored in the event
+    so everytime we press a key a `keydown` event is generated
+    and JS generates an object which contains all the information about the event
+    and we can access that object in the event handler function passing it as parameter.
+
+    syntax:
+
+    // listening for events everywhere
+    // we can call `event` parameter as we want, for example `pizza`
+    document.addEventListener(`keydown`, function (event) {
+    console.log(event);
+    });
+
+
+
+(!) It's always a good idea to console.log(event) and analize it
+
+    since the event is an object, we have access to it's 
+    properties and values like a normal object
+    
+    for example we can access on the value of which key was pressed:
+    console.log(event.key);
+
+
+EXAMPLE:
+
+// listening for events everywhere
+// we can call `event` parameter as we want, for example `pizza`
+document.addEventListener(`keydown`, function (event) {
+  if (event.key === `Escape` && !modal.classList.contains(`hidden`)) {
+    closeModal();
+  }
+});
+ 
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+04. HOW JAVASCRIPT WORKS BEHIND THE SCENES 
+
+
+
+
+
+/////////////////////////////////
+// a high level overview of JS //
+/////////////////////////////////
+
+
+
+JAVASCRIPT IS A HIGH-LEVEL, PROTOTYPE-BASED OBJECT-ORIENTED, 
+MULTI-PARADIGM, INTERPRETED OR JUST-IN-TIME COMPILED, 
+DYNAMIC, SINGLE-THREADED, GARBAGE-COLLECTED PROGRAMMING 
+LANGUAGE WITH FIRST-CLASS FUNCTIONS AND A NON-BLOCKING 
+EVENT LOOP CONCURRENCY MODEL
+
+
+
+--------------------------------------------
+HIGH-LEVEL
+
+Any computer program needs some hardware resources such as memory and the CPU to do its work.
+
+low-level languages (like C)
+    you have to manually manage these resources
+
+high-level languages (like python)
+    these languages have so-called abstractions, so resources are managed automatically.
+    language easier to learn and to use but these programs will never be as fast as written un C.
+
+
+
+--------------------------------------------
+GARBAGE-COLLECTED
+
+its an algorithm memory management inside the JavaScript engine
+which automatically removes old, unused objects from the memory.
+
+
+
+--------------------------------------------
+INTERPRETED OR JUST-IN-TIME COMPILED
+
+computer's processor only understands zeros and ones (machine code)
+we write an abstraction over machine code which needs to be translated.
+That step can be compiling or interpreting.
+In case of JS it happens inside the JavaScript engine.
+
+
+
+--------------------------------------------
+MULTI-PARADIGM
+
+Paradigm: An approach and mindset of structuring code, which will direct your coding style and technique.
+
+3 Popular paradigms:
+    1.  Procedural programming
+            just organizing the code in a very linear way with some functions in between.
+    2.  Object-oriented programming (OOP)
+    3.  Functional programming (FP)
+
+Paradigms can be:
+    - Imperative
+    - Declarative
+
+
+object-oriented approach
+    almost everything in JavaScript is an object
+    except for primitive values such as numbers, strings, etc.
+
+    prototypal inheritance is like make an object with all attributes nad methods
+    and then we inherit these attributes in the instances, like push()
+    method of an array (which is also an object)
+
+
+
+--------------------------------------------
+FIRST-CLASS FUNCTIONS
+
+In a language with first-class functions, functions are simply treated as variables. 
+We can pass them into other functions, and return them from functions.
+
+So we can, for exaple, pass a function into another function as an argument.
+
+
+
+--------------------------------------------
+DYNAMIC
+
+We don't assign data types to variables.
+
+No data type definitions while creating a variable. Types becomes known at runtime.
+Also data type of variable is automatically changed.
+
+EXAMPLE:
+let x = 23;
+x = "Alex";
+
+
+
+--------------------------------------------
+NON-BLOCKING EVENT LOOP
+
+Concurrency model: 
+    how the JavaScript engine handles multiple tasks happening at the same time.
+
+JavaScript runs in one single thread, so it can only do one thing at a time.
+But we can use event loop.
+
+Event loop:
+    takes long running tasks, executes them in the “background”, 
+    and puts them back in the main thread once they are finished
+
+
+
+
+
+///////////////////////////
+// JS engine and runtime //
+///////////////////////////
+
+JS Engine = computer program that executes JavaScript code.
+            every browser has its own JavaScript engine.
+            (most known engine is Google's V-Eight)
+
+V8 engine powers Google Chrome and node.js
+With node.js we can build server side applications without eny browser.
+
+any JavaScript engine always contains:
+    1.  call stack = where the code is executed using something called execution contexts
+    2.  heap = is an unstructured memory pool which stores all the objects that our application needs
+
+
+
+--------------------------------------------
+--------------------------------------------
+    Methods to translate code into machine code:
+--------------------------------------------
+
+Compilation: Entire code is converted into machine code at once, and written to a binary file that can be executed by a computer.
+
+    CODE  ==comiplation==>  MACHINE CODE (portable)  ==execution==>  PROGRAM RUNNING
+
+
+--------------------------------------------
+Interpretation: Interpreter runs through the source code and executes it line by line
+
+    CODE  ==execution line by line converting into machine code ==>  PROGRAM RUNNING
+
+JS was purely interpreted language but it's really slower then compilation.#
+Today low performance in not acceptable.
+So the modern JS engine now use a mix between compilation and interpretation.
+This mix is called just-in-time compilation.
+
+
+--------------------------------------------
+Just-in-time (JIT) compilation: Entire code is converted into machine code at once, then executed immediately
+
+    CODE  ==compilation==>  MACHINE CODE(not portable)  ==execution immediatly==>  PROGRAM RUNNING
+
+
+
+--------------------------------------------
+--------------------------------------------
+    How JavaScript Just-in-time (JIT) Compilation Works
+--------------------------------------------
+
+JIT:    PARSING  ==>  COMPILATION  ==>  EXECUTION  ==optimization multiple times==>  EXECUTION
+
+1. PARSING
+    a piece of JavaScript code enters the engine (parsing = reading the code)
+    then the code is parsed into a data structure called the abstract syntax tree (AST):
+        a.  splitting up each line of code into pieces that are meaningful to the language
+        b.  then saving all these pieces into the tree in a structured way
+            this step also checks if there are any syntax errors
+            and the resulting tree will later be used to generate the machine code
+
+2. COMPILATION
+    takes the generated AST and compiles it into machine code
+    this machine code then gets executed right away
+
+3. EXECUTION
+    execution happens in the JavaScript engines call stack
+    modern JavaScript engines have optimization strategies
+
+4. OPTIMIZATION 
+    a.  create a very unoptimized version of machine code in the beginning
+        so that it can start executing as fast as possible
+    b.  in the background, this code is being optimized
+        and recompiled during the already running program execution
+    
+    C.  after each optimization the unoptimized code is simply swept
+        for the new more optimized code without ever stopping execution
+
+
+All this parsing, compilation and optimization happens in some special threads inside the engine
+that we cannot access from our code, so completely separate from the main thread 
+that is basically running into call stack executing our own code.
+
+
+
+--------------------------------------------
+--------------------------------------------
+    What a JavaScript runtime (like browser) is
+--------------------------------------------
+
+JavaScript runtime is like a big container with all we need to use JS:
+    - JS Engine     
+        Call Stack, Heap
+
+    - Web APIs      
+        more functionality which is not a part of JS like DOM, Timers, Fetch API ...
+
+        node.js don't have Web APIs because it's the browser who provides these.
+        Instead we have multiple C ++ bindings Instead we have multiple C ++ bindings.
+
+    - Callback queue 
+        data structure that contains all the callback functions that are ready to be executed
+
+        EXAMPLE:    Like addEventListener(`click`, function) 
+        When the event happens (like `click`) the callback function will be called,
+        so this function is put into the callback queue and, when the call stack is empty,
+        the callback function is passed to the Call Stack so that it can be executed.
+
+        This happens by something called the event loop.
+        the event loop takes callback functions from the callback queue and 
+        puts them in the call stack so that they can be executed.
+
+
+
+
+
+///////////////////////////////////////////
+// execution contexts and the call stack //
+///////////////////////////////////////////
+
+After compilation we have execution.
+
+
+GLOBAL EXECUTION CONTEXT 
+    is created during the execution for the top-level code
+    top-level is code that is not inside any function.
+    (Functions should only be executed when they are called)
+
+
+EXAMPLE:
+const name = `Alex`;            // top level code (will be executed in global execution context)
+
+const first = () => {           // expression function
+    let a = 1;
+    const b = second();
+    a += b;
+    return a;
+}
+
+function second() {             // declaration function
+    var c = 2;
+    return c;
+}
+
+
+EXECUTION CONTEXT
+    is an abstract concept which can be defined basically as an environment
+    in which a piece of JavaScript is executed.
+    (It's like a box that stores all the necessary information to execute code
+    like local variables, argument etc...)
+
+    (!) JavaScript code always runs inside an execution context.
+        In any JavaScript project there is only one global execution context.
+
+
+After finish of executing top level code, functions starts executing.
+For each and ECERY FUNCTION call a NEW EXECUTION CONTEXT will be created,
+with all information need to run that function (same for methods)
+
+(!)  All these execution contexts together makes the CALL STACK.
+
+When all functions are done executing, the engine will basically keep waiting
+for callback functions to arrive so that it can execute these. 
+
+
+    CREATING GLOBAL EXECUTION CONTEXT  ==>  EXECUTE TOP LEVEL CODE  ==>  EXECUTE FUNCTION AND CALLBACKS
+
+
+
+--------------------------------------------
+--------------------------------------------
+    What's inside the execution context?
+--------------------------------------------
+
+Inside the execution contexts thare are:
+
+1. Variable environment
+        stores all the variables, functions and arguments object
+
+
+
+
+
+
+
+
 
 
 
