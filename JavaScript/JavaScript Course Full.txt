@@ -62,11 +62,13 @@
         - JS engine and runtime
         - execution contexts and the call stack
         - scope and the scope chain
-        - 
-        - 
-        - 
-        - 
-        - 
+        - hoisting and the TDZ
+        - The this keyword
+        - Regular functions vs Arrow functions
+        - Primitive vs Objects (Primitive vs Reference Types)
+
+05. DATA STRUCTURES, MODERN OPERATORS AND STRINGS        
+        - Destructuring Arrays
         - 
         - 
         - 
@@ -710,7 +712,9 @@ console.log(retirementYears);
 --------------------------------------------
 (!) There is a difference between the arrow function and 
     traditional functions (function declarations and function expressions).
-    arrow functions don't have `this` keyword
+    arrow functions don't have `this` keyword and also `arguments` keyword.
+
+    arguments -> show all arguments when calling function
 
 
 
@@ -1920,6 +1924,43 @@ The order of function calls is not relevant to the scope chain at all.
 
 
 
+//////////////////////////
+// hoisting and the TDZ //
+//////////////////////////
+
+
+HOISTING
+    mechanism that make some types of variables accessible in code
+    before thay are declared.
+    (like the variables are lifted to the top of their scope)
+
+
+Before the execution, the code is scanned for variable declarations, and for each variable,
+a new property is created in the variable environment object.
+
+OBJECT                              HOISTED?                INITIAL VALUE           SCOPE
+
+function declaration                    YES                 actual function         Block       <- ok with strict mode
+var variables                           YES                 undefinded              function
+let and const variables                 NO                  uninitialized, TDZ      Block
+func. expression and arrow                 depends how they are declared: var or let/const
+
+
+
+(!) when we try to access a var variable before it's declared in a code don't get the declared value
+    but we get undefined. This is a really weird behavior, we might expect that we simply get an error
+    or get the value, but we will get undefined. This is a common source of bugs in JavaScript.
+    This is one of the main reasons why in modern JavaScript we almost never use var.
+
+
+    Technically let and const variables are hosted but their initial value is uninitialized, TDZ
+    TDZ = Temporal Dead Zone, it's where we can't access the variables between the 
+            beginning of the scope and the place where the variables are declared.
+    
+    TDZ helps to catch and avoid error. For this reason it was introduced in ES6.
+
+    Also let and const don't create properties in `window` object
+    var creates properties in window object and that can have some implications in some cases.
 
 
 
@@ -1927,7 +1968,221 @@ The order of function calls is not relevant to the scope chain at all.
 
 
 
+//////////////////////
+// The this keyword //
+//////////////////////
 
+
+this keyword/variable: 
+    Special variable that is created for every execution context (every function). 
+    Takes the value of (points to) the “owner” of the function in which the this keyword is used.
+    (So `this` takes the value of object who is calling the method with `this` keyword.)
+
+
+Diffent ways in which the function can be called:
+    Method                  ->  this = <Object that is calling the method>
+    Simple function Call    ->  this = `undefined` (in strict mode! Otherwise: window (in the browser))
+    Arrow functions         ->  this = <this of parent scope (lexical this)> becasue arrow don't have `this`
+    Event EventListener     ->  this = <DOM element that the handler is attached to>
+    new, call, apply, bind  ->  info below in the JS Notes ...
+
+    (!) this does NOT point to the function itself, and also NOT the its variable environment!
+
+
+
+
+
+
+
+//////////////////////////////////////////
+// Regular functions vs Arrow functions //
+//////////////////////////////////////////
+
+
+EXAMPLE:
+const alex = {
+  fistName: `Alex`,
+  year: 1996,
+
+  calcAge: function () {
+    console.log(this);
+    console.log(2023 - this.year);
+
+    // 1st Solution (legacy)
+    // we're declaring a simple function and when we'll call it...
+    // ... simple function Call -> this = undefined; -> error
+    // so the solution is to create a new variable `self` or `that` outside of the function
+    // then we use self instead of this
+    const self = this;
+    const isMilleneal = function () {
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    isMilleneal();
+
+    // 2nd Solution (using arrow function)
+    // arrow function will use this keyword of the parent so it's working
+    const isHeMilleneal = () => {
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    isHeMilleneal();
+  },
+};
+alex.calcAge();
+
+
+
+(!) arrow functions don't have `arguments` keyword
+    arguments is basically an array
+
+    const addExpression = function (a, b) {
+    console.log(arguments);
+    return a + b;
+    };
+    addExpression(5, 2, 5, 7);
+
+    We can use a loop to run iterate on all elements of this arguments array
+    In this way we can specify different number of arguments and still use function.
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////
+// Primitive vs Objects (Primitive vs Reference Types) //
+/////////////////////////////////////////////////////////
+
+
+Primitive Data Types are numbers, string, boolean, undefined, null, symbol and bigInt.
+Everything else (not primitive data types) are basically objects.
+
+When we talk about memory management we call:
+    - primitive types   ->  Primitive Data Types    -> stored in call stack
+    - reference types   ->  everything else         -> stored in memory heap
+
+
+
+--------------------------------------------
+primitive types
+
+let age = 30;
+let newAge = age;
+age = 31;
+console.log(age); // 31
+console.log(newAge); // 30
+
+
+JavaScript will create a so-called unique identifier with the variable name
+Then a piece of memory will be allocated to an adress and the value of this adress of memeory.
+Identifier points to adress and not to the value.
+
+So first both variables (age, newAge) points to 0001.
+Then we change `age` and the variable starts pointing to 0002.
+0001 is immutable! (can't be changed)
+
+CALL STACK
+ADRESS      VALUE       IDENTIFIER 
+0001        30          newAge
+0002        31          age
+
+
+
+--------------------------------------------
+reference types
+
+const person1 = {
+    name: `Alex`,
+    age: 30
+};
+
+const person2 = person1;
+person2.age = 25;
+
+console.log(person1.age); // 25 so weird
+console.log(person2.age); // 25
+
+
+(!!!)
+When the object `person1` is created, it's stored in the heap.
+Memory heap has the memory adress and the value of this object.
+But the new created object (`person1`) is not poiting to the memory address in the heap,
+but it's poiting to the a new piece of memory that's created in the stack.
+And this new piece of memory will then point to the object
+that's in the heap by using the memory address as its value.
+
+This is why object are called reference types.
+Piece of memory in the call stack has the reference to to the piece of memeory in the heap.
+
+(!) even if we define the `person1` variable with const
+    we can actually still manipulate the object without problems
+    because we're actually not changing the value in memory, it's still D30F (In this example)
+    we're changing the value in the heap.
+    Only primitive values are immutable.
+
+CALL STACK
+ADRESS      VALUE       IDENTIFIER 
+0001        30          newAge
+0002        31          age
+0003        D30F        person1, person2
+
+
+MEMORY HEAP
+        {
+D30F        name: `Alex`;
+            age: 25;
+        }
+
+
+
+(!) If we really want to copy this object we can use 
+    Object.assign(x, y) method
+    Object.assign(x, y) merges two objects (x, y) and return a new one.
+
+EXAMPLE:
+// merging empy object with `person1` object
+const newObject = Object.assign({}, person1);
+
+(!) We still have a problem!
+    object.assign() only works on the first level.
+    if we have an object inside the object,
+    then this inner object will actually still be the same.
+    So, it will still point to the same place in memory.
+
+    EXAMPLE TO PROVE THIS:
+    const sara = {
+    firstName: `Sara`,
+    lastName: `Cattaneo`,
+    age: 27,
+    family: [`Mattia`, `Paola`], // nested array (object)
+    };
+
+    const saraMarried = Object.assign({}, sara);
+    saraMarried.lastName = `Bonini`;
+    saraMarried.family.push(`Fabio`);
+
+    console.log(saraMarried.family);
+    console.log(sara.family); // changed like saraMarried even after copying
+
+    To solve this we need to use libraries like  `LoDash`
+ 
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+05. DATA STRUCTURES, MODERN OPERATORS AND STRINGS
+
+
+
+
+
+
+
+//////////////////////////
+// Destructuring Arrays //
+//////////////////////////
 
 
 
