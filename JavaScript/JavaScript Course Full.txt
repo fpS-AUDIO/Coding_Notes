@@ -69,7 +69,7 @@
 
 05. DATA STRUCTURES, MODERN OPERATORS AND STRINGS        
         - Destructuring Arrays
-        - 
+        - Destructuring Objects
         - 
         - 
         - 
@@ -2183,6 +2183,249 @@ ________________________________________________________________________________
 //////////////////////////
 // Destructuring Arrays //
 //////////////////////////
+
+
+Destructuring = unpacking values from an array or an object to the separe variables.
+                The original array is of course not affected.
+                It's an ES6 feature.
+
+--------------------------------------------
+basic destructuring of an array
+
+const arrayExample = [1, 4, 6, 7];
+// here we don't need arrayExample[2] so we just leave a hole in the middle
+const [a, b, , d] = arrayExample;
+console.log(a, b, d); 
+// output: 1 4  7              
+
+
+--------------------------------------------
+destructuring of a nested array
+
+const nestedArray = [2, 5, 6, [4, 9]];
+const [x, , y, [, z]] = nestedArray;
+console.log(x, y, z);
+// output: 2 6 9
+
+
+--------------------------------------------
+setting the default value for the variables in case they don't exist
+
+const arrayRandomLenght = [8, 9];
+const [p = 1, q = 1, r = 1] = arrayRandomLenght;
+console.log(p, q, r);
+// output:  8 9 1
+
+
+--------------------------------------------
+recieving and returing values from a function  +  reassigning the values
+
+const restaurant = {
+  categories: [`Italian`, `Pizzeria`, `Vegan`],
+  starterMenu: [`Focaccia`, `Bruschetta`, `Caprese`, `salat`],
+  mainMenu: [`Pizza`, `Carbonara`, `Risotto`, `Lasagna`],
+
+  order: function (indexStarterMenu, indexMainMenu) {
+    // returning array
+    return [this.starterMenu[indexStarterMenu], this.mainMenu[indexMainMenu]];
+  },
+};
+
+// recieve and return values from a function
+const [starterDish, mainDish] = restaurant.order(1, 2);
+console.log(starterDish, mainDish);
+// output: Bruschetta Risotto
+
+// reassigning the values without creating a temporary variable using destructuring
+let [mainCategory, , secondaryCategory] = restaurant.categories;
+// output:  mainCategory === italian, secondaryCategory === vegan
+[mainCategory, secondaryCategory] = [secondaryCategory, mainCategory];
+// output:  mainCategory === vegan, secondaryCategory === Italian
+console.log(mainCategory, secondaryCategory);
+
+
+
+
+
+
+
+///////////////////////////
+// Destructuring Objects //
+///////////////////////////
+
+
+To destructure objects we use the curly braces {}.
+Then we need to provide variable names that EXACTLY match the property
+that we want to retrieve from the object.
+
+Since in an object the order of elements doesn't matter,
+we don't need to manually skip elements like in array.
+
+
+--------------------------------------------
+(!) EXAMPLE FOR BELOW EXPLAINING:
+
+const restaurant = {
+  categories: [`Italian`, `Pizzeria`, `Vegan`],
+  starterMenu: [`Focaccia`, `Bruschetta`, `Caprese`, `salat`],
+  mainMenu: [`Pizza`, `Carbonara`, `Risotto`, `Lasagna`],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  // pass-in and destructure the object parameter to get 4 variables (use exact name property)
+  orderDelivery: function ({
+    starterMenuIndex,
+    mainMenuIndex,
+    address,
+    time = `19:00`,
+  }) {
+    console.log(
+      `Order Recieved! ${this.starterMenu[starterMenuIndex]} and ${this.mainMenu[mainMenuIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+};
+
+
+--------------------------------------------
+    basic destructuring of an object
+
+const { categories, openingHours } = restaurant;
+console.log(categories, openingHours);
+
+
+--------------------------------------------
+    if we want change variable names
+
+const { categories: categoryVariable, openingHours: hours } = restaurant;
+console.log(categoryVariable, hours);
+
+
+--------------------------------------------
+    put default values if proprety doesn't exist (in these cases just empty arrays)
+    without default value we get undefined if the proprety doesn't exist
+
+const { menu = [], starterMenu: starters = [] } = restaurant;
+
+
+--------------------------------------------
+    mutating variables while destructuring objects
+
+const objectExample = {
+  a: 23,
+  b: 9,
+  c: 28,
+};
+let a = 100;
+let b = 200;
+
+this DOESN'T work: {a, b} = objectExample;
+if we start line with {} then JavaScript expects a code block
+but we can't assign anything to a code block so we should put everything in ()
+
+({ a, b } = objectExample);
+console.log(a, b);
+// output:  23 9
+
+
+--------------------------------------------
+    destructuring nested objects
+
+const openHours = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0,
+    close: 24,
+  },
+};
+
+// const {propertyName: {nestedPropertyName1, nestedPropertyName2}} = object;
+const {
+  fri: { open, close: closingHours = 24 },
+} = openHours;
+console.log(open, closingHours);
+
+
+--------------------------------------------
+    pass-in and destructure the object parameter inside a method to get variables (use exact name property)
+
+So many times in JavaScript, we have functions with a lot of parameters.
+It can be hard to know the order of parameters for someone using the function
+so instead of defining the parameters manually
+we can just pass an object into the function as an argument
+and the function will then immediately destructure that object
+calling orderDelivery() with object as parameter
+
+restaurant.orderDelivery({
+  // don't passing `time` property because we take default value in this example
+  address: `Via San Casio, 25`,
+  starterMenuIndex: 2,
+  mainMenuIndex: 0,
+});
+
+//  orderDelivery(object) is a method coming from `restaurant` object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
