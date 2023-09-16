@@ -70,9 +70,9 @@
 05. DATA STRUCTURES, MODERN OPERATORS AND STRINGS        
         - Destructuring Arrays
         - Destructuring Objects
-        - 
-        - 
-        - 
+        - The spread operator (...)
+        - Rest Pattern and Parameters
+        - Short Circuiting (&& and ||)
         - 
         - 
         - 
@@ -2390,6 +2390,94 @@ restaurant.orderDelivery({
 
 
 
+///////////////////////////////
+// The spread operator (...) //
+///////////////////////////////
+
+
+spread operator
+    exists since ES6
+    expand an iterable into all its elements (unpacking all the elements at one)
+    don't change the original iterable
+    since 2018 also works with objects
+    usually used on the right side of =
+
+iterables: arrays, strings, maps, sets (NOT objects)
+
+Useful:
+    - when need to expand an array
+    - when we pass arguments into functions
+    - to merge iterables
+    - create shallow copies of iterables and objects
+
+
+(!) spread operator is similar to destructuring
+    but the big difference is that the spread operator
+    takes ALL the elements and DOESN'T create new variables.
+
+    So we can only use it in places where we would otherwise 
+    write values separated by commas.
+
+
+--------------------------------------------
+    basic syntax of spread opera
+
+const arrayExample = [2, 7, 3];
+const newArray = [1, ...arrayExample, 9];
+console.log(newArray);
+// output: [1, 2, 7, 3, 9]
+
+
+--------------------------------------------
+    we can expand an array without making a new one
+
+console.log(...newArray);
+// output: 1 2 7 3 9
+
+
+--------------------------------------------
+    copy array
+
+const newArrayCopy = [...newArray];
+
+
+--------------------------------------------
+    join arrays
+
+const joinedArrays = [...newArray, ...arrayExample];
+
+
+--------------------------------------------
+    real world examples
+
+const restaurant = {
+  categories: [`Italian`, `Pizzeria`, `Vegan`],
+  starterMenu: [`Focaccia`, `Bruschetta`, `Caprese`, `salat`],
+  mainMenu: [`Pizza`, `Carbonara`, `Risotto`, `Lasagna`],
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here there is you pasta with: ${ing1}, ${ing2} and ${ing3}`);
+  },
+};
+
+
+(!) building an array with 3 ingredients using promt()
+    then use spread operator to unpack array and pass the 
+    elements as parameters into a function
+
+const ingredients = [
+  prompt(`Let's make pasta. Ingredient #1: `),
+  prompt(`Ingredient #2: `),
+  prompt(`Ingredient #3:`),
+];
+restaurant.orderPasta(...ingredients);
+
+
+(!) copy an object and change it without changing the original one
+
+const newRestaurant = { ...restaurant, foundIn: 1998 };
+newRestaurant.categories = [`French`];
+console.log(newRestaurant);
 
 
 
@@ -2397,10 +2485,107 @@ restaurant.orderDelivery({
 
 
 
+/////////////////////////////////
+// Rest Pattern and Parameters //
+/////////////////////////////////
+
+Rest pattern has exactly the same syntax  as spread operator,
+but it actually does the opposite of the spread operator.
+
+
+So the rest pattern 
+    is used to collect multiple elements creating an array.
+    usually used on the left side of =
+
+    It called rest because it will take the rest of the elements 
+    in the destructuring assignment an put them into a new array.
+
+    Rest collects all the array after the last variable,
+    and indeed there can only ever be one rest in any destructuring assignment.
+
+
+--------------------------------------------
+    basic syntax
+
+const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(a, b, others);
+// output: 1 2 [3, 4, 5, 6, 7, 8, 9]
+
+
+--------------------------------------------
+    works also with functions
+
+const addNumbers = function (...allNumbers) {
+  let sum = 0;
+  for (let i = 0; i < allNumbers.length; i++) {
+    sum += allNumbers[i];
+  }
+  console.log(sum);
+};
+
+addNumbers(2, 3, 5, 6);
+// output: 16
+
+addNumbers(...[2, 3, 5, 6]);
+// output: 16
+
+
+--------------------------------------------
+    other examples:
+
+const restaurant = {
+  categories: [`Italian`, `Pizzeria`, `Vegan`],
+  starterMenu: [`Focaccia`, `Bruschetta`, `Caprese`, `salat`],
+  mainMenu: [`Pizza`, `Carbonara`, `Risotto`, `Lasagna`],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(
+      `Ordering Pizza with ${mainIngredient} as main ingredient and other ingredients: ${otherIngredients}`
+    );
+  },
+};
+
+
+const [dish1, , dish2, ...otherDishes] = [
+  ...restaurant.starterMenu,
+  ...restaurant.mainMenu,
+];
+console.log(dish1, dish2, otherDishes);
+// output: Focaccia Caprese ['salat', 'Pizza', 'Carbonara', 'Risotto', 'Lasagna']
+
+// works also with objects
+const { sat, ...otherDays } = restaurant.openingHours;
+console.log(sat, otherDays);
+// output: 2 objects
+
+
+restaurant.orderPizza(`Prosciutto`, `porcini`, `cipolla`, `grana`);
+// output: Ordering Pizza with Prosciutto as main ingredient and other ingredients: porcini,cipolla,grana
 
 
 
 
+
+
+
+//////////////////////////////////
+// Short Circuiting (&& and ||) //
+//////////////////////////////////
 
 
 
