@@ -73,11 +73,25 @@
         - The spread operator (...)
         - Rest Pattern and Parameters
         - Short Circuiting (&& and ||)
+        - Nullish coalescing operator
+        - Logical assignment operator
+        - Looping Arrays: The for-of Loop
+        - Enhanced object literals 
         - 
         - 
         - 
         - 
         - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+
+
 
 
 
@@ -120,7 +134,7 @@ console.warn();                         show waring on console
 console.error();                        show error on console
 console.table(objectName);              show table of an object on console
 
-alert("Hello world")                    make and alert
+alert("Hello world")                    make an alert
 
 // this is a comment
 
@@ -158,7 +172,7 @@ debugger;                               statement to open debuger tool in this p
 ///////////////
 
 we can store a value in variables
-(value = piece of data)
+(value = piece of data)    
 
 
 
@@ -963,7 +977,7 @@ john.age
 
 Object.assign()
         Copies the values of all enumerable own properties from one or 
-        more source objects to a target object.
+        more source objects to a target object. Works on 1st level (not nested staff)
 
 Object.create()
         Creates a new object with the specified prototype object and properties.
@@ -1124,7 +1138,7 @@ for(a; b; c) {
 
 EXAMPLE #1:     // basics
 for(let rep = 1; rep <= 10; rep++){
-    console.log(`Doing the repition number ${rep}`);
+    console.log(`Doing the repitition number ${rep}`);
 }
 
 
@@ -2588,6 +2602,57 @@ restaurant.orderPizza(`Prosciutto`, `porcini`, `cipolla`, `grana`);
 //////////////////////////////////
 
 
+&& and ||
+    use any data type
+    return any data type
+    do short-circuiting (short circuit evaluation)
+
+
+
+--------------------------------------------
+    ||
+
+||  returns the first TRULY value or the last one
+
+    short-circuiting means that if the first value is a truthy value it will immediately return that first value.
+    EXAMPLES:
+    console.log(3 || `Alex`)                                    // 3
+    console.log(`` || `Alex`);                                  // Alex
+    console.log(undefined || null);                             // null
+    console.log(undefined || null || `` || `Hello` || 28);      // Hello
+
+
+(!) insted of using ternary operator we can use ||
+
+    EXAMPLE:
+
+    const guests = restaurant.numberOfGuests || 50;
+    // const guests = restaurant.numberOfGuests ? restaurant.numberOfGuests : 50;
+    
+
+
+--------------------------------------------
+    &&
+
+&&  returns the first FALSY value or the last one
+
+    console.log(3 && `Alex`); // Alex
+    console.log(0 && `Alex`); // 0
+    console.log(undefined && null); // undefined
+    console.log(`hello` && 27 && `Alex` && null && 28); // null
+
+
+(!) insted of using if else  we can use &&
+
+
+    EXAMPLE:
+
+    restaurant.orderPizza && restaurant.orderPizza(`mashrooms`);
+
+    // if this nethod exists
+    if (restaurant.orderPizza) {
+    restaurant.orderPizza(`mashrooms`);
+    }
 
 
 
@@ -2595,6 +2660,50 @@ restaurant.orderPizza(`Prosciutto`, `porcini`, `cipolla`, `grana`);
 
 
 
+/////////////////////////////////
+// Nullish coalescing operator //
+/////////////////////////////////
+
+
+nullish coalescing operator
+    syntax: ??
+    introduced in ES2020
+
+    works like || but works only with nullish values instead of falsy values
+    nullish values are null and undefined.
+
+    So nullish coalescing operator DOESN'T include 0 or `` like ||
+    SO for nullish coalescing operator 0 or `` are NOT falsy values.
+    
+
+
+--------------------------------------------
+    PROBLEM:
+
+const restaurant = {};
+restaurant.numberOfGuests = 0;
+const guestsWrong = restaurant.numberOfGuests || 50;
+console.log(guestsWrong);
+// output: 50
+
+
+(!) 0 is a falsy value but it's the real number of guests 
+    so, if 0 is falsy, || will assign 50 to `guestsWrong` variable
+    to solve this we need to use nullish coalescing operator
+    
+
+
+--------------------------------------------
+    SOLUTION:
+
+const restaurant = {};
+restaurant.numberOfGuests = 0;
+const guestCorrect = restaurant.numberOfGuests ?? 50;
+console.log(guestCorrect);
+// output: 0
+
+(!) Now only if `numberOfGuests` doesn't exist or it's undefinded it will we assigned to 50.
+    But if `numberOfGuests` is 0, it remains 0.
 
 
 
@@ -2602,6 +2711,63 @@ restaurant.orderPizza(`Prosciutto`, `porcini`, `cipolla`, `grana`);
 
 
 
+/////////////////////////////////
+// Logical assignment operator //
+/////////////////////////////////
+
+Logical assignment  operator -> introduced in ES2021.
+
+--------------------------------------------
+    EXAMPLE CODE FOR EXPLANATION BELOW:
+
+const restaurant1 = {
+  name: `La Cascata`,
+  numberGuest: 20,
+  numberPizzaMen: 0,
+};
+
+const restaurant2 = {
+  name: `La Piazza`,
+  owner: `Giovanni Rossi`,
+  numberGuest: 0,
+};
+
+
+
+
+--------------------------------------------
+    OR Assignment operator
+
+restaurant1.numberGuest ||= 10;
+restaurant2.numberGuest ||= 10;
+//  Same as:
+//  restaurant1.numberGuest = restaurant1.numberGuest || 10;
+//  restaurant2.numberGuest = restaurant2.numberGuest || 10;
+
+console.log(restaurant1.numberGuest); // 20
+console.log(restaurant2.numberGuest); // 10
+
+
+--------------------------------------------
+    logical nullish assignment operator (null or undefined)
+
+restaurant1.numberPizzaMen ??= 2;
+restaurant2.numberPizzaMen ??= 2;
+//  Same as:  restaurant1.numberPizzaMen = restaurant1.numberPizzaMen ?? 2;
+
+console.log(restaurant1.numberPizzaMen); // 0
+console.log(restaurant2.numberPizzaMen); // 2
+
+
+--------------------------------------------
+    AND Assignment operator
+
+restaurant1.owner &&= `anonymous`;
+restaurant2.owner &&= `anonymous`;
+//  Same as:  restaurant2.owner = restaurant1.owner && `anonymous`;
+
+console.log(restaurant1.owner); // undefined (proprety doesn't exist)
+console.log(restaurant2.owner); // anonymous (changed because proprety exists)
 
 
 
@@ -2609,6 +2775,62 @@ restaurant.orderPizza(`Prosciutto`, `porcini`, `cipolla`, `grana`);
 
 
 
+/////////////////////////////////////
+// Looping Arrays: The for-of Loop //
+/////////////////////////////////////
+
+
+The for-of Loop was introduced in ES6.
+This loop will automatically loop over the entire array and gives us access to the item in each iteration.
+The current element of iteration will be stored in the variable.
+Also we don't need to create a code block if we have only one statement here to execute.
+In for-of we can still use continue and break keywords.
+
+EXAMPLE ARRAY:
+    const menu = [
+    `Focaccia`,
+    `Bruschetta`,
+    `Caprese`,
+    `salat`,
+    `Pizza`,
+    `Carbonara`,
+    `Risotto`,
+    `Lasagna`,
+    ];
+
+--------------------------------------------
+    basic syntax for-of loop
+
+// for (variable of iterable) {body};
+for (const item of menu) console.log(item);
+
+
+--------------------------------------------
+    to get also the current index
+
+for (const item of menu.entries()) {
+  // now each item is an array with index and element
+  // we can access index of each of these small arrays
+  console.log(`${item[0]} is index of ${item[1]} item`);
+}
+
+--------------------------------------------
+    get index with modern solution
+
+// since the item is an array when we use entries() method we can destructure it
+for (const [index, element] of menu.entries()) {
+  console.log(`${index} is index of ${element} item`);
+}
+
+
+
+
+
+
+
+//////////////////////////////
+// Enhanced object literals //
+//////////////////////////////
 
 
 
