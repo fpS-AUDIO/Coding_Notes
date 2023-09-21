@@ -77,8 +77,8 @@
         - Logical assignment operator
         - Looping Arrays: The for-of Loop
         - Enhanced object literals 
-        - 
-        - 
+        - Optional Chaining (?.)
+        - Looping Objects: keys, values and entries
         - 
         - 
         - 
@@ -2832,6 +2832,229 @@ for (const [index, element] of menu.entries()) {
 // Enhanced object literals //
 //////////////////////////////
 
+-   after ES6 we can compute (create) proprery name of an object putting any expression inside []
+-   creating proprery with external object, we can just put variable name and nothing elements
+-   writing method in a shorter way after ES6 (don't use ": function" anymore )
+
+
+EXAMPLE:
+
+const weekdays = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
+
+const openingHours = {
+  // write proprety name manually before ES6                     
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  // after ES6 we can compute (create) proprery name                        <- (!)
+  // we can put any expression inside []
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  // example 2  -> output: day-6
+  [`day-${3 + 3}`]: {
+    open: 0,
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: `La Cascata`,
+
+  // creating proprery with external object before ES6
+  openingHours: openingHours,
+
+  // creating proprery with external object after ES6 we can just write    <- (!)
+  openingHours,
+
+  // writing method before ES6
+  restaurantInfo: function () {
+    console.log(this.name, this.openingHours);
+  },
+
+  // writing method after ES6 (don't use ": function" anymore )             <- (!)
+  restaurantInfo2() {
+    console.log(this.name, this.openingHours);
+  },
+};
+console.log(restaurant);
+restaurant.restaurantInfo2();
+
+
+
+
+
+
+
+////////////////////////////
+// Optional Chaining (?.) //
+////////////////////////////
+
+Optional Chaining
+    -   introduced in ES2020
+    -   works with objects, methods, arrays
+    -   immediately returns undefined if a certain proprety doesn't exist
+    -   checks if the proprety before ? exists 
+    -   EXAMPLE:     proprety1?.property2?.property3
+    
+
+(!) Optional Chaining uses nullish concept
+    PROPRETY NOT EXIST:  "null" or "undefined"
+    PROPRETY EXIST:      0 or "" 
+
+
+--------------------------------------------
+    data for example below
+
+const restaurant = {
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+};
+
+
+--------------------------------------------
+    PROBLEM AND SOLVING
+
+// if we try to get:
+console.log(restaurant.openingHours.mon);
+// output: undefined  because the proprety "mon" doesn't exist
+
+
+// if we don't know if the restaurant is opened on monday and we try to get "open" proprery we get error
+console.log(restaurant.openingHours.mon.open);
+// output: TypeError  because "undefined.open" doesn't exist
+
+
+(!) to avoid this error we need to check if "restaurant.openingHours.mon" exists
+    we can do it using if-else statement, but the syntax is gonna be really
+    long and unreadable if we need to check the existence of different properties
+    to solve this we can use optional chaining (?.) to avoid errors and get 
+    undefined in case the proprety doesn't exist
+
+// check if "openingHours" and "mon" propreties exist
+console.log(restaurant.openingHours?.mon?.open);
+
+
+--------------------------------------------
+    Real World Example:
+
+const weekdays = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
+
+for (const day of weekdays) {
+
+  // since the "day" is not actual property name of the object
+  // if want to use variable name as the property name we need to put it inside []
+  // so now we put in variable "openingHour" the "open" or if it doesn't exist "closed"
+
+  const openingHour = restaurant.openingHours[day]?.open ?? `closed`;
+  console.log(`On ${day} the restaurant is opened at ${openingHour}`);
+}
+
+
+--------------------------------------------
+    also works with methods, so we can check ef methods exist before we call it
+
+console.log(restaurant.order?.(0, 4) ?? `Method doesn't exist`);
+
+
+--------------------------------------------
+    also works with arrays, and it checks if the array's index exists
+
+const players = [
+  { name: `Alex`, level: 31 },
+  { name: `Jack`, level: 46 },
+];
+console.log(players[1]?.level ?? `Player doesn't exist`);
+
+
+
+
+
+
+
+///////////////////////////////////////////////
+// Looping Objects: keys, values and entries //
+///////////////////////////////////////////////
+
+Objects are not iterable but we can still loop over them in an indirect way.
+
+
+--------------------------------------------
+    data fot info below
+
+const restaurant = {
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+};
+
+
+--------------------------------------------
+    loop over the object keys
+
+const keys1 = Object.keys(restaurant.openingHours);
+for (const i of keys1) {
+  console.log(i);
+  // output:  thu fri sat
+}
+
+// Object.keys(object)  ->  returns an array with keys of the Object
+// with this we can do somethinbg cool:
+
+let openStr = `We are open ${keys1.length} days: `;
+for (const day of Object.keys(restaurant.openingHours)) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+// output: We are open 3 days: thu, fri, sat,
+
+
+--------------------------------------------
+    loop over object values
+
+// Object.values(object)  ->  returns the ectual value (not array)
+const values1 = Object.values(restaurant.openingHours);
+for (const i of values1) {
+  console.log(i);
+}
+
+
+--------------------------------------------
+    loop over entire object
+
+// Object.entries(object) ->  returns an array [key, value]
+const entries1 = Object.entries(restaurant.openingHours);
+// destructure the array  ->  [key, value]  ->
+// destructure again with exact proprety names  ->  [key, {open, close}]
+for (const [key, { open, close }] of entries1) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+// output: On thu we open at 12 and close at 22 ...
 
 
 
@@ -2841,19 +3064,9 @@ for (const [index, element] of menu.entries()) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+--------------------------------------------
+--------------------------------------------
+--------------------------------------------
 
 
 
