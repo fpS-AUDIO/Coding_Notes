@@ -79,8 +79,8 @@
         - Enhanced object literals 
         - Optional Chaining (?.)
         - Looping Objects: keys, values and entries
-        - 
-        - 
+        - Sets
+        - Maps
         - 
         - 
         - 
@@ -3062,15 +3062,106 @@ for (const [key, { open, close }] of entries1) {
 
 
 
+//////////
+// Sets //
+//////////
+
+
+
+Set 
+    - itroduced in ES6
+    - it's basically just a collection of unique values
+    - can hold different data types
+    - sets are also iterables
+    - the order of elements in the set is irrelevant (no indexes)
+    - can be empty
+
+To create a set:
+const setName = new Set(iterable)
+
+--------------------------------------------
+    Set Methods
+
+
+Method	        Description
+
+new Set()	    Creates a new Set
+add()	        Adds a new element to the Set
+delete()	    Removes an element from a Set
+has()	        Returns true if a value exists
+clear()	        Removes all elements from a Set
+forEach()	    Invokes a callback for each element
+values()	    Returns an Iterator with all the values in a Set
+keys()	        Same as values()
+entries()	    Returns an Iterator with the [value,value] pairs from a Set
+
+
+Property	    Description
+
+size	        Returns the number elements in a Set
+--------------------------------------------
+
+const orderSet = new Set([
+  `pasta`,
+  `pizza`,
+  `pizza`,
+  `risotto`,
+  `pasta`,
+  `pizza`,
+]);
+
+console.log(orderSet);
+// output: Set(3) {'pasta', 'pizza', 'risotto'}
 
 
 --------------------------------------------
+    get the size of a set (return:   integer)
+
+console.log(orderSet.size);
+
+
 --------------------------------------------
+    check if an element in in set (return:   true / fals)
+
+console.log(orderSet.has(`pizza`));
+
+
 --------------------------------------------
+    add 1 element to the set
+
+orderSet.add(`bread`);
+console.log(orderSet);
+
+
+--------------------------------------------
+    delete element from a set
+
+orderSet.delete(`pizza`);
+console.log(orderSet);
+
+
+--------------------------------------------
+    convert from a set to an array (use spread operator)
+
+const arrayFromASet = [...orderSet];
+console.log(arrayFromASet);
+
+
+--------------------------------------------
+    delete all elements from the set
+
+orderSet.clear(orderSet);
+console.log(orderSet);
 
 
 
 
+
+
+
+//////////
+// Maps //
+//////////
 
 
 
