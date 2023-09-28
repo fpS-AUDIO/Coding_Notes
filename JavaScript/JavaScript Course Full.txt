@@ -3164,4 +3164,128 @@ console.log(orderSet);
 //////////
 
 
+Map is a data structure that you can use to map values to keys like objects.
+But, unlike objects, keys of maps can have any type (indeed also values).
+Meanwhile the keys of objects are always strings.
+Maps were introduced in ES6.
+
+
+--------------------------------------------
+    new Map()    -> create a map
+
+const restaurant = new Map();
+
+
+--------------------------------------------
+    set(key, value)    -> add elements and return the updated map
+
+restaurant.set(`name`, `La Cascata`);
+restaurant.set(1, `Sondrio, via ....`);
+restaurant.set(2, `Berbenno, via ....`);
+console.log(restaurant);
+
+
+(!) since set() method returns the updated map you can chain the set() method
+
+restaurant
+  .set(`food`, ["salat", "Pizza", "Carbonara", "Risotto", "Lasagna"])
+  .set(`open`, 11)
+  .set(`close`, 23)
+  .set(true, `We're opened!`)
+  .set(false, `We're closed!`);
+
+
+--------------------------------------------
+    get(key)    -> read data from the map
+
+console.log(restaurant.get(`close`));
+
+
+EXAMPLE:
+
+const timeNow = 21;
+// restaurant.get(TRUE or FALSE)
+console.log(
+  restaurant.get(
+    timeNow > restaurant.get(`open`) && timeNow < restaurant.get(`close`)
+  )
+);
+// output: "We're opened!"
+
+
+--------------------------------------------
+    has(key)    -> check if the map contains a certain key (retunr true/false)
+
+console.log(restaurant.has(`food`));
+
+
+--------------------------------------------
+    delete(key) -> delete elements from the map
+
+restaurant.delete(2);
+console.log(restaurant);
+
+
+--------------------------------------------
+    .size property   -> returns integer of items in map
+
+console.log(restaurant.size);
+
+
+--------------------------------------------
+    clear()  -> remove all elements from the map
+
+restaurant.clear();
+
+
+
+--------------------------------------------
+    PROBLEM and SOLUTION
+
+restaurant.set([1, 2], `test`);
+console.log(restaurant.get([1, 2]));
+// output: undefined
+
+(!) we got undefined because these two arrays [1, 2] are actually NOT the same object in the heap
+    to obtain the value we must insert the exact same object (key) in memory
+    to make it work we need to put the array in the variable and use the variable in both places:
+
+
+const arrayX = [1, 2];
+restaurant.set(arrayX, `test`);
+console.log(restaurant.get(arrayX));
+// output: "test"
+
+
+--------------------------------------------
+(!) since we can use object as key we can use it in DOM elements
+
+restaurant.set(document.querySelector(`h1`), `Heading`);
+console.log(restaurant);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
