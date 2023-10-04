@@ -81,8 +81,8 @@
         - Looping Objects: keys, values and entries
         - Sets
         - Maps
-        - 
-        - 
+        - Which Data Structure to Use
+        - Working with strings
         - 
         - 
         - 
@@ -1391,7 +1391,7 @@ EXAMPLE:
 Event = something that happens on the page
         (mouse click, mouse moving, key press...)
 
-Event listener = allows to wait a certain event to happen nd then react to it.
+Event listener = allows to wait a certain event to happen and then react to it.
 
 To do:
 1.  need to select an element on which an evenet should happen
@@ -3333,6 +3333,75 @@ console.log(question.get(answer === question.get(`correct`)));
 
 
 
+
+
+
+
+/////////////////////////////////
+// Which Data Structure to Use //
+/////////////////////////////////
+
+--------------------------------------------
+    sources of data
+
+We can get data from different places like:
+    1.  from the program (like status messages in source code)
+    2.  from UI (user input or data written in DOM in To-do app)
+    3.  from external sources (like API)
+
+
+--------------------------------------------
+    which data structure to use
+
+
+
+
+Arrays:
+    - when need ORDERED list of values with DUPLICATES
+    - when need to manipulate data (there are a lot of methods)
+
+Sets:
+    - when work with UNIQUE values
+    - when need hight-performance
+
+        ----------
+
+Objects:
+    - easier to write and access (. and [])
+    - when you need methods included
+    - when working with JSON
+
+Maps:
+    - better performance
+    - easier to iterate and to compute size
+    - when simply need to map key to values
+    - when need key that are not strings
+
+
+--------------------------------------------
+
+(!) There are other data structures in JS:
+
+    Built-in:
+        - WeakMap
+        - WeakSet
+
+    Not built-in:
+        - stacks
+        - queues
+        - linked lists
+        - trees
+        - hash tables
+
+
+
+
+
+
+
+//////////////////////////
+// Working with strings //
+//////////////////////////
 
 
 
