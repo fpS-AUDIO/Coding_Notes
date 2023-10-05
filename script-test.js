@@ -1,64 +1,114 @@
 "use strict";
 
-/* 
+// these method are not changging the immutable primitive strings!
+// Also these methods always return a new string
 
-Let's continue with our football betting app! This time, we have a map called
-'gameEvents' (see below) with a log of the events that happened during the
-game. The values are the events themselves, and the keys are the minutes in which
-each event happened (a football game has 90 minutes plus some extra time).
-Your tasks:
-1. Create an array 'events' of the different game events that happened (no
-duplicates)
-2. After the game has finished, is was found that the yellow card from minute 64
-was unfair. So remove this event from the game events log.
-3. Compute and log the following string to the console: "An event happened, on
-average, every 9 minutes" (keep in mind that a game has 90 minutes)
-4. Loop over 'gameEvents' and log each element to the console, marking
-whether it's in the first half or second half (after 45 min) of the game, like this:
-[FIRST HALF] 17: ⚽ GOAL
-GOOD LUCK �
+const airLine = `TAP Air Milan`;
+const airPlane = `A420`;
 
-*/
+// you can access the index of a string
+console.log(airPlane[0]); // A
 
-const gameEvents = new Map([
-  [17, "⚽ GOAL"],
-  [36, "� Substitution"],
-  [47, "⚽ GOAL"],
-  [61, "� Substitution"],
-  [64, "� Yellow card"],
-  [69, "� Red card"],
-  [70, "� Substitution"],
-  [72, "� Substitution"],
-  [76, "⚽ GOAL"],
-  [80, "⚽ GOAL"],
-  [92, "� Yellow card"],
-]);
+// you can calculate the string length (not 0 based)
+console.log(airPlane.length); // 4
 
-/* 
-1. Create an array 'events' of the different game events that happened (no
-duplicates)
-*/
-const events = [...new Set(gameEvents.values())];
+// you can obtain an index of first coincidence (included)
+console.log(airLine.indexOf(`Air`)); // 4
 
-/* 
-2. After the game has finished, is was found that the yellow card from minute 64
-was unfair. So remove this event from the game events log.
-*/
-gameEvents.delete(64);
+// you can obtain an index of last coincidence (included)
+console.log(airLine.lastIndexOf(`i`)); // 9
 
-/* 
-3. Compute and log the following string to the console: "An event happened, on
-average, every 9 minutes" (keep in mind that a game has 90 minutes)
-*/
-console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes`
-);
-/* 
-4. Loop over 'gameEvents' and log each element to the console, marking
-whether it's in the first half or second half (after 45 min) of the game, like this:
-[FIRST HALF] 17: ⚽ GOAL
-*/
-for (const [time, event] of gameEvents) {
-  const HalfPartStr = time > 45 ? `[SECOND HALF]` : `[FIRST HALF]`;
-  console.log(`${HalfPartStr} ${time}: ${event}`);
-}
+// slice(start, end)  you can extract part of strings (substring)
+// index of end is NOT included (start yes)
+// (!)  the length of substring is always endIndex - startIndex
+console.log(airLine.slice(4, 9)); // Air M
+
+// start counting from the end by using negative index of begining counter
+// so the number of negative index is also the length of how many last characters are catched
+console.log(airLine.slice(-3)); // lan
+
+/////// example of extracting the first word ///////
+console.log(airLine.slice(0, airLine.indexOf(` `))); // TAP
+
+/////// example of extracting the last word ///////
+console.log(airLine.slice(airLine.lastIndexOf(` `) + 1)); // Milan
+
+////////////////////////////////////////////////////////
+console.log(`//////////////// PART 2 ////////////////`);
+////////////////////////////////////////////////////////
+
+// you can transform all the string to lowercase or uppercase
+console.log(airLine.toLowerCase()); // tap air milan
+console.log(airLine.toUpperCase()); // TAP AIR MILAN
+
+// replace(stringToBeReplaced, newString) to change ONLY 1st coincidence parts of strings
+const priceEU = `218,26€`;
+const priceUS = priceEU.replace(`€`, `$`).replace(`,`, `.`);
+console.log(priceUS); // 218.26$
+
+// replaceAll(stringToBeReplaced, newString) to change ALL coincidences
+console.log(`2222`.replaceAll(`2`, `3`)); // 3333
+// we could use old way with regular expressions
+console.log(`11111`.replace(/1/g, `3`)); // 33333
+
+// includes() boolean check if there is a string inside
+const plane = `Boeing 737 MAX`;
+console.log(plane.includes(`737`)); // true
+
+// startsWith() boolean check if string starts with that string parameter
+console.log(plane.startsWith(`Boeing`)); // true
+
+// endsWith() boolean check if string ends with that string parameter
+console.log(plane.endsWith(`MAX`)); // true
+
+/////// example of fixing the capitalization in a name ///////
+const passenger = `aLeXaNder`;
+const passengerLower = passenger.toLocaleLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect); // Alexander
+
+/////// example of comparing an input mail to the correct mail ///////
+const correctMail = `hello@gmail.com`;
+const inputMail = `    Hello@GMail.com   \n`;
+// trim() deletes spaces around (also trim can be only start or only end)
+const normalizedMail = inputMail.toLowerCase().trim();
+
+////////////////////////////////////////////////////////
+console.log(`//////////////// PART 3 ////////////////`);
+////////////////////////////////////////////////////////
+
+// split()  split a string in multiple parts based on a divider string
+// and it will then store the results into elements of a new array
+console.log(`I'm+so+cool`.split(`+`)); // ["I'm", 'so', 'cool']
+
+// join() join the elements of an array in a string and place parameter string between them
+console.log([`Mr.`, `Alexander`, `Hamilton`].join(` `)); // Mr. Alexander Hamilton
+
+// (!)  padding strings = adding characters to obtain desidered length
+const testMessage = `hello`;
+
+// padStart(totalLength, strToAdd)  adds given string to to the start until we get the desidered length
+console.log(testMessage.padStart(10, `-`)); // -----hello
+
+// padEnd(totalLength, strToAdd)    adds given string to to the end until we get the desidered length
+console.log(testMessage.padEnd(10, `-`)); // hello-----
+
+// (!)  you can chain the methods padStart() and padEnd()
+console.log(testMessage.padStart(10, `-`).padEnd(15, `-`)); // -----hello-----
+
+/////// example of function which capitalize given names ///////
+const capitalizeName = function (nameStr) {
+  const nameStrLower = nameStr.toLowerCase();
+  const names = nameStrLower.split(` `);
+  const namesCapitalized = [];
+  for (const word of names) {
+    namesCapitalized.push(word.replace(word[0], word[0].toUpperCase()));
+  }
+  console.log(namesCapitalized.join(` `));
+};
+capitalizeName(`alex ivanov`);
+capitalizeName(`aLex ivANov`);
+capitalizeName(`Alex Ivanov`);
+
+/////// example of function which masking a piece of credit card number ///////

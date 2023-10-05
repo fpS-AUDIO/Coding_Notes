@@ -403,9 +403,15 @@ type coerecion  ->  when JavaScript automatically converts types
 
 
 Number()    ->  function is used to convert a value to a number. ...
+
 String()    ->  function is used to convert a value to a string. ...
+                (!) you can convert a number to the string by adding number to empy string:
+                    const newStr = number + ``;
+
 Boolean()   ->  function is used to convert a value to a boolean. ...
+
 Null()      ->  function is used to convert a value to null.
+
 
 (!) These functions don't convert original value
     they just return a new value
@@ -3404,7 +3410,102 @@ Maps:
 //////////////////////////
 
 
+Boxing
+    process JS does behind the sciences which takes a string and put it 
+    into a box (object) for this reason we can apply methods 
+    on strings (primitive values) which are transformed to objects with the same content.
+    And after operation the object is converted back to a regular string primitive.
+    So all string methods return primitives!
 
+    EXAMPLE:
+    console.log(new String(`Alex`));
+    // output:  object with string and all methods
+
+
+
+
+(!) the following method are not changging the immutable primitive strings!
+    Also these methods always return a new string
+    And they are all case sensitive (uppercase/lowercase)
+
+--------------------------------------------
+    PART 1
+
+
+const airLine = `TAP Air Milan`;
+const airPlane = `A420`;
+
+// you can access the index of a string
+console.log(airPlane[0]); // A
+
+// you can calculate the string length (not 0 based)
+console.log(airPlane.length); // 4
+
+// you can obtain an index of first coincidence (included)
+console.log(airLine.indexOf(`Air`)); // 4
+
+// you can obtain an index of last coincidence (included)
+console.log(airLine.lastIndexOf(`i`)); // 9
+
+// slice(start, end)  you can extract part of strings (substring)
+// index of end is NOT included (start yes)
+// (!)  the length of substring is always endIndex - startIndex
+console.log(airLine.slice(4, 9)); // Air M
+
+// start counting from the end by using negative index of begining counter
+// so the number of negative index is also the length of how many last characters are catched
+console.log(airLine.slice(-3)); // lan
+
+/////// example of extracting the first word ///////
+console.log(airLine.slice(0, airLine.indexOf(` `))); // TAP
+
+/////// example of extracting the last word ///////
+console.log(airLine.slice(airLine.lastIndexOf(` `) + 1)); // Milan
+
+
+--------------------------------------------
+    PART 2
+
+
+// you can transform all the string to lowercase or uppercase
+console.log(airLine.toLowerCase()); // tap air milan
+console.log(airLine.toUpperCase()); // TAP AIR MILAN
+
+// replace(stringToBeReplaced, newString) to change ONLY 1st coincidence parts of strings
+const priceEU = `218,26€`;
+const priceUS = priceEU.replace(`€`, `$`).replace(`,`, `.`);
+console.log(priceUS); // 218.26$
+
+// replaceAll(stringToBeReplaced, newString) to change ALL coincidences
+console.log(`2222`.replaceAll(`2`, `3`)); // 3333
+// we could use old way with regular expressions
+console.log(`11111`.replace(/1/g, `3`)); // 33333
+
+
+
+const plane = `Boeing 737 MAX`;
+
+// includes() boolean check if there is a string inside
+console.log(plane.includes(`737`)); // true
+
+// startsWith() boolean check if string starts with that string parameter
+console.log(plane.startsWith(`Boeing`)); // true
+
+// endsWith() boolean check if string ends with that string parameter
+console.log(plane.endsWith(`MAX`)); // true
+
+/////// example of fixing the capitalization in a name ///////
+const passenger = `aLeXaNder`;
+const passengerLower = passenger.toLocaleLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect); // Alexander
+
+/////// example of comparing an input mail to the correct mail ///////
+const correctMail = `hello@gmail.com`;
+const inputMail = `    Hello@GMail.com   \n`;
+// trim() deletes spaces around (also trim can be only start or only end)
+const normalizedMail = inputMail.toLowerCase().trim();
 
 
 
