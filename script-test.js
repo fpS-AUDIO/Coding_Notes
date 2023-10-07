@@ -85,6 +85,9 @@ console.log(`I'm+so+cool`.split(`+`)); // ["I'm", 'so', 'cool']
 // join() join the elements of an array in a string and place parameter string between them
 console.log([`Mr.`, `Alexander`, `Hamilton`].join(` `)); // Mr. Alexander Hamilton
 
+// repaet(times) allows to repeat string multiple times
+console.log(`Plese wait... `.repeat(3)); // Plese wait... Plese wait... Plese wait...
+
 // (!)  padding strings = adding characters to obtain desidered length
 const testMessage = `hello`;
 
@@ -112,3 +115,10 @@ capitalizeName(`aLex ivANov`);
 capitalizeName(`Alex Ivanov`);
 
 /////// example of function which masking a piece of credit card number ///////
+const maskCreditCard = function (number) {
+  const numberStr = number + ``;
+  const last4Digits = numberStr.slice(-4);
+
+  console.log(last4Digits.padStart(numberStr.length, "*"));
+};
+maskCreditCard(12345235); // ****5235

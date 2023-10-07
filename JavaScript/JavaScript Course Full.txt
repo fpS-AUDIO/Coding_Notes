@@ -3508,11 +3508,60 @@ const inputMail = `    Hello@GMail.com   \n`;
 const normalizedMail = inputMail.toLowerCase().trim();
 
 
+--------------------------------------------
+    PART 3
+
+
+// split()  split a string in multiple parts based on a divider string
+// and it will then store the results into elements of a new array
+console.log(`I'm+so+cool`.split(`+`)); // ["I'm", 'so', 'cool']
+
+// join() join the elements of an array in a string and place parameter string between them
+console.log([`Mr.`, `Alexander`, `Hamilton`].join(` `)); // Mr. Alexander Hamilton
+
+// repaet(times) allows to repeat string multiple times
+console.log(`Plese wait... `.repeat(3)); // Plese wait... Plese wait... Plese wait...
 
 
 
+(!)  padding strings = adding characters to obtain desidered length
+const testMessage = `hello`;
+
+// padStart(totalLength, strToAdd)  adds given string to to the start until we get the desidered length
+console.log(testMessage.padStart(10, `-`)); // -----hello
+
+// padEnd(totalLength, strToAdd)    adds given string to to the end until we get the desidered length
+console.log(testMessage.padEnd(10, `-`)); // hello-----
+
+// (!)  you can chain the methods padStart() and padEnd()
+console.log(testMessage.padStart(10, `-`).padEnd(15, `-`)); // -----hello-----
 
 
+
+/////// example of function which capitalize given names ///////
+const capitalizeName = function (nameStr) {
+  const nameStrLower = nameStr.toLowerCase();
+  const names = nameStrLower.split(` `);
+  const namesCapitalized = [];
+  for (const word of names) {
+    namesCapitalized.push(word.replace(word[0], word[0].toUpperCase()));
+  }
+  console.log(namesCapitalized.join(` `));
+};
+capitalizeName(`alex ivanov`);
+capitalizeName(`aLex ivANov`);
+capitalizeName(`Alex Ivanov`);
+
+
+
+/////// example of function which masking a piece of credit card number ///////
+const maskCreditCard = function (number) {
+  const numberStr = number + ``;
+  const last4Digits = numberStr.slice(-4);
+
+  console.log(last4Digits.padStart(numberStr.length, "*"));
+};
+maskCreditCard(12345235); // ****5235
 
 
 
