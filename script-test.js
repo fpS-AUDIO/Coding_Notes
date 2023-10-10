@@ -1,35 +1,35 @@
 "use strict";
 
-//////////////////////////////////////////////////
-//// The Spread Operator in JavaScript part 1 ////
-//////////////////////////////////////////////////
+////////////////////////////////////////
+//// The Rest Pattern in JavaScript ////
+////////////////////////////////////////
+// Coding Note #20
 
-// It helps you expand (unpack) an iterable into all its elements.
-// It also works with objects (non-iterables) by creating shallow copies.
-// It takes all elements and doesn't create new variables.
-// It helps you:
-//    - Merge iterables and objects by combining their elements.
-//    - Pass arguments into functions by spreading an array or object.
-//    - Unpack iterables and objects by separating their elements.
-//    - Create shallow copies of iterables and objects.
+// You can use the rest pattern to collect all (or all remaining) elements into an array.
+// This is why it's called the "Rest Pattern" because it takes the rest of the elements
+// in the destructuring assignment and places them into a new array.
 
-//////// just data for examples below ////////
-const array1 = [3, 4, 5];
-const array2 = [8, 9];
+// The rest pattern has the same syntax as the spread operator (...)
+// but is typically positioned on the left side of the "=" sign,
+// unlike the spread operator, which is usually positioned on the right side.
 
-// basic syntax
-const array3 = [1, 2, ...array1, 6, 7];
-console.log(array3); // [1, 2, 3, 4, 5, 6, 7]
+// Basic syntax
+const [numberOne, numberTwo, ...allOtherNumbers] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(numberOne, numberTwo); // 1 2
+console.log(allOtherNumbers); // [3, 4, 5, 6, 7, 8, 9]
 
-// just unpack an array
-console.log(...array1); // 3 4 5
+// Example using a function
+// This function expects individual numbers as arguments
+const addAllNumbers = function (...allNumbers) {
+  let totalSum = 0;
+  for (const num of allNumbers) totalSum += num;
+  return totalSum;
+};
 
-// copy array
-const copyArray3 = [...array3];
-console.log(copyArray3); // [1, 2, 3, 4, 5, 6, 7]
+const arrayNumbers = [1, 2, 3, 4, 5];
+const result1 = addAllNumbers(...arrayNumbers);
+const result2 = addAllNumbers(2, 3, 4, 5, 6);
+console.log(result1); // 15
+console.log(result2); // 20
 
-// merge arrays
-const array4 = [...array1, ...array2];
-console.log(array4); // [3, 4, 5, 8, 9]
-
-// follow @coding_feature on Instagram 👍
+// Follow @coding_feature on Instagram 👍

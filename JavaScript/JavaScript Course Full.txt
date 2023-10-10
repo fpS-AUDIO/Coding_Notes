@@ -3496,7 +3496,7 @@ console.log(plane.endsWith(`MAX`)); // true
 
 /////// example of fixing the capitalization in a name ///////
 const passenger = `aLeXaNder`;
-const passengerLower = passenger.toLocaleLowerCase();
+const passengerLower = passenger.toLowerCase();
 const passengerCorrect =
   passengerLower[0].toUpperCase() + passengerLower.slice(1);
 console.log(passengerCorrect); // Alexander
