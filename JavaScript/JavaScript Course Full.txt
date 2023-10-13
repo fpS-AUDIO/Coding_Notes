@@ -89,6 +89,8 @@
         - How passing arguments works: value vs reference
         - First-class and higher-order functions
         - Functions accepting the callback functions
+        - Functions returning functions
+        - The call and aplly methods
         - 
         - 
         - 
@@ -99,7 +101,12 @@
         - 
         - 
         - 
-
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
 
 
 
@@ -3726,15 +3733,89 @@ HIGHER ORDER FUNCTION:
 // Functions accepting the callback functions //
 ///////////////////////////////////////////////
 
+Callback functions help:
+    - it makes it easy to split up or code into more reusable and interconnected parts
+    - it allows us to create abstraction
+
+Abstraction
+    means that we hide the detail of some code implementation because we don't really care about all that detail.
+    This allows us to think about problems at a higher more abstract level (name si coming from).
+
+    For example in the transformWord() function below this function doesn't care how the string is transformed.
+
+
+--------------------------------------------
+    EXAMPLE:
+
+const eliminateSpaces = function (str) {
+  return str.replaceAll(` `, ``);
+};
+
+const upperFirstLetter = function (str) {
+  return str.replace(str[0], str[0].toUpperCase());
+};
+
+
+// high order function
+const transformWord = function (str, funct) {
+  console.log(`Transformed string: ${funct(str)}`);
+  console.log(`Trasfomed by: ${funct.name}`);
+};
+
+
+const str1 = `i love JS!`;
+transformWord(str1, eliminateSpaces);
+transformWord(str1, upperFirstLetter);
 
 
 
 
 
 
+///////////////////////////////////
+// Functions returning functions //
+///////////////////////////////////
+
+(!) They are so useful if you use programming paradigm called functional programming
+
+
+--------------------------------------------
+    EXAMPLE:
+
+
+// function returning other function
+const greet = function (greetStr) {
+  return function (name) {
+    console.log(`${greetStr} ${name}`);
+  };
+};
+
+
+// the result of greet() function call is a function
+// store the result in the variable "greetHello" and now its value it's a function
+// this works thanks to closure (difficult topic)
+const greetHello = greet(`Hello`);
+greetHello(`World`); // output:  Hello World
+
+
+// so we can write it in a single row since "greet(`Goodmoring`)" is now has the value of function
+greet(`Goodmoring`)(`everybody`);
+// output:  Goodmoring everybody
+
+
+// same function but wrote as Arrow Function
+const greetArrow = (greetStr) => (name) => console.log(`${greetStr} ${name}`);
+greetArrow(`Hi`)(`People`);
+// output:  Hi People
 
 
 
+
+
+
+////////////////////////////////
+// The call and aplly methods //
+////////////////////////////////
 
 
 

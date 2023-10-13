@@ -1,16 +1,23 @@
 "use strict";
 
-const flight = `MLN123`;
-const Alex = {
-  name: `Alex Smitt`,
-  passport: 123456789,
+// function returning other function
+const greet = function (greetStr) {
+  return function (name) {
+    console.log(`${greetStr} ${name}`);
+  };
 };
 
-const checkIn = function (fligntNumber, passenger) {
-  fligntNumber = `MLN999`;
-  passenger.name = `Mr.` + passenger.name;
-};
+// the result of greet() function call is a function
+// store the result in the variable "greetHello" and now its value it's a function
+// this works thanks to closure (difficult topic)
+const greetHello = greet(`Hello`);
+greetHello(`World`); // output:  Hello World
 
-checkIn(flight, Alex);
-console.log(flight); // didn't changed
-console.log(Alex); // name is changed:  name: 'Mr.Alex Smitt'
+// so we can write it in a single row since "greet(`Goodmoring`)" is now has the value of function
+greet(`Goodmoring`)(`everybody`);
+// output:  Goodmoring everybody
+
+// same function but wrote as Arrow Function
+const greetArrow = (greetStr) => (name) => console.log(`${greetStr} ${name}`);
+greetArrow(`Hi`)(`People`);
+// output:  Hi People
