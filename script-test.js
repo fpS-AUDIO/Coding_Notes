@@ -26,40 +26,58 @@ greetArrow(`Hi`)(`People`);
 console.log(`------------- For @coding_feature -------------`);
 ///////////////////////////////////////////////////////////////
 
-////////////////////////////
-//// Sets in JavaScript ////
-////////////////////////////
-// Coding Note #22
+/////////////// data for example below ///////////////
+const lufthansa = {
+  airline: `Lufthansa`,
+  fligthCode: `LH`,
+  bookings: [],
 
-// Sets are collections of any data types but only unique values.
-// Sets are also iterables but they are unordered (there are no indexes).
-// Sets can be empty and they were introduced in ES6.
-// Sets can help you, for example, remove duplicates from an array
+  book(flightNumber, passengerName) {
+    console.log(
+      `${passengerName} booked a seat on ${this.airline} flight ${this.fligthCode}${flightNumber}`
+    );
+    this.bookings.push({
+      flight: `${this.fligthCode}${flightNumber}`,
+      name: passengerName,
+    });
+  },
+};
 
-// Creating a set:
-const setName1 = new Set([6, `pizza`, 3, `pizza`, 6, 5, `pasta`]);
+const alitalia = {
+  airline: `Alitalia`,
+  fligthCode: `AL`,
+  bookings: [],
+};
 
-//  Creating an empty set using constructor
-const setName2 = new Set();
-console.log(setName2); // OUTPUT:  Set(0) {size: 0}
+// trying to call method
+lufthansa.book(463, `Alexander Smith`); // Alexander Smith booked a seat on Lufthansa flight LH463
+lufthansa.book(723, `Sara Cattaneo`); // Sara Cattaneo booked a seat on Lufthansa flight LH723
 
-console.log(setName1); // OUTPUT:  {6, 'pizza', 3, 5, 'pasta'}
+console.log(lufthansa.bookings);
+// OUTPUT: [
+//    {flight: 'LH463', name: 'Alexander Smith'},
+//    {flight: 'LH723', name: 'Sara Cattaneo'}
+//  ]
 
-// Size property of a set:
-console.log(setName1.size); // OUTPUT:  5
+////////////////////////////////////////////////////////
 
-// Create a new array from a set using the spread operator
-const arrayFromSet = [...setName1];
-console.log(arrayFromSet); // OUTPUT: [6, 'pizza', 3, 5, 'pasta']
+// taking method and store it in an external function
+const bookFlight = lufthansa.book;
 
-//    Other set methods:
-setName1.add(8); // Adds the value 8 to the set
-const hasPizza = setName1.has("pizza"); // Returns true if 'pizza' is in the set
-setName1.delete(3); // Removes the value 3 from the set
-setName1.forEach((value) => console.log(value)); // Invokes a callback for each element
-const valuesIterator = setName1.values(); // Returns an iterator with all the values
-const keysIterator = setName1.keys(); //  Returns an iterator with all keys of the set
-const entriesIterator = setName1.entries(); // Returns an iterator with [value, value] pairs
-setName1.clear(); //  Removes all elements from a Set
+//    PROBLEM
+// bookFlight(234, `John Chan`);
+// Uncaught TypeError: Cannot read properties of undefined (reading 'airline')
+// now bookFlight() is not more a method but it's a regular function call,
+// so the this keyword points to undefined (at least in strict mode)
 
-// Follow @coding_feature on Instagram 👍
+//    TO FIX THIS PROBLEM WITH CALL()
+// you can you use:   function.call(object_point_this, all_other_arguments)
+bookFlight.call(alitalia, 463, `Marco Rossi`); // Marco Rossi booked a seat on Alitalia flight AL463
+bookFlight.call(lufthansa, 732, `Anna Rich`); // Anna Rich booked a seat on Lufthansa flight LH732
+
+//    APPLY ()
+const argArray = [426, `Jonas Sils`];
+bookFlight.apply(alitalia, argArray); // Jonas Sils booked a seat on Alitalia flight AL426
+
+//    modern way using spread operator
+bookFlight.call(lufthansa, ...argArray); // Jonas Sils booked a seat on Lufthansa flight LH426

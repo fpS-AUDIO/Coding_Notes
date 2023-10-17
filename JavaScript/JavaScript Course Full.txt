@@ -90,8 +90,8 @@
         - First-class and higher-order functions
         - Functions accepting the callback functions
         - Functions returning functions
-        - The call and aplly methods
-        - 
+        - The call and apply methods
+        - The bind method
         - 
         - 
         - 
@@ -3814,14 +3814,93 @@ greetArrow(`Hi`)(`People`);
 
 
 ////////////////////////////////
-// The call and aplly methods //
+// The call and apply methods //
 ////////////////////////////////
 
 
+call()  
+    allows you to manually set the this keyword of any function that we want to call. 
+    function.call(object_to_point_this, other_arguments_of_function)
+
+apply()
+    does the same but it doesn't recieve a list of arguments after the "this" keyword,
+    but it takes an array of arguments. 
+    It's an OLD WAY since you can just use the spread operatior.
+
+
+/////////////// data for example below ///////////////
+
+const lufthansa = {
+  airline: `Lufthansa`,
+  fligthCode: `LH`,
+  bookings: [],
+
+  book(flightNumber, passengerName) {
+    console.log(
+      `${passengerName} booked a seat on ${this.airline} flight ${this.fligthCode}${flightNumber}`
+    );
+    this.bookings.push({
+      flight: `${this.fligthCode}${flightNumber}`,
+      name: passengerName,
+    });
+  },
+};
+
+const alitalia = {
+  airline: `Alitalia`,
+  fligthCode: `AL`,
+  bookings: [],
+};
 
 
 
 
+
+// trying to call method
+lufthansa.book(463, `Alexander Smith`); // Alexander Smith booked a seat on Lufthansa flight LH463
+lufthansa.book(723, `Sara Cattaneo`); // Sara Cattaneo booked a seat on Lufthansa flight LH723
+
+console.log(lufthansa.bookings);
+// OUTPUT: [
+//    {flight: 'LH463', name: 'Alexander Smith'},
+//    {flight: 'LH723', name: 'Sara Cattaneo'}
+//  ]
+
+
+////////////////////////////////////////////////////////
+
+
+
+
+// taking method and store it in an external function
+const bookFlight = lufthansa.book;
+
+//    PROBLEM
+// bookFlight(234, `John Chan`);
+// Uncaught TypeError: Cannot read properties of undefined (reading 'airline')
+// now bookFlight() is not more a method but it's a regular function call,
+// so the this keyword points to undefined (at least in strict mode)
+
+//    TO FIX THIS PROBLEM WITH CALL()
+// you can you use:   function.call(object_point_this, all_other_arguments)
+bookFlight.call(alitalia, 463, `Marco Rossi`); // Marco Rossi booked a seat on Alitalia flight AL463
+bookFlight.call(lufthansa, 732, `Anna Rich`); // Anna Rich booked a seat on Lufthansa flight LH732
+
+//    APPLY ()
+const argArray = [426, `Jonas Sils`];
+bookFlight.apply(alitalia, argArray); // Jonas Sils booked a seat on Alitalia flight AL426
+
+//    modern way using spread operator
+bookFlight.call(lufthansa, ...argArray); // Jonas Sils booked a seat on Lufthansa flight LH426
+
+
+
+
+
+
+/////////////////////
+// The bind method //
+/////////////////////
 
 
 
