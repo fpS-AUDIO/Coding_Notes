@@ -2643,7 +2643,7 @@ restaurant.orderPizza(`Prosciutto`, `porcini`, `cipolla`, `grana`);
     console.log(undefined || null || `` || `Hello` || 28);      // Hello
 
 
-(!) insted of using ternary operator we can use ||
+(!) instead of using ternary operator we can use ||
 
     EXAMPLE:
 
@@ -2663,7 +2663,7 @@ restaurant.orderPizza(`Prosciutto`, `porcini`, `cipolla`, `grana`);
     console.log(`hello` && 27 && `Alex` && null && 28); // null
 
 
-(!) insted of using if else  we can use &&
+(!) instead of using if else  we can use &&
 
 
     EXAMPLE:
@@ -3901,6 +3901,40 @@ bookFlight.call(lufthansa, ...argArray); // Jonas Sils booked a seat on Lufthans
 /////////////////////
 // The bind method //
 /////////////////////
+
+
+
+// bind() is similar to the call() method but it doesn't immediately call the function
+// it returns a new function where the "this" keyword is bound (set to the correct value)
+
+/////////////////// data for example below ///////////////////
+const lufthansa = {
+  airline: `Lufthansa`,
+  fligthCode: `LH`,
+  bookings: [],
+
+  book(flightNumber, passengerName) {
+    console.log(
+      `${passengerName} booked a seat on ${this.airline} flight ${this.fligthCode}${flightNumber}`
+    );
+    this.bookings.push({
+      flight: `${this.fligthCode}${flightNumber}`,
+      name: passengerName,
+    });
+  },
+};
+
+const alitalia = {
+  airline: `Alitalia`,
+  fligthCode: `AL`,
+  bookings: [],
+};
+///////////////////////////////////////////////////////////////
+
+const bookFlight = lufthansa.book;
+
+const bookAlitalia = bookFlight.bind(alitalia);
+bookAlitalia(329, `Alessia`); // Alessia booked a seat on Alitalia flight AL329
 
 
 
