@@ -10,6 +10,8 @@
         height: 100vh;
         display: flex;
         align-items: center;
+        justify-content: center;
+        flex-direction: column;
         background: linear-gradient(to top left, #28b487, #7dd56f);
       }
       h1 {
@@ -30,10 +32,26 @@
         width: 300px;
         height: 100px;
       }
+      #btn1,
+      #btn2 {
+        display: inline-block;
+        padding: 1rem;
+        min-width: 15%;
+        height: 4rem;
+        text-align: center;
+      }
+      #btn1 {
+        background-color: greenyellow;
+      }
+      #btn2 {
+        background-color: rebeccapurple;
+      }
     </style>
   </head>
   <body>
     <h1>JUST FILE FOR TEST CODE</h1>
+    <button id="btn1">BTN1</button>
+    <button id="btn2">BTN2</button>
     <script src="script-test.js"></script>
   </body>
 </html>
