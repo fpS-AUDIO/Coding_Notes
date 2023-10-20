@@ -26,7 +26,6 @@ What is your favourite programming language?
 example, if the option is 3, increase the value at position 3 of the array by
 1. Make sure to check if the input is a number and if the number makes
 sense (e.g. answer 52 wouldn't make sense, right?)
-
 2. Call this method whenever the user clicks the "Answer poll" button.
 3. Create a method 'displayResults' which displays the poll results. The
 method takes a string as an input (called 'type'), which can be either 'string'
@@ -51,32 +50,43 @@ const poll = {
   answers: new Array(4).fill(0),
   isInputWrong: true,
 
+  displayResults(type) {
+    console.log(`Poll results are: ${type}`);
+  },
+
   registerNewAnswer() {
     // string of options
-    let optionsStr = "";
+    let optionsStr = `\n`;
 
     // add all options to the string of options
     for (const option of this.options) {
-      optionsStr += `${option} + \n`;
+      optionsStr += `${option} \n`;
     }
 
-    // get user's choice
+    // get user's choice until the input is correct
     while (this.isInputWrong) {
-      const userAnswer = prompt(`What is your favourite programming language?
-      
+      const userAnswer = prompt(`
+      ${this.question}
       ${optionsStr}
       (Write option number)`);
 
-      // check if
+      // check if input is correct
       if (
         typeof Number(userAnswer) === `number` &&
-        Number(userAnswer).length === poll.options.length
+        Number(userAnswer) < this.options.length &&
+        Number(userAnswer) >= 0
       ) {
-        this.isInputWrong = false;
-        console.log(userAnswer.length);
-        console.log(this.isInputWrong);
-      }
+        // if input is correct do this:
+        this.answers[userAnswer]++;
+        this.displayResults.call(poll, this.answers);
+        break;
+      } // if input is wrong do this:
+      else
+        alert(`Something went wrong with your input: ${userAnswer} \n
+        Please try againg writing only a number of the correct line.`);
     }
   },
 };
-poll.registerNewAnswer();
+document
+  .getElementById(`btn1`)
+  .addEventListener(`click`, poll.registerNewAnswer.bind(poll));
