@@ -90,3 +90,29 @@ const poll = {
 document
   .getElementById(`btn1`)
   .addEventListener(`click`, poll.registerNewAnswer.bind(poll));
+
+//////////////////////////////////////////////////////
+console.log(`---------------NEW STUFF---------------`);
+//////////////////////////////////////////////////////
+
+// You can create a function which will be executed once and then it'll dissapear.
+// you need to make JS thinks it's an expression by wrapping function iside () and call it
+// all data iside a scope is private (encapsulated data)
+// so IIFE helps hide variables inside a local scope
+
+// function expression
+(function () {
+  console.log(`This funtion runs once!`);
+})();
+
+// arrow function
+(() => console.log(`Also this funtion runs once!`))();
+
+// Variables declared with let or const create their own scope inside a block.
+{
+  const isPrivate = 28;
+}
+// console.log(isPrivate); // Uncaught ReferenceError: isPrivate is not defined
+// the modern solutions prefer using this block without creating functions.
+// since we can create a scope just using {}
+
