@@ -126,9 +126,8 @@ console.log(`---------------For @coding_feature---------------`);
 // Coding Note #28
 
 // Strings are primitive data types, but thanks to "Boxing," you can apply methods to them.
-// Boxing means putting a string into an object (box) with the same content.
-// After all operations, the object is converted back to a regular string.
-// So, all string methods return a new string (primitive) without changing the original one.
+// Boxing is process of converting primitive data types into their respective object wrappers.
+// All string methods return a new string (primitive) indeed without changing the original one.
 // A substring is just a part of a string.
 
 console.log(new String("Alex"));
@@ -150,16 +149,27 @@ console.log(phrase.lastIndexOf("o")); // 8
 // Calculate the string length (not 0-based)
 console.log(phrase.length); // 12
 
-// slice(start, end) returns a substring (start is included, and end is not)
+// slice(start, end) returns a substring (start is inclusive, end is exclusive)
 console.log(phrase.slice(3, 5)); // 'Lo'
 
-// Use a negative index to calculate from the end
+// Use a negative index to calculate from the end where -1 means the last character
 console.log(phrase.slice(-5)); // 'World'
 
 // Example of extracting the last word
 console.log(phrase.slice(phrase.lastIndexOf(" ") + 1)); // 'World'
 
 /////////////////////////////////////////////
+console.log(`------------- part2 -------------`);
+
+// Common escape sequences include \n (newline), \t (tab), and \\ (a literal backslash).
+// Also JS provides regular expressions methods like match(), search(), replace(), and split().
+// JS has methods like Intl.Collator and Intl.DateTimeFormat for handling language and date formatting.
+
+// charAt(index) returns the character at the specified index
+console.log(phrase.charAt(6)); // W
+
+// substring(startIndex, endIndex) returns a substring between the specified indices
+console.log(phrase.substring(6, 9)); // Wor
 
 // toUpperCase() transforms the string to uppercase
 console.log(phrase.toUpperCase()); // 'HELLO WORLD'
@@ -184,61 +194,51 @@ console.log(phrase.startsWith("heL")); // true
 // endsWith() checks if the string ends with a specified parameter (returns a boolean)
 console.log(phrase.endsWith("guys")); // false
 
-/////////////////////////////////////////////
-
 // split(dividerStr) returns an array containing all parts of the string split based on dividerStr
 console.log(phrase.split(" ")); // ['heLLo', 'World']
 
 // join(parameterStr) returns a string by joining elements of an array and using the parameter string between them
 console.log(["heLLo", "World"].join(" ")); // 'heLLo World'
 
+/////////////////////////////////////////////
+
+console.log(`------------- part3 -------------`);
+
+// You can use methods like match(), search(), replace(), and split() with regular expressions
+
+const phrase4 = ` just string  `;
+
+// trim() removes whitespace from both ends of the string
+console.log(phrase4.trim()); // "just string"
+
+// trimStart() removes whitespace from the start of the string
+console.log(phrase4.trimStart()); // "just string  "
+
+// trimEnd() removes whitespace from the end of the string
+console.log(phrase4.trimEnd()); // " just string"
+
 // repeat(times) allows you to repeat a string multiple times
-console.log(phrase.repeat(3)); // 'heLLo WorldheLLo WorldheLLo World'
+console.log(phrase4.repeat(3)); // " just string   just string   just string "
 
 // padStart(totalLength, strToAdd) adds a given string to the start to reach the desired length
-console.log(phrase.padStart(15, "-")); // '---heLLo World'
+console.log(phrase4.padStart(17, "-")); // "--- just string  "
 
 // padEnd(totalLength, strToAdd) adds a given string to the end to reach the desired length
-console.log(phrase.padEnd(15, "-")); // 'heLLo World---'
+console.log(phrase4.padEnd(17, "-")); // " just string  ---"
 
 // You can chain the methods padStart() and padEnd()
-console.log(phrase.padStart(15, "-").padEnd(18, "-")); // '---heLLo World---'
+console.log(phrase4.padStart(17, "-").padEnd(20, "-")); // "--- just string  ---"
 
 /* 
 
 String Methods (Additional):
 
-    charAt(index): Returns the character at the specified index.
     charCodeAt(index): Returns the Unicode value of the character at the specified index.
     codePointAt(index): Returns the Unicode code point of the character at the specified index.
     concat(str1, str2, ...strN): Combines two or more strings and returns a new string.
-    startsWith(searchString, position): Checks if the string starts with a specified substring.
-    endsWith(searchString, position): Checks if the string ends with a specified substring.
-    trim(): Removes whitespace from both ends of the string.
-    trimStart() or trimLeft(): Removes whitespace from the start of the string.
-    trimEnd() or trimRight(): Removes whitespace from the end of the string.
-    substring(startIndex, endIndex): Returns a substring between the specified indices.
     toLocaleUpperCase() and toLocaleLowerCase(): Converts the string to uppercase or lowercase according to the host's current locale.
-
-String Iteration: Strings are iterable, and you can use iteration methods such as for...of, forEach, or the spread operator to loop through characters in a string.
-
-javascript
-
-const str = 'Hello';
-for (const char of str) {
-    console.log(char);
-}
-
-String Escapes: JavaScript uses escape sequences to represent special characters within strings. Common escape sequences include \n (newline), \t (tab), and \\ (a literal backslash).
-
-Regular Expressions: JavaScript provides powerful support for pattern matching and manipulation of strings through regular expressions. You can use methods like match(), search(), replace(), and split() with regular expressions.
 
 String Encoding: JavaScript has functions like encodeURIComponent() and decodeURIComponent() for handling URL encoding, and btoa() and atob() for base64 encoding and decoding.
 
-String Localization: JavaScript provides methods for string localization and internationalization, like Intl.Collator and Intl.DateTimeFormat.
-
-String.prototype Property: Many string methods are available through the String.prototype property. For example, String.prototype.includes() and String.prototype.slice().
-
-String Concatenation: While you can use + for string concatenation, consider using an array and Array.prototype.join() for improved performance when concatenating multiple strings.
 
 */
