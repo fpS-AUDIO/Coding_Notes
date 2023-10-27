@@ -95,150 +95,17 @@ document
 console.log(`---------------NEW STUFF---------------`);
 //////////////////////////////////////////////////////
 
-// You can create a function which will be executed once and then it'll dissapear.
-// you need to make JS thinks it's an expression by wrapping function iside () and call it
-// all data iside a scope is private (encapsulated data)
-// so IIFE helps hide variables inside a local scope
+// closure
+const secureCounting = function () {
+  let person = 0;
 
-// function expression
-(function () {
-  console.log(`This funtion runs once!`);
-})();
+  return function () {
+    person++;
+    console.log(person);
+  };
+};
 
-// arrow function
-(() => console.log(`Also this funtion runs once!`))();
-
-// Variables declared with let or const create their own scope inside a block.
-{
-  const isPrivate = 28;
-}
-// console.log(isPrivate); // Uncaught ReferenceError: isPrivate is not defined
-// the modern solutions prefer using this block without creating functions.
-// since we can create a scope just using {}
-
-//////////////////////////////////////////////////////
-console.log(`---------------For @coding_feature---------------`);
-//////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////
-//// String Methods and Attributes in JavaScript Part 1 ////
-////////////////////////////////////////////////////////////
-// Coding Note #28
-
-// Strings are primitive data types, but thanks to "Boxing," you can apply methods to them.
-// Boxing is process of converting primitive data types into their respective object wrappers.
-// All string methods return a new string (primitive) indeed without changing the original one.
-// A substring is just a part of a string.
-
-console.log(new String("Alex"));
-// OUTPUT: String {'Alex'} <- an object with a string and all attributes, including methods
-
-///// Test String for Example Below /////
-const phrase = "heLLo World";
-/////////////////////////////////////////
-
-// Access the index of a string
-console.log(phrase[1]); // 'e'
-
-// Obtain the index of the first occurrence (inclusive)
-console.log(phrase.indexOf("Wor")); // 7
-
-// Obtain the index of the last occurrence (inclusive)
-console.log(phrase.lastIndexOf("o")); // 8
-
-// Calculate the string length (not 0-based)
-console.log(phrase.length); // 12
-
-// slice(start, end) returns a substring (start is inclusive, end is exclusive)
-console.log(phrase.slice(3, 5)); // 'Lo'
-
-// Use a negative index to calculate from the end where -1 means the last character
-console.log(phrase.slice(-5)); // 'World'
-
-// Example of extracting the last word
-console.log(phrase.slice(phrase.lastIndexOf(" ") + 1)); // 'World'
-
-/////////////////////////////////////////////
-console.log(`------------- part2 -------------`);
-
-// Common escape sequences include \n (newline), \t (tab), and \\ (a literal backslash).
-// Also JS provides regular expressions methods like match(), search(), replace(), and split().
-// JS has methods like Intl.Collator and Intl.DateTimeFormat for handling language and date formatting.
-
-// charAt(index) returns the character at the specified index
-console.log(phrase.charAt(6)); // W
-
-// substring(startIndex, endIndex) returns a substring between the specified indices
-console.log(phrase.substring(6, 9)); // Wor
-
-// toUpperCase() transforms the string to uppercase
-console.log(phrase.toUpperCase()); // 'HELLO WORLD'
-
-// toLowerCase() transforms the string to lowercase
-console.log(phrase.toLowerCase()); // 'hello world'
-
-// replace(stringToBeReplaced, newString) changes ONLY the first occurrence of the substring
-const phrase2 = phrase.replace("World", "Everybody");
-console.log(phrase2); // 'heLLo Everybody'
-
-// replaceAll(stringToBeReplaced, newString) is like replace() but changes ALL occurrences
-const phrase3 = phrase.replaceAll("o", "A");
-console.log(phrase3); // 'heLLAw WArld'
-
-// includes() checks if a string is inside the original string (returns a boolean)
-console.log(phrase.includes("heLLo")); // true
-
-// startsWith() checks if the string starts with a specified parameter (returns a boolean)
-console.log(phrase.startsWith("heL")); // true
-
-// endsWith() checks if the string ends with a specified parameter (returns a boolean)
-console.log(phrase.endsWith("guys")); // false
-
-// split(dividerStr) returns an array containing all parts of the string split based on dividerStr
-console.log(phrase.split(" ")); // ['heLLo', 'World']
-
-// join(parameterStr) returns a string by joining elements of an array and using the parameter string between them
-console.log(["heLLo", "World"].join(" ")); // 'heLLo World'
-
-/////////////////////////////////////////////
-
-console.log(`------------- part3 -------------`);
-
-// You can use methods like match(), search(), replace(), and split() with regular expressions
-
-const phrase4 = ` just string  `;
-
-// trim() removes whitespace from both ends of the string
-console.log(phrase4.trim()); // "just string"
-
-// trimStart() removes whitespace from the start of the string
-console.log(phrase4.trimStart()); // "just string  "
-
-// trimEnd() removes whitespace from the end of the string
-console.log(phrase4.trimEnd()); // " just string"
-
-// repeat(times) allows you to repeat a string multiple times
-console.log(phrase4.repeat(3)); // " just string   just string   just string "
-
-// padStart(totalLength, strToAdd) adds a given string to the start to reach the desired length
-console.log(phrase4.padStart(17, "-")); // "--- just string  "
-
-// padEnd(totalLength, strToAdd) adds a given string to the end to reach the desired length
-console.log(phrase4.padEnd(17, "-")); // " just string  ---"
-
-// You can chain the methods padStart() and padEnd()
-console.log(phrase4.padStart(17, "-").padEnd(20, "-")); // "--- just string  ---"
-
-/* 
-
-String Methods (Additional):
-
-    charCodeAt(index): Returns the Unicode value of the character at the specified index.
-    codePointAt(index): Returns the Unicode code point of the character at the specified index.
-    concat(str1, str2, ...strN): Combines two or more strings and returns a new string.
-    toLocaleUpperCase() and toLocaleLowerCase(): Converts the string to uppercase or lowercase according to the host's current locale.
-
-String Encoding: JavaScript has functions like encodeURIComponent() and decodeURIComponent() for handling URL encoding, and btoa() and atob() for base64 encoding and decoding.
-
-
-*/
+const addPerson = secureCounting();
+addPerson(); // 1
+addPerson(); // 2
+addPerson(); // 3

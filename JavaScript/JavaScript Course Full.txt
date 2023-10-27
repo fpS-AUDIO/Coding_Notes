@@ -4028,5 +4028,21 @@ console.log(challengeAddVAT22(110));
 //////////////
 
 
+// closure
+const secureCounting = function () {
+  let person = 0;
+
+  return function () {
+    person++;
+    console.log(person);
+  };
+};
+
+const addPerson = secureCounting();
+addPerson(); // 1
+addPerson(); // 2
+addPerson(); // 3
+
+
 
 
