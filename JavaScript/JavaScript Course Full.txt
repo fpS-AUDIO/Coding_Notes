@@ -3058,7 +3058,7 @@ console.log(openStr);
 --------------------------------------------
     loop over object values
 
-// Object.values(object)  ->  returns the ectual value (not array)
+// Object.values(object)  ->  returns the actual value (not array)
 const values1 = Object.values(restaurant.openingHours);
 for (const i of values1) {
   console.log(i);

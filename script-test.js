@@ -109,3 +109,54 @@ const addPerson = secureCounting();
 addPerson(); // 1
 addPerson(); // 2
 addPerson(); // 3
+
+/////////////////////////////////////////////////////////////////
+console.log(`---------------For @coding_feature---------------`);
+/////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////
+//// Looping Objects in JavaScript ////
+///////////////////////////////////////
+// Coding Note #31
+
+// In JavaScript, objects are not iterable by default, which means you can't use traditional loops like 'for...of' with them.
+// However, you can loop over objects in an indirect way using various methods provided by the Object class.
+
+//----Test data for the example below----//
+const fruitObject = {
+  apple: {
+    color: "red",
+    taste: "sweet",
+  },
+  banana: {
+    color: "yellow",
+    taste: "creamy",
+  },
+  orange: {
+    color: "orange",
+    taste: "citrusy",
+  },
+};
+//-----------------------------------//
+
+// Object.keys(object)  ->  returns an array with keys of the object
+console.log(Object.keys(fruitObject)); // ['apple', 'banana', 'orange']
+
+// Object.values(object)  ->  returns an array of values for each key in the object
+console.log(Object.values(fruitObject));
+// [{color: 'red', taste: 'sweet'}, {color: 'yellow', taste: 'creamy'}, {color: 'orange', taste: 'citrusy'}]
+
+// Object.entries(object) ->  returns an array of arrays with [key, value] pairs,
+// where the value is an object for each key
+console.log(Object.entries(fruitObject)); // [['apple', {…}], ['banana', {…}], ['orange', {…}]]
+
+// EXAMPLE of looping
+const fruitEntries = Object.entries(fruitObject);
+console.log(fruitEntries);
+// Destructuring twice: first [key, value], then [key, { color, taste }] with exact property names
+for (const [key, { color, taste }] of fruitEntries) {
+  console.log(`The ${key} has the ${color} color and ${taste} taste.`);
+}
+// The apple has the red color and sweet taste. etc...
+
+// Follow @coding_feature on Instagram for more content! 👍
