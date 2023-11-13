@@ -114,49 +114,47 @@ addPerson(); // 3
 console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////
-//// Looping Objects in JavaScript ////
-///////////////////////////////////////
-// Coding Note #31
+//////////////////////////////////////////
+//// call() and apply() in JavaScript ////
+//////////////////////////////////////////
+// Coding Note #33
 
-// In JavaScript, objects are not iterable by default, which means you can't use traditional loops like 'for...of' with them.
-// However, you can loop over objects in an indirect way using various methods provided by the Object class.
+// There are a few methods which can help you change the "this" keyword like call(), apply(), and bind().
+// Only the first parameter of call() and apply() functions is obligatory.
+// These methods are useful to reuse a method from one object on another object, possibly with different arguments.
 
-//----Test data for the example below----//
-const fruitObject = {
-  apple: {
-    color: "red",
-    taste: "sweet",
-  },
-  banana: {
-    color: "yellow",
-    taste: "creamy",
-  },
-  orange: {
-    color: "orange",
-    taste: "citrusy",
+// call()   allows you to manually set the this keyword of any function you want to call.
+//          function.call(object_this_should_point, argument1, argument2, etc...)
+//          function.call(object_this_should_point, ...arrayArguments)
+
+// apply()  does the same but, as the second parameter, it takes an array of arguments.
+//          Using apply() is less common in modern JS, since you can combine the spread operator with call().
+//          function.apply(object_this_should_point, arrayArguments)
+
+const person1 = {
+  firstName: `Dariel`,
+  lastName: `Ryker`,
+  showFullName(city) {
+    console.log(`${this.firstName} ${this.lastName} from ${city}`);
   },
 };
-//-----------------------------------//
 
-// Object.keys(object)  ->  returns an array with keys of the object
-console.log(Object.keys(fruitObject)); // ['apple', 'banana', 'orange']
+const person2 = {
+  firstName: `Elissa`,
+  lastName: `Delight`,
+};
 
-// Object.values(object)  ->  returns an array of values for each key in the object
-console.log(Object.values(fruitObject));
-// [{color: 'red', taste: 'sweet'}, {color: 'yellow', taste: 'creamy'}, {color: 'orange', taste: 'citrusy'}]
+// store showFullName() method in an external function
+const fullName = person1.showFullName;
+// Note: fullName() is now a regular function call, and its 'this' keyword points to undefined (strict mode).
+// The output will be "Uncaught TypeError: Cannot read properties of undefined".
 
-// Object.entries(object) ->  returns an array of arrays with [key, value] pairs,
-// where the value is an object for each key
-console.log(Object.entries(fruitObject)); // [['apple', {…}], ['banana', {…}], ['orange', {…}]]
+// You can solve this error like this:
+fullName.call(person1, "New York"); // Dariel Ryker from New York
 
-// EXAMPLE of looping
-const fruitEntries = Object.entries(fruitObject);
-console.log(fruitEntries);
-// Destructuring twice: first [key, value], then [key, { color, taste }] with exact property names
-for (const [key, { color, taste }] of fruitEntries) {
-  console.log(`The ${key} has the ${color} color and ${taste} taste.`);
-}
-// The apple has the red color and sweet taste. etc...
+// Using call() with spread operator
+const additionalInfo = ["Los Angeles"];
+fullName.call(person2, ...additionalInfo); // Elissa Delight from Los Angeles
+
 
 // Follow @coding_feature on Instagram for more content! 👍

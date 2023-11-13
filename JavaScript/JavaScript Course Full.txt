@@ -3825,7 +3825,7 @@ call()
 apply()
     does the same but it doesn't recieve a list of arguments after the "this" keyword,
     but it takes an array of arguments. 
-    It's an OLD WAY since you can just use the spread operatior.
+    It's an OLD WAY since you can just use the spread operator.
 
 
 /////////////// data for example below ///////////////
@@ -3882,7 +3882,7 @@ const bookFlight = lufthansa.book;
 // so the this keyword points to undefined (at least in strict mode)
 
 //    TO FIX THIS PROBLEM WITH CALL()
-// you can you use:   function.call(object_point_this, all_other_arguments)
+// you can use:   function.call(object_point_this, all_other_arguments)
 bookFlight.call(alitalia, 463, `Marco Rossi`); // Marco Rossi booked a seat on Alitalia flight AL463
 bookFlight.call(lufthansa, 732, `Anna Rich`); // Anna Rich booked a seat on Lufthansa flight LH732
 
