@@ -1,160 +1,78 @@
 "use strict";
 
-//////////////////////////////////////////////////////
-console.log(`---------------CHALLENGE---------------`);
-//////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+console.log(`---------------For @coding_feature---------------`);
+/////////////////////////////////////////////////////////////////
 
-/* 
-Let's build a simple poll app!
-A poll has a question, an array of options from which people can choose, and an
-array with the number of replies for each option. This data is stored in the starter
-'poll' object below.
+/////////////////////////////////////
+//// bind() Method in JavaScript ////
+/////////////////////////////////////
+// Coding Note #34
 
+// The bind() method in JavaScript is similar to the call() method, but it doesn't immediately call the function.
+// Instead, it returns a new function where the "this" keyword is bound (set to the correct value).
+// Additionally, you can bind the parameters in the correct order; this is known as partial application.
+// Partial application means that a part of the arguments of the original function is already set.
+// If you don't need to specify "this," you can pass "null" as the first argument.
 
-Your tasks:
-1. Create a method called 'registerNewAnswer' on the 'poll' object. The
-method does 2 things:
-1.1. Display a prompt window for the user to input the number of the
-selected option. The prompt should look like this:
-What is your favourite programming language?
-0: JavaScript
-1: Python
-2: Rust
-3: C++
-(Write option number)
-1.2. Based on the input number, update the 'answers' array property. For
-example, if the option is 3, increase the value at position 3 of the array by
-1. Make sure to check if the input is a number and if the number makes
-sense (e.g. answer 52 wouldn't make sense, right?)
-2. Call this method whenever the user clicks the "Answer poll" button.
-3. Create a method 'displayResults' which displays the poll results. The
-method takes a string as an input (called 'type'), which can be either 'string'
-or 'array'. If type is 'array', simply display the results array as it is, using
-console.log(). This should be the default option. If type is 'string', display a
-string like "Poll results are 13, 2, 4, 1".
-4. Run the 'displayResults' method at the end of each
-'registerNewAnswer' method call.
-5. Bonus: Use the 'displayResults' method to display the 2 arrays in the test
-data. Use both the 'array' and the 'string' option. Do not put the arrays in the poll
-object! So what should the this keyword look like in this situation?
-The Complete JavaScript Course 21
-Test data for bonus:
-§ Data 1: [5, 2, 3]
-§ Data 2: [1, 5, 3, 9, 6, 1]
-*/
+// ------------- Data for the example below ------------- //
 
-const poll = {
-  question: "What is your favourite programming language?",
-  options: ["0: JavaScript", "1: Python", "2: Rust", "3:  C++"],
-  // This generates [0, 0, 0, 0]. More in the next section!
-  answers: new Array(4).fill(0),
-  isInputWrong: true,
-
-  displayResults(type) {
-    console.log(`Poll results are: ${type}`);
-  },
-
-  registerNewAnswer() {
-    // string of options
-    let optionsStr = `\n`;
-
-    // add all options to the string of options
-    for (const option of this.options) {
-      optionsStr += `${option} \n`;
-    }
-
-    // get user's choice until the input is correct
-    while (this.isInputWrong) {
-      const userAnswer = prompt(`
-      ${this.question}
-      ${optionsStr}
-      (Write option number)`);
-
-      // check if input is correct
-      if (
-        typeof Number(userAnswer) === `number` &&
-        Number(userAnswer) < this.options.length &&
-        Number(userAnswer) >= 0
-      ) {
-        // if input is correct do this:
-        this.answers[userAnswer]++;
-        this.displayResults.call(poll, this.answers);
-        break;
-      } // if input is wrong do this:
-      else
-        alert(`Something went wrong with your input: ${userAnswer} \n
-        Please try againg writing only a number of the correct line.`);
-    }
+const currencyAlfa = {
+  history: [],
+  formatCurrency(currencySymbol, value) {
+    const result = `${currencySymbol}${value.toFixed(2)}`;
+    this.history.push(result);
+    console.log(result);
   },
 };
-document
-  .getElementById(`btn1`)
-  .addEventListener(`click`, poll.registerNewAnswer.bind(poll));
+const currencyBeta = {
+  history: [],
+};
+
+// ------------------------------------------------------ //
+
+// Returning a new function (not calling) where the "this" keyword is bound to "currencyBeta"
+const formatCurrencyBeta = currencyAlfa.formatCurrency.bind(currencyBeta);
+formatCurrencyBeta(`$`, 99); // $99.00
+
+// Create a partially applied function where the "this" argument is "null" since "formatCurrencyBeta" already has its own "this keyword"
+// and the first parameter is bound to "€"
+const formatCurrencyBetaEuro = formatCurrencyBeta.bind(null, `€`);
+formatCurrencyBetaEuro(22); // €22.00
+
+// Follow @coding_feature on Instagram for more content! 👍
 
 //////////////////////////////////////////////////////
 console.log(`---------------NEW STUFF---------------`);
 //////////////////////////////////////////////////////
 
-// closure
-const secureCounting = function () {
-  let person = 0;
-
-  return function () {
-    person++;
-    console.log(person);
-  };
-};
-
-const addPerson = secureCounting();
-addPerson(); // 1
-addPerson(); // 2
-addPerson(); // 3
-
-/////////////////////////////////////////////////////////////////
-console.log(`---------------For @coding_feature---------------`);
-/////////////////////////////////////////////////////////////////
-
 //////////////////////////////////////////
-//// call() and apply() in JavaScript ////
+//  forEach() method with Maps and Sets //
 //////////////////////////////////////////
-// Coding Note #33
 
-// There are a few methods which can help you change the "this" keyword like call(), apply(), and bind().
-// Only the first parameter of call() and apply() functions is obligatory.
-// These methods are useful to reuse a method from one object on another object, possibly with different arguments.
+// forEach() also works with maps and sets
 
-// call()   allows you to manually set the this keyword of any function you want to call.
-//          function.call(object_this_should_point, argument1, argument2, etc...)
-//          function.call(object_this_should_point, ...arrayArguments)
+// -------------- WITH MAPS -------------- //
+const currencies = new Map([
+  [`USD`, `United States Dollar`],
+  [`EUR`, `Euro`],
+  [`GBP`, `Pound Sterling`],
+]);
 
-// apply()  does the same but, as the second parameter, it takes an array of arguments.
-//          Using apply() is less common in modern JS, since you can combine the spread operator with call().
-//          function.apply(object_this_should_point, arrayArguments)
+// forEach(value, key, map)
+currencies.forEach(function (value, key) {
+  console.log(`${key} is the ${value}`);
+});
+//    OUTPUT: USD is the United States Dollar   etc...
 
-const person1 = {
-  firstName: `Dariel`,
-  lastName: `Ryker`,
-  showFullName(city) {
-    console.log(`${this.firstName} ${this.lastName} from ${city}`);
-  },
-};
+// -------------- WITH SETS -------------- //
 
-const person2 = {
-  firstName: `Elissa`,
-  lastName: `Delight`,
-};
+const currencyUnique = new Set([`Euro`, `USD`, `Euro`, `GBP`, `Euro`, `GBP`]);
 
-// store showFullName() method in an external function
-const fullName = person1.showFullName;
-// Note: fullName() is now a regular function call, and its 'this' keyword points to undefined (strict mode).
-// The output will be "Uncaught TypeError: Cannot read properties of undefined".
+// forEach(value, _, map)
+currencyUnique.forEach(function (value, _, set) {
+  console.log(`${value} is the ${value}`);
+});
+//    OUTPUT: Euro is the Euro   etc...
 
-// You can solve this error like this:
-fullName.call(person1, "New York"); // Dariel Ryker from New York
-
-// Using call() with spread operator
-const additionalInfo = ["Los Angeles"];
-fullName.call(person2, ...additionalInfo); // Elissa Delight from Los Angeles
-
-
-// Follow @coding_feature on Instagram for more content! 👍
+// (!)  underscore (_) passed as argument means a throwaway variable in JS (unnecessary variable)

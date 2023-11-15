@@ -94,10 +94,12 @@
         - The bind method
         - Immediately Invoked Function Expressions (IIFE)
         - Closures
-        - 
-        - 
-        - 
-        - 
+
+07. WORKING WITH ARRAYS
+        - Simple Array Methods
+        - The at() method
+        - Looping arrayes with forEach() method
+        - forEach() method with Maps and Sets
         - 
         - 
         - 
@@ -4027,8 +4029,17 @@ console.log(challengeAddVAT22(110));
 // Closures //
 //////////////
 
+// FORMAL DEFINITION:
+// A closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone.
 
-// closure
+// When the outer function finishes execution, its execution context is no longer on the call stack.
+// The function returned (inner) from the outer function creates a new execution context on top of the call stack.
+// The variable environment of this context is empty because there are no variables declared in this function.
+// Since the second function is in the global context, it is now a child scope of the global scope.
+// However, any function always has access to the variable environment of the execution context in which the function was created (even after that execution context is gone).
+// So, a closure is a mechanism that connects the variable environment to the function exactly as it was when the function was created.
+
+// Closure
 const secureCounting = function () {
   let person = 0;
 
@@ -4042,6 +4053,279 @@ const addPerson = secureCounting();
 addPerson(); // 1
 addPerson(); // 2
 addPerson(); // 3
+
+// When the addPerson() function is called, it attempts to access the "person" variable.
+// Since this variable is not in the current scope, JavaScript searches for it inside the closure.
+// This "search" occurs even before looking at the scope chain.
+// So, even if you have a global "person" variable, the closure takes priority over the parent scopes.
+
+// (!) Closures are created automatically, and you can't access closed-over variables directly because it's an internal property of a function.
+
+// console.dir() displays an interactive list of the properties of the specified JavaScript object.
+console.dir(addPerson);
+// Now you can see all properties, including scopes with their closures.
+// P.S. Everything inside the double brackets [[...]] is an internal property that you cannot access with code.
+
+
+
+// ------------------- MORE CLOSURE EXAMPPLES ------------------- //
+
+// EXAMPLE #1:
+
+let z;
+
+// function "a" which reassigns "z" when called
+const a = function () {
+  const num = 28;
+  z = function () {
+    console.log(num);
+  };
+};
+
+// function "b" which reassigns "z" when called
+const b = function () {
+  const num = 99;
+  z = function () {
+    console.log(num);
+  };
+};
+
+a();
+z(); // 28
+
+b();
+z(); // 99
+
+// so "z" wehn was reassigned by "b" also closed over the variable environment of "b"
+// a closure can be created by reassigning functionz (even without returning them)
+
+// EXAMPLE #2:
+const boadPassengers = function (n, waitTimeSeconds) {
+  // devide the passengers into 3 equal groups
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are boarding ${n} passengers split in ${perGroup} groups`);
+  }, waitTimeSeconds * 1000);
+
+  // the following console.log() will NOT wait for the callback, but it will be executed immediatly when called
+  console.log(`We will start boarding in ${waitTimeSeconds} seconds`);
+};
+
+boadPassengers(321, 5);
+// the callback function has access to the "perGroup" thanks to the closure
+
+
+
+
+
+
+// ------------------- setTimeout ------------------- //
+// setTimeout(a, b) accept 2 parameters:
+//    a. callbackFunction
+//    b. milleseconds after which callback will be executed
+
+setTimeout(function () {
+  console.log(`setTimeout Message after 3s`);
+}, 3000);
+// -------------------------------------------------- //
+
+
+
+
+
+
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+07. WORKING WITH ARRAYS
+
+
+
+
+
+
+//////////////////////////
+// Simple Array Methods //
+//////////////////////////
+
+
+// -------------------- ARRAY METHODS -------------------- //
+/*
+at()	            Returns an indexed element of an array
+concat()	        Joins arrays and returns an array with the joined arrays
+constructor	        Returns the function that created the Array object's prototype
+copyWithin()	    Copies array elements within the array, to and from specified positions
+entries()	        Returns a key/value pair Array Iteration Object
+every()	            Checks if every element in an array pass a test
+fill()	            Fill the elements in an array with a static value
+filter()	        Creates a new array with every element in an array that pass a test
+find()	            Returns the value of the first element in an array that pass a test
+findIndex()	        Returns the index of the first element in an array that pass a test
+flat()	            Concatenates sub-array elements 
+flatMap()	        Maps all array elements and creates a new flat array
+forEach()	        Calls a function for each array element
+from()	            Creates an array from an object
+includes()	        Check if an array contains the specified element (returns true or false)
+indexOf()	        Search the array for an element and returns its position (index)
+isArray()	        Checks whether an object is an array
+join()	            Joins all elements of an array into a string
+keys()	            Returns a Array Iteration Object, containing the keys of the original array
+lastIndexOf()	    Search the array for an element, starting at the end, and returns its position
+length	            Sets or returns the number of elements in an array
+map()	            Creates a new array with the result of calling a function for each array element
+pop()	            Removes the last element of an array, and returns that element
+prototype	        Allows you to add properties and methods to an Array object
+push()	            Adds new elements to the end of an array, and returns the new length
+reduce()	        Reduce the values of an array to a single value (going left-to-right)
+reduceRight()	    Reduce the values of an array to a single value (going right-to-left)
+reverse()	        Reverses the order of the elements in an array
+shift()	            Removes the first element of an array, and returns that element
+slice()	            Selects a part of an array, and returns the new array
+some()	            Checks if any of the elements in an array pass a test
+sort()	            Sorts the elements of an array
+splice()	        Adds/Removes elements from an array
+toString()	        Converts an array to a string, and returns the result
+unshift()	        Adds new elements to the beginning of an array, and returns the new length
+valueOf()	        Returns the primitive value of an array */
+// ------------------------------------------------------- //
+
+
+
+////////////////// STAFF FROM COURSE  ///////////////////////
+
+
+
+// ------------- Data for the examples below ------------- //
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [6, 7, 8, 9, 10];
+// ------------------------------------------------------- //
+
+// push()    adds new elements to the end of an array, and returns the new length
+// unshift()    adds new elements to the beginning of an array, and returns the new length
+// shift()    removes the first element of an array, and returns that element
+// pop()    removes the last element of an array, and returns that element
+// indexOf()    search the array for an element and returns its position (index)
+// includes()    check if an array contains the specified element (returns true or false)
+
+// slice(start, end)    returns a part of an array WITHOUT MUTATING the original one (end is NOT included)
+console.log(arr1.slice(2)); // [3, 4, 5]
+console.log(arr1.slice(2, 4)); // [3, 4]
+console.log(arr1.slice(-2)); // [4, 5]
+console.log(arr1.slice(1, -1)); // [2, 3, 4]
+console.log(arr1.slice()); // [1, 2, 3, 4, 5] shallow copy (you can chain multiple methods)
+console.log([...arr1]); // [1, 2, 3, 4, 5] shallow copy (does the same)
+
+// splice(start, numberOfElementsToRemoveFromStart)    returns the extracted part of an array MUTATING the original one
+console.log(arr1.splice(2, 2)); // [3, 4]
+console.log(arr1); // [1, 2, 5]
+
+// reverse()    returns the reversed array by MUTATING the original one (doesn't delete elements like splice() )
+console.log(arr2.reverse()); // [10, 9, 8, 7, 6]
+
+// array.concat(array2)    returns a new array by concatenating two arrays and WITHOUT MUTATING the original one
+const numbers1 = arr1.concat(arr2);
+console.log(numbers1); // [1, 2, 5, 10, 9, 8, 7, 6]
+console.log([...arr1, ...arr2]); // [1, 2, 5, 10, 9, 8, 7, 6] does the same
+
+// join(separating)    returns a string by joining all the elements of an array with separator between them
+console.log(numbers1.join(` - `)); // 1 - 2 - 5 - 10 - 9 - 8 - 7 - 6
+
+
+
+
+
+
+/////////////////////
+// The at() method //
+/////////////////////
+
+const arr1 = [1, 2, 3, 4, 5];
+
+// at(index)    returns the indexed element of an array
+console.log(arr1.at(-1)); // 5
+console.log(arr1[arr1.length - 1]); // 5
+console.log(arr1.slice(-1)[0]); // 5
+
+
+
+
+
+
+///////////////////////////////////////////
+// Looping arrayes with forEach() method //
+///////////////////////////////////////////
+
+//    array.forEach(element, index, array)
+// loops over the array and executes the callback function on each iteration
+// forEach() is a higher order function which requires a callback function
+// it passes the current elements of the array as the 1st obbligatory arguments of the callback function
+// you can pass also the 2nd and 3rd arugments: index of elements and the entire array
+// you CAN'T break out the forEach loop
+
+
+const movements = [300, -250, -150, 200, -1500, -125];
+
+
+
+movements.forEach(function (movement) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${movement}`);
+  }
+});
+//    OUTPUT: You deposited 300   etc...
+
+
+
+movements.forEach(function (mov, i) {
+  if (mov > 0) {
+    console.log(`Movement #${i + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement #${i + 1}: You withdrew ${mov}`);
+  }
+});
+//    OUTPUT: Movement #1: You deposited 300   etc...
+
+
+
+
+
+
+//////////////////////////////////////////
+//  forEach() method with Maps and Sets //
+//////////////////////////////////////////
+
+// forEach() also works with maps and sets
+
+// -------------- WITH MAPS -------------- //
+const currencies = new Map([
+  [`USD`, `United States Dollar`],
+  [`EUR`, `Euro`],
+  [`GBP`, `Pound Sterling`],
+]);
+
+// forEach(value, key, map)
+currencies.forEach(function (value, key) {
+  console.log(`${key} is the ${value}`);
+});
+//    OUTPUT: USD is the United States Dollar   etc...
+
+// -------------- WITH SETS -------------- //
+
+const currencyUnique = new Set([`Euro`, `USD`, `Euro`, `GBP`, `Euro`, `GBP`]);
+
+// forEach(value, _, map)
+currencyUnique.forEach(function (value, _, set) {
+  console.log(`${value} is the ${value}`);
+});
+//    OUTPUT: Euro is the Euro   etc...
+
+// (!)  underscore (_) passed as argument means a throwaway variable in JS (unnecessary variable)
 
 
 
