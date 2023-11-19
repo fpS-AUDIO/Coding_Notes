@@ -100,6 +100,10 @@
         - The at() method
         - Looping arrayes with forEach() method
         - forEach() method with Maps and Sets
+        - Creating DOM Elements (innerHTML + insertAdjacentHTML) 
+        - Data transformations: map() 
+        - Data transformations: filter()
+        - Data transformations: reduce()
         - 
         - 
         - 
@@ -109,8 +113,12 @@
         - 
         - 
         - 
-
-
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
 
 ___________________________________________________________________________________________________________________________________
 00. JAVASCRIPT FUNDAMENTALS (part 1)
@@ -4330,3 +4338,150 @@ currencyUnique.forEach(function (value, _, set) {
 
 
 
+
+
+/////////////////////////////////////////////////////////////
+//  Creating DOM Elements (innerHTML + insertAdjacentHTML) //
+/////////////////////////////////////////////////////////////
+
+
+
+// -------------- innerHTML -------------- //
+
+// innerHTML => property similar to textContent, which returns entire html (not only text like textContent)
+
+// you can empty the entire element like container by doing this:
+container.innerHTML = ``;
+
+// you can get the html of an element by doingthis:
+console.log(container.innerHTML);
+
+
+
+// -------------- insertAdjacentHTML -------------- //
+
+// You can create a variable containing the template literal string with HTML.
+// Then you can simply "inject" this template literal inside the HTML.
+
+// htmlElement.insertAdjacentHTML(`place`, htmlString);
+//  where `place` can be:
+//      - "beforebegin"     -> before the html element if it has parent
+//      - "afterbegin"      -> inside the html element before the 1st child
+//      - "beforeend"       -> inside the html element after the last child
+//      - "afterend"        -> after the html element if it has parent
+
+// EXAMPLE:
+container.insertAdjacentHTML(`afterbegin`, htmlPiece);
+
+
+
+
+
+
+//////////////////////////////////
+//  Data transformations: map() //
+//////////////////////////////////
+
+
+//  SYNTAX:   array.map(function(element, index, array) {...} )
+
+
+// returns a new array containing all transformed elements by callback function from all original array elements
+//  1. so it loops over the original array
+//  2. transform the current element with the callback function,
+//  3. push the transformed element to the new array
+//  4. finally returns a new array with all transformed elements
+// P.S. you can insert more then one "return" statement in the callback body, but only one should be executed (like in if/else)
+
+
+// EXAMPLE:
+// you might need to multiply each element of the original array by 2 (* 2)
+// and get the new array where all elements are multiplied
+
+
+// example in practice
+const testArray1 = [1, 2, 3, 4, 5];
+const resultArray1 = testArray1.map(function (element) {
+  return element * 2;
+});
+console.log(resultArray1); // [2, 4, 6, 8, 10]
+
+
+// same but with arraow function
+const resultArray1ARROW = testArray1.map((el) => el * 2);
+console.log(resultArray1ARROW); // [2, 4, 6, 8, 10]
+
+
+
+
+
+
+/////////////////////////////////////
+//  Data transformations: filter() //
+/////////////////////////////////////
+
+//  SYNTAX:   array.filter(function(element, index, array) {...} )
+
+// returns a new array containing all elements that passed a specified test condition
+// Indeed the callback function is executed every iteration
+// if condition after "return" is true the current element will be returned
+
+// EXAMPLE:
+// below we only need to take out only the positive numbers
+
+
+// example in practice
+const numbers = [200, -200, 340, -300, -20, 50, 400, -460];
+const positiveNumbers = numbers.filter(function (element) {
+  // return condition (true/false)
+  return element > 0;
+});
+console.log(positiveNumbers); // [200, 340, 50, 400]
+
+
+
+
+
+
+
+/////////////////////////////////////
+//  Data transformations: reduce() //
+/////////////////////////////////////
+
+//  SYNTAX:   array.reduce(callback, initialValueAccumulator);
+//            array.reduce(function(accumulator, currentElement, index, array) {...}, initialValueAccumulator);
+
+// returns a single value by "reducing" all array elements
+// so it loops over the elements, transform them to obtain only value (accumulator)
+// Indeed the callback function is executed every iteration
+// In each iteration you have to return the updated accumulator
+
+// EXAMPLE:
+// you might need to add all elements together
+
+
+// example in practice
+const moneyMovement = [200, -200, 340, -300, -20, 50, 400, -460];
+const moneyBalance = moneyMovement.reduce(function (accumulator, current) {
+  return accumulator + current;
+}, 0);
+console.log(moneyBalance); // 10
+
+
+
+// same but with arrow func syntax
+const moneyBalanceArrow = moneyMovement.reduce(
+  (accum, current) => accum + current,
+  0
+);
+console.log(moneyBalanceArrow); // 10
+
+
+
+
+// EXAMPLE of finding the maximum value
+const maxMovement = moneyMovement.reduce((accum, current) => {
+  if (accum > current) return accum;
+  else return current;
+}, moneyMovement[0]);
+console.log(maxMovement); // 400
