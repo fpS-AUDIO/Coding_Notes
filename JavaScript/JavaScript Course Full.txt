@@ -100,11 +100,11 @@
         - The at() method
         - Looping arrayes with forEach() method
         - forEach() method with Maps and Sets
-        - Creating DOM Elements (innerHTML + insertAdjacentHTML) 
+        - Manipulating DOM Elements
         - Data transformations: map() 
         - Data transformations: filter()
         - Data transformations: reduce()
-        - 
+        - Data transformations: find()
         - 
         - 
         - 
@@ -4267,7 +4267,7 @@ console.log(arr1.slice(-1)[0]); // 5
 // Looping arrayes with forEach() method //
 ///////////////////////////////////////////
 
-//    array.forEach(element, index, array)
+//    array.forEach(function(element, index, array) {....})
 // loops over the array and executes the callback function on each iteration
 // forEach() is a higher order function which requires a callback function
 // it passes the current elements of the array as the 1st obbligatory arguments of the callback function
@@ -4340,9 +4340,9 @@ currencyUnique.forEach(function (value, _, set) {
 
 
 
-/////////////////////////////////////////////////////////////
-//  Creating DOM Elements (innerHTML + insertAdjacentHTML) //
-/////////////////////////////////////////////////////////////
+////////////////////////////////
+//  Manipulating DOM Elements //
+////////////////////////////////
 
 
 
@@ -4374,6 +4374,23 @@ console.log(container.innerHTML);
 container.insertAdjacentHTML(`afterbegin`, htmlPiece);
 
 
+
+// -------------- preventDefault -------------- //
+
+// when you click submit botton of a form the page will be automatically reloded
+// to prevent this you can simpy attach preventDefault() method on the event object passed as parameter in the callback
+
+btn.addEventListener(`click`, function (event) {
+    // prevent from submitting
+    event.preventDefault()
+})
+
+
+
+// -------------- blur -------------- //
+
+// to remove the focus from an html element you can call the blur() method on that element when you need that
+// EXAMPLE: passwordInput.blur()
 
 
 
@@ -4422,9 +4439,10 @@ console.log(resultArray1ARROW); // [2, 4, 6, 8, 10]
 
 //  SYNTAX:   array.filter(function(element, index, array) {...} )
 
-// returns a new array containing all elements that passed a specified test condition
-// Indeed the callback function is executed every iteration
-// if condition after "return" is true the current element will be returned
+// The array.filter() method is a tool for filtering elements based on a specified test condition.
+// This method returns a new array containing only the elements that pass the specified test condition defined in the callback function.
+// The callback function is executed on each iteration, receiving the current element, its index, and the entire array.
+// If the condition specified in the callback function after the "return" keyword evaluates to true, the current element will be included in the new filtered array.
 
 // EXAMPLE:
 // below we only need to take out only the positive numbers
@@ -4485,3 +4503,36 @@ const maxMovement = moneyMovement.reduce((accum, current) => {
   else return current;
 }, moneyMovement[0]);
 console.log(maxMovement); // 400
+
+
+
+
+
+
+
+//////////////////////////////////
+// Data transformations: find() //
+//////////////////////////////////
+
+// SYNTAX:  array.find(callback, thisValue)
+//          array.find(function (element, index, array), thisValue)
+
+// The find() method loops over an array and retrieves one element of an array based on a condition.
+// so it needs a callback function which return a boolean
+// it returns the first element in the provided array that satisfies the provided testing function
+// If no values satisfy the testing function, undefined is returned
+
+// EXAMPLE #1:
+// find the 1st negative value
+const arrayMovements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const firstNegativeValue = arrayMovements.find(function (el) {
+  return el < 0;
+});
+console.log(firstNegativeValue);
+
+// EXAMPLE #2:
+// find an account
+const account = accounts.find(el => el.owner === `Sarah Smith`);
+console.log(account);
+// {owner: 'Sarah Smith', movements: Array(5), interestRate: 1, pin: 4444, username: 'ss'}
+

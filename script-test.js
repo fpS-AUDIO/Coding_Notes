@@ -4,35 +4,37 @@
 console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////
-//// array.map() Method in JavaScript ////
-//////////////////////////////////////////
-// Coding Note #38
+///////////////////////////////////////////////////////
+//// Using the array.filter() Method in JavaScript ////
+///////////////////////////////////////////////////////
+// Coding Note #39
 
-// SYNTAX: array.map(function(element, index, array) {...})
+// SYNTAX: array.filter(function(element, index, array) {...})
 
-// The map() method returns a new array containing all elements transformed by the callback function from the original array.
-//    Here's how it works:
-// 1. It loops over the original array,
-// 2. Transforms the current element with the callback function,
-// 3. Pushes the transformed element to the new array,
-// 4. Finally, returns the new array with all transformed elements.
-// Also the map() methos doesn't mutate the original array.
-//
+// The array.filter() method is a tool for filtering elements based on a specified test condition.
+// This method returns a new array containing only the elements that pass the specified test condition defined in the callback function.
+// The callback function is executed on each iteration, receiving the current element, its index, and the entire array (last 2 are optional).
+// If the condition specified in the callback function after the "return" keyword evaluates to true ...
+//  ... the current element will be included in the new filtered array.
 
-// Note:  You can include more than one "return" statement in the callback body,
-//        but only one should be executed (similar to an if/else statement).
+// -------------- Data for the examples below -------------- //
+const users = [
+  { name: `David`, age: 27 },
+  { name: `Alice`, age: 16 },
+  { name: `Alex`, age: 26 },
+  { name: `John`, age: 17 },
+];
+// --------------------------------------------------------- //
 
-// Example: Creating a new array where each element is the power of 2
-const originalArray = [1, 2, 3, 4, 5];
-const resultArray = originalArray.map(function (element) {
-  return element ** 2;
+// Example: Filtering users younger than 18
+const youngUsers = users.filter(function (user) {
+  return user.age < 18;
 });
-console.log(resultArray); // [1, 4, 9, 16, 25]
+console.log(youngUsers); // [{name: 'Alice', age: 16}, {name: 'John', age: 17}]
 
-// Same example, but using arrow function syntax
-const resultArrayArrow = originalArray.map((element) => element ** 2);
-console.log(resultArrayArrow); // [1, 4, 9, 16, 25]
+// Same example using arrow function syntax
+const youngUsersArrow = users.filter((user) => user.age < 18);
+console.log(youngUsersArrow); // [{name: 'Alice', age: 16}, {name: 'John', age: 17}]
 
 // Follow @coding_feature on Instagram for more content! 👍
 
@@ -86,3 +88,16 @@ const calcAverageHumanAge = function (arrayAges) {
 // testing
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+
+// same function 'calcAverageHumanAge' but arrow function syntax and chaining
+const calcAverageHumanAgeArrow = (arrayAges) => {
+  return arrayAges
+    .map((element) => (element <= 2 ? 2 * element : 16 + element * 4))
+    .filter((element) => element >= 18)
+    .reduce((accum, element, _, arr) => accum + element / arr.length, 0);
+};
+
+console.log(calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]));
+
+//////////////////////////////////////////////////////////////////////////
