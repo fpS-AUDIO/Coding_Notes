@@ -5,36 +5,30 @@ console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////
-//// Using the array.filter() Method in JavaScript ////
+//// Using the array.reduce() Method in JavaScript ////
 ///////////////////////////////////////////////////////
-// Coding Note #39
+// Coding Note #40
 
-// SYNTAX: array.filter(function(element, index, array) {...})
+// Syntax:  array.reduce(callback, initialValue);
+//          array.reduce(function(accumulator, currentElement, index, array) {...}, initialAccumulatorValue);
 
-// The array.filter() method is a tool for filtering elements based on a specified test condition.
-// This method returns a new array containing only the elements that pass the specified test condition defined in the callback function.
-// The callback function is executed on each iteration, receiving the current element, its index, and the entire array (last 2 are optional).
-// If the condition specified in the callback function after the "return" keyword evaluates to true ...
-//  ... the current element will be included in the new filtered array.
+// The `reduce` method returns a single value ("accumulator") by iteratively applying the callback function to each element in the array.
+// The callback function takes four parameters: accumulator, currentElement, index, and array.
+// Remember that the initial value is optional. If omitted, the first element of the array becomes the initial accumulator value.
 
-// -------------- Data for the examples below -------------- //
-const users = [
-  { name: `David`, age: 27 },
-  { name: `Alice`, age: 16 },
-  { name: `Alex`, age: 26 },
-  { name: `John`, age: 17 },
-];
-// --------------------------------------------------------- //
+// Example:
+// Let's find the sum of an array of numbers using the reduce method.
+// The accumulator starts with an initial value of 0 and gets updated with each element in the array.
+const numbersArray = [1, 2, -3, 4, 5, -6, 7, 2];
+const sum1 = numbersArray.reduce(function (accumulator, currentNumber) {
+  return accumulator + currentNumber;
+}, 0);
+console.log(sum1); // Output: 12
 
-// Example: Filtering users younger than 18
-const youngUsers = users.filter(function (user) {
-  return user.age < 18;
-});
-console.log(youngUsers); // [{name: 'Alice', age: 16}, {name: 'John', age: 17}]
-
-// Same example using arrow function syntax
-const youngUsersArrow = users.filter((user) => user.age < 18);
-console.log(youngUsersArrow); // [{name: 'Alice', age: 16}, {name: 'John', age: 17}]
+// Same example using arrow function syntax.
+// Note that when the initial value is omitted, the first element of the array becomes the initial accumulator value.
+const sum2 = numbersArray.reduce((accum, el) => accum + el);
+console.log(sum2); // Output: 12
 
 // Follow @coding_feature on Instagram for more content! 👍
 

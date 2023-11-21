@@ -105,11 +105,11 @@
         - Data transformations: filter()
         - Data transformations: reduce()
         - Data transformations: find()
-        - 
-        - 
-        - 
-        - 
-        - 
+        - Data transformations: findIndex()
+        - Data transformations: some() and every()
+        - Data transformations: flat() and flatMap()
+        - Data transformations: sort()
+        - Data transformations: fill() and Array.from()
         - 
         - 
         - 
@@ -4532,7 +4532,255 @@ console.log(firstNegativeValue);
 
 // EXAMPLE #2:
 // find an account
-const account = accounts.find(el => el.owner === `Sarah Smith`);
+const account = accounts.find(el => el.owner === `Alexander Ivanov`);
 console.log(account);
-// {owner: 'Sarah Smith', movements: Array(5), interestRate: 1, pin: 4444, username: 'ss'}
+// {owner: 'Alexander Ivanov', movements: Array(5), interestRate: 1.2, pin: 1111, username: 'ai'}
 
+
+
+
+////////////////////////////////////////
+//  Data transformations: findIndex() //
+////////////////////////////////////////
+
+// SYNTAX:  array.findIndex(callback, thisValue)
+//          array.findIndex(function (element, index, array), thisValue)
+
+// This method returns the index of the 1st element in an array that satisfies the provided testing function.
+// So the callback function is executed on each iteration and accepts 3 parameters: element, index and array.
+// After the "return" keyword there is an evaluation, if the answer ot "true", the index of that element will return
+
+
+
+const testArrey = [5, 10, 15, 20, 25, 30];
+
+
+const resultIndex = testArrey.findIndex(function (el) {
+  return el / 5 === 5;
+});
+console.log(resultIndex); // 4
+
+
+
+// same but using arrow function syntax
+const resultIndexArrow = testArrey.findIndex(el => el / 5 === 5);
+console.log(resultIndexArrow); // 4
+
+
+
+
+///////////////////////////////////////////////
+//  Data transformations: some() and every() //
+///////////////////////////////////////////////
+
+const movements = [
+  500, -200, 1000, -300, -400, 49, 700, 300, -800, 1200, -500, -1000, 1500,
+];
+
+
+
+
+// SYNTAX:  array.some(callbackFn, thisValue)
+//          array.some(function (element, index, array), thisValue)
+// some() returns "true" if at least one element of the array passes the test in the callback function
+// some() method doesn't mutate the array
+
+// EXAMPLE: check if there is a positive number bigger than 1000
+const booleanResult1 = movements.some(el => el > 1000);
+console.log(booleanResult1); // true
+
+
+
+// ------------------------------------------------------- //
+
+
+
+// NOTE:  you can check for equality (without condition) using includes() method
+//        so includes() returns true if there is the exact same value inside the array.
+// EXAMPLE:
+console.log(movements.includes(1000)); // true
+console.log(movements.includes(28)); // false
+
+
+
+// ------------------------------------------------------- //
+
+
+
+// SYNTAX:  array.every(callbackFn, thisValue)
+//          array.every(function (element, index, array), thisValue)
+// every() method is exactly the same as some() but it returns true only if all elements pass the condition
+
+
+
+
+/////////////////////////////////////////////////
+//  Data transformations: flat() and flatMap() //
+/////////////////////////////////////////////////
+
+// SYNTAX:  array.flat(depthLevel)
+// flat() method returns a new flattened array (removing nested structures)
+// depthLevel is an optional parameter (default is 1) which means how deep flattening should go
+// "Infinity" keyword can be passed like argument which basically means "max depth"
+
+const testArray = [1, [2, [3]], 4, 5, [[6], 7]];
+
+// 1 level of flatting
+const flatTestArray1 = testArray.flat();
+console.log(flatTestArray1); // [1, 2, [3], 4, 5, [6], 7]
+
+// 2 levels of flatting
+const flatTestArray2 = testArray.flat(2);
+console.log(flatTestArray2); // [1, 2, 3, 4, 5, 6, 7]
+
+const flatTestArray3 = testArray.flat(Infinity);
+console.log(flatTestArray3); // [1, 2, 3, 4, 5, 6, 7]
+
+
+
+// ------------------------------------------------------- //
+
+
+
+//  SYNTAX:   array.flatMap(function(element, index, array) {...}, thisValue )
+// flatMap() combines flat() and map() methods which is better for the performance
+// flatMap() works the same as map() but in the end it "flattens" the result by 1 level
+
+
+
+
+//////////////////////////////////
+// Data transformations: sort() //
+//////////////////////////////////
+
+//  SYNTAX:   array.sort(callback(a, b))
+//            a = current value, b = next value (of any the iteration)
+
+// sort() method, by default (without arguments), does the sorting basing on strings from A to Z.
+// So if you sort numbers, it coverts the numbers to the strings, sort them (like strings), and reconvert them to numbers again.
+// sort() method mutates the original array and returns the reference to the same array.
+
+const arrayLetters = [`b`, `c`, `a`, `z`, `d`, `m`];
+const arrayNumbers = [25, 10, 195, -2, -10, 23];
+
+console.log(arrayLetters.sort()); // ['a', 'b', 'c', 'd', 'm', 'z']
+console.log(arrayNumbers.sort()); // [-10, -2, 10, 195, 23, 25]
+
+
+
+// ------------------------------------------------------- //
+
+
+
+// You can change the default behavior by adding the callback function with its own rules
+// sort() method keeps looping over the array applying the callback function until everything is sorted
+
+// Rules of the callback function:
+//    - if you return a negative value (like -1) than then the value "a" will be put before "b".
+//    - if you return a positive value (like 1) than then the value "a" will be put after "b".
+
+// So:
+//    - return < 0  -->  A, B (keep order)
+//    - return > 0  -->  B, A (switch order)
+//    - return 0    -->  position remains unchanged
+
+
+
+
+// sort in ascending order
+const ascendingArrayNumbers = arrayNumbers.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(ascendingArrayNumbers); // [-10, -2, 10, 23, 25, 195]
+
+// same result but with easier syntax
+const ascendingArrayNumbers2 = arrayNumbers.sort((a, b) => a - b);
+console.log(ascendingArrayNumbers2); // [-10, -2, 10, 23, 25, 195]
+
+
+
+// ------ //
+
+
+
+// sort in descending order
+const descendingArrayNumbers = arrayNumbers.sort((a, b) => {
+  if (a > b) return -1;
+  if (a < b) return 1;
+});
+console.log(descendingArrayNumbers); // [195, 25, 23, 10, -2, -10]
+
+// same result but with easier syntax
+const descendingArrayNumbers2 = arrayNumbers.sort((a, b) => b - a);
+console.log(descendingArrayNumbers2); // [195, 25, 23, 10, -2, -10]
+
+
+
+
+///////////////////////////////////////////////////
+// Data transformations: fill() and Array.from() //
+///////////////////////////////////////////////////
+
+
+// -------------- theory before practice -------------- //
+
+// you can create an hard-coded array like this:
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = new Array(1, 2, 3, 4, 5);
+console.log(arr1); // [1, 2, 3, 4, 5]
+console.log(arr2); // [1, 2, 3, 4, 5]
+
+// but if you specify only one argument (numberIndexes) in array-constructor ...
+// ... JS will create an empty array with numberIndexes length
+const arr3 = new Array(5);
+console.log(arr3); // [empty × 5]
+
+// Note: you CAN'T call many method on empty array like map() method
+
+
+
+// ---------------------- fill() ---------------------- //
+
+
+
+// SYNTAX:  array.fill(value, startIndex, endIndex)
+// You can call fill() method on empty (or not) array.
+// This method fills the entire array with the given value by mutating it.
+// Optionally, while filling, you can pass startIndex and endIndex (not included)
+
+const arr4 = arr3.fill(`Z`);
+console.log(arr4); // ['Z', 'Z', 'Z', 'Z', 'Z']
+
+const arr5 = arr4.fill(`A`, 1, -1);
+console.log(arr5); //  ['Z', 'A', 'A', 'A', 'Z']
+
+
+
+// ------------------- Array.from() ------------------- //
+
+
+
+// SYNTAX:  Array.from(arrayLike)
+// SYNTAX:  Array.from(arrayLike, map(), thisValueForMapFunc)
+// SYNTAX:  Array.from(arrayLike, function(element, index, array) {...}, thisValueForMapFunc)
+
+// creating a new array with Array.from(ObjectWithLengthProperty, map())
+const arr6 = Array.from({ length: 5 }, () => `Y`);
+console.log(arr6); // ['Y', 'Y', 'Y', 'Y', 'Y']
+
+// same logic but adding arguments to the map() method
+const arr7 = Array.from({ length: 5 }, (_, index) => index + 1);
+console.log(arr7); // [1, 2, 3, 4, 5]
+
+
+// So you can convert an iterable to an array by using Array.from() method.
+// For example you convert a NodeList from document.querySelectorAll() to an array.
+// You need to do this conversion to be able to apply array-instances methods on them.
+
+// NOTE: from() method is used on Array Object and NOT on instances
+
+
+// NOTE: also you can convert an iterable/arrayLike into an array using the spread operator
+// but in this case you can't chain methods
+console.log([...`HELLO`]); // ['H', 'E', 'L', 'L', 'O']
