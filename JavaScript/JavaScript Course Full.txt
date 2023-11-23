@@ -110,6 +110,10 @@
         - Data transformations: flat() and flatMap()
         - Data transformations: sort()
         - Data transformations: fill() and Array.from()
+
+08. NUMBERS, DATES AND TIMERS        
+        - Converting and Checking Numbers
+        - Math and Rounding
         - 
         - 
         - 
@@ -119,6 +123,13 @@
         - 
         - 
         - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        -         
 
 ___________________________________________________________________________________________________________________________________
 00. JAVASCRIPT FUNDAMENTALS (part 1)
@@ -315,6 +326,10 @@ operators = allows us to transform values or combine multiple values.
 
     2.  assignment operators
         (=  +=  -=  *=  /=  ++  --)
+
+(!!!) NOTE: ++ operator increment the value but it return the original value (example: counter++)
+            to return the updated value you need to write ++counter
+            (same for --)
 
 
     3.  comparison operators
@@ -4517,10 +4532,11 @@ console.log(maxMovement); // 400
 // SYNTAX:  array.find(callback, thisValue)
 //          array.find(function (element, index, array), thisValue)
 
-// The find() method loops over an array and retrieves one element of an array based on a condition.
-// so it needs a callback function which return a boolean
-// it returns the first element in the provided array that satisfies the provided testing function
-// If no values satisfy the testing function, undefined is returned
+// The find() method loops over an array and retrieves the first element that satisfies a given condition.
+// This method requires a callback function that should return a boolean. If true, the method returns that element.
+// The callback function can optionally accept three parameters: the current element, its index, and the entire array.
+// Note: If no values satisfy the testing function, undefined is returned.
+// Additionally, the second argument of find() allows you to specify the value of the "this" keyword during execution.
 
 // EXAMPLE #1:
 // find the 1st negative value
@@ -4543,12 +4559,15 @@ console.log(account);
 //  Data transformations: findIndex() //
 ////////////////////////////////////////
 
-// SYNTAX:  array.findIndex(callback, thisValue)
-//          array.findIndex(function (element, index, array), thisValue)
 
-// This method returns the index of the 1st element in an array that satisfies the provided testing function.
-// So the callback function is executed on each iteration and accepts 3 parameters: element, index and array.
-// After the "return" keyword there is an evaluation, if the answer ot "true", the index of that element will return
+// SYNTAX:  array.findIndex(callback, thisValue)
+//          array.findIndex(callback(element, index, array), thisValue)
+
+// The array.findIndex() method requires a callback function that should return a boolean.
+// If returned boolean is true, the findIndex() method returns the index of that element.
+// The callback function can optionally accept three parameters: the current element, its index, and the entire array.
+// Note: If no values satisfy the testing function, the method returns -1.
+// Additionally, the second argument of findIndex() allows you to specify the value of the "this" keyword during execution.
 
 
 
@@ -4784,3 +4803,96 @@ console.log(arr7); // [1, 2, 3, 4, 5]
 // NOTE: also you can convert an iterable/arrayLike into an array using the spread operator
 // but in this case you can't chain methods
 console.log([...`HELLO`]); // ['H', 'E', 'L', 'L', 'O']
+
+
+
+
+
+
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+08. NUMBERS, DATES AND TIMERS
+
+
+
+
+
+
+/////////////////////////////////////
+// Converting and Checking Numbers //
+/////////////////////////////////////
+
+// In JS all numbers are presented internally as floating point numbers (no matter you write them is int or float)
+// For this reason we have only one data type for all numbers (28 === 28.0 // true)
+// Also numbers are stored in binary format, so it's difficul to represent some fractions (like 0.1)
+
+console.log(0.1 + 0.2); // 0.30000000000000004
+console.log(0.1 + 0.2 === 0.3); // false
+
+// convert a string to a number
+// when JavaScript sees the plus operator, it will do type coercion.
+
+console.log(Number(`28`)); // 28
+console.log(+`28`); // 28
+
+// NOTE:  parseInt() and parseFloat() are global functions,
+//        so you can call them without Number object,
+//        but for good practice you should call them on Number object like Number.parseFloat()
+//        Number provides its own namespace
+
+
+
+
+// ----------------- methods of Number object ----------------- //
+
+
+
+//    Number.parseInt(str, radix)
+// returns an integer number from a string which has to start with a number or space (can include symbols)
+// optionally you can (and should) specify the 2nd argument (radix) which is  the base of the numeral system (10, 2 which binary etc)
+console.log(Number.parseInt(`2rem`, 10)); // 2
+console.log(Number.parseInt(`2.5rem`, 10)); // 2
+console.log(Number.parseInt(`rem20`, 10)); // NaN
+
+
+//    Number.parseFloat(str)
+// returns an floating point number from a string which has to start with a number or space (can include symbols)
+console.log(Number.parseFloat(`2.5rem`)); // 2.5
+
+
+//    Number.isNaN(value)
+// returns true if the given value is NaN (not a number)
+console.log(Number.isNaN(20)); // false
+console.log(Number.isNaN(+`20rem`)); // true
+console.log(Number.isNaN(10 / 0)); // false (because 10 / 0 = Infinity)
+
+
+//    Number.isFinite(value)
+// returns true if the given value is a finite number (NaN and Infinity are false!)
+// it's the best method to check if the value is a real number
+console.log(Number.isFinite(28)); // true
+console.log(Number.isFinite(28.1)); // true
+console.log(Number.isFinite(0)); // true
+console.log(Number.isFinite(`28`)); // false
+
+
+//    Number.isInteger(value)
+// returns true if the given value is an Integer
+console.log(Number.isInteger(28)); // true
+console.log(Number.isInteger(28.0)); // true
+console.log(Number.isInteger(28.1)); // false
+console.log(Number.isInteger(`28`)); // false
+
+
+
+
+
+
+///////////////////////
+// Math and Rounding //
+///////////////////////
+
