@@ -115,9 +115,9 @@
         - Converting and Checking Numbers
         - Math and Rounding
         - The remainder operator
-        - 
-        - 
-        - 
+        - Numeric separators 
+        - Working with BigInt
+        - Creating dates
         - 
         - 
         - 
@@ -4673,19 +4673,19 @@ console.log(flatTestArray3); // [1, 2, 3, 4, 5, 6, 7]
 //////////////////////////////////
 
 //  SYNTAX:   array.sort(callback(a, b))
-//            a = current value, b = next value (of any the iteration)
+//            a = current value, b = next value (of any iteration)
 
 // sort() method, by default (without arguments), does the sorting basing on strings from A to Z.
-// So if you sort numbers, it coverts the numbers to the strings, sort them (like strings), and reconvert them to numbers again.
-// sort() method mutates the original array and returns the reference to the same array.
+// So if you sort numbers, without giving a callback function with its own rules,
+// it converts the numbers to the strings, sorts them (like strings in UTF-16 code units order), and reconverts them to numbers again.
+// Careful, this method mutates the original array and returns the reference to the same array.
 
+// Examples with default behavior:
 const arrayLetters = [`b`, `c`, `a`, `z`, `d`, `m`];
-const arrayNumbers = [25, 10, 195, -2, -10, 23];
+const arrayNumbers = [-4, 135, 10, 27, -10, -9, 4];
 
 console.log(arrayLetters.sort()); // ['a', 'b', 'c', 'd', 'm', 'z']
-console.log(arrayNumbers.sort()); // [-10, -2, 10, 195, 23, 25]
-
-
+console.log(arrayNumbers.sort()); // [-10, -4, -9, 10, 135, 27, 4]
 
 // ------------------------------------------------------- //
 
@@ -4695,8 +4695,9 @@ console.log(arrayNumbers.sort()); // [-10, -2, 10, 195, 23, 25]
 // sort() method keeps looping over the array applying the callback function until everything is sorted
 
 // Rules of the callback function:
-//    - if you return a negative value (like -1) than then the value "a" will be put before "b".
-//    - if you return a positive value (like 1) than then the value "a" will be put after "b".
+//   - If you return a negative value (like -1), then the value "a" will be placed before "b".
+//   - If you return a positive value (like 1), then the value "a" will be placed after "b".
+//   - If you return 0, the position remains unchanged.
 
 // So:
 //    - return < 0  -->  A, B (keep order)
@@ -4711,28 +4712,13 @@ const ascendingArrayNumbers = arrayNumbers.sort((a, b) => {
   if (a > b) return 1;
   if (a < b) return -1;
 });
-console.log(ascendingArrayNumbers); // [-10, -2, 10, 23, 25, 195]
+console.log(ascendingArrayNumbers); // [-10, -9, -4, 4, 10, 27, 135]
 
 // same result but with easier syntax
 const ascendingArrayNumbers2 = arrayNumbers.sort((a, b) => a - b);
-console.log(ascendingArrayNumbers2); // [-10, -2, 10, 23, 25, 195]
+console.log(ascendingArrayNumbers2); // [-10, -9, -4, 4, 10, 27, 135]
 
 
-
-// ------ //
-
-
-
-// sort in descending order
-const descendingArrayNumbers = arrayNumbers.sort((a, b) => {
-  if (a > b) return -1;
-  if (a < b) return 1;
-});
-console.log(descendingArrayNumbers); // [195, 25, 23, 10, -2, -10]
-
-// same result but with easier syntax
-const descendingArrayNumbers2 = arrayNumbers.sort((a, b) => b - a);
-console.log(descendingArrayNumbers2); // [195, 25, 23, 10, -2, -10]
 
 
 
@@ -4981,6 +4967,187 @@ console.log(+(28.345).toFixed(2)); // 28.34
 // The remainder operator //
 ////////////////////////////
 
+// The remainder operator returns a remainder of a divison.
+// For example:
+//  - if you divide 5 / 2 you get 2.5
+//  - if you leave the decimal part, only 2 remains (from 2.5)
+//  - now if you multiply your result (2) to the number of divison (2) you get 4 (2*2=4)
+//  - then if you subtruct the result (4) from the originl number (5) you get 1 (5-4=1)
+//  - and this 1 is the remainer
+
+console.log(5 % 2); // 1 (5 = 2 * 2 + 1 remainder)
+console.log(8 % 3); // 2 (8 = 3 * 2 + 2 remainder)
+console.log(13 % 3); // 1 (13 = 4 * 3 + 1 remainder)
+
+// you can use this to check if the number is even (because even % 2 = 0)
+// with knowledge if the number is even or odd you can do different things
+
+// PRACTICAL EXAMPLE:
+
+// 1. attach an event listener to the "labelBalance" element
+// 2. create a NodeList with all elements with "movements__row" class
+// 3. transform it into an array usign the spread operator
+// 4. check if the current element is even and apply some style on it
+// 5.  apply some style on every 3rd index element
+
+labelBalance.addEventListener(`click`, function (e) {
+  e.preventDefault();
+  [...document.querySelectorAll(`.movements__row`)].forEach(function (el, i) {
+    // 0, 2, 4, 6...
+    if (i % 2 === 0) {
+      el.style.backgroundColor = `#c7c5bf`;
+    } // 0, 3, 6, 9
+    else if (i % 3 == 0) {
+      el.style.backgroundColor = `#8c8a85`;
+    }
+  });
+});
 
 
 
+
+
+
+////////////////////////
+// Numeric separators //
+////////////////////////
+
+// Numeric separator is ES2021 feature
+// Numeric separators are simply underscores that you can place anywhere you want between numbers (only 1 in a row)
+// It helps you understand the number and these underscores are ignored by hte JS engine.
+// Without NS: 836269063348
+// With NS: 836_269_063_348
+
+// NOTE: you can't use it in strings before converting the str in a numbers (JS can't use parsing on them)
+console.log(Number(`256_000`)); // NaN
+
+
+
+
+
+
+/////////////////////////
+// Working with BigInt //
+/////////////////////////
+
+// Big Integer is a special data type of Integers that was introduced in 2020.
+// since in JS the numbers are stored in binary system based on 64 digits we have some limits
+// this is the biggest int that JS can represent safely:
+console.log(2 ** 53 - 1); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+// 2 because it's binary
+// 53 because there are 53 bits to store the number (the rest of digits are used to store position of decimal point and the sign)
+
+// to transform a really big number into BigInt you can just put "n" in the end of number (hardcode)
+// or use BigInt() function with small numbers (safe numbers) and it's usually used to not mix data types.
+console.log(231782351283375123n); // 231782351283375123n
+
+// all the operator works the same (but remember that you can't mix BigInt with Numbers)
+console.log(25n + 5n); // 30n
+
+// EXCEPTION:
+// comparison operators (20n === 20 is false)
+// plus operator when working with strings
+
+// Also Math operations are not working with BigInt
+// And when you devide bigint the bigint is returned cutting out the decimal part:
+console.log(10n / 3n); // 3n
+
+
+
+
+
+
+////////////////////
+// Creating dates //
+////////////////////
+
+// There are 4 WAYS to create a date (because new Date() constructor function accepts different parameters)
+
+// ------------------------------------------------------- //
+
+//  ---> 1). use "new Date()" constructor to obtain the "now" moment
+
+const now = new Date();
+console.log(now); // Sun Nov 26 2023 15:51:49 GMT+0100 (Ora standard dell’Europa centrale)
+
+// ------------------------------------------------------- //
+
+//  ---> 2). parse the date from a date string made my constructor (good idea)
+
+const date1 = new Date(`Nov 26 2023 15:54:29`);
+console.log(date1); // Sun Nov 26 2023 15:54:29 GMT+0100 (Ora standard dell’Europa centrale)
+
+// ------------------------------------------------------- //
+
+//  ---> 3). write the string manually (not a good idea)
+
+const date2 = new Date(`August 28 1996`);
+console.log(date2); // Wed Aug 28 1996 00:00:00 GMT+0200 (Ora legale dell’Europa centrale)
+
+// new Date(year, month, weekDay, hour, minute, second) where january is 0
+const date3 = new Date(2025, 7, 28);
+console.log(date3); // Thu Aug 28 2025 00:00:00 GMT+0200 (Ora legale dell’Europa centrale)
+
+const date4 = new Date(2025, 0, 40); // January 40th??? It's ok...
+console.log(date4); // Sun Feb 09 2025 00:00:00 GMT+0100 (Ora standard dell’Europa centrale)
+
+// ------------------------------------------------------- //
+
+//  ---> 4). new Date(unixTimestampMilliseconds) SECONDS SINCE JAN 01 1970 * 1000
+
+const date5 = new Date(1000);
+console.log(date5); // Thu Jan 01 1970 01:00:01 GMT+0100 (Ora standard dell’Europa centrale)
+
+// create date 3 days after the epoch. (3days * 24hours * 60minutes * 60seconds *1000milliseconds)
+const date6 = new Date(3 * 24 * 60 * 60 * 1000);
+console.log(date6); // Sun Jan 04 1970 01:00:00 GMT+0100 (Ora standard dell’Europa centrale)
+
+const date6Timestamp = 3 * 24 * 60 * 60 * 1000;
+console.log(date6Timestamp); // 259200000
+
+// ------------------------------------------------------- //
+
+// ----------------------- methods ----------------------- //
+
+const futureDate = new Date(2025, 7, 28, 10, 30);
+console.log(futureDate); // Thu Aug 28 2025 10:30:00 GMT+0200
+
+// date.getFullYear()    returns year ( never use getYear()!! )
+console.log(futureDate.getFullYear()); // 2025
+
+// date.getMonth()    returns month
+console.log(futureDate.getMonth()); // 7 (august is 7 ZERO BASED)
+
+// date.getDate()    returns day of month
+console.log(futureDate.getDate()); // 28
+
+// date.getDay()    returns day of the week
+console.log(futureDate.getDay()); // 4 (0 IS SUNDAY)
+
+// date.getHours()    returns hours
+console.log(futureDate.getHours()); // 10
+
+// date.getMinutes()    returns mniutes
+console.log(futureDate.getMinutes()); // 30
+
+// date.getSeconds()    returns seconds
+console.log(futureDate.getSeconds()); // 0
+
+// date.getMilliseconds()    returns milliseconds
+console.log(futureDate.getMilliseconds()); // 0
+
+// date.toISOString()    returns ISO string (international standard)
+// "Z" in the ends means "UTC": Coordinated Universal Time (time without any time zone in London and without daylight savings)
+console.log(futureDate.toISOString()); // 2025-08-28T08:30:00.000Z
+
+// date.getTime()    returns timestamp (milliseconds passed since January 1, 1970)
+console.log(futureDate.getTime()); // 1756369800000
+
+// Date.now()    retuns current timestamp (now exact moment)
+console.log(Date.now()); // 1701012829399
+
+// (!) NOTE: also there "set" version for previous methods
+// EXAMPLE:
+futureDate.setYear(2030);
+console.log(futureDate); // Wed Aug 28 2030 10:30:00 GMT+0200

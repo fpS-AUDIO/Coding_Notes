@@ -4,43 +4,46 @@
 console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////
-//// array.some() and array.every() methods in JavaScript ////
-//////////////////////////////////////////////////////////////
-// Coding Note #43
+///////////////////////////////////////////
+//// array.sort() method in JavaScript ////
+///////////////////////////////////////////
+// Coding Note #45
 
-// SYNTAX:  array.some(callbackFn, thisValue)
-//          array.some(function (element, index, array), thisValue)
-//          array.every(function (element, index, array), thisValue)
+//  SYNTAX:   array.sort(callback(a, b))
+//            a = current value, b = next value (of any iteration)
 
-// The array.some() method tests if AT LEAST ONE element of an array passes the given test.
-// It requires a callback function as the first argument.
-// The callback function can accept 3 optional parameters: the current element, its index, and the entire array.
-// An evaluation follows the 'return' keyword of the callback function, returning a boolean.
-// The method returns 'true' if at least one element of the array passes the test in the callback function.
-// Additionally, you can provide the value of the 'this' keyword by passing it as the second argument of the some() method.
-// Importantly, the original array remains unaltered.
+// sort() method, by default (without arguments), does the sorting basing on strings from A to Z.
+// So if you sort numbers, without giving a callback function with its own rules,
+// it converts the numbers to the strings, sorts them (like strings in UTF-16 code units order), and reconverts them to numbers again.
+// Careful, this method mutates the original array and returns the reference to the same array.
 
-const arrayNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
+// Examples with default behavior:
+const arrayLetters = [`b`, `c`, `a`, `z`, `d`, `m`];
+const arrayNumbers = [-4, 135, 10, 27, -10, -9, 4];
 
-// Example:
-// Check if the array contains at least one even number
-const hasEven1 = arrayNumbers.some(function (num) {
-  return num % 2 === 0;
-});
-console.log(hasEven1); // true
-
-// Same example but using arrow function syntax
-const hasEven2 = arrayNumbers.some((num) => num % 2 === 0);
-console.log(hasEven2); // true
+console.log(arrayLetters.sort()); // ['a', 'b', 'c', 'd', 'm', 'z']
+console.log(arrayNumbers.sort()); // [-10, -4, -9, 10, 135, 27, 4]
 
 // ------------------------------------------------------- //
 
-// The array.every() method is exactly the same as some() but it returns true only if ALL elements pass the condition.
+// You can change the default behavior by adding the callback function with its own rules
+// sort() method keeps looping over the array applying the callback function until everything is sorted
 
-// Check if the array contains only even numbers
-const onlyEven = arrayNumbers.every((num) => num % 2 === 0);
-console.log(onlyEven); // false
+// Rules of the callback function:
+//   - If you return a negative value (like -1), then the value "a" will be placed before "b".
+//   - If you return a positive value (like 1), then the value "a" will be placed after "b".
+//   - If you return 0, the position remains unchanged.
+
+// sort in ascending order
+const ascendingArrayNumbers = arrayNumbers.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+console.log(ascendingArrayNumbers); // [-10, -9, -4, 4, 10, 27, 135]
+
+// same result but with easier syntax
+const ascendingArrayNumbers2 = arrayNumbers.sort((a, b) => a - b);
+console.log(ascendingArrayNumbers2); // [-10, -9, -4, 4, 10, 27, 135]
 
 // Follow @coding_feature on Instagram for more content! 👍
 
