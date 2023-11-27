@@ -118,8 +118,8 @@
         - Numeric separators 
         - Working with BigInt
         - Creating dates
-        - 
-        - 
+        - Operations with dates
+        - Internationalizing dates (INTL)
         - 
         - 
         - 
@@ -5151,3 +5151,35 @@ console.log(Date.now()); // 1701012829399
 // EXAMPLE:
 futureDate.setYear(2030);
 console.log(futureDate); // Wed Aug 28 2030 10:30:00 GMT+0200
+
+
+
+
+
+
+///////////////////////////
+// Operations with dates //
+///////////////////////////
+
+// creating 2 dates and get only the timestamp (number data type)
+const data1 = new Date(2023, 10, 25).getTime();
+const data2 = new Date(2023, 10, 20).getTime();
+
+// function which returns difference of days
+const calcDaysPassed = (date1, date2) =>
+  Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+// testing function "calcDaysPassed"
+console.log(calcDaysPassed(data1, data2)); // 5
+
+// NOTE: 
+// you can just use date library "moment.js" if you need precicly calculations on dates
+
+
+
+
+
+
+/////////////////////////////////////
+// Internationalizing dates (INTL) //
+/////////////////////////////////////

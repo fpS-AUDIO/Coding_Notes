@@ -5,45 +5,33 @@ console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////
-//// array.sort() method in JavaScript ////
+//// array.fill() method in JavaScript ////
 ///////////////////////////////////////////
-// Coding Note #45
 
-//  SYNTAX:   array.sort(callback(a, b))
-//            a = current value, b = next value (of any iteration)
+// Coding Note #46
 
-// sort() method, by default (without arguments), does the sorting basing on strings from A to Z.
-// So if you sort numbers, without giving a callback function with its own rules,
-// it converts the numbers to the strings, sorts them (like strings in UTF-16 code units order), and reconverts them to numbers again.
-// Careful, this method mutates the original array and returns the reference to the same array.
+// SYNTAX:  array.fill(value, startIndex, endIndex)
 
-// Examples with default behavior:
-const arrayLetters = [`b`, `c`, `a`, `z`, `d`, `m`];
-const arrayNumbers = [-4, 135, 10, 27, -10, -9, 4];
+// In JavaScript, there are situations where you can't apply certain array methods (like map()) on arrays because they are empty.
+// For such cases, and others, the fill() method comes in handy.
+// This method populates the entire array with the given value by mutating it.
+// You can call the fill() method on an empty array.
+// Optionally, you can pass startIndex and endIndex parameters (where endIndex is not included).
 
-console.log(arrayLetters.sort()); // ['a', 'b', 'c', 'd', 'm', 'z']
-console.log(arrayNumbers.sort()); // [-10, -4, -9, 10, 135, 27, 4]
+// If you specify only one argument (numberIndexes) in the array constructor,
+// JavaScript will create an empty array with a length of numberIndexes.
 
-// ------------------------------------------------------- //
+// Creating an empty array with the new Array() constructor with a length of 5.
+const myArray = new Array(5);
+console.log(myArray); // [empty × 5]
 
-// You can change the default behavior by adding the callback function with its own rules
-// sort() method keeps looping over the array applying the callback function until everything is sorted
+// Filling the array with the value 'A'.
+myArray.fill("A");
+console.log(myArray); // ['A', 'A', 'A', 'A', 'A']
 
-// Rules of the callback function:
-//   - If you return a negative value (like -1), then the value "a" will be placed before "b".
-//   - If you return a positive value (like 1), then the value "a" will be placed after "b".
-//   - If you return 0, the position remains unchanged.
-
-// sort in ascending order
-const ascendingArrayNumbers = arrayNumbers.sort((a, b) => {
-  if (a > b) return 1;
-  if (a < b) return -1;
-});
-console.log(ascendingArrayNumbers); // [-10, -9, -4, 4, 10, 27, 135]
-
-// same result but with easier syntax
-const ascendingArrayNumbers2 = arrayNumbers.sort((a, b) => a - b);
-console.log(ascendingArrayNumbers2); // [-10, -9, -4, 4, 10, 27, 135]
+// Filling the array with the number 7 from index 1 to index 3 (not including index 3).
+myArray.fill(7, 1, 3);
+console.log(myArray); // ['A', 7, 7, 'A', 'A'];
 
 // Follow @coding_feature on Instagram for more content! 👍
 
