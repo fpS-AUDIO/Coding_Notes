@@ -4,34 +4,42 @@
 console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////
-//// array.fill() method in JavaScript ////
-///////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+//// array.slice() and array.splice() methods in JavaScript ////
+////////////////////////////////////////////////////////////////
+// Coding Note #47
 
-// Coding Note #46
+// SYNTAX:      slice(startIndex, endIndex)
+// Returns a portion of an array WITHOUT MUTATING the original (end is NOT included).
+// If no arguments are passed, this method creates a shallow copy of the array.
+// You can store the shallow copy in a different variable or even chain methods.
 
-// SYNTAX:  array.fill(value, startIndex, endIndex)
+const arrayNumbers = [1, 2, 3, 4, 5];
 
-// In JavaScript, there are situations where you can't apply certain array methods (like map()) on arrays because they are empty.
-// For such cases, and others, the fill() method comes in handy.
-// This method populates the entire array with the given value by mutating it.
-// You can call the fill() method on an empty array.
-// Optionally, you can pass startIndex and endIndex parameters (where endIndex is not included).
+console.log(arrayNumbers.slice(2)); // [3, 4, 5]
+console.log(arrayNumbers.slice(2, 4)); // [3, 4]
+console.log(arrayNumbers.slice(-2)); // [4, 5]
+console.log(arrayNumbers.slice(1, -1)); // [2, 3, 4]
+console.log(arrayNumbers.slice()); // [1, 2, 3, 4, 5]
 
-// If you specify only one argument (numberIndexes) in the array constructor,
-// JavaScript will create an empty array with a length of numberIndexes.
+// ------------------------------------------------------- //
 
-// Creating an empty array with the new Array() constructor with a length of 5.
-const myArray = new Array(5);
-console.log(myArray); // [empty × 5]
+// SYNTAX:      splice(startIndex, numberOfElementsToRemoveFromStart)
+// Returns the extracted part of an array, MUTATING the original.
 
-// Filling the array with the value 'A'.
-myArray.fill("A");
-console.log(myArray); // ['A', 'A', 'A', 'A', 'A']
+console.log(arrayNumbers); // [1, 2, 3, 4, 5] (unchanged)
 
-// Filling the array with the number 7 from index 1 to index 3 (not including index 3).
-myArray.fill(7, 1, 3);
-console.log(myArray); // ['A', 7, 7, 'A', 'A'];
+console.log(arrayNumbers.splice(0, 2)); // [1, 2]; first two elements
+console.log(arrayNumbers); // [3, 4, 5] (now mutated)
+
+console.log(arrayNumbers.splice(-2)); // [4, 5]; last 2 elements
+console.log(arrayNumbers); // [3] (mutated again)
+
+// ------------------------------------------------------- //
+
+// SUMMARY:
+// - Use slice() to obtain a part of an array without modifying the original.
+// - Use splice() to extract elements from an array, mutating the original array.
 
 // Follow @coding_feature on Instagram for more content! 👍
 

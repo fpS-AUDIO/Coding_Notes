@@ -120,8 +120,8 @@
         - Creating dates
         - Operations with dates
         - Internationalizing dates (INTL)
-        - 
-        - 
+        - Internationalizing numbers (INTL)
+        - Timers: setTimeout and setInterval
         - 
         - 
         - 
@@ -5183,3 +5183,208 @@ console.log(calcDaysPassed(data1, data2)); // 5
 /////////////////////////////////////
 // Internationalizing dates (INTL) //
 /////////////////////////////////////
+
+// JS has a new Internationalization API called "INTL"
+// It helps you to easily format numbers and strings according to different languages.
+
+// So, INTL namespace object contains several constructors.
+// One of the constuctor functions is Intl.DateTimeFormat() to work with dates
+
+// Intl Docs:                 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
+// Intl.DateTimeFormat Docs:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
+// All options:               https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+
+// SYNTAX:
+
+// Intl.DateTimeFormat(localStr, options)                 --> returns formatter
+// Intl.DateTimeFormat(localStr, options).format(date)    --> returns date in string formatted for the given country
+//    `localStr` is the language-country (like `en-US`)
+//    `options` is optional argument which expects a configuratiopn object with parameters
+
+// You can get the `localStr` from user's browser:
+const locale = navigator.language;
+console.log(locale); // it-IT
+// NOTE: also you can pass `undefined` in `localStr` to use the browser's default locale
+
+// ----------------------- EXAMPLES ----------------------- //
+
+const now = new Date();
+console.log(now); // Tue Nov 28 2023 15:47:42 GMT+0100
+
+const dateV0 = Intl.DateTimeFormat(`en-US`).format(now);
+console.log(dateV0); // 11/28/2023 (USA format without options so with default configuration)
+
+// -------------------------------------------------------- //
+
+const options1 = {
+  hour: `numeric`,
+  minute: `numeric`,
+};
+
+const dateV1 = Intl.DateTimeFormat(`en-US`, options1).format(now);
+console.log(dateV1); // 4:06 PM (shows only what is provided by options)
+
+// -------------------------------------------------------- //
+
+const options2 = {
+  hour: `numeric`,
+  minute: `numeric`,
+  seconds: `numeric`,
+  day: `numeric`,
+  month: `long`,
+  year: `numeric`,
+  weekday: `long`,
+};
+
+const dateV2UK = Intl.DateTimeFormat(`en-UK`, options2).format(now);
+console.log(dateV2UK); // Tuesday, 28 November 2023 at 16:13
+
+const dateV2RU = Intl.DateTimeFormat(`ru-RU`, options2).format(now);
+console.log(dateV2RU); // вторник, 28 ноября 2023 г. в 16:14
+
+// -------------------------------------------------------- //
+
+
+
+
+
+
+///////////////////////////////////////
+// Internationalizing numbers (INTL) //
+///////////////////////////////////////
+
+// SYNTAX:    Intl.NumberFormat(localStr, options).format(yourNumber)
+//    `localStr` is the language-country (like `en-US`)
+//    `options` is optional argument which expects a configuratiopn object with parameters
+
+// More:    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+
+/*
+OPTIONS ={
+  style: "decimal/unit/percent/currency",
+  unit: "mile-per-hour/kilometer-per-hour/celsius/liter....",
+  unitDisplay: "long",
+  currency: "EUR/JPY/",
+  ALL OPTIONS:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
+}
+*/
+
+// You can get the `localStr` from user's browser:
+const locale = navigator.language;
+console.log(locale); // it-IT
+// NOTE: also you can pass `undefined` in `localStr` to use the browser's default locale
+
+// ----------------------- EXAMPLES ----------------------- //
+
+const randomNumber = 387403.23;
+
+// -------------------------------------------------------- //
+
+console.log(Intl.NumberFormat(`en-US`).format(randomNumber)); // 387,403.23
+console.log(Intl.NumberFormat(`it-IT`).format(randomNumber)); // 387.403,23
+console.log(Intl.NumberFormat(`ru-RU`).format(randomNumber)); // 387 403,23
+
+// -------------------------------------------------------- //
+
+const options1 = {
+  style: `unit`,
+  unit: `mile-per-hour`,
+};
+
+console.log(Intl.NumberFormat(`en-US`, options1).format(randomNumber)); // 387,403.23 mph
+console.log(Intl.NumberFormat(`it-IT`, options1).format(randomNumber)); // 387.403,23 mi/h
+console.log(Intl.NumberFormat(`ru-RU`, options1).format(randomNumber)); // 387 403,23 ми/ч
+
+// -------------------------------------------------------- //
+
+const options2 = {
+  style: `unit`,
+  unit: `celsius`,
+};
+
+console.log(Intl.NumberFormat(`en-US`, options2).format(randomNumber)); // 387,403.23°C
+console.log(Intl.NumberFormat(`it-IT`, options2).format(randomNumber)); // 387.403,23 °C
+console.log(Intl.NumberFormat(`ru-RU`, options2).format(randomNumber)); // 387 403,23 °C
+
+// -------------------------------------------------------- //
+
+
+___________________________________________________________________________
+
+// universal function to display currency
+const formatCurrency = function (value, locale, currency) {
+  const options = {
+    style: `currency`,
+    currency: currency,
+  };
+  return Intl.NumberFormat(locale, options).format(value);
+};
+___________________________________________________________________________
+
+
+
+// testing formatCurrency()
+console.log(formatCurrency(34.23, `en-US`, `EUR`)); // €34.23
+
+
+
+
+
+
+////////////////////////////////////////
+// Timers: setTimeout and setInterval //
+////////////////////////////////////////
+
+// SYNTAX:        setTimeout(callback, msTime)
+//                setTimeout(callback(Arg1, Arg2...), msTime, passInArg1, passInArg2...)
+// To cancel it:  if(condition) clearTimeout(setTimeoutName);
+
+// setTimeout() runs once after the given time (msTime)
+// Important: the code continues running without waiting for the given time (msTime)
+// Optionally, pass arguments inside the callback function
+// You can cancel the callback until the delay actually passes
+// To cancel it, store setTimeout() inside a variable
+// and pass that variable as an argument inside clearTimeout after your condition
+
+// Simple example
+setTimeout(() => console.log(`Hello`), 3 * 1000); // `Hello` (after 3 seconds)
+
+// Example with 3 arguments
+setTimeout(
+  (arg1, arg2, arg3) => console.log(`Hello ${arg1}, ${arg2}, and ${arg3}`),
+  3 * 1000,
+  `John`,
+  `Alex`,
+  `Karl`
+); // Hello John, Alex, and Karl
+
+// Example of cancelling setTimeout()
+const names = [`John`, `Alex`, `Karl`];
+const callNames = setTimeout(
+  (arg1, arg2, arg3) => console.log(`Hello ${arg1}, ${arg2}, and ${arg3}`),
+  3 * 1000,
+  ...names
+);
+if (names.includes(`Karl`)) {
+  clearTimeout(callNames);
+} // WILL NEVER RUN
+
+// -------------------------------------------------------- //
+
+// SYNTAX:        setInterval(callback, msTime)
+//                setInterval(callback(Arg1, Arg2...), msTime, passInArg1, passInArg2...)
+// To cancel it:  if(condition) clearInterval(setIntervalName);
+
+// setInterval() executes the callback function forever after `msTime` until you stop it
+// Important: the code continues running without waiting for the given time (msTime)
+// Optionally, pass arguments inside the callback function
+// You can also cancel the callback function
+// To cancel it, store setInterval() inside a variable
+// and pass that variable as an argument inside clearInterval after your condition
+
+// Simple example
+setInterval(() => console.log(`Hello world`), 5 * 1000); // `Hello world` (every 5 seconds)
+
+// Example to console.log() the time after each second
+setInterval(() => console.log(new Date().toISOString()), 1000); // 2023-11-28T21:33:30.743Z (every second)
+
