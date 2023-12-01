@@ -4,42 +4,41 @@
 console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////
-//// array.slice() and array.splice() methods in JavaScript ////
-////////////////////////////////////////////////////////////////
-// Coding Note #47
-
-// SYNTAX:      slice(startIndex, endIndex)
-// Returns a portion of an array WITHOUT MUTATING the original (end is NOT included).
-// If no arguments are passed, this method creates a shallow copy of the array.
-// You can store the shallow copy in a different variable or even chain methods.
-
-const arrayNumbers = [1, 2, 3, 4, 5];
-
-console.log(arrayNumbers.slice(2)); // [3, 4, 5]
-console.log(arrayNumbers.slice(2, 4)); // [3, 4]
-console.log(arrayNumbers.slice(-2)); // [4, 5]
-console.log(arrayNumbers.slice(1, -1)); // [2, 3, 4]
-console.log(arrayNumbers.slice()); // [1, 2, 3, 4, 5]
+////////////////////////////////////////////////////////////
+//// array.push() and array.pop() methods in JavaScript ////
+////////////////////////////////////////////////////////////
+// Coding Note #50
 
 // ------------------------------------------------------- //
 
-// SYNTAX:      splice(startIndex, numberOfElementsToRemoveFromStart)
-// Returns the extracted part of an array, MUTATING the original.
+// SYNTAX:        array.push(element)
+// The array's push() method adds new elements to the end of an array
+// Additionally, this method returns the new length of the array
+// Note: This method mutates the original array
 
-console.log(arrayNumbers); // [1, 2, 3, 4, 5] (unchanged)
+// Declare an array containing the ingredients of a pizza
+const pizzaIngredients = [`tomato`, `mozzarella`, `olive oil`];
 
-console.log(arrayNumbers.splice(0, 2)); // [1, 2]; first two elements
-console.log(arrayNumbers); // [3, 4, 5] (now mutated)
+// Adding a new ingredient to the end of the array
+const ingredientsLength = pizzaIngredients.push(`spinach`);
 
-console.log(arrayNumbers.splice(-2)); // [4, 5]; last 2 elements
-console.log(arrayNumbers); // [3] (mutated again)
+// Log the new length of the array and the updated array
+console.log(ingredientsLength); // 4 (the new length of the array)
+console.log(pizzaIngredients); // ['tomato', 'mozzarella', 'olive oil', 'spinach']
 
 // ------------------------------------------------------- //
 
-// SUMMARY:
-// - Use slice() to obtain a part of an array without modifying the original.
-// - Use splice() to extract elements from an array, mutating the original array.
+// SYNTAX:        array.pop()
+// The array's pop() method removes the last element of an array
+// Additionally, this method returns the popped element
+// Note: This method mutates the original array
+
+// Remove the last ingredient from the array
+const lastIngredient = pizzaIngredients.pop();
+
+// Log the popped element and the updated array
+console.log(lastIngredient); // spinach
+console.log(pizzaIngredients); // ['tomato', 'mozzarella', 'olive oil']
 
 // Follow @coding_feature on Instagram for more content! 👍
 

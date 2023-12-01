@@ -122,14 +122,24 @@
         - Internationalizing dates (INTL)
         - Internationalizing numbers (INTL)
         - Timers: setTimeout and setInterval
-        - 
-        - 
-        - 
-        - 
+
+09. ADVANCED DOM AND EVENTS
+        - How the DOM really works 
+        - Selecting, creating and deleting elements
+        - Styles, attributes and classes
+        - Implementing Smooth scrolling 
         - 
         - 
         - 
         -         
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        - 
+        -      
 
 ___________________________________________________________________________________________________________________________________
 00. JAVASCRIPT FUNDAMENTALS (part 1)
@@ -5336,7 +5346,7 @@ console.log(formatCurrency(34.23, `en-US`, `EUR`)); // €34.23
 ////////////////////////////////////////
 
 // SYNTAX:        setTimeout(callback, msTime)
-//                setTimeout(callback(Arg1, Arg2...), msTime, passInArg1, passInArg2...)
+//                setTimeout(callback(Arg1, Arg2...), msTime, 0...)
 // To cancel it:  if(condition) clearTimeout(setTimeoutName);
 
 // setTimeout() runs once after the given time (msTime)
@@ -5388,3 +5398,388 @@ setInterval(() => console.log(`Hello world`), 5 * 1000); // `Hello world` (every
 // Example to console.log() the time after each second
 setInterval(() => console.log(new Date().toISOString()), 1000); // 2023-11-28T21:33:30.743Z (every second)
 
+
+
+
+
+
+
+
+
+___________________________________________________________________________________________________________________________________
+09. ADVANCED DOM AND EVENTS
+
+
+
+
+
+
+//////////////////////////////
+// How the DOM really works //
+//////////////////////////////
+
+// DOM (Document Object Model) is basically interface between browser in JS code.
+// DOM allows JS interact with browser
+// So the code can modify HTML elements, styles, classes, attributes, listen and respond to events
+// DOM tree is generated from HTML document
+// DOM is a very complex API which containt a lot of methods and properties
+
+// All methods and properties are organized in different types of nodes.
+// Each node is represented in JavaScript by an object (which has methods and properties)
+// `Node` -> every single node in DOM tree is of the type node.
+//      - .textContent
+//      - .childNodes
+//      - .parentNode
+//      - .cloneNode()    etc ...
+
+// Types of child nodes:
+
+// 1. Text        -> <p>paragraph</p>
+// 2. Comment     -> <!--comment-->
+// 3. Document    -> querySelector(), createElement(), getElementById() ...
+// 4. Element     -> gives html element access to many methods and properties
+//                    . innerHtml
+//                    .classList
+//                    .children
+//                    .parentElement
+//                    .append()
+//                    .remove()
+//                    .insertAdjacentHTML()
+//                    .querySelector()
+//                    .closest()
+//                    .matches()
+//                    .scrollIntoView()
+//                    .setAttribute()
+//                    etc....
+// 4.1.   HTMLElement
+// 4.1.1  HTMLButtonElement (for each HTML element that exists in HTML)
+// 4.1.2  HTMLDivElement  (each of these children element has unique properties)
+// 4.1.3  etc... images, ul, li ...
+
+// Inheritance makes everything work;
+// Inheritance: means all the child types will also get access to the methods and properties of all their parent node types.
+
+// EventTarget -> special node which is PARENT of `Node` and `Window` nodes type
+//                thanks to this node and inheritance you can call addEventListener to every single type of node.
+
+
+
+
+
+
+///////////////////////////////////////////////
+// Selecting, creating and deleting elements //
+///////////////////////////////////////////////
+
+
+
+// ------------------- SELECTING ELEMENTS ------------------- //
+
+
+
+// selecting the entire document, head and body:
+
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+// :root === document.documentElement
+
+
+
+// other methods of selecting:
+
+document.querySelector(`.header`); // returns the 1st element which matches the selector
+document.querySelectorAll(`.section`); // returns NodeList with all elements which matches the selector
+document.getElementById(`section--1`); // returns the element which matches the id
+document.getElementsByTagName(`buttons`); // returns an life HTML collection with all HTML elements with type of `buttons` in this case
+document.getElementsByClassName(`btn`); // return a life html collection with all elements with class of `btn`
+
+// NOTE: `HTML collection` is a `life-collection" which means they automatically updated when DOM changes
+// NOTE: `NodeList` are not automatically updated
+
+
+
+// ------------------- CREATING ELEMENTS ------------------- //
+
+
+
+// 1. insertAdjacentHTML
+
+// container.insertAdjacentHTML(`afterbegin`, htmlPiece);
+
+// You can create a variable containing the template literal string with HTML.
+// Then you can simply "inject" this template literal inside the HTML.
+
+// htmlElement.insertAdjacentHTML(`place`, htmlString);
+//  where `place` can be:
+//      - "beforebegin"     -> before the html element if it has parent
+//      - "afterbegin"      -> inside the html element before the 1st child
+//      - "beforeend"       -> inside the html element after the last child
+//      - "afterend"        -> after the html element if it has parent
+
+
+// -------------- //
+
+
+// 2. document.createElement(HtmlTagNameStr);
+
+const message = document.createElement(`div`);
+
+// this method also returns A DOM element
+// this element is not yet in DOM but it's stored in a variable and you can do operations on it
+// (the element retur is of the same type like element returned from document.querySelector(`.header`); )
+message.classList.add(`cookie-message`);
+message.textContent = `We're using cookies to improve functionality`;
+message.innerHTML = `We're using cookies to improve functionality <button class="btn btn--close-cookie">Got it!</button>`;
+
+
+// -------------- //
+
+
+// 3. prepend() append() -> actually adding this elemento to the HTML
+
+container.prepend(message); // add message as the first child of the container
+container.append(message); // add message as the last child of the container
+
+// now this message is life element of the DOM (it CAN'T be in different places in the document)
+// so in the example above it was positioned as 1st child, then moved as last child
+// so you can use prepand and append to move elements
+
+
+// -------------- //
+
+
+// 4. cloneNode() -> copy element
+
+container.append(message.cloneNode(true)); // add message as the last child of the container
+// if argument is `true` also the child elements will be copied
+
+
+// -------------- //
+
+
+// 5. before() after()
+
+// before() insert element before HTML element (not as child)
+// after() insert element after HTML element (not as child)
+container.before(message);
+
+
+
+// ------------------- DELETING ELEMENTS ------------------- //
+
+
+
+// 1. remove() -> removes element from HTML (recent element)
+message.remove();
+
+// 2. elementXX.parentElement.removeChild(elementXX); (legacy)
+// before we needed to select the parent element and then remove the children
+message.parentElement.removeChild(message);
+
+
+
+
+
+  // ----------------------------------------- //
+EXAMPLE OF CREATING, ADDING AND REMOVING A COOKIE DIV:
+  // ----------------------------------------- //
+
+
+const header = document.querySelector(`.header`);
+
+const cookieMessageDiv = document.createElement(`div`);
+cookieMessageDiv.classList.add(`cookie-message`);
+cookieMessageDiv.innerHTML = `I know cookies are so sad, but we're using them to improve functionality <button class="btn btn--close-cookie">Got it!</button>`;
+header.before(cookieMessageDiv);
+
+// selecting AFTER creating
+const btnCloseCookie = document.querySelector(`.btn--close-cookie`);
+
+// EventListener close Cookies Div
+btnCloseCookie.addEventListener(`click`, function () {
+  cookieMessageDiv.remove();
+});
+
+
+
+
+
+
+////////////////////////////////////
+// Styles, attributes and classes //
+////////////////////////////////////
+
+
+
+// ------------------- STYLES ------------------- //
+
+
+//    element.style.camelCaseStyle = `value`
+// change style property
+// doing this way the styles will be places `inline`
+cookieMessageDiv.style.backgroundColor = `#37383d`;
+cookieMessageDiv.style.width = `120%`;
+
+
+//    element.style.camelCaseStyle
+// read style property ONLY set inline
+console.log(cookieMessageDiv.style.width); // 120%
+console.log(cookieMessageDiv.style.height); // NOTHING BECAUSE IS NOT INLINE STYLE
+
+
+//    getComputedStyle(element).camelCaseStyle
+// get the real style as it appears on the page (even if it's not declared)
+console.log(getComputedStyle(cookieMessageDiv)); // A REALLY BIG LIST OF STYLES
+console.log(getComputedStyle(cookieMessageDiv).height); // 75px
+
+
+//    document.documentElement.style.setProperty(`nameOfProperty`, `newValue`)
+// css variables === (css custom properties)
+// change the value of a css variable
+document.documentElement.style.setProperty(`--color-primary`, `#52a064`);
+
+
+
+// EXAMPLE:
+cookieMessageDiv.style.height =
+  Number.parseFloat(getComputedStyle(cookieMessageDiv).height) + 30 + `px`;
+
+
+
+
+// ------------------- ATTRIBUTES ------------------- //
+
+
+// attributes are: src, alt, id, href, placeholder etc...
+// every type of element has its own standard attributes
+
+
+//    element.standardAttributeName
+// get or set the value of the standard attributes
+console.log(logoIMG.src); // http://127.0.0.1:5500/img/logo.png (ABSOLUTE URL)
+console.log(logoIMG.alt); // Bankist logo
+console.log(logoIMG.className); // nav__logo (it's className and not simply class)
+
+logoIMG.alt = `Cool Bankist App Logo`;
+console.log(logoIMG.alt); // Cool Bankist App Logo
+
+
+//    element.getAttribute(`attributeName`)
+// get the value of the NON standard attributes (also works with standrd)
+// this method gives you RELATIVE attibutes and not ABSOLUTE (of src, href...)
+console.log(logoIMG.designer); // undefined (BECAUSE IT'S NOT STANDARD PROPERTY)
+console.log(logoIMG.getAttribute(`designer`)); // Jonas
+console.log(logoIMG.getAttribute(`src`)); // img/logo.png
+
+
+//    element.setAttribute(`attributeName`, `newValue`)
+// set the value of the NON standard attributes
+logoIMG.setAttribute(`designer`, `Jonas New Attribute`);
+console.log(logoIMG.getAttribute(`designer`)); // Jonas New Attribute
+
+
+//    element.dataset.dataAttributeName = `newValue`
+// get or set data attribute from `dataSet` object
+// NOTE:  there is a special type of attributes called `data attributes`
+//        data attributes always starts with `data-`
+//        we need to transform the name in camelcase without 1st word `data` like below
+//        example: data-version-number-actual="3.0"   --> versionNumberActual
+console.log(logoIMG.dataset.versionNumberActual); // 3.0
+
+
+
+
+// ------------------- CLASSES ------------------- //
+
+// element.classList.add(`className`)
+// element.classList.remove(`className`)
+// element.classList.toggle(`className`)
+// element.classList.contains(`className`)
+
+// this OVVERERIDE all classes (bad practice)
+// element.className = `className`
+
+
+
+
+
+
+///////////////////////////////////
+// Implementing Smooth scrolling //
+///////////////////////////////////
+
+---------------------------------------------------------------------------------
+
+//    element.getBoundingClientRect();
+// returns `DOMRect object` which is the smallest rectangle which contains the entire element
+// this object describes the position and size of the overall rectangle in pixels
+// Properties (NOT width and height) are relative to the top-left of the viewport.
+
+EXAMPLE of DOMRect object:
+  bottom: 3657.1875
+  height: 2384.1875
+  left: 0
+  right: 641
+  top: 1273
+  width: 641
+  x: 0                -> px from left of viewport
+  y: 1273             -> px from top of viewport
+
+
+---------------------------------------------------------------------------------
+
+//    window.scroll(x, y)    /    window.scroll(optionsObject)
+// scroll windows to coordinates of x and y (in pixels)
+// scrollTo() is the same method
+
+options = {
+  top: 100,
+  left: 100,
+  behavior: "smooth" / "instant" / "auto",
+}
+
+
+console.log(window.scrollX); // returns px of scrolling from LEFT
+console.log(window.scrollY); // returns px of scrolling from TOP
+
+
+---------------------------------------------------------------------------------
+
+//    calculate viewport size
+document.documentElement.clientHeight; // returns px of the viewport height
+document.documentElement.clientWidth; // returns px of the viewport width
+
+---------------------------------------------------------------------------------
+
+
+// PRACTICAL EXAMPLE:
+
+// selecting elements
+const btnScrollTo = document.querySelector(`.btn--scroll-to`);
+const section1 = document.getElementById(`section--1`);
+
+
+
+btnScrollTo.addEventListener(`click`, function (event) {
+  // get the coordinates of seciton1
+  const seciton1Coordinates = section1.getBoundingClientRect();
+
+  // to get the correct coordinates you need to sum:
+  //  1. px from top of viewport
+  //  2. current scroll position
+  // like this:
+  const sect1X = seciton1Coordinates.x + window.scrollX;
+  const sect1Y = seciton1Coordinates.y + window.scrollY;
+
+  // creating the object with options for scroll()
+  const scrollOptions = {
+    top: sect1Y,
+    left: sect1X,
+    behavior: `smooth`,
+  };
+
+  // scroll to the correct position
+  window.scroll(scrollOptions);
+});
