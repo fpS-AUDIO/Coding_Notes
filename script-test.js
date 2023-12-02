@@ -4,44 +4,32 @@
 console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////
-//// array.push() and array.pop() methods in JavaScript ////
-////////////////////////////////////////////////////////////
-// Coding Note #50
+/////////////////////////////////////////////////////////////////
+//// array.unshift() and array.shift() methods in JavaScript ////
+/////////////////////////////////////////////////////////////////
+// Coding Note #51
+
+// SYNTAX:        array.unshift(element)
+// The unshift() method adds new elements to the beginning of an array.
+// It returns the new length of the array.
+// Note: This method mutates the original array.
+
+const yourArray = [5, 6, 7];
+const newLength = yourArray.unshift(1, 2, [3, 4]);
+// Adding elements to the beginning of the array.
+console.log("New Length:", newLength); // New Length: 6
+console.log("Updated Array:", yourArray); // Updated Array: [1, 2, [3, 4], 5, 6, 7]
 
 // ------------------------------------------------------- //
 
-// SYNTAX:        array.push(element)
-// The array's push() method adds new elements to the end of an array
-// Additionally, this method returns the new length of the array
-// Note: This method mutates the original array
+// SYNTAX:        array.shift()
+// The shift() method removes the first element of an array.
+// It returns the removed element or undefined if the array was empty.
+// Note: This method mutates the original array.
 
-// Declare an array containing the ingredients of a pizza
-const pizzaIngredients = [`tomato`, `mozzarella`, `olive oil`];
-
-// Adding a new ingredient to the end of the array
-const ingredientsLength = pizzaIngredients.push(`spinach`);
-
-// Log the new length of the array and the updated array
-console.log(ingredientsLength); // 4 (the new length of the array)
-console.log(pizzaIngredients); // ['tomato', 'mozzarella', 'olive oil', 'spinach']
-
-// ------------------------------------------------------- //
-
-// SYNTAX:        array.pop()
-// The array's pop() method removes the last element of an array
-// Additionally, this method returns the popped element
-// Note: This method mutates the original array
-
-// Remove the last ingredient from the array
-const lastIngredient = pizzaIngredients.pop();
-
-// Log the popped element and the updated array
-console.log(lastIngredient); // spinach
-console.log(pizzaIngredients); // ['tomato', 'mozzarella', 'olive oil']
+const removedElement = yourArray.shift();
+// Removing the first element from the array.
+console.log("Removed Element:", removedElement); // Removed Element: 1
+console.log("Updated Array:", yourArray); // Updated Array: [2, [3, 4], 5, 6, 7]
 
 // Follow @coding_feature on Instagram for more content! 👍
-
-//////////////////////////////////////////////////////
-console.log(`---------------NEW STAFF---------------`);
-//////////////////////////////////////////////////////
