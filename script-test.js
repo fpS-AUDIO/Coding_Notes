@@ -4,32 +4,35 @@
 console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
-/////////////////////////////////////////////////////////////////
-//// array.unshift() and array.shift() methods in JavaScript ////
-/////////////////////////////////////////////////////////////////
-// Coding Note #51
+///////////////////////////////////////////////////////////////////////
+//// array.indexOf() and array.lastIndexOf() methods in JavaScript ////
+///////////////////////////////////////////////////////////////////////
+// Coding Note #52
 
-// SYNTAX:        array.unshift(element)
-// The unshift() method adds new elements to the beginning of an array.
-// It returns the new length of the array.
-// Note: This method mutates the original array.
+// SYNTAX:        array.indexOf(searchElement, fromIndex).
+// The indexOf() method returns the first index of the `searchElement` passed as an argument.
+// It uses strict equality (===) when comparing elements.
+// Optionally, you can specify the start index (inclusive) for searching as the second argument.
+// If the element is not present, it returns -1.
 
-const yourArray = [5, 6, 7];
-const newLength = yourArray.unshift(1, 2, [3, 4]);
-// Adding elements to the beginning of the array.
-console.log("New Length:", newLength); // New Length: 6
-console.log("Updated Array:", yourArray); // Updated Array: [1, 2, [3, 4], 5, 6, 7]
+const arrayLetters = [`a`, `b`, `c`, `a`, `b`, `c`];
+
+// Example 1: Finding the first index of 'b'
+const firstIndex = arrayLetters.indexOf(`b`);
+console.log(firstIndex); // Output: 1
+
+// Example 2: Finding the index of 'b' starting from index 2
+const secondIndex = arrayLetters.indexOf(`b`, 2);
+console.log(secondIndex); // Output: 4
 
 // ------------------------------------------------------- //
 
-// SYNTAX:        array.shift()
-// The shift() method removes the first element of an array.
-// It returns the removed element or undefined if the array was empty.
-// Note: This method mutates the original array.
+// SYNTAX:        array.lastIndexOf(searchElement, fromIndex)
+// The lastIndexOf() method is similar to indexOf() but returns the last index of the element.
+// It searches the array backward, optionally starting from the specified `fromIndex`.
 
-const removedElement = yourArray.shift();
-// Removing the first element from the array.
-console.log("Removed Element:", removedElement); // Removed Element: 1
-console.log("Updated Array:", yourArray); // Updated Array: [2, [3, 4], 5, 6, 7]
+// Example 3: Finding the last index of 'a'
+const lastIndex = arrayLetters.lastIndexOf(`a`);
+console.log(lastIndex); // Output: 3
 
 // Follow @coding_feature on Instagram for more content! 👍
