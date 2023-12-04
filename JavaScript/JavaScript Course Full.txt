@@ -134,7 +134,7 @@
         - Event delegation: implementing page navigation         
         - DOM traversing
         - Building a tabbed component
-        - 
+        - Passing arguments to event handlers
         - 
         - 
         - 
@@ -6069,7 +6069,7 @@ console.log(h1.parentNode);
 console.log(h1.parentElement);
 
 //    element.closest(`.container/#section1/h1`)
-// return Nodelist/element with PARENTS elements and doesn't matter how deep they are
+// return Nodelist/element with PARENTS elements and doesn't matter how deep (up) they are
 console.log(h1.closest(`header`));
 console.log(h1.closest(`h1`)); // return the same element
 
@@ -6115,3 +6115,91 @@ console.log(h1.parentElement.children);
 /////////////////////////////////
 // Building a tabbed component //
 /////////////////////////////////
+
+// selecting elements to work with tabs
+const tabsContainer = document.querySelector(`.operations__tab-container`);
+const tabsBtns = document.querySelectorAll(`.operations__tab`);
+const tabsContents = document.querySelectorAll(`.operations__content`);
+
+// using event delegation, so add event listener on container
+tabsContainer.addEventListener(`click`, function (event) {
+  // preventing default just to be sure (not really necessary)
+  event.preventDefault();
+
+  // get the element (during bubbling) which provocated event --> event.target
+  // and find the actual button because there is the <span> inside --> .closest(`.operations__tab`);
+  const clickedBtn = event.target.closest(`.operations__tab`);
+
+  // if `clickedBtn` is null so there was a click on container and not button then just exit function
+  if (!clickedBtn) return;
+
+  // otherwise get the `data-tab` attribute to understand which content should be shown
+  const numberContent = clickedBtn.dataset.tab;
+
+  // remove active class from all tab buttons
+  // and add active class only on clicked tab button
+  tabsBtns.forEach(el => el.classList.remove(`operations__tab--active`));
+  clickedBtn.classList.add(`operations__tab--active`);
+
+  // remove active class from all <div>s with content to show
+  // and add active class only to <div> with correct numberContent class
+  tabsContents.forEach(el =>
+    el.classList.remove(`operations__content--active`)
+  );
+  document
+    .querySelector(`.operations__content--${numberContent}`)
+    .classList.add(`operations__content--active`);
+});
+
+
+
+
+
+
+
+/////////////////////////////////////////
+// Passing arguments to event handlers //
+/////////////////////////////////////////
+
+
+// NOTE:
+//  `mouseover` and `mouseout` do bubbling
+//  `mouseenter` and `mouseleave` don't do bubbling
+
+
+
+const changeOpacityNav = function (event, opacity) {
+  // get the element provocated the event
+  const provocatorEvent = event.target;
+
+  // check if `provocatorEvent` is actual <a> so with class "nav__link"
+  if (provocatorEvent.classList.contains(`nav__link`)) {
+    // get all the siblings of `provocatorEvent`
+    const siblingsProvocator = provocatorEvent
+      .closest(`.nav`)
+      .querySelectorAll(`.nav__link`);
+
+    // get also logo image
+    const imageNav = provocatorEvent.closest(`.nav`).querySelector(`img`);
+
+    // change the opacity of all `siblingsProvocator` but not of the `provocatorEvent`
+    siblingsProvocator.forEach(sibling => {
+      if (sibling !== provocatorEvent) sibling.style.opacity = opacity;
+    });
+
+    // change also the opacity of logo image
+    imageNav.style.opacity = opacity;
+  }
+};
+
+const navBar = document.querySelector(`.nav`);
+
+navBar.addEventListener(`mouseover`, function (event) {
+  changeOpacityNav(event, 0.5);
+});
+
+navBar.addEventListener(`mouseout`, function (event) {
+  changeOpacityNav(event, 1);
+});
+
+
