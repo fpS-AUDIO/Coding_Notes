@@ -135,7 +135,7 @@
         - DOM traversing
         - Building a tabbed component
         - Passing arguments to event handlers
-        - 
+        - Implementing a sticky navigation: the scroll event
         - 
         - 
         - 
@@ -6167,7 +6167,6 @@ tabsContainer.addEventListener(`click`, function (event) {
 //  `mouseenter` and `mouseleave` don't do bubbling
 
 
-
 const changeOpacityNav = function (event, opacity) {
   // get the element provocated the event
   const provocatorEvent = event.target;
@@ -6202,4 +6201,86 @@ navBar.addEventListener(`mouseout`, function (event) {
   changeOpacityNav(event, 1);
 });
 
+
+
+
+//// --------------- BEST SOLUTION --------------- ////
+
+
+
+
+// The best way to pass argument into an event handlers' callback function
+// is to use bind method, set the `this` keyword and pass `this` as variable inside the callback body
+// any event handler function can have only 1 real argument, which is the `event`
+// if you want to pass more arguments set `this` in bind to an array or object
+
+const navBar = document.querySelector(`.nav`);
+
+const changeOpacityNav = function (event) {
+  // get the element provocated the event
+  const provocatorEvent = event.target;
+
+  // check if `provocatorEvent` is actual <a> so with class "nav__link"
+  if (provocatorEvent.classList.contains(`nav__link`)) {
+    // get all the siblings of `provocatorEvent`
+    const siblingsProvocator = provocatorEvent
+      .closest(`.nav`)
+      .querySelectorAll(`.nav__link`);
+
+    // get also logo image
+    const imageNav = provocatorEvent.closest(`.nav`).querySelector(`img`);
+
+    // change the opacity of all `siblingsProvocator` but not of the `provocatorEvent`
+    siblingsProvocator.forEach(sibling => {
+      if (sibling !== provocatorEvent) sibling.style.opacity = this;
+    });
+
+    // change also the opacity of logo image
+    imageNav.style.opacity = this;
+  }
+};
+
+navBar.addEventListener(`mouseover`, changeOpacityNav.bind(0.5));
+navBar.addEventListener(`mouseout`, changeOpacityNav.bind(1));
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////
+// Implementing a sticky navigation: the scroll event //
+////////////////////////////////////////////////////////
+
+
+
+//// -------------- OLD BAD SOLUTION -------------- ////
+
+
+
+// REMEMBER:
+// const navBar = document.querySelector(`.nav`);
+// const section1 = document.getElementById(`section--1`);
+
+// calculate the coordinates of section1
+const seciton1Coordinates = section1.getBoundingClientRect();
+
+window.addEventListener(`scroll`, function () {
+  if (window.scrollY > seciton1Coordinates.top) {
+    navBar.classList.add(`sticky`);
+  } else {
+    navBar.classList.remove(`sticky`);
+  }
+});
+
+
+
+
+
+
+
+///////////////////////////////////
+// The intersection Observer API //
+///////////////////////////////////
 
