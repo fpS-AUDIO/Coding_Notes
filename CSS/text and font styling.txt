@@ -1,0 +1,201 @@
+
+______________________________________________________________________
+
+
+The formatting of the text is made up of 2 macro categories:
+
+    1.  Work on the font (specific text) 
+        Example: how large font, its color, size of character etc ...
+
+    2.  Layout of a text
+        Example: distance between letters, distance between words, distance between the lines etc.
+
+
+______________________________________________________________________
+
+
+
+p {
+    /* Font Styles */
+
+
+    /* Choose the color of the text */
+    color: red;
+
+
+    /* Font properties */
+    font-family: "Trebuchet MS", Verdana, sans-serif; /* Font stack for cross-browser compatibility */
+    font-size: 30px; /* Font size */
+    font-style: italic; /* Style of the font */
+    font-weight: 600; /* How bold the font is (100-900 or keywords like "lighter" or "bolder") */
+
+
+    /* Text transformation */
+    text-transform: capitalize; /* Transform the text: capitalize, uppercase, lowercase, full-width */
+
+
+    /* Text Decoration */
+    text-decoration: underline; /* Extra decorations: underline, overline, line-through */
+    text-decoration-color: blue; /* Color of the text decoration */
+
+
+    /* Text Shadow */
+    text-shadow: 4px 4px 5px grey; /* Parameters: horizontal distance, vertical distance, blur, shadow color */
+
+
+    /* Text Alignment */
+    text-align: center; /* Align the text */
+
+
+    /* Spacing */
+    line-height: 10px; /* Distance between one line and another */
+    letter-spacing: 15px; /* Distance between one letter and another */
+    word-spacing: 15px; /* Distance between one word and another */
+
+
+    /* Font Variant */
+    font-variant: small-caps; /* Renders the text in small capitals */
+
+
+    /* Text Rendering */
+    text-rendering: optimizeLegibility; /* Hinting of text for improved legibility */
+
+
+    /* Text Overflow */
+    overflow: hidden; /* Handle text overflow: hidden, scroll, auto, etc. */
+
+
+    /* White Space Handling */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow-wrap: break-word; /* Allows long words to be broken and wrap onto the next line */
+    text-wrap: balance; /* Automatically balance the text wrapping for the best view */
+
+
+    /* Text Shadow for Individual Shadows */
+    text-shadow: 
+        2px 2px 2px red, /* First shadow: horizontal, vertical, blur, color */
+        -2px -2px 2px blue; /* Second shadow: horizontal, vertical, blur, color */
+
+
+    /* Text Indentation */
+    text-indent: 20px; /* Indentation of the first line of text */
+
+
+    /* Text Overflow Ellipsis */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Display ellipsis (...) to indicate text overflow */
+
+
+    /* Text Justification */
+    text-justify: inter-word; /* Specifies the justification method: auto, inter-word, distribute, etc. */
+
+
+    /* Vertical Alignment */
+    vertical-align: middle; /* Align text vertically within its container */
+
+
+    /* Hyphenation */
+    hyphens: auto; /* Enable or disable hyphenation */
+
+
+    /* Font Feature Settings */
+    font-feature-settings: "liga" on; /* Enable or disable OpenType font features */
+
+
+    /* Unicode Bidi Algorithm */
+    unicode-bidi: embed; /* Controls the embedding and directionality of text */
+
+
+    /* Directionality */
+    direction: rtl; /* Set the base direction of text: ltr (left-to-right), rtl (right-to-left) */
+
+
+    /* Font Kerning */
+    font-kerning: normal; /* Switch font kerning options on and off */
+
+
+    /* Font Variant Alternates */
+    font-variant-alternates: normal; /* Control the use of alternate glyphs for a given font-face */
+
+
+    /* Font Variant Caps */
+    font-variant-caps: normal; /* Control the use of alternate capital glyphs */
+
+
+    /* Font Variant East Asian */
+    font-variant-east-asian: normal; /* Control the usage of alternate glyphs for East Asian scripts, like Japanese and Chinese */
+
+
+    /* Font Variant Ligatures */
+    font-variant-ligatures: normal; /* Control which ligatures and contextual forms are used in text */
+
+
+    /* Font Variant Numeric */
+    font-variant-numeric: normal; /* Control the usage of alternate glyphs for numbers, fractions, and ordinal markers */
+
+
+    /* Font Variant Position */
+    font-variant-position: normal; /* Control the usage of alternate glyphs of smaller sizes positioned as superscript or subscript */
+
+
+    /* Font Size Adjust */
+    font-size-adjust: none; /* Adjust the visual size of the font independently of its actual font size */
+
+
+    /* Font Stretch */
+    font-stretch: normal; /* Switch between possible alternative stretched versions of a given font */
+
+
+    /* Text Underline Position */
+    text-underline-position: auto; /* Specify the position of underlines set using the text-decoration-line property underline value */
+
+
+    /* Text Rendering */
+    text-rendering: optimizeLegibility; /* Try to perform some text rendering optimization */
+
+
+    /* Text Indent */
+    text-indent: 20px; /* Specify how much horizontal space should be left before the beginning of the first line of the text content */
+
+
+    /* Text Overflow */
+    text-overflow: ellipsis; /* Define how overflowed content that is not displayed is signaled to users */
+
+
+    /* White Space Handling */
+    white-space: nowrap; /* Define how whitespace and associated line breaks inside the element are handled */
+
+
+    /* Word Break */
+    word-break: normal; /* Specify whether to break lines within words */
+
+
+    /* Directionality */
+    direction: ltr; /* Define the text direction. (This depends on the language and usually it's better to let HTML handle that part as it is tied to the text content.) */
+
+
+    /* Hyphens */
+    hyphens: auto; /* Switch on and off hyphenation for supported languages */
+
+
+    /* Line Break */
+    line-break: auto; /* Relax or strengthen line breaking for Asian languages */
+
+
+    /* Text Align Last */
+    text-align-last: auto; /* Define how the last line of a block or a line, right before a forced line break, is aligned */
+
+
+    /* Text Orientation */
+    text-orientation: mixed; /* Define the orientation of the text in a line */
+
+
+    /* Overflow Wrap */
+    overflow-wrap: break-word; /* Specify whether or not the browser may break lines within words in order to prevent overflow */
+
+
+    /* Writing Mode */
+    writing-mode: horizontal-tb; /* Define whether lines of text are laid out horizontally or vertically and the direction in which subsequent lines flow */
+}
+

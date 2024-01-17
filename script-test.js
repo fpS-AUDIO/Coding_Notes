@@ -5,43 +5,181 @@ console.log(`---------------For @coding_feature---------------`);
 /////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////
-//// Other Array Methods in JavaScript part 1 ////
+//// Maps in JavaScript  ////
 //////////////////////////////////////////////////
-// Coding Note #54
+// Coding Note #55
 
-const yourArray = [1, 2, 3, 4, 5, 6, 7];
+// Maps were introduced in ES6 and they are similar to the objects with key-value pair.
+// The big difference is that the keys  of objects can be string type only, while maps can hold any data type in keys.
 
-// array.at(index)    return the element at given index without mutating it
-console.log(yourArray.at(3)); // 4
+// Map is a data structure that you can use to map values to keys like objects.
+// But, unlike objects, keys of maps can have any type (indeed also values).
+// Meanwhile the keys of objects are always strings.
 
-// array.concat(array)    return new concatenated array without mutating the original one
-console.log(yourArray.concat([8, 9, 10])); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-// array.join(str)    return a string by joinining all elements of array with given stri// array.join(str)    return a string by joining all elements of the array with the given string (no mutation)
-// Note: If the separator is not provided, elements are separated by commas.
-console.log(yourArray.join(`--`)); // "1--2--3--4--5--6--7"
 
-// Array.isArray(value)    return true if the given value is an array
-console.log(Array.isArray(yourArray)); // true
+// --------------------------------------------
+//     new Map()    -> create a map
 
-// array.includes(element)    return true if the array contains the given element
-console.log(yourArray.includes(7)); // true
+// const restaurant = new Map();
 
-// array.toString()    convert the array into a string and return it without mutating the original array
-console.log(yourArray.toString()); // "1,2,3,4,5,6,7"
 
-// array.copyWithin(target, start, end) copies elements from one position to another in the given array
-// `target` -> index position to copy the elements to
-// `start`  -> index position to start copying elements from (optional, default is 0)
-// `end`    -> index position (not included) to stop copying elements from (If omitted, it will copy until the last index)
-// so it mutates the original array but it doesn't change the length property
-console.log(yourArray.copyWithin(4, 1, 3)); // [1, 2, 3, 4, 2, 3, 7]
+// --------------------------------------------
+//     set(key, value)    -> add elements and return the updated map
 
-// array.toReversed()    return new reversed array with the elements in reversed order (no mutation)
-console.log(yourArray.toReversed()); // [7, 3, 2, 4, 3, 2, 1]
+// restaurant.set(`name`, `La Cascata`);
+// restaurant.set(1, `Sondrio, via ....`);
+// restaurant.set(2, `Berbenno, via ....`);
+// console.log(restaurant);
 
-// array.reverse()    reverse the order of elements in the array by mutating it
-// Note: This method returns a reference to the same array.
-console.log(yourArray.reverse()); // [7, 3, 2, 4, 3, 2, 1]
+
+// (!) since set() method returns the updated map you can chain the set() method
+
+// restaurant
+//   .set(`food`, ["salat", "Pizza", "Carbonara", "Risotto", "Lasagna"])
+//   .set(`open`, 11)
+//   .set(`close`, 23)
+//   .set(true, `We're opened!`)
+//   .set(false, `We're closed!`);
+
+
+// --------------------------------------------
+//     get(key)    -> read data from the map
+
+// console.log(restaurant.get(`close`));
+
+
+// EXAMPLE:
+
+// const timeNow = 21;
+// // restaurant.get(TRUE or FALSE)
+// console.log(
+//   restaurant.get(
+//     timeNow > restaurant.get(`open`) && timeNow < restaurant.get(`close`)
+//   )
+// );
+// // output: "We're opened!"
+
+
+// --------------------------------------------
+//     has(key)    -> check if the map contains a certain key (retunr true/false)
+
+// console.log(restaurant.has(`food`));
+
+
+// --------------------------------------------
+//     delete(key) -> delete elements from the map
+
+// restaurant.delete(2);
+// console.log(restaurant);
+
+
+// --------------------------------------------
+//     .size property   -> returns integer of items in map
+
+// console.log(restaurant.size);
+
+
+// --------------------------------------------
+//     clear()  -> remove all elements from the map
+
+// restaurant.clear();
+
+
+
+// --------------------------------------------
+//     PROBLEM and SOLUTION
+
+// restaurant.set([1, 2], `test`);
+// console.log(restaurant.get([1, 2]));
+// // output: undefined
+
+// (!) we got undefined because these two arrays [1, 2] are actually NOT the same object in the heap
+//     to obtain the value we must insert the exact same object (key) in memory
+//     to make it work we need to put the array in the variable and use the variable in both places:
+
+
+// const arrayX = [1, 2];
+// restaurant.set(arrayX, `test`);
+// console.log(restaurant.get(arrayX));
+// // output: "test"
+
+
+// --------------------------------------------
+// (!) since we can use object as key we can use it in DOM elements
+
+// restaurant.set(document.querySelector(`h1`), `Heading`);
+// console.log(restaurant);
+
+
+// --------------------------------------------
+//     second method to create a map is to create an array witch contains multiple arrays with key:value
+
+// // const mapName = new Map([[key, value], [key, value]])
+// const question = new Map([
+//   [`question`, `What is the best language in the world?`],
+//   [1, `C++`],
+//   [2, `Ruby`],
+//   [3, `Python`],
+//   [4, `JavaScript`],
+//   [`correct`, 4],
+//   [true, `Congrats!`],
+//   [false, `Try again...`],
+// ]);
+
+
+// --------------------------------------------
+// // object example for data below
+// const openingHoursObject = {
+//   thu: {
+//     open: 12,
+//     close: 22,
+//   },
+
+//   fri: {
+//     open: 11,
+//     close: 23,
+//   },
+//   sat: {
+//     open: 0,
+//     close: 24,
+//   },
+// };
+// --------------------------------------------
+
+// (!) array of arrays is exactly the same array structure that is returned from Object.entries(object)
+//     so we can convert objects to maps
+
+// const openingHoursMap = new Map(Object.entries(openingHoursObject));
+
+
+//     convert a map to an array -> get array of arrays
+
+// console.log([...question]);
+
+// // we also have the same methods of arrays:
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
+
+
+
+// /////////////////////////////////
+
+
+// // ---EXAMPLE TO USE THE MAP---
+
+// console.log(question.get(`question`));
+
+// // since maps are iterables we can loop them
+// for (const [key, value] of question) {
+//   if (typeof key === `number`) console.log(`Answer ${key}: ${value}`);
+// }
+
+// // suppose the answer is got from prompt()
+// const answer = 4;
+// console.log(question.get(answer === question.get(`correct`)));
+
+
+
 
 // Follow @coding_feature on Instagram for more content! 👍
