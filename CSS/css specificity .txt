@@ -1,0 +1,27 @@
+
+
+
+--- CSS SPECIFICITY ---
+
+
+Specificity in CSS establishes the hierarchy of styles, determining which styles take precedence over others.
+
+Tag Selector (Element):
+    We can specify styles for a group of tags, such as <li> list elements.
+    Specified style points: 1 point.
+
+Class Selector:
+    Styles applied to a class (.class) will override those of the tag selector.
+    Specified style points: 10 points.
+
+ID Selector:
+    Styles applied to an ID (#id) will override those of a class selector.
+    Specified style points: 100 points.
+
+Inline Style:
+    Overrides the styles of the preceding selectors.
+    Specified style points: 1000 points.
+
+!important:
+    Overrides all other styles.
+    Specified style points: Infinite (highest precedence).

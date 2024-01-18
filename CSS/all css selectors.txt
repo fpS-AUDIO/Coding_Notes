@@ -1,0 +1,371 @@
+
+
+--- ALL CSS SELECTORS ---
+
+
+
+const cssSelectors = {
+
+  '.class': {
+    example: '.intro',
+    description: 'Selects all elements with class="intro"',
+  },
+
+
+  '.class1.class2': {
+    example: '.name1.name2',
+    description: 'Selects all elements with both name1 and name2 set within its class attribute',
+  },
+
+
+  '.class1 .class2': {
+    example: '.name1 .name2',
+    description: 'Selects all elements with name2 that are descendants of an element with name1',
+  },
+
+
+  '#id': {
+    example: '#firstname',
+    description: 'Selects the element with id="firstname"',
+  },
+
+
+  '*': {
+    example: '*',
+    description: 'Selects all elements',
+  },
+
+
+  'element': {
+    example: 'p',
+    description: 'Selects all <p> elements',
+  },
+
+
+  'element.class': {
+    example: 'p.intro',
+    description: 'Selects all <p> elements with class="intro"',
+  },
+
+
+  'element, element': {
+    example: 'div, p',
+    description: 'Selects all <div> elements and all <p> elements',
+  },
+
+
+  'element element': {
+    example: 'div p',
+    description: 'Selects all <p> elements inside <div> elements',
+  },
+
+
+  'element > element': {
+    example: 'div > p',
+    description: 'Selects all <p> elements where the parent is a <div> element',
+  },
+
+
+  'element + element': {
+    example: 'div + p',
+    description: 'Selects the first <p> element that is placed immediately after <div> elements',
+  },
+
+
+  'element1 ~ element2': {
+    example: 'p ~ ul',
+    description: 'Selects every <ul> element that is preceded by a <p> element',
+  },
+
+
+  '[attribute]': {
+    example: '[target]',
+    description: 'Selects all elements with a target attribute',
+  },
+
+
+  '[attribute=value]': {
+    example: '[target="_blank"]',
+    description: 'Selects all elements with target="_blank"',
+  },
+
+
+  '[attribute~=value]': {
+    example: '[title~="flower"]',
+    description: 'Selects all elements with a title attribute containing the word "flower"',
+  },
+
+
+  '[attribute|=value]': {
+    example: '[lang|="en"]',
+    description: 'Selects all elements with a lang attribute value equal to "en" or starting with "en-"',
+  },
+
+
+  '[attribute^=value]': {
+    example: 'a[href^="https"]',
+    description: 'Selects every <a> element whose href attribute value begins with "https"',
+  },
+
+
+  '[attribute$=value]': {
+    example: 'a[href$=".pdf"]',
+    description: 'Selects every <a> element whose href attribute value ends with ".pdf"',
+  },
+
+
+  '[attribute*=value]': {
+    example: 'a[href*="w3schools"]',
+    description: 'Selects every <a> element whose href attribute value contains the substring "w3schools"',
+  },
+
+
+  ':active': {
+    example: 'a:active',
+    description: 'Selects the active link',
+  },
+
+
+  '::after': {
+    example: 'p::after',
+    description: 'Insert something after the content of each <p> element',
+  },
+
+
+  '::before': {
+    example: 'p::before',
+    description: 'Insert something before the content of each <p> element',
+  },
+
+
+  // Pseudo-elements (::after and ::before) typically require 'content' property for visibility.
+
+
+
+  ':checked': {
+    example: 'input:checked',
+    description: 'Selects every checked <input> element',
+  },
+
+
+  ':default': {
+    example: 'input:default',
+    description: 'Selects the default <input> element',
+  },
+
+
+  ':disabled': {
+    example: 'input:disabled',
+    description: 'Selects every disabled <input> element',
+  },
+
+
+  ':empty': {
+    example: 'p:empty',
+    description: 'Selects every <p> element that has no children (including text nodes)',
+  },
+
+
+  ':enabled': {
+    example: 'input:enabled',
+    description: 'Selects every enabled <input> element',
+  },
+
+
+  ':first-child': {
+    example: 'p:first-child',
+    description: 'Selects every <p> element that is the first child of its parent',
+  },
+
+
+  '::first-letter': {
+    example: 'p::first-letter',
+    description: 'Selects the first letter of every <p> element',
+  },
+
+
+  '::first-line': {
+    example: 'p::first-line',
+    description: 'Selects the first line of every <p> element',
+  },
+
+
+  ':first-of-type': {
+    example: 'p:first-of-type',
+    description: 'Selects every <p> element that is the first <p> element of its parent',
+  },
+
+
+  ':focus': {
+    example: 'input:focus',
+    description: 'Selects the input element which has focus',
+  },
+
+
+  ':fullscreen': {
+    example: ':fullscreen',
+    description: 'Selects the element that is in full-screen mode',
+  },
+
+
+  ':hover': {
+    example: 'a:hover',
+    description: 'Selects links on mouse over',
+  },
+
+
+  ':in-range': {
+    example: 'input:in-range',
+    description: 'Selects input elements with a value within a specified range',
+  },
+
+
+  ':indeterminate': {
+    example: 'input:indeterminate',
+    description: 'Selects input elements that are in an indeterminate state',
+  },
+
+
+  ':invalid': {
+    example: 'input:invalid',
+    description: 'Selects all input elements with an invalid value',
+  },
+
+
+  ':lang(language)': {
+    example: 'p:lang(it)',
+    description: 'Selects every <p> element with a lang attribute equal to "it" (Italian)',
+  },
+
+
+  ':last-child': {
+    example: 'p:last-child',
+    description: 'Selects every <p> element that is the last child of its parent',
+  },
+
+
+  '::last-of-type': {
+    example: 'p:last-of-type',
+    description: 'Selects every <p> element that is the last <p> element of its parent',
+  },
+
+
+  ':link': {
+    example: 'a:link',
+    description: 'Selects all unvisited links',
+  },
+
+
+  '::marker': {
+    example: '::marker',
+    description: 'Selects the markers of list items',
+  },
+
+
+  ':not(selector)': {
+    example: ':not(p)',
+    description: 'Selects every element that is not a <p> element',
+  },
+
+
+  ':nth-child(n)': {
+    example: 'p:nth-child(2)',
+    description: 'Selects every <p> element that is the second child of its parent',
+  },
+
+
+  ':nth-last-child(n)': {
+    example: 'p:nth-last-child(2)',
+    description: 'Selects every <p> element that is the second child of its parent, counting from the last child',
+  },
+
+
+  ':nth-last-of-type(n)': {
+    example: 'p:nth-last-of-type(2)',
+    description: 'Selects every <p> element that is the second <p> element of its parent, counting from the last child',
+  },
+
+
+  ':nth-of-type(n)': {
+    example: 'p:nth-of-type(2)',
+    description: 'Selects every <p> element that is the second <p> element of its parent',
+  },
+
+
+  ':only-of-type': {
+    example: 'p:only-of-type',
+    description: 'Selects every <p> element that is the only <p> element of its parent',
+  },
+
+
+  ':only-child': {
+    example: 'p:only-child',
+    description: 'Selects every <p> element that is the only child of its parent',
+  },
+
+
+  ':optional': {
+    example: 'input:optional',
+    description: 'Selects input elements with no "required" attribute',
+  },
+
+
+  ':out-of-range': {
+    example: 'input:out-of-range',
+    description: 'Selects input elements with a value outside a specified range',
+  },
+
+
+  '::placeholder': {
+    example: 'input::placeholder',
+    description: 'Selects input elements with the "placeholder" attribute specified',
+  },
+
+
+  ':read-only': {
+    example: 'input:read-only',
+    description: 'Selects input elements with the "readonly" attribute specified',
+  },
+
+
+  ':read-write': {
+    example: 'input:read-write',
+    description: 'Selects input elements with the "readonly" attribute NOT specified',
+  },
+
+
+  ':required': {
+    example: 'input:required',
+    description: 'Selects input elements with the "required" attribute specified',
+  },
+
+
+  ':root': {
+    example: ':root',
+    description: "Selects the document's root element",
+  },
+
+
+  '::selection': {
+    example: '::selection',
+    description: 'Selects the portion of an element that is selected by a user',
+  },
+
+
+  ':target': {
+    example: '#news:target',
+    description: 'Selects the current active #news element (clicked on a URL containing that anchor name)',
+  },
+
+
+  ':valid': {
+    example: 'input:valid',
+    description: 'Selects all input elements with a valid value',
+  },
+
+
+  ':visited': {
+    example: 'a:visited',
+    description: 'Selects all visited links',
+  },
+};

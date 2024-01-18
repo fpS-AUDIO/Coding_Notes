@@ -1,0 +1,134 @@
+
+
+--- FUNCTIONS IN CSS ---
+
+
+
+
+const cssFunctions = {
+
+
+  attr: {
+    description: 'Returns the value of an attribute of the selected element',
+    example: 'attr(attributeName)',
+  },
+
+
+  calc: {
+    description: 'Allows you to perform calculations to determine CSS property values',
+    example: 'calc(100% - 30px)',
+  },
+
+
+  'conic-gradient': {
+    description: 'Creates a conic gradient',
+    example: 'conic-gradient(red, yellow, green)',
+  },
+
+
+  counter: {
+    description: 'Returns the current value of the named counter',
+    example: `
+      CSS:
+      counter-reset: myCounter;
+
+      li::before {
+        content: counter(myCounter);
+        counter-increment: myCounter;
+      }
+
+      HTML:
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+    `,
+  },
+
+
+  'cubic-bezier': {
+    description: 'Defines a Cubic Bezier curve',
+    example: 'cubic-bezier(0.1, 0.7, 1.0, 0.1)',
+  },
+
+
+  hsl: {
+    description: 'Defines colors using the Hue-Saturation-Lightness model (HSL)',
+    example: 'hsl(120, 100%, 50%)',
+  },
+
+
+  hsla: {
+    description: 'Defines colors using the Hue-Saturation-Lightness-Alpha model (HSLA)',
+    example: 'hsla(120, 100%, 50%, 0.8)',
+  },
+
+
+  'linear-gradient': {
+    description: 'Creates a linear gradient',
+    example: 'linear-gradient(to right, red, yellow)',
+  },
+
+
+  max: {
+    description: 'Uses the largest value from a comma-separated list of values as the property value',
+    example: 'max(200px, 50%, 3em)',
+  },
+
+
+  min: {
+    description: 'Uses the smallest value from a comma-separated list of values as the property value',
+    example: 'min(200px, 50%, 3em)',
+  },
+
+
+  'radial-gradient': {
+    description: 'Creates a radial gradient',
+    example: 'radial-gradient(circle at 50% 50%, red, yellow)',
+  },
+
+
+  'repeating-conic-gradient': {
+    description: 'Repeats a conic gradient',
+    example: 'repeating-conic-gradient(red, yellow, green 0 30deg)',
+  },
+
+
+  'repeating-linear-gradient': {
+    description: 'Repeats a linear gradient',
+    example: 'repeating-linear-gradient(to right, red, yellow 10%, green 20%)',
+  },
+
+
+  'repeating-radial-gradient': {
+    description: 'Repeats a radial gradient',
+    example: 'repeating-radial-gradient(circle at 50% 50%, red, yellow 10%, green 20%)',
+  },
+
+
+  rgb: {
+    description: 'Defines colors using the Red-Green-Blue model (RGB)',
+    example: 'rgb(255, 0, 0)',
+  },
+
+
+  rgba: {
+    description: 'Defines colors using the Red-Green-Blue-Alpha model (RGBA)',
+    example: 'rgba(255, 0, 0, 0.8)',
+  },
+
+
+  var: {
+    description: 'Inserts the value of a custom property',
+    example: `
+      CSS:
+      --main-color: red;
+
+      div {
+        color: var(--main-color);
+      }
+    `,
+  },
+
+};

@@ -1,0 +1,94 @@
+
+
+--- DISPLAY PROPERTY ---
+
+element {
+    
+    display: inline;
+    /* Displays an element as an inline element (like <span>). 
+       Any height and width properties will have no effect. 
+       Useful for elements within a line of text. */
+
+    display: block;
+    /* Displays an element as a block element (like <p>). 
+       It starts on a new line and takes up the whole width. 
+       Commonly used for structuring page layouts. */
+
+    display: inline-block;
+    /* Displays an element as an inline-level block container. 
+       The element itself is formatted as an inline element, but 
+       you can apply height and width values. Useful for combining 
+       block and inline layout features. */
+
+    display: contents;
+    /* Makes the container disappear, making the child elements 
+       children of the element the next level up in the DOM. 
+       Useful for simplifying the DOM structure. */
+
+    display: flex;
+    /* Displays an element as a block-level flex container. 
+       Ideal for building flexible and responsive layouts. */
+
+    display: grid;
+    /* Displays an element as a block-level grid container. 
+       Great for creating grid-based layouts. */
+
+    display: none;
+    /* The element is completely removed from the layout. 
+       Useful for hiding elements dynamically. */
+
+    display: initial;
+    /* Sets this property to its default value. 
+       Useful when resetting styles to default. */
+
+    display: inherit;
+    /* Inherits this property from its parent element. 
+       Useful when maintaining consistency across elements. */
+
+
+
+
+          /* ... (other display values) ... */
+
+
+
+    display: inline-table;
+    /* The element is displayed as an inline-level table. */
+
+    display: list-item;
+    /* Let the element behave like an <li> element. */
+
+    display: run-in;
+    /* Displays an element as either block or inline, depending on context. */
+
+    display: table;
+    /* Let the element behave like a <table> element. */
+
+    display: table-caption;
+    /* Let the element behave like a <caption> element. */
+
+    display: table-column-group;
+    /* Let the element behave like a <colgroup> element. */
+
+    display: table-header-group;
+    /* Let the element behave like a <thead> element. */
+
+    display: table-footer-group;
+    /* Let the element behave like a <tfoot> element. */
+
+    display: table-row-group;
+    /* Let the element behave like a <tbody> element. */
+
+    display: table-cell;
+    /* Let the element behave like a <td> element. */
+
+    display: table-column;
+    /* Let the element behave like a <col> element. */
+
+    display: table-row;
+    /* Let the element behave like a <tr> element. */
+
+    /* ... (any other display values you want to include) ... */
+
+
+}

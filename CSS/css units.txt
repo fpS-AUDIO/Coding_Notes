@@ -1,0 +1,51 @@
+
+
+
+--- CSS UNITS ---
+
+
+
+const cssReference = {
+
+  relativeUnits: {
+    em: "Relative to the font size of the element.",
+    ex: "Relative to the x-height of the element's font.",
+    cap: "Relative to the cap height of the element's font.",
+    ch: "Relative to the average character advance of a narrow glyph, typically '0'.",
+    ic: "Relative to the average character advance of a full-width glyph, like '水'.",
+    rem: "Relative to the font size of the root element.",
+    lh: "Relative to the line height of the element.",
+    rlh: "Relative to the line height of the root element.",
+    vw: "1% of the viewport's width.",
+    vh: "1% of the viewport's height.",
+    svh: "Safe Viewport Height: Percentage of viewport height minus browser UI.",
+    lwh: "Logical Width Height: Related to width or height in logical units.",
+    dvh: "Dynamic Viewport Height: Adjusts based on the actual viewport size.",
+    dvw: "Dynamic Viewport Width: Adjusts based on the actual viewport size.",
+    vi: "1% of the viewport's size in the root element's inline axis.",
+    vb: "1% of the viewport's size in the root element's block axis.",
+    vmin: "1% of the viewport's smaller dimension.",
+    vmax: "1% of the viewport's larger dimension."
+  },
+
+  absoluteUnits: {
+    px: "A pixel unit, commonly used as an absolute unit in CSS.",
+    in: "Inches: 1 inch is equal to 96 pixels in CSS.",
+    cm: "Centimeters.",
+    mm: "Millimeters.",
+    pt: "Points: Traditionally used in print, 1pt is 1/72 of an inch.",
+    pc: "Picas: Used in print, 1pc is equal to 12 points."
+  },
+
+  additionalProperties: {
+    opacity: "Ranges from 0 (transparent) to 1 (opaque).",
+    colors: {
+      description: "Apart from standard colors (rgba, rgb, hex, literal), HSL is also used.",
+      hue: "0 - 360, representing the color wheel.",
+      saturation: "Percentage of saturation.",
+      lightness: "Lightness of the color in percentage."
+    },
+
+  },
+};
+

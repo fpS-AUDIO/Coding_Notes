@@ -1,0 +1,56 @@
+
+
+
+--- OVERFLOW ---
+
+
+Overflow 
+    is s the content spilling out of an element, 
+    which can be an issue when defining fixed heights and widths.
+    Example: if a <p> takes up more space than a <div> with specified height and width.
+
+
+
+div {
+
+    overflow: scroll;
+    /* "auto" - default behavior, shows scroll if needed */
+    /* "hidden" - content is hidden inside the element */
+    /* "scroll" - scroll bar will appear */
+    /* "visible" - no scroll bar, overflowing content is visible */
+
+    /* Separate overflow behavior for horizontal and vertical axes */
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+
+    word-break: break-all;
+    /* "break-all" - breaks words to fit when reaching the box limit */
+    /* "keep-all" - keeps words intact, goes to the next line without cutting */
+    /* "normal" - default behavior */
+
+
+    text-wrap: balance;
+    /* Automatic balancing of text lines across multiple columns */
+
+
+    overflow-wrap: break-word;
+    /* "normal" - default behavior, words may overflow the box */
+    /* "break-word" - breaks words to fit when reaching the box limit */
+
+
+    white-space: nowrap;
+    /* Prevents text from wrapping to the next line */
+
+
+    text-overflow: ellipsis;
+    /* Displays an ellipsis (...) to indicate truncated text when used with overflow: hidden */
+
+
+    /* Maximum height property */
+    max-height: 200px;
+
+
+    /* Maximum width property */
+    max-width: 300px;
+}

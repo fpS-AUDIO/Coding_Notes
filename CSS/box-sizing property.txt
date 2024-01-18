@@ -1,0 +1,48 @@
+
+
+
+--- BOX-SIZING PROPERTY ---
+
+
+
+*{
+
+    box-sizing: content-box;
+        Standard model.
+        Specifies that width and height are applied to the content without including padding and border.
+        In other words, width and height represent the size of the content only.
+
+    box-sizing: border-box;
+        Defines width and height as the size of the entire element.
+        Therefore, width/height = content + padding + border.
+        Consider using border-box for a more intuitive and predictable box model.
+
+}
+
+
+
+--- EXPLANATION BOX-MODEL ---
+
+
+
+const boxModel = {
+  margin: {
+    description: 'Space between border and other HTML content.',
+    example: 'margin: 10px;',
+  },
+
+  border: {
+    description: 'Border around the content.',
+    example: 'border: 2px solid black;',
+  },
+
+  padding: {
+    description: 'Space between content and border.',
+    example: 'padding: 5px;',
+  },
+
+  content: {
+    description: 'Actual content of the HTML element.',
+    example: '<p>Example text</p>',
+  },
+};

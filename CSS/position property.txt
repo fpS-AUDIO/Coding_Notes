@@ -1,0 +1,57 @@
+
+
+
+--- POSITION PROPERTY ---
+
+
+element {
+    
+    position: static;
+    /* Default behavior, behaves like normal flow */
+
+    position: relative;
+    /* Element takes a relative position based on its starting position.
+       If we add properties like:
+       top: 8px;
+       left: 20px;
+       the element shifts by calculating the pixels from its starting position */
+
+    position: absolute;
+    /* Element takes a position based on the parent element (must be relative).
+       It calculates its space relative to its .container / <body> etc. */
+
+    position: fixed;
+    /* Position is based on the viewport.
+       Remains within its coordinates when scrolling the page. */
+
+    position: sticky;
+    /* Element remains within specified coordinates.
+       For example, if we have a navbar positioned at 50px, but we want it to
+       stick to the top of the page when scrolling down, we set it to remain sticky at 0px:
+       top: 0px; (This property is crucial for defining the point at which the element becomes "sticky.")
+}
+
+
+____________________________________________________________________________________
+
+(!!!) NOTE:
+
+Z-index Property: 
+    When dealing with positioned elements, especially those with position: absolute, 
+    position: relative, or position: fixed, the z-index property becomes relevant. 
+    It determines the stacking order of elements, which is crucial when they overlap.
+
+Float Property: 
+    Although not directly related to the position property, the float property can impact 
+    the layout and positioning of elements, especially in older codebases. Understanding 
+    how it interacts with positioning can be beneficial.
+
+CSS Transitions/Animations: 
+    When changing an element's position dynamically, you might want to consider CSS transitions 
+    or animations to make the movement smoother. This isn't directly related to the position property, 
+    but it complements the overall user experience.
+
+Responsive Design Considerations: 
+    In modern web development, it's essential to think about how your positioning choices affect 
+    the responsiveness of your website. Media queries and flexible layouts are often used in conjunction 
+    with positioning for responsive design.

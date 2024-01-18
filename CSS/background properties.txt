@@ -1,0 +1,79 @@
+
+
+
+--- BACKGROUND PROPERTIES ---
+
+
+div {
+    
+    /* Background Color:
+       Sets the color of the element's background.
+       Can use color names, hexadecimal, rgb, rgba, hsl, hsla values.
+       Example: background-color: red; or background-color: #ff0000; */
+    background-color: red;
+
+
+    /* Background Image:
+       Sets one or more background images for an element.
+       Images are layered on top of each other, first image on top.
+       Use a comma to separate multiple images.
+       Example: background-image: url(path/to/image1.jpg), url(path/to/image2.png); */
+    background-image: url(PATH); /* Replace PATH with the actual image path */
+
+
+    /* Background Size:
+       Specifies the size of the background images.
+       Values can be 'auto' (keep original size), 'contain' (scale to fit), 'cover' (scale to cover), or specific dimensions.
+       Example: background-size: 50% auto; (scales the width to 50% and height automatically adjusted) */
+    background-size: contain;
+
+
+    /* Background Repeat:
+       Sets if/how a background image is repeated.
+       Values: 'repeat', 'repeat-x', 'repeat-y', 'no-repeat'.
+       Example: background-repeat: repeat-x; (repeats the image horizontally only) */
+    background-repeat: no-repeat;
+
+
+    /* Background Position:
+       Sets the starting position of a background image.
+       Values can be keywords ('top', 'bottom', 'left', 'right', 'center') or specific coordinates.
+       Example: background-position: left top; (positions the image at the top-left corner) */
+    background-position: bottom;
+
+
+    /* Background Attachment:
+       Sets whether the background scrolls with the content or is fixed.
+       Values: 'scroll', 'fixed', 'local'.
+       Example: background-attachment: fixed; (background doesn't move with scrolling) */
+    background-attachment: fixed;
+
+
+    /* Background Clip:
+       Specifies the painting area of the background.
+       Values: 'border-box', 'padding-box', 'content-box'.
+       Example: background-clip: padding-box; (background extends to the padding edge) */
+    background-clip: border-box;
+
+
+    /* Background Origin:
+       Specifies where the background image position is calculated from.
+       Values: 'border-box', 'padding-box', 'content-box'.
+       Example: background-origin: content-box; (position is calculated from the content edge) */
+    background-origin: padding-box;
+
+
+    /* Background Blend Mode:
+       Defines the blending mode of each background layer (color/image).
+       Values include 'normal', 'multiply', 'screen', 'overlay', 'darken', 'lighten', etc.
+       Example: background-blend-mode: multiply; (blends the image and color using the multiply effect) */
+    background-blend-mode: multiply;
+
+
+    /* Shorthand Background Property:
+       A shorthand to specify all background properties at once.
+       Order: color, image, position/size, repeat, origin, clip, attachment.
+       Example: background: red url(PATH) bottom/contain no-repeat padding-box border-box fixed; */
+    background: red url(PATH) bottom/contain no-repeat padding-box border-box fixed;
+
+}

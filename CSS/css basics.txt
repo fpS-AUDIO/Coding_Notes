@@ -1,0 +1,113 @@
+
+
+--- CSS BASICS ---
+
+
+_________________________________________________________________________________________________
+BASICS
+    CSS (Cascading Style Sheets)
+    - Defines how HTML elements are displayed on a page.
+    - It's more effective to create a separate .css file and link it to the HTML file, rather than defining styles directly within the HTML.
+    - It's a common practice to avoid using numbers in the names of HTML or CSS files.
+
+
+
+_________________________________________________________________________________________________
+CONNECT CSS
+Three ways to use CSS:
+
+1.  External CSS:
+        Link a CSS file in an HTML file:
+
+        <head>
+            ...
+            <link rel="stylesheet" href="path/to/part_one.css">
+        </head>
+
+
+2.  Internal CSS:
+        Include CSS directly within an HTML file using <style> tags:
+
+        <style>
+            /* CSS code here */
+        </style>
+
+
+3. Inline CSS:
+        Apply CSS directly to an HTML element:
+
+        <h1 style="color: red;">Example Heading</h1>
+
+
+
+_________________________________________________________________________________________________
+BASIC SYNTAX
+General format for CSS:
+
+
+selector {
+    property: value;
+    property: value;
+    /* more properties */
+}
+
+
+Example:
+
+li {
+    /* Change color using RGB */
+    color: rgb(32, 186, 73);
+}
+
+
+
+_________________________________________________________________________________________________
+CHANGE COLORS
+
+color: blue; - Change color using named colors.
+color: rgb(32, 186, 73); - Change color using RGB.
+color: rgba(84, 44, 44, 0.2); - Change color using RGBA (alpha for transparency, range 0-1).
+color: #0f7574; - Change color using HEX code (most common).
+
+
+
+_________________________________________________________________________________________________
+OTHER BASICS
+
+Cascade:
+    CSS rules apply from top to bottom, and later rules can override earlier ones.
+
+
+Inheritance:
+    Child elements inherit styles from their parent elements.
+
+
+Example:
+body {
+    color: green;
+}
+
+All elements within body will inherit this color.
+
+
+Controlling Inheritance:
+    h1 { color: inherit; } - Inherits the color from the parent element.
+    h1 { color: initial; } - Resets to the default initial value.
+    h1 { color: unset; } - Takes the value from the natural (basic) behavior of the element.
+
+
+Resetting All Property Values:
+h1 {
+    all: unset;
+}
+
+
+Font Size:
+    Typically set in the <body> as a default value (default for browsers: 1em = 16px).
+    Use "em" to scale relative to the default font size (e.g., 2em = 2 times the default font size).
+    "em" is a relative unit of measurement based on the size of the font.
+
+
+Fonts:
+    Fonts can be downloaded and linked locally.
+    Alternatively, fonts can be linked in the <head> of the HTML and then applied in CSS.
