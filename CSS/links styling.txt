@@ -1,0 +1,83 @@
+
+
+
+/* --- LINKS STYLING --- */
+
+
+
+/* Defining CSS variables for colors */
+
+:root {
+    --link-color: blue;
+    --visited-color: purple;
+    --focus-color: orange;
+    --hover-color: green;
+    --active-color: red;
+}
+
+
+
+/* Pseudo-classes for link states */
+
+a:link {
+    color: var(--link-color);               /* Style for a link that has not been visited */
+}
+
+
+a:visited {
+    color: var(--visited-color);            /* Style for a link that has been visited */
+}
+
+
+a:focus {
+    outline: 2px solid var(--focus-color);  /* Distinct style for focus state */
+}
+
+
+a:hover {
+    color: var(--hover-color);              /* Style when the mouse hovers over the link */
+}
+
+
+a:active {
+    color: var(--active-color);             /* Style when the link is being clicked on */
+}
+
+
+
+/* Default styles for an <a> tag */
+
+a {
+    color: -webkit-link;                /* Default link color */
+    cursor: pointer;                    /* Hand cursor on hover */
+    text-decoration: underline;         /* Underline for links */
+}
+
+
+
+
+/* Styling external links with an icon */
+
+a[href^="http://"], a[href^="https://"]:not([href*="yourdomain.com"]) {
+    background: url('external-link-icon.png') no-repeat right;
+    padding-right: 15px; /* Add space for the icon */
+}
+
+
+
+
+/* Styling mailto and tel links differently */
+
+a[href^="mailto:"] {
+    color: var(--mailto-color);
+}
+
+a[href^="tel:"] {
+    color: var(--tel-color);
+}
+
+
+
+
+/* Note: Remember the LVHA order: :link, :visited, :hover, then :active for cascading */
+/* Accessibility Tip: Ensure sufficient contrast and distinct focus styles for better navigation */

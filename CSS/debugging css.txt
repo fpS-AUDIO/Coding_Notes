@@ -1,0 +1,22 @@
+
+
+
+/* --- DEBUGGING CSS --- */
+
+In the browser, pressing F12 opens DevTools. 
+DevTools is a console with various tabs that help in real-time modification:
+    - Inspect: Examine and modify HTML and CSS.
+    - Device Toggle: Test responsiveness across different devices.
+    - Elements Tab: View and interact with the page's DOM and CSS properties.
+    - Console: Identify JavaScript errors and log information.
+    - Network: Monitor network activity and resources loaded by the page.
+    - Lighthouse: Analyze site performance, SEO, and accessibility.
+
+
+Validate CSS code using online tools such as:
+    - W3C CSS Validator         https://jigsaw.w3.org/css-validator/ 
+    - CSS Portal Validator      https://www.cssportal.com/css-validator/
+
+
+Check supported versions at: https://caniuse.com/"
+

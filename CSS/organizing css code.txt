@@ -1,0 +1,91 @@
+
+
+
+/* --- ORGANIZING CSS CODE --- */
+
+
+Organizing code is important for maintenance, especially when returning to it after some time 
+or when new personnel are added to a project. 
+The code should be:
+    -   Easy to find
+    -   Well written
+    -   Readable
+
+If there are existing guidelines, follow them. 
+For example, when joining a project that has already started. 
+Otherwise, create guidelines that are the same for everyone on a new project.
+
+
+
+Naming convention =
+    It is a set of rules for choosing the sequence of characters to be used
+    for the identifiers of variables, types, functions, and all other entities in
+    the source code and documentation.
+
+
+For example:
+    .error_confermed
+    .error-confermed decide how to name all classes/variables
+    .errorConfermed
+
+
+Decide whether to name variables in English, Italian, Russian...
+Format the code to be readable. Everything in the same style.
+
+
+
+
+Then it's better to comment on the code.
+For example:
+
+/* general style */
+.... body, html, h1, h2, h3, h4, h5, h6, ul, ol
+
+/* utilities = classes used sporadically on the site to
+achieve small objectives */
+.... .error, .warning, .success, .info
+
+/* layout */
+.... header, .navbar, .main-container
+
+/* specifics */
+... .product-description, .product-image, .product-container
+
+Avoid overly specific selectors,
+but try to use standard site classes.
+
+For example: <... class="product-container error" />
+<... class="product-container success" />
+<... class="product-container warning" />
+
+
+
+Finally, if there are many sections on the site, you can divide .css into more files.
+For example, dedicate a file to tables or e-commerce."
+
+
+
+
+
+
+Summary for Quick Reference:
+
+    -   Code Organization for Maintenance: Organize code for ease of maintenance, especially 
+        for team collaboration or revisiting projects.
+
+    -   Adherence to Guidelines: Follow existing guidelines in ongoing projects. 
+        For new projects, establish consistent guidelines for all team members.
+
+    -   Naming Conventions: Adopt a consistent set of rules for naming variables, classes, and other 
+        identifiers to ensure clarity and consistency.
+
+    -   Code Formatting: Maintain a uniform style in code formatting for readability.
+
+    -   Commenting: Use comments to explain sections of the code, such as general style, 
+        utilities, layout, and specific components.
+
+    -   Selector Specificity: Avoid overly specific selectors. 
+        Instead, utilize standard classes for reusability and simplicity.
+
+    -   CSS File Structure: In large projects, consider dividing the CSS into multiple files for 
+        different sections like tables or e-commerce to keep the code organized and manageable.

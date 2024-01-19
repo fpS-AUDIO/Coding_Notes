@@ -1,0 +1,83 @@
+
+
+
+--- TABLE STYLING ---
+
+
+
+/* Base Table Styling */
+
+table {
+    table-layout: fixed;                /* Fixed table layout to set column widths based on the width of the table */
+    border-collapse: collapse;          /* Collapses cell borders to avoid double borders */
+    width: 100%;                        /* Full width tables */
+    overflow-x: auto;                   /* Enables horizontal scrolling for smaller screens */
+}
+
+
+
+/* Column Widths */
+
+thead th:nth-child(1) { width: 30%; }   /* Width for the first column */
+thead th:nth-child(2) { width: 20%; }   /* Width for the second column */
+thead th:nth-child(3) { width: 35%; }   /* Width for the third column */
+thead th:nth-child(4) { width: 15%; }   /* Width for the fourth column */
+
+
+
+/* Cell Styling */
+
+th, td {
+    padding: 20px;                      /* Adds padding for readability */
+    text-overflow: ellipsis;            /* Handles text overflow in cells */
+    overflow: hidden;                   /* Prevents text from spilling out of cells */
+    white-space: nowrap;                /* Keeps text in a single line */
+}
+
+tbody td {
+    text-align: center;                 /* Centers text in table body cells */
+}
+
+tfoot th {
+    text-align: right;                  /* Aligns text in table footer headers to the right */
+}
+
+
+
+/* Zebra Striping for Rows */
+
+tbody tr:nth-child(odd) { background-color: white; }        /* Styling for odd rows */
+tbody tr:nth-child(even) { background-color: grey; }        /* Styling for even rows */
+
+
+
+/* Hover Effect for Rows */
+
+tbody tr:hover { background-color: lightgray; }     /* Row hover effect */
+
+
+
+
+/* Sticky Table Header */
+
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+
+
+/* Table Caption Styling */
+
+caption {
+    font-family: "Rock Salt", cursive;
+    padding: 20px;
+    font-style: italic;
+    caption-side: bottom; /* Position of the caption (top or bottom) */
+    color: #666;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+

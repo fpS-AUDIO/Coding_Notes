@@ -1,0 +1,21 @@
+
+
+
+/* --- STYLE RESET --- */
+
+*{
+    box-sizing: border-box;         /* Resets box-sizing */
+    padding: 0;
+    margin: 0;
+}
+
+
+button, select, textarea, input {
+    font-family: inherit;           /* Inherits the font from the site, not the browser */
+    font-size: 100%;                /* Inherits the font size from the parent element */
+
+}
+
+textarea {
+    overflow: auto;                 /* To prevent Internet Explorer from adding unnecessary scrollbars */
+}

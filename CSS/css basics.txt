@@ -111,3 +111,17 @@ Font Size:
 Fonts:
     Fonts can be downloaded and linked locally.
     Alternatively, fonts can be linked in the <head> of the HTML and then applied in CSS.
+
+
+
+_________________________________________________________________________________________________
+PAGE LAYOUT METHODS
+
+There are several techniques for page layouts:
+    1. normal flow
+    2. display propert: block, inline, flex, grid etc.
+    3. floats
+    4. position: static, relative, absolute, fixed, sticky
+    5. table layout (legacy)
+    6. multiple-column layout
+

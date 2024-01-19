@@ -1,0 +1,44 @@
+
+
+
+--- FLOAT ---
+
+
+
+.float-box {
+
+    float: left;
+    /* Places the element on the left; allows text and inline elements to wrap around it. 
+       Options: left, right, none, inherit. */
+
+    margin-right: 15px;
+    /* Adds space to the right of the floated element, affecting its distance from neighboring elements. */
+}
+
+
+
+.close-elements {
+
+    margin-right: 15px;
+    /* The margin is calculated with respect to the closest positioned ancestor or containing block, 
+       not just the parent element. */
+
+    clear: left;
+    /* Ensures the element is placed below any floated elements on the left.
+       Options: left, right, both, none, inherit. */
+}
+
+
+
+
+
+/*  Clearfix Hack: 
+    This is a common technique to clear floats. 
+    By applying the .clearfix class to a parent element, you can ensure 
+    that it fully contains its floated children without using extra markup.*/
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
