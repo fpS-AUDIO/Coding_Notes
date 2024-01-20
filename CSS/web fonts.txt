@@ -1,0 +1,85 @@
+
+
+
+
+
+/* --- WEB FONTS --- */
+
+
+Within the font-family property, fonts should be listed in order of preference. 
+The browser will use the first available font in the list.
+
+font-family: "Trebuchet MS", Verdana, sans-serif;
+
+
+
+Adding Fonts to a Project:
+There are two primary methods for adding fonts: 
+    1.  Manually adding web fonts.
+    2.  Using a font service like Google Fonts.
+
+
+/* ---------------------------------------------------------------------------------------- */
+
+
+Manually Adding Web Fonts:
+
+    -   Download the font file, keeping in mind the license and copyright.
+    -   Add the font file(s) to your project directory.
+    -   Link the font in your CSS as follows:
+
+@font-face {                                 /* Defining a new font */
+    font-family: "wintercreative";           /* Assigning a chosen name */
+    src: url("path/to/winter_creative.ttf"); /* Specify the correct path */
+    font-weight: normal;                     /* Define font weight */
+    font-style: normal;                      /* Define font style */
+}
+
+body {
+    font-family: "wintercreative", sans-serif; /* Specify the font */
+}
+
+Note the importance of hosting fonts locally for better performance and control.
+
+
+/* ---------------------------------------------------------------------------------------- */
+
+
+Handling Different Font Formats:
+
+Since browsers support different font formats like WOFF/WOFF2, EOT, TTF, 
+it's necessary to specify all sources, weights, and styles:
+
+@font-face {
+    font-family: 'ArmWrestler';
+    src: url('armwrestler-webfont.eot'), /* For IE 5-8 */
+         url('armwrestler-webfont.woff') format('woff'), /* Firefox 3.6+, Chrome 5.0+, IE 9.0+ */
+         url('armwrestler-webfont.ttf') format('truetype'); /* Opera, Safari */
+    font-weight: normal;
+    font-style: normal;
+}
+
+Online converters can be used for different format types.
+This method is rarely used except for custom fonts.
+
+
+/* ---------------------------------------------------------------------------------------- */
+
+
+Using Google Fonts:
+
+Google Fonts can be easily linked using a CDN link and is free to use, offering a variety of fonts and pairings for better typography.
+Example of including a Google Font:
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+
+
+
+
+General Notes:
+
+Consider the impact of font loading on Cumulative Layout Shift (CLS) and user experience.
+Font performance and accessibility are crucial; ensure readability and appropriate sizing.
+Discuss font fallback strategies and the use of system fonts as backups for better performance and compatibility.

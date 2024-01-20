@@ -1,0 +1,224 @@
+
+
+
+/* --- CSS GRID LAYOUT REFERENCE --- */
+
+/* Like Flexbox, Grid also requires a container with child elements.
+   Grid mainly divides the page into 12 columns.
+   These columns can be grouped into larger columns, like 3 columns each occupying 4 of the 12. */
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+.container {
+
+    display: grid;      /* Establishes a grid container */
+
+
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Define the number and width of columns.
+       This grid has 3 macro columns with a flexible unit of measurement */
+
+        /* Examples: */
+
+        /* "200px 200px 200px" - Creates 3 columns of 200px each
+        "2fr 1fr 1fr" - Creates columns of different sizes
+        "repeat(2, 1fr)" - Repeats 1fr column twice (same as 1fr 1fr)
+        "repeat(2, 1fr 2fr)" - Same as: 1fr 2fr 1fr 2fr
+        "100px repeat(2, 1fr 2fr)" - Same as: 100px 1fr 2fr 1fr 2fr
+        "minmax(150px, 250px) 1fr 1fr" - First column stays between 150px and 250px
+        "repeat(3, minmax(200px, auto))" - 3 columns with a min of 200px and max auto
+        "repeat(auto-fill, minmax(100px, auto))" - Auto-fill automatically fits the number of columns based on the viewport width
+        "repeat(auto-fill, minmax(100px, 1fr))" - TOP CHOICE, below 100px items move to the next row without enlarging
+        "repeat(auto-fit, minmax(320px, 1fr))" - TOP CHOICE, items expand if possible, with min value moving to next row */
+
+
+    grid-template-rows: 200px 100px;    /* "auto" */
+    /* Define the number and height of rows.
+       This grid has 2 rows: the first one 200px high and the second 100px */
+
+
+    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+    /*  Shorthand for defining rows and columns 
+        grid-template: x / y    where "x" is grid-template-rows and "y" is grid-template-columns*/
+
+
+    /* Advanced Column and Row Sizing */
+    grid-auto-rows: minmax(100px, auto); /* Define a default row size for each row instead of using "grid-template-rows" */
+    grid-auto-columns: minmax(100px, auto); /* Define a default column size for each column instead of using "grid-template-columns" */
+
+
+    /* Gap Management */
+    gap: 10px; /* Shorthand for grid-row-gap and grid-column-gap */
+    grid-row-gap: 20px; /* Space between rows */
+    grid-column-gap: 20px; /* Space between columns */
+
+
+    /* Grid Flow */
+    grid-auto-flow: row dense; /* Controls the auto-placement algorithm of grid items. 
+                                Possible values:
+                                - row: places items by filling each row, moving onto the next row when the current one is full
+                                - column: places items by filling each column, moving onto the next column when the current one is full
+                                - row dense: similar to 'row', but attempts to fill in holes earlier in the grid if smaller items come up later
+                                - column dense: similar to 'column', but attempts to fill in holes earlier in the grid if smaller items come up later */
+
+
+    /* Content Alignment and Distribution */
+    justify-items: start; /* Aligns items inside their cell horizontally. 
+                            Possible values: 
+                            - start: aligns to the start of the cell
+                            - end: aligns to the end of the cell
+                            - center: centers inside the cell
+                            - stretch: fills the whole width of the cell (default) */
+
+    align-items: start; /* Aligns items inside their cell vertically. 
+                        Possible values: 
+                        - start: aligns to the start of the cell
+                        - end: aligns to the end of the cell
+                        - center: centers inside the cell
+                        - stretch: fills the whole height of the cell (default) */
+
+    justify-content: start; /* Aligns the entire grid within the container horizontally. 
+                            Possible values: 
+                            - start: aligns the grid to the start of the grid container
+                            - end: aligns the grid to the end of the grid container
+                            - center: centers the grid in the grid container
+                            - stretch: stretches the grid items to fill the container
+                            - space-around: distributes extra space around the items
+                            - space-between: distributes extra space between the items
+                            - space-evenly: distributes extra space evenly around the items */
+
+    align-content: start; /* Aligns the entire grid within the container vertically. 
+                            Possible values: 
+                            - start: aligns the grid to the start of the grid container
+                            - end: aligns the grid to the end of the grid container
+                            - center: centers the grid in the grid container
+                            - stretch: stretches the grid items to fill the container
+                            - space-around: distributes extra space around the items
+                            - space-between: distributes extra space between the items
+                            - space-evenly: distributes extra space evenly around the items */
+
+
+    /* Named Grid Areas */
+    grid-template-areas:
+        "header header header"
+        "nav content sidebar"
+        "footer footer footer";
+    /* Define a template of areas, referenced by grid items */
+}
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+.child-element-1 {
+
+    grid-column-start: 1;
+    /* Element starts from position 1 (inclusive) */
+
+    grid-column-end: 3;
+    /* Element ends at position 3 (exclusive)
+       "-1" - Element spans the entire row */
+
+    grid-column: 2 / 4;
+    /* Element occupies space from column 2 to column 4 (exclusive)
+       "2 / -1" */
+
+    grid-row: 1 / 3;
+    /* Element occupies space from row 1 to row 3 (exclusive), spanning 2 rows. */
+
+    justify-self: stretch;
+    /* Horizontal alignment of only the child element
+       "stretch" is default
+       "start", "end", "center" */
+
+    align-self: stretch;
+    /* Vertical alignment of only the child element
+       "stretch" is default
+       "start", "end", "center" */
+}
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+/* Line-based Placement */
+/* Line-based placement is about positioning cells based on a line */
+
+/* Example of a page layout */
+/*
+<div class="container">
+    <div class="box nav">Navbar1</div>
+    <div class="box main">Articles</div>
+    <div class="box side">Sidebar</div>
+    <div class="box footer">Footer</div>
+</div>
+
+.box nav {
+    grid-column: 1/4;
+    padding: 20px;
+}
+
+.box main {
+    grid-row: 1 / 3;
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+}
+*/
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+/* Positioning with grid-template-areas */
+/* An alternative way to place elements within a grid.
+   Based on creating named areas. 
+   These names are then referenced in each element. */
+
+/* Example HTML structure */
+/*
+<body>
+    <header></header>
+    <article>
+        <h1></h1>
+        <p></p>
+    </article>
+    <aside></aside>
+    <footer></footer>
+</body>
+
+header {
+    grid-area: header-nice;
+    /* Grid-area indicates that header is a part of our area and gives it a name */
+}
+
+article {
+    grid-area: article;
+}
+
+aside {
+    grid-area: aside;
+}
+
+footer {
+    grid-area: footer;
+}
+
+@media (min-width: 640px) {
+    .container {
+        grid-template-columns: 2fr 4fr;
+        grid-template-areas: 
+        "header-nice header-nice"
+        "aside article"
+        "aside other-content"
+        ". footer"
+        /* . leaves the space empty */
+    }
+}

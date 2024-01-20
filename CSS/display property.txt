@@ -1,6 +1,6 @@
 
 
---- DISPLAY PROPERTY ---
+/* --- DISPLAY PROPERTY --- */
 
 element {
     

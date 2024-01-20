@@ -1,0 +1,121 @@
+
+
+
+/* --- FLEXBOX --- */
+
+
+/* Basic Structure */
+/* To utilize flexbox, define a container element with display: flex; 
+   and its child elements will become flex items. */
+
+
+/*  To use flexbox we need a container and some children in html.
+    In the css file go to bottom and give the container the display of flex. 
+    This create 2 invisible axes (assi):   
+        - main axis (horizontal) 
+        - cross axis (vertical) */
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+
+/* Flexbox Container */
+
+.container {
+
+    display: flex;
+    /* The .container becomes a block-level flex container,
+       and its children are managed in flex mode.
+       The items are positioned along an axis.
+       The default axis is the main (horizontal) axis. */
+
+
+
+    /* Direction and Wrapping */
+
+    flex-direction: row; /* Defines the main axis direction: row | row-reverse | column | column-reverse */
+    flex-wrap: nowrap;  /* Defines if items should wrap: nowrap | wrap | wrap-reverse */
+                        /* Note: Sometimes you need to give a dimension to the children */
+    flex-flow: row nowrap; /* Shorthand for flex-direction and flex-wrap */
+
+
+
+    /* Alignment */
+
+    justify-content: flex-start; /* Aligns items along the main axis: flex-start | flex-end | center | space-between | space-around | space-evenly */
+    align-items: stretch; /* Aligns items along the cross axis: stretch | flex-start | flex-end | center | baseline */
+    align-content: stretch; /* Aligns lines when there's extra space on the cross axis: stretch | flex-start | flex-end | center | space-between | space-around | space-evenly */
+
+
+
+    /* Gap */
+
+    gap: 10px; /* Defines the gap between items and lines (horizontal and vertical) */
+}
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+/* Child Items of Flexbox Container */
+
+.container_item {
+
+    /* Flexibility */
+
+    flex-grow: 0; /* Defines the ability for an item to grow: <number> */
+    flex-shrink: 1; /* Defines the ability for an item to shrink (when reducing the browser window): <number>; '0' prevents it from shrinking */
+    flex-basis: auto; /* Defines the default size of an item before remaining space is distributed: <length> | auto; '0' allows it to shrink to the maximum extent */
+    flex: 0 1 auto; /* Shorthand for flex-grow, flex-shrink, and flex-basis */
+                    /* For example, 'flex: 1' makes the last two automatic */
+
+    /* If we have 3 child elements inside .container, and we assign:
+       'flex: 1' to the first two and 'flex: 3' to the third (1+1+3=5)
+       they will take up 1/5th and 3/5th of the line space respectively. */
+
+
+
+    /* Alignment */
+
+    align-self: auto; /* Allows the default alignment (align-items) to be overridden for individual items : auto | flex-start | flex-end | center | baseline | stretch */
+
+
+
+    /* Order */
+    
+    order: -1; /* Changes the order in which items appear in the flex container: <integer>; 0 is default value */
+}
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+
+
+/* Practical Example */
+
+
+/* Example HTML Structure */
+/* 
+<div class="flex-container">
+    <div class="flex-item">Item 1</div>
+    <div class="flex-item">Item 2</div>
+    <div class="flex-item">Item 3</div>
+</div>
+*/
+
+/* A flex container with three items */
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-container .flex-item {
+    flex: 1; /* Each item will grow to distribute space equally */
+}
+
+
+
+
