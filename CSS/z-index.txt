@@ -1,0 +1,33 @@
+
+
+
+
+/* --- Z-INDEX --- */
+
+/* z-index represents the stack order of elements on a page in the same stacking context.
+   It only applies to positioned elements (not position: static).
+   For example:
+       If element--1 has z-index=31 and position:relative
+       and element--2 has z-index=32 and position:relative
+       and both elements have the same position and size
+       element-2 will be visible on top because it has a higher z-index. */
+
+.element--1 {
+    position: relative;
+    z-index: 31;
+    /* Position set to relative (or another non-static value) is required for z-index to take effect. */
+}
+
+.element--2 {
+    position: relative;
+    z-index: 32;
+    /* This sets the stack order higher than elements with a lower z-index within the same stacking context. */
+}
+
+
+
+/* Note:
+   - z-index values are relative within each stacking context, not global.
+   - Negative z-index values are allowed.
+   - Properties like transform, opacity (less than 1), and others can create a new stacking context.
+   - Be mindful of accessibility and UX, as elements with higher z-index can cover interactive or important content. */

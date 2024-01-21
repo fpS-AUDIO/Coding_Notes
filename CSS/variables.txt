@@ -1,0 +1,101 @@
+
+
+
+/* --- CSS VARIABLES --- */
+
+
+/*  CSS variables, also known as custom properties, are entities defined by CSS authors 
+    that contain specific values to be reused throughout a document. */
+
+
+
+/*  Global Variables: 
+    Defined in :root for site-wide usage. */
+
+:root {
+    --primary-color: #ff304a;
+    --font-size-regular: 16px;
+    --padding-default: 10px;
+}
+
+
+
+/*  Component-Specific Variables:
+    Scoped to specific components, overriding global variables if needed. */
+
+.container {
+    --container-background: #f2f2f2;
+}
+
+
+
+/*  Using Variables: */
+
+body {
+    background-color: var(--primary-color);
+    font-size: var(--font-size-regular);
+}
+
+
+
+
+
+
+
+
+
+/* --- CSS VARIABLES: BEST PRACTICES & TECHNIQUES --- */
+
+
+/*  Using calc() with Variables:
+    CSS variables can be integrated into calc() for dynamic calculations.
+    Example: width: calc(var(--base-width) - 10%); */
+
+
+/*  Handling Incorrectly Declared Variables:
+    If a variable is declared incorrectly, the browser's default style is used. */
+
+
+/*  Fallback Values for Variables:
+    Specify a fallback value using var(--variable-name, fallback-value).
+    Example: color: var(--primary-color, #000); */
+
+
+/*  Responsive Variable Adjustments with Media Queries:
+    Adjust variables within media queries for responsive designs.
+    Example:
+    @media (max-width: 400px) {
+        :root {
+            --font-size-regular: 14px;
+            --default-radius: 10px;
+        }
+    } */
+
+
+/*  Interoperability with JavaScript:
+    Variables can be manipulated via JavaScript for dynamic styling and theming. */
+
+
+/*  Theming with Variables:
+    Create themes (e.g., light and dark mode) using variables for easy switching. */
+
+
+/*  Naming Conventions for Variables:
+    Adopt clear and consistent naming for maintainability and readability. */
+
+
+/*  Fallback for Older Browsers:
+    Provide fallbacks for non-supporting browsers.
+    Example: 
+    background-color: #000;  /* Fallback */
+    background-color: var(--background-color, #000); */
+
+
+/*  Dynamic Adjustments Based on Conditions:
+    Use variables to adapt styles to conditions like viewport size.
+    Example:
+    @media (max-width: 600px) {
+        :root {
+            --font-size-regular: 14px;
+        }
+    } */

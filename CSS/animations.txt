@@ -1,0 +1,151 @@
+
+
+/* --- ANIMATIONS --- */
+
+
+
+/* Main Methods to Create Animations in CSS:
+   1. Transitions - Animates changes of properties over time (e.g., on :hover, :focus).
+   2. Animations - Uses keyframes to provide more control over the animations. */
+
+
+/*  More:
+    https://www.youtube.com/watch?v=YszONjKpgg4&ab_channel=WebDevSimplified
+    https://www.youtube.com/watch?v=SgmNxE9lWcY&t=1s&ab_channel=SlayingTheDragon */
+
+
+
+
+
+
+/*  //////////////////////////// TRANSITION //////////////////////////// */
+
+
+
+.button {
+
+    /*  Basic button styling:
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 0.5em 1em;
+            color: var(--clr-accent);
+            background-color: var(--clr-rgba);
+            border: 10px solid var(--clr-accent);
+            border-radius: 5px; */
+
+
+
+    /* Transition properties */
+
+    transition-property: transform;     /* Specifies the property to which the transition applies */
+    transition-duration: 0.3s;          /* Duration it takes for the transition to complete */
+    transition-timing-function: ease;   /* Defines the speed curve of the transition, e.g., ease, ease-in, ease-out */
+    transition-delay: 0s;               /* Delay before the transition starts */
+
+    /* Shorthand for transition properties */
+    
+    transition: transform 0.3s ease 0s, background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+
+    /* Transition effect on hover */
+
+    transform: translateY(-10px);           /* Moves button up */
+    background-color: var(--clr-accent);
+    color: var(--clr-light);
+}
+
+
+
+
+
+/*  //////////////////////////// ANIMATION ///////////////////////////// */
+
+
+/* 
+   ESSENTIALLY:
+   To create an animation, we need a @keyframes rule with its name, 
+   in which we specify the starting characteristics with from{} and the 
+   ending characteristics with to{} (or we can use percentages in any order).
+
+   Then, we must add this animation to an element through the 
+   animation-name property, specifying the NAME of the KEYFRAMES.
+   Typically, custom animations are created and added to a class, 
+   and then this class is added to an element to animate it.  */
+
+
+
+/*  Example: */
+
+@keyframes slideInLeft {
+
+    /* Defines the animation sequence using keyframes */
+
+    from { 
+        transform: translateX(-300px);      /* Start position */
+    }    
+    to { 
+        transform: translateX(0);           /* End position */
+    } 
+}
+
+
+
+.slideInLeft {
+
+    /* Applies the animation */
+
+    animation-name: slideInLeft;                /* Name of the keyframe animation */
+    animation-duration: 1s;                     /* Duration from start to end */
+    animation-timing-function: ease-in;         /* Timing function */
+    animation-delay: 0s;                        /* Start delay of the animation */
+    animation-iteration-count: 1;               /* Number of times the animation should repeat */
+    animation-fill-mode: forwards;              /* Style of the element when the animation is not playing */
+                                                /* Possible values for fill-mode:
+                                                    "none" is the default, and the element maintains its original style before and after the animation
+                                                    "forwards" applies the styles of the last keyframe (100%) to the element when the animation finishes
+                                                    "backwards" applies the styles of the first keyframe (0%) to the element before the animation starts
+                                                    "both" is as if forwards and backwards were combined */
+
+    /*  For the previous 7 you can only use only "animation" property:
+        animation: name duration timing-function delay iteration-count direction fill-mode; */                                           
+}
+
+
+
+
+
+
+
+/* GOOD PRACTICES: Utility Classes for Animations */
+
+
+
+/* Utility classes for common animation properties, allowing for reusability and easier changes. */
+
+.animate { animation-duration: 1s; animation-fill-mode: both; }
+.animate--infinite { animation-iteration-count: infinite; }
+.animate--delay-1s { animation-delay: 1s; }
+.animate--fast { animation-duration: 0.6s; }
+.animate--slow { animation-duration: 3s; }
+
+
+
+
+
+
+/* Example of a bouncing element */
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+.bounce { animation-name: bounce; /* Applies the bounce animation */ }
+
+
+
+
+

@@ -1,0 +1,167 @@
+
+
+
+/* --- MEDIA QUERY --- */
+
+
+/*  Base Concepts:
+    Media queries allow for responsive design by applying different styles based on device characteristics. */
+
+
+/*  There are 4 types of media queries:
+        1.  all         ->  For all media types, default if none is specified.
+        2.  print       ->  Specifically for print mode (Ctrl + P).
+        3.  screen      ->  For screens (computers, tablets, phones).
+        4.  speech      ->  For screenreaders and assistive devices. */
+
+
+/* EXAMPLE */
+
+@media screen and (max-width: 600px) {
+    body {
+        color: blue;
+    }
+}
+/* Explanation:
+   This changes the body color to blue only in screen mode (not for print)
+   and only for screen widths below 600px.
+
+   Other adjustable media features include:
+    -   max-width
+    -   max-height
+    -   min-width
+    -   min-height
+    -   aspect-ratio
+    -   resolution
+    -   color
+*/
+
+
+
+
+/* ------------------------- Screen Size and Device Type */
+
+
+@media screen and (max-width: 600px) {
+    /* Styles for screens smaller than 600px width */
+}
+
+@media print {
+    /* Styles specifically for print mode */
+}
+
+
+
+
+
+
+
+/* ------------------------- Orientation */
+
+
+/*  Orientation Options:
+    -   landscape: Width greater than height.
+    -   portrait: Width less than height. */
+
+@media (orientation: landscape) {
+    /* Styles for landscape orientation */
+}
+
+@media (orientation: portrait) {
+    /* Styles for portrait orientation */
+}
+
+
+
+
+/* ------------------------- High Resolution / Retina Displays */
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), 
+       only screen and (min--moz-device-pixel-ratio: 2), 
+       only screen and (-o-min-device-pixel-ratio: 2/1), 
+       only screen and (min-device-pixel-ratio: 2), 
+       only screen and (min-resolution: 192dpi), 
+       only screen and (min-resolution: 2dppx) {
+    /* Styles for high DPI screens */
+}
+
+
+
+
+/* ------------------------- Dark Mode */
+
+
+@media (prefers-color-scheme: dark) {
+    /* Styles for users who prefer dark mode */
+}
+
+
+
+
+
+/* ------------------------- Reduced Motion (Accessibility) */
+
+
+@media (prefers-reduced-motion: reduce) {
+    /* Styles for users who prefer reduced motion */
+}
+
+
+
+
+
+/* ------------------------- Logical Operators */
+
+
+@media (max-width: 1220px) and (orientation: landscape) {
+    /* Styles when both conditions are met: max-width 1220px and landscape orientation */
+}
+
+/* Using 'not', 'and', and 'or' */
+
+/*  Logical Operators:
+    1.  and -> Both conditions must be true.
+           @media (max-width: 1220px) and (orientation: landscape) {...}
+
+    2.  or  -> At least one of the conditions must be true.
+           @media (max-width: 1220px), (orientation: landscape) {...}
+
+    3.  not -> Negates the specified conditions.
+           @media not screen and (orientation: portrait) {
+               body {
+                   background-color: white;  /* White background everywhere but not on portrait screens */
+               }
+           }
+*/
+
+@media not all and (monochrome) {
+    /* Styles for screens that are not monochrome */
+}
+
+
+
+
+/* ------------------------- Pointing (cursor) and not devices */
+
+
+@media (hover: hover) {
+    body {
+        background-color: blue;
+    }
+}
+
+@media (pointer: coarse) {
+    /* CSS rules here will apply to devices with a coarse pointing mechanism, typically touch screens. */
+}
+
+
+
+
+
+
+/*  NOTE: */
+/*  For choosing breakpoints in responsive design, it's best to focus on content breakpoints rather than specific device sizes. 
+    Design for content breakpoints, adding them where your content naturally breaks. 
+    Minimizing breakpoints and using flexible layouts with grid and flexbox can create more fluid and adaptable designs. */
+

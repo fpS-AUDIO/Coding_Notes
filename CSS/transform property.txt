@@ -1,0 +1,75 @@
+
+
+/* --- TRANSFORM --- */
+
+/*  More:
+    https://www.youtube.com/watch?v=rzD-cPhq02E&ab_channel=WebDevSimplified */
+
+
+.transformed {
+
+    perspective: 5000px; 
+    /* Sets the perspective distance from the z-plane to the user, creating a 3D effect for child elements. 
+       Example: 5000px sets a far perspective, making 3D effects subtler. */
+
+    transform-style: preserve-3d; 
+    /* Determines whether child elements are positioned in 3D space or flattened in the plane of the element. 
+       Values: 'preserve-3d' | 'flat' (default). 'preserve-3d' maintains 3D transformations for child elements. */
+
+    transform: rotate(74deg);
+    /* Applies a 2D or 3D rotation to the element.
+       Examples: rotate(45deg), rotate3d(1, 2, 3, 45deg), rotateX(45deg), rotateY(45deg), rotateZ(45deg). */
+
+    transform: scale(1.5); 
+    /* Scales the element up or down.
+       Examples: scale(1.5) uniformly scales the element by 150%, scaleX(2) doubles width, scaleY(0.5) halves height. */
+
+    transform: translate(30px); 
+    /* Translates (moves) the element in the horizontal and/or vertical directions.
+       Examples: translate(50px, 100px) moves 50px right and 100px down. translateX(50%) moves right by 50% of its width. */
+
+    transform: skew(30px); 
+    /* Skews the element along the X and/or Y axes.
+       Examples: skew(30deg, 20deg) skews 30 degrees along the X-axis and 20 degrees along the Y-axis. */
+
+    transform-origin: left center; 
+    /* Sets the origin for transformations. Affects the behavior of rotate, scale, and skew.
+       Values: 'left', 'center', 'right', 'top', 'bottom' and combinations (e.g., 'left top').
+       Example: 'left center' starts transformations from the left center of the element. */
+
+    transform: matrix(0, 1, 1, 0, 0, 0);
+    /* Defines a transformation in matrix form for 2D transformations. 
+       Represents a combination of translation, scale, rotate, and skew.
+       Example: matrix(1, 0, 0, 1, 30, 50) translates the element 30px right and 50px down. */
+}
+
+
+
+
+
+
+
+
+/*  NOTES:
+
+    -   Use multiple transformations by separating them without commas.
+
+        Example:
+        transform: rotate(74deg) scale(1.5); */
+
+
+    -   When overwriting a value of the transform property you need to specify also all unchanged values.
+        To solve this you can simply use a variable as a value, then change this variable in a separate class,
+        then apply this class when you need to change this specific value.
+
+        Example:
+        div {
+        transform: scale(var(--scale, 1.2)) translateX(var(--translate-x, 50px));
+        }
+
+        .big {
+            --scale: 2;
+        }
+
+        <div class="big">Box</div> */
+

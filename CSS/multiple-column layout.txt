@@ -1,0 +1,71 @@
+
+
+
+
+
+
+/* --- MULTIPLE-COLUMN LAYOUT --- */
+/* Layout style like a newspaper, often less favored compared to Grid and Flexbox for complex layouts. */
+
+
+
+
+/* 
+   Example HTML structure for the topic:
+
+   <div class="container">
+       <h1>...</h1>
+       <p>...</p>
+       <div class="ads">...</div>
+       <p>...</p>
+   </div>
+*/
+
+
+
+.container {
+
+    column-count: 3;
+    /* Defines the ideal number of columns. Actual number may vary based on column-width and container width. */
+
+    column-width: 300px;
+    /* Suggests optimal column width. Actual width may vary to balance with column-count. */
+
+    column-gap: 20px;
+    /* Sets the gap between columns. */
+
+    column-rule: 2px solid black;
+    /* Acts like a border between columns. */
+
+    column-fill: balance;
+    /* Balances content equally in columns. Options: 'auto', 'balance' */
+
+    /* Responsive design: Adjust column count based on screen size. */
+    @media (max-width: 600px) {
+        column-count: 1;
+    }
+
+    /* Prevent breaks within elements across columns. */
+    break-inside: avoid;
+}
+
+
+
+.ads {
+
+    column-span: all;
+    /* Allows an element to span across all columns. Options: 'none', 'all', 'inherit', 'unset' */
+
+    /* Fallback styles for older browsers could be added here. */
+}
+
+
+
+
+/* Example: Preventing breaks inside paragraphs */
+
+.container p {
+    break-inside: avoid;
+    /* Prevents breaking paragraphs across columns. */
+}
+
