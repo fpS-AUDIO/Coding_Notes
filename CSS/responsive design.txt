@@ -1,0 +1,112 @@
+
+
+
+/* --- RESPONSIVE DESIGN --- */
+
+
+/* ----------------------------------------------------------------------------- */
+
+
+/*  Responsive design ensures that web content works well on various devices and screen sizes. 
+    It's not just about adjusting layouts, but also about optimizing images, typography, 
+    and other elements for different environments. */
+
+/* Flexbox and CSS Grid Layouts */
+/* These modern layout methods provide more flexibility and control in responsive designs. */
+
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* ___________
+   Media Queries
+   ___________ */
+
+/* Media queries are crucial for applying different styles for different screen sizes or devices. */
+
+/* Standard Device Breakpoints */
+@media screen and (max-width: 600px) { /* Mobile devices */
+    /* Styles for mobile devices */
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) { /* Tablets */
+    /* Styles for tablets */
+}
+
+@media screen and (min-width: 1025px) { /* Desktops and larger screens */
+    /* Styles for desktops and larger screens */
+}
+
+/* Landscape / Portrait Orientation */
+@media screen and (orientation: landscape) {
+    /* Styles for landscape orientation */
+}
+
+@media screen and (orientation: portrait) {
+    /* Styles for portrait orientation */
+}
+
+
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* ________________
+   Responsive Images
+   ________________ */
+
+/* Using srcset and sizes attributes in the <img> tag allows the browser to select the most appropriate image size. */
+
+/* HTML Example */
+<picture>
+    <source srcset="image-320w.jpg 320w,
+                    image-480w.jpg 480w,
+                    image-800w.jpg 800w"
+            sizes="(max-width: 320px) 280px,
+                   (max-width: 480px) 440px,
+                   800px">
+    <img src="image-800w.jpg" alt="Description">
+</picture>
+
+
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* _____________________
+   Responsive Typography
+   _____________________ */
+
+/* Using a combination of relative units and viewport units for fluid typography. */
+
+/* Example: Responsive font size */
+p {
+    font-size: calc(1rem + 1vw); /* Combines rem and vw for fluid typography */
+}
+
+/* Clamp for Responsive Font Sizes */
+/* Clamp function provides a more controlled fluid typography with minimum and maximum sizes. */
+p {
+    font-size: clamp(1rem, 2vw, 1.5rem); /* min-size, preferred size, max-size */
+}
+
+
+
+/* ----------------------------------------------------------------------------- */
+
+
+
+/* _______________
+   Viewport Meta Tag
+   _______________ */
+
+/* The viewport meta tag is essential for responsive design. It controls how the webpage is displayed on mobile devices. */
+
+/* HTML Example */
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+

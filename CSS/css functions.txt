@@ -20,6 +20,16 @@ const cssFunctions = {
   },
 
 
+  clamp: {
+    description: `  clamp(x, y, z)   
+                    it's working only with 3 values:
+                      X   =   min value
+                      Y   =   ideal value
+                      Z   =   max value`,
+    example: `font-size: clamp(1rem, 1.25vw, 1.5rem)`,
+  },
+
+
   'conic-gradient': {
     description: 'Creates a conic gradient',
     example: 'conic-gradient(red, yellow, green)',
@@ -80,6 +90,8 @@ const cssFunctions = {
   min: {
     description: 'Uses the smallest value from a comma-separated list of values as the property value',
     example: 'min(200px, 50%, 3em)',
+    example2: `min(max(70%, 300px), 500px)`,
+    example3: `min(500px + 10%, 600px)`,        // you don't need to use calc() here but the spaces are important!
   },
 
 

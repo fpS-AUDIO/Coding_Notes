@@ -1,0 +1,148 @@
+/*///////////
+// NAV BAR //
+///////////*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --color-body-background: #181818;
+  --color-nav-background: #212121;
+  --color-anchor-tag: grey;
+}
+
+body {
+  background-color: var(--color-body-background);
+}
+
+a {
+  color: var(--color-anchor-tag);
+}
+
+.nav {
+  background-color: var(--color-nav-background);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+
+  position: fixed; /* fixed to have it fixed on top */
+  width: 100%; /* with position property you need to add `width` since it doesn't take default 100% anymore */
+  z-index: 1; /* z-index to have it on top of other elements*/
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* turn off bullets */
+  overflow: hidden; /* make sure content won't go outside it's contaiener */
+  background-color: var(--color-body-background);
+}
+
+.nav ul a {
+  display: block; /* with `block`, element <a> takes 100% of width and become clickable not only on the text */
+  padding: 1rem;
+  text-decoration: none; /* turn off all decorations */
+}
+
+/* only for PC */
+.nav ul a:hover {
+  background-color: #202020;
+}
+
+.nav .logo {
+  float: left;
+  font-size: 2rem;
+  padding: 0.6rem 1.2rem; /* vertically / horizontally */
+}
+
+.nav .menu {
+  clear: both; /* clears the floating behavior of .logo in both directions (height - width) */
+  max-height: 0; /* hides the menu -> so that it appears only with the button */
+  transition: max-height 0.2s ease-out; /* transition on max-height in 0.2s with the ease-out method */
+}
+
+/* when there is a <label for="xXx"> for a checkbox, this works 
+   even if we click on the label */
+
+.nav .menu-icon {
+  padding: 1.5rem 1.2rem;
+  position: relative; /* because the child element (absolute) must be located in a relative one, otherwise, it looks for other parents */
+  float: right; /* move the icon box, and the checkbox still works because it's a label */
+  cursor: pointer; /* show the hand cursor when pointing at the icon box */
+}
+
+.nav .menu-icon .nav-icon {
+  background-color: var(--color-anchor-tag);
+  display: block;
+  width: 1.2rem;
+  height: 0.18rem;
+  position: relative;
+  transition: background-color 0.2s ease-out;
+}
+
+/* use pseudo-classes for elements before and after <span> */
+
+.nav .menu-icon .nav-icon::before,
+.nav .menu-icon .nav-icon::after {
+  /* we need to draw the element */
+  background-color: var(
+    --color-anchor-tag
+  ); /* same color as the main element */
+  content: ""; /* content is empty because we build it with height and width */
+  display: block;
+  height: 100%; /* 100% because it refers to the parent element */
+  width: 100%;
+  transition: all 0.2s ease-out; /* transition on everything when transforming into an "X" */
+  position: absolute;
+}
+.nav .menu-icon .nav-icon::before {
+  top: 0.4rem; /* move the element above the parent element */
+}
+
+.nav .menu-icon .nav-icon::after {
+  top: -0.4rem; /* move the element above the parent element */
+}
+
+.nav .menu-btn {
+  display: none; /* hide the checkbox (the functionality remains) */
+}
+
+.nav .menu-btn:checked ~ .menu {
+  /* ~ affects the sibling, so we work not on the checkbox but on .menu */
+  max-height: 15rem; /* when the checkbox is checked, we give height to the menu */
+}
+
+.nav .menu-btn:checked ~ .menu-icon .nav-icon {
+  background-color: transparent; /* when checked, hide the main element */
+}
+
+.nav .menu-btn:checked ~ .menu-icon .nav-icon::before {
+  transform: rotate(-45deg); /* this way it is rotated from the center */
+  top: 0; /* now it's centered */
+}
+.nav .menu-btn:checked ~ .menu-icon .nav-icon::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+/* for PC */
+@media (min-width: 48rem) {
+  .nav li {
+    float: left; /* to have the <li> elements not stacked on top of each other but floating to the left */
+  }
+
+  .nav li a {
+    padding: 1.2rem 1.8rem;
+  }
+
+  .nav .menu {
+    clear: none; /* so the float of .logo affects .menu and brings it on the same line */
+    float: right; /* move everything to the right */
+    max-height: none; /* align everything */
+  }
+
+  .nav .menu-icon {
+    display: none; /* hide the icon in the PC media query */
+  }
+}

@@ -1,0 +1,79 @@
+
+
+/* --- THE SCROLLBAR STYLING --- */
+
+
+
+
+/*///////////// THEORY /////////////*/
+
+
+/*////////////////////////////////////
+
+(!) If overflow:scroll; is not set, no scrollbar is displayed.
+::   because we are using pseudoelements 
+webkit   because it's not standard of all browsers
+
+
+::-webkit-scrollbar                 — the entire scrollbar.
+::-webkit-scrollbar-button          — the buttons on the scrollbar (arrows pointing upwards and downwards that scroll one line at a time).
+::-webkit-scrollbar:horizontal{}    — the horizontal scrollbar.
+::-webkit-scrollbar-thumb           — the draggable scrolling handle.
+::-webkit-scrollbar-track           — the track (progress bar) of the scrollbar, where there is a gray bar on top of a white bar.
+::-webkit-scrollbar-track-piece     — the part of the track (progress bar) not covered by the handle.
+::-webkit-scrollbar:vertical{}      — the vertical scrollbar.
+::-webkit-scrollbar-corner          — the bottom corner of the scrollbar, where both horizontal and vertical scrollbars meet. This is often the bottom-right corner of the browser window.
+::-webkit-resizer                   — the draggable resizing handle that appears at the bottom corner of some elements.
+
+////////////////////////////////////*/
+
+
+
+
+
+/*///////////// PRACTICE /////////////*/
+
+
+
+/* WebKit Scrollbar Elements */
+
+::-webkit-scrollbar {
+    width: 1em;                                 /* Affects vertical scrollbar */
+    height: 1em;                                /* Affects horizontal scrollbar */
+}
+
+
+::-webkit-scrollbar-track {                     /* track is the entire scrollbar itself */
+    background: var(--scrollbar-track-color);
+    border-radius: 20px;
+    margin-block: .125em;                       /* Top and bottom margin */
+}
+
+
+::-webkit-scrollbar-thumb {                             /* thumb is the moving part of scrollbar */
+    background: var(--scrollbar-thumb-color);
+    border-radius: 20px;
+    border: .25em solid var(--scrollbar-track-color);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-hover-color);
+}
+
+
+
+/*  (!!!)  NOTE:
+    First the browser will style the scrollbar with code above
+    then, if browser @supports a property, the below code will overwrite the code above 
+    scrollbar-color  is supported only by Firefox in 2023 */
+
+
+/* Firefox Scrollbar Styling */
+@supports (scrollbar-color: red blue) {
+    * {
+        scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+        scrollbar-width: thin; /* Can be auto, none, or thin */
+    }
+}
+
