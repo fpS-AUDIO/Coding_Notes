@@ -1,0 +1,38 @@
+
+
+
+
+/* Replaced Elements */
+
+
+
+/*  Replaced elements, like images and embedded media, have content outside the CSS rendering model. 
+    They usually have intrinsic dimensions and can be affected by CSS properties for size, spacing, and content rendering. 
+    
+    Altering the dimensions and aspect ratio of these elements is possible.
+    While maintaining the original aspect ratio is usually preferred for visual consistency, 
+    adjusting it might be necessary in certain designs. */
+
+
+
+.box {
+    width: 300px;                   /* Width of the box */
+    height: 200px;                  /* Height of the box */
+    border: 2px solid black;        /* Border around the box */
+    margin: 10px;                   /* Margin outside the box */
+    padding: 5px;                   /* Padding inside the box */
+    
+
+    object-fit: contain;            /* The content is scaled to maintain its aspect ratio while fitting within the box's content area. */
+    /* Other object-fit values: 
+        - fill: The replaced content is sized to fill the element's content box, possibly stretching the content.
+        - cover: The content is sized to maintain its aspect ratio while filling the element's entire content box. The content is clipped to fit.
+        - none: The content is rendered at its natural size.
+        - scale-down: The content is sized as if 'none' or 'contain' were specified, whichever would result in a smaller concrete object size. */
+
+    object-position: center;
+    /* object-position: Specifies the alignment of the replaced element inside its box (e.g., 'center', 'top left'). */
+
+    /* Example of vertical-align for inline replaced elements */
+    vertical-align: middle;     /* Aligns the middle of the element with the baseline plus half the x-height of the parent. */
+}

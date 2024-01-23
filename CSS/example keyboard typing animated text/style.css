@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  min-width: 100vw;
+  min-height: 100svh;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*////////////////////////////////////////
+/// ANIMATION WRITING TEXT ON KEYBOARD ///
+////////////////////////////////////////*/
+
+/*  !!! Need to adjust: 
+            1. width of .animated-title which should be the exact number of text characters to animated (indeed spaces included);
+            2. animation: printed-text 5s steps(width + 1);
+            3. time of the same animation if the text is very long or very short;
+            3. @keyframes printed-text 100% width should be width + 1; */
+
+.wrapper {
+  /* Using flex display to ensure the right border of .animated-title is visible. 
+       This is especially useful for aligning items in a row and ensuring the border is not collapsed. */
+  display: flex;
+}
+
+.animated-title {
+  /* Set width as the number of characters in the word to animate (1ch = 1 character).
+       This width might need adjustment for different words or for responsive designs. */
+  width: 13ch;
+  /* Using a monospace font for equal width of letters, essential for consistent animation. */
+  font-family: monospace;
+  /* nowrap to keep the text on a single line, preventing any line breaks during animation. */
+  white-space: nowrap;
+  overflow: hidden;
+  /* border-right: 0.2rem solid black; */
+  /* using box-shadow insted of border-right */
+  box-shadow: 0.2rem 0 0 #000;
+  /* Using step-start for a snapping effect in the animation, mimicking typewriter or keyboard input.
+       The steps function is set to match the number of characters plus one for the cursor blink. */
+  animation: flashing-border 900ms step-start infinite,
+    printed-text 5s steps(14);
+}
+/* Animations */
+
+@keyframes flashing-border {
+  /* Cycling border color between black and transparent for a flashing effect */
+  0%,
+  100% {
+    /* border-color: black; */
+    box-shadow: 0.2rem 0 0 #000;
+  }
+  50% {
+    /* border-color: transparent; */
+    box-shadow: 0.2rem 0 0 transparent;
+  }
+}
+
+@keyframes printed-text {
+  /* Animating width from 0 to the full width of the text to simulate text being typed. */
+  0% {
+    width: 0%;
+  }
+  100% {
+    /* Set the final width to match the number of characters of the animating text.
+         It's important to match this with the width set on the element for a smooth animation. */
+    width: 14ch;
+  }
+}

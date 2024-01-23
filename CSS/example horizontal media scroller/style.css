@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  min-width: 100vw;
+  min-height: 100svh;
+  background-color: #fbfbfb;
+  /* background-color: #181818; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --spacer: 1rem;
+
+  --clr-media-scroller-bg: #fbfbfb;
+  --clr-media-element-bg: #f5f5f5;
+  --clr-media-element-bg-hover: #ededed;
+  --clr-media-element-shadow: rgba(99, 99, 99, 0.2);
+
+  --clr-primary-text: #e4e4e4;
+}
+
+.media-scroller {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 8px;
+
+  /* grid propreties */
+  display: grid;
+  gap: var(--spacer);
+  grid-auto-flow: column; /* every child inside .media-scroller becomes a column */
+  grid-auto-columns: 23%; /* widht of each of cild column */
+  padding: var(--spacer);
+
+  /* add horizontal scroll */
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  background-color: var(--clr-media-scroller-bg);
+}
+
+/* scroll styling */
+.media-scroller::-webkit-scrollbar {
+  height: var(--spacer);
+}
+
+.media-scroller::-webkit-scrollbar-thumb {
+  background: var(--clr-media-element-bg);
+  border-radius: 8px;
+}
+.media-scroller::-webkit-scrollbar-thumb:hover {
+  background-color: var(--clr-media-element-bg-hover);
+}
+
+.media-scroller .media-element {
+  display: grid;
+  grid-template-rows: min-content;
+  gap: var(--spacer);
+  padding: var(--spacer);
+  background-color: var(--clr-media-element-bg);
+  border-radius: 8px;
+  box-shadow: var(--clr-media-element-shadow) 0px 2px 8px 0px;
+}
+
+.media-scroller .media-element:hover {
+  background-color: var(--clr-media-element-bg-hover);
+}
+
+.media-scroller .media-element > img {
+  inline-size: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: var(--spacer);
+}
+
+/* select all the direct children */
+.snaps-inline > * {
+  scroll-snap-align: start;
+}

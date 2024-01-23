@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Base Styles */
+html {
+  font-size: 16px; /* This is typically the default size */
+}
+
+body {
+  font-size: 1rem; /* Base font size */
+  line-height: 1.6; /* Adjust for readability */
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.75rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1rem; /* Same as the body for consistency */
+  margin-bottom: 1rem; /* Spacing below paragraphs */
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  html {
+    font-size: 14px; /* Smaller base size for mobiles */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024) {
+  html {
+    font-size: 18px; /* for tablets */
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 22px; /* Larger base size for large screens */
+  }
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 28px; /* Larger base size for 4K screens */
+  }
+}
+
+/* Further queries can be added for specific ranges if needed */
