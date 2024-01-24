@@ -1,0 +1,74 @@
+
+
+<!-- HTML QUOTES GUIDE -->
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+
+
+<!-- Blockquote Usage -->
+<!-- The <blockquote> element is for quoting longer sections from another source -->
+<!-- By default, it typically adds margin, but this can vary -->
+<!-- The cite attribute should contain a URL to the source of the quote -->
+<!-- It's a good practice to include a <footer> element within <blockquote> for attribution -->
+
+<blockquote cite="https://source-of-quote.com">
+    <p>This is a quote paragraph from an external source.</p>
+    <footer>Source: <cite><a href="https://source-of-quote.com">Title of Source</a></cite></footer>
+</blockquote>
+
+
+<!-- --------------------------------------------------------------------- --> 
+
+
+<!-- Inline Quote Usage -->
+<!-- The <q> element is for shorter quotes within a paragraph -->
+<!-- Browsers usually render <q> with quotation marks automatically -->
+<!-- The cite attribute can also contain a URL to the source of the quote -->
+<!-- Note that <q> is intended for in-line quotes and should be used within a paragraph -->
+
+<p>This is a paragraph with an inline <q cite="https://source-of-quote.com">quote here.</q></p>
+
+
+<!-- --------------------------------------------------------------------- --> 
+
+
+<!-- Cite Element Usage -->
+<!-- The <cite> element represents the title of a creative work -->
+<!-- It is often rendered in italics by browsers -->
+<!-- Use <cite> for referencing books, songs, movies, etc., but not for author's names -->
+
+<p><cite>The Great Gatsby</cite> is a novel by F. Scott Fitzgerald.</p>
+
+
+<!-- --------------------------------------------------------------------- --> 
+
+
+<!-- Author Attribution Practice -->
+<!-- For author attribution, plain text or a custom element like <footer> is often used -->
+<!-- <cite> is sometimes used for author attribution, but its primary use is for titles of works -->
+
+<blockquote>
+    <p>So we beat on, boats against the current, borne back ceaselessly into the past.</p>
+    <footer>— F. Scott Fitzgerald, <cite>The Great Gatsby</cite></footer>
+</blockquote>
+
+
+<!-- --------------------------------------------------------------------- --> 
+
+
+<!-- Additional Notes -->
+<!-- Use CSS for further styling of these elements (e.g., margins, font-style, etc.) -->
+<!-- Ensure semantic correctness for accessibility and SEO -->
+<!-- Consider the context and semantics when choosing between <blockquote> and <q> -->
+
+<style>
+    blockquote {
+        margin-left: 20px;
+        font-style: italic;
+    }
+    q {
+        quotes: "“" "”";
+    }
+</style>

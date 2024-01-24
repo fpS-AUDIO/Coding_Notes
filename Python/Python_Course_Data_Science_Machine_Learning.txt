@@ -1,0 +1,78 @@
+						************ A.I.'s NOTES of Course Data Science and Machine Learning ************ 
+
+
+
+------------------------------------------------------------------------------------------------
+INFO
+
+Anaconda		=>	distribution of Python including many libraries and virtual environment system.
+Jupyter			=>	integrated development environment (IDE), really popular for Data Science.
+
+Install Andaconda.
+Open Anaconda Navigator to open IDE Jupiter.
+
+------------------------------------------------------------------------------------------------
+COMMANDS IN WINDOWS TERMINAL:
+
+Jupyter notebook	=>	opek Jupyter notebook
+cd 					=> change directory
+cd ..				=> back up on 1 directory
+dir 				=> shows all files in current directory
+cls					=> clear terminal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

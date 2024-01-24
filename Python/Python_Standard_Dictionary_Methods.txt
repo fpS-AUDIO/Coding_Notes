@@ -1,0 +1,75 @@
+
+>>>>>>>>>> Standard functions and methods <<<<<<<<<<
+
+
+
+dict = {}
+------------------------------------------------------------------------------------------------
+ALL FUNCTIONS AND METHODS FOR DICTIONARIES
+
+dict[key] = value
+    creazione/aggiornamento di una value di un dizionario
+
+del dict[key]
+    eliminazione di una chiave
+
+dict.clear()	
+    remuove tutti gli elementi di un dizionario
+
+dict.copy()
+    ritorna la coppia di un dizionario
+
+dict.fromkeys(k, v)	
+    restituisce un dizionario con la sequenza di chiavi e valori forniti come argomento
+    k = keys, puo' essere qualsiasi oggetto iterabile (string, list, set...)
+    v (optional) = value, puo' essere di qualsiasi tipo (per tutti lo stesso) o iterabile (str, list, set..)
+        P.S. senza "v" diventa None
+
+get(k, v)	
+    ritorna una value di una specifica chiave se e' nel dizionario
+    k = key da cercare nel dizionario
+    v (optional, default: None) = value da tornare se key non e' stata trovata.
+
+dict[key]
+    ritorna il valore della chive specificata.
+    se non e' stata trovata torna KeyError
+
+dict.items()	
+    ritorna una lista (view object) con le coppie kay-value racchiuse dentro le tuple
+    se il dict viene modificato viene modificata anche la lista
+
+dict.keys()
+    ritorna una lista (view object) con le chiavi del dizionario
+    se il dict viene modificato viene modificata anche la lista
+
+dict.pop(key, v)
+    trova un elemento tramite la sua chiave e lo rimuove. Torna Value dell'elemento eliminato.
+    v (optional, default: KeyError) = valore da tornare se la chiave non e' nel dizionario
+
+dict.popitem()	
+    rimuove e torna ultimo elemento (key:value) aggiunto nel dizionario
+    KeyError se dict e' vuoto
+
+dict.setdefault(key, value)
+    ritorna il valore di una chiave se e' nel dizionario, se non c'e' aggiunge la key e value nel dizionario
+    key = chiave da cercare
+    value (optional, default: None) = valore da aggiungere
+    
+dict.update(x)	
+    aggiorna (aggiunge/cambia in base se key e' nel dict o no) dizionario con un'altro dizionario oppure in oggetto iterabile con coppia key:value (come tupla)
+    x = oggetto iterabile, senza specificare x rimane invariato
+
+dict.values()	
+    ritorna una lista (view object) con tutti i values del dizionario (senza ordine)
+    se viene aggiornato il dizionario, si aggiorna anche view object list
+
+del[dict[key]]
+    elimina un elemento dal dizionario
+
+
+
+
+
+
+
+

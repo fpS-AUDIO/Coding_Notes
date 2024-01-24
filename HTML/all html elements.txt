@@ -1,0 +1,120 @@
+
+
+<!-- ALL HTML ELEMENTS GUIDE -->
+
+
+
+<!-- Document Metadata -->
+<!DOCTYPE html>     <!-- Defines the document type -->
+<html></html>       <!-- Root element of an HTML document -->
+<head></head>       <!-- Contains metadata/information for the document -->
+<title></title>     <!-- Defines a title for the document -->
+<base />            <!-- Specifies a base URL and/or target for all relative URLs in a document -->
+<link />            <!-- Link external resources like CSS files -->
+<meta />            <!-- Contains metadata about the HTML document -->
+
+
+<!-- Scripting -->
+<script></script>       <!-- Defines a client-side script -->
+<noscript></noscript>   <!-- Defines an alternate content for users who do not support client-side scripts -->
+
+
+<!-- Sections -->
+<body></body>           <!-- Defines the body of the document -->
+<h1></h1>               <!-- through <h6></h6> Defines headings -->
+<section></section>     <!-- Defines a section in a document -->
+<header></header>       <!-- Defines a header for a document or a section -->
+<footer></footer>       <!-- Defines a footer for a document or a section -->
+<nav></nav>             <!-- Defines navigation links -->
+<article></article>     <!-- Defines an article -->
+<aside></aside>         <!-- Defines content aside from the content it is placed in -->
+<object></object>       <!-- Defines a container for an external application or interactive content -->
+
+
+<!-- Grouping Content -->
+<div></div>                 <!-- Defines a division or a section -->
+<p></p>                     <!-- Defines a paragraph -->
+<li></li>                   <!-- Defines a list item -->
+<dl></dl>                   <!-- Defines a description list -->
+<dt></dt>                   <!-- Defines a term/name in a description list -->
+<dd></dd>                   <!-- Defines a description/value of a term in a description list -->
+<pre></pre>                 <!-- Defines a block of preformatted text -->
+<blockquote></blockquote>   <!-- Defines a part of text in an alternate voice or mood -->
+<figure></figure>           <!-- Defines a figure with a caption -->
+<figcaption></figcaption>   <!-- Defines a caption for a <figure> element -->
+
+
+<!-- Text Content -->
+<a href="#"></a>        <!-- Defines a hyperlink -->
+<em></em>               <!-- Defines emphasized text -->
+<strong></strong>       <!-- Defines important text -->
+<small></small>         <!-- Defines a part of text in a different voice or mood -->
+<sub></sub>             <!-- Defines subscripted text -->
+<sup></sup>             <!-- Defines superscripted text -->
+<br />                  <!-- Defines a line break -->
+<hr />                  <!-- Defines a thematic change in the content -->
+
+
+<!-- Embedded Content -->
+<img src="" alt="" />   <!-- Defines an image -->
+<picture></picture>     <!-- Defines a container for multiple image resources -->
+<iframe></iframe>       <!-- Defines an inline frame -->
+<embed />               <!-- Defines embedded content, such as a plugin -->
+
+
+<!-- Tabular Data -->
+<table></table>         <!-- Defines a table -->
+<thead></thead>         <!-- Defines a group of table headers -->
+<tbody></tbody>         <!-- Defines a group of table rows -->
+<colgroup></colgroup>   <!-- Defines a group of one or more columns in a table -->
+<col />                 <!-- Defines a column properties for each column within a <colgroup> element -->
+<tr></tr>               <!-- Defines a table row -->
+<th></th>               <!-- Defines a table header -->
+<td></td>               <!-- Defines a table cell -->
+
+
+<!-- Forms -->
+<form></form>           <!-- Defines an HTML form for user input -->
+<input />               <!-- Defines an input control -->
+<label></label>         <!-- Defines a label for an <input> element -->
+<select></select>       <!-- Defines a selectable list -->
+<optgroup></optgroup>   <!-- Defines a group of related options in a dropdown list -->
+<option></option>       <!-- Defines an option in a dropdown list -->
+<textarea></textarea>   <!-- Defines a multiline text input control -->
+<button></button>       <!-- Defines a button -->
+<fieldset></fieldset>   <!-- Defines a fieldset -->
+<legend></legend>       <!-- Defines a caption for a <fieldset> element -->
+<datalist></datalist>   <!-- Defines a list of pre-defined options for input controls -->
+<output></output>       <!-- Defines the result of a calculation -->
+
+
+<!-- Inline Frame -->
+<map></map>         <!-- Defines a client-side image map -->
+<area></area>       <!-- Defines an area inside an image map -->
+
+
+<!-- Scripting -->
+<canvas></canvas>       <!-- Defines a client-side script -->
+<data></data>           <!-- Defines custom data attributes -->
+<template></template>   <!-- Defines a template -->
+<time></time>           <!-- Defines a time and/or date -->
+
+
+<!-- Interactive Elements -->
+<details></details>     <!-- Defines a details list -->
+<summary></summary>     <!-- Defines a summary/caption for a <details> element -->
+<command></command>     <!-- Defines a command button -->
+<menu></menu>           <!-- Defines a menu list -->
+
+
+<!-- Deprecated or Obsolete Elements -->
+<acronym></acronym>     <!-- Defines an acronym -->
+<big></big>             <!-- Defines big text -->
+<center></center>       <!-- Defines centered text -->
+<dir></dir>             <!-- Defines a directory list -->
+<font></font>           <!-- Defines font, color, and size for text -->
+<frame></frame>         <!-- Defines a frame -->
+<frameset></frameset>   <!-- Defines a frameset -->
+<strike></strike>       <!-- Defines a strike-through text -->
+<tt></tt>               <!-- Defines a teletype text -->
+

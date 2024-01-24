@@ -1,0 +1,110 @@
+
+>>>>>>>>>> Module random <<<<<<<<<<
+
+
+import random
+------------------------------------------------------------------------------------------------
+INFO
+
+pseudo-random numbers       =>  numeri generati secondo la legge di distribuzione continua uniforme
+distribuzione di Gauss      =>  variabili casuali a valori reali che tendono a concentrarsi attorno a un singolo valor medio
+                                piu' ci allontaniamo dal valore medio piu' e' raro che compare quel determinato valore casuale 
+                                (quindi compiono di piu' i valori vicini al valore medio)
+
+Questo modulo non e' destinato per sicurezza.
+Per uso della sicurezza utilizzare "secrets" module.
+Module DOC: https://docs.python.org/3/library/random.html
+------------------------------------------------------------------------------------------------
+MOST IMPORTANT METHODS
+
+
+random.random()
+    ritorna un numero float pseudo-casuale da 0 a 1
+
+random.uniform(a,b)
+    ritorna un numero float pseudo-casuale in range da "a" a "b"
+
+random.randint(a,b)
+    ritorna un numero int pseudo-casuale in range da "a" a "b" compreso (es: -7, 4)
+
+random.randrange(start, stop, step)
+    ritorna un numero int pseudo-casuaale in range da "start" a "stop" con possibilita' di aggiungere step
+    stop e' l'unico argomento obbligatorio, con solo stop start=0
+    es: (-3, 10, 2) usciranno solo numeri dispari
+
+gauss(mu, sigma)
+    ritorna un valore casuale secondo la distribuzione Gaussiana 
+    mu = valore medio atteso
+    sigma = La deviazione media (cioe' la misura di dispersione )
+
+x = random.choice(iterable)
+    ritorna un elemento preso dall'iterabile a random
+    iterabile rimane uguale
+
+random.shuffle(iterable)
+    funziona con gli iterabili mutabili e cambia ordine (index) degli elementi in modo casuale
+
+x = random.sample(iterable, n)
+    ritorna una nuova iterabile con gli elementi che non si ripetono nella lista dell'argomento
+    n = quantita' di elementi da ritornare
+
+random.seed(n, version=2)
+    funzione seme del generatore dei numeri random.
+    Generatore dei numeri parte da questo seme per generare le stesse sequenze anche dopo aver riavvito il programma.
+    n = seed, un numero-valore iniziale per il generatore dei numeri random, se omesso utilizza tempo corrente del sistema
+
+x = random.getstate()
+    ritorna un oggetto (tupla) con lo stato interno del generatore.
+    questo oggetto puo' essere passato a func. setstate() per ripristinare il suo stato.
+
+random.setstate(state)
+    prende come parametro oggetto-stato del generatore per ripristinare il generatore allo stato quando getstate() e' stato chiamato
+
+random.randbytes(n)
+    genera "n" random bytes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

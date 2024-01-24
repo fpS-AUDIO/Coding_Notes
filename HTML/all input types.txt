@@ -1,0 +1,150 @@
+
+
+
+<!-- HTML INPUT TYPES GUIDE -->
+
+
+
+
+<!-- General Information -->
+<!-- The behavior of an <input> element varies based on its 'type' attribute.
+     The default type is 'text' if the 'type' attribute is not specified. -->
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+
+
+
+<!-- Input Type: button -->
+<!-- A push button with no default behavior. It displays the value of the 'value' attribute, which is empty by default. -->
+<input type="button" value="Click Me">
+
+
+<!-- Input Type: checkbox -->
+<!-- A checkbox allowing single values to be selected or deselected. -->
+<input type="checkbox" name="option1" value="Option1"> Option 1
+
+
+<!-- Input Type: color -->
+<!-- A color picker control. -->
+<input type="color" name="favcolor">
+
+
+<!-- Input Type: date -->
+<!-- A control for entering a date (year, month, and day) with no time component. -->
+<input type="date" name="birthday">
+
+
+<!-- Input Type: datetime-local -->
+<!-- A control for entering a date and time without a time zone. -->
+<input type="datetime-local" name="appointment">
+
+
+<!-- Input Type: email -->
+<!-- A field for editing an email address with validation and a relevant keyboard in supporting browsers. -->
+<input type="email" name="useremail">
+
+
+<!-- Input Type: file -->
+<!-- A file input control. Use the 'accept' attribute to define the types of files that can be selected. -->
+<input type="file" name="myfile" accept="image/png, image/jpeg">
+
+
+<!-- Input Type: hidden -->
+<!-- A hidden control whose value is submitted to the server. -->
+<input type="hidden" name="invisible" value="hiddenValue">
+
+
+<!-- Input Type: image -->
+<!-- A graphical submit button displaying an image defined by the 'src' attribute. -->
+<input type="image" src="submit.png" alt="Submit">
+
+
+<!-- Input Type: month -->
+<!-- A control for entering a month and year without a time zone. -->
+<input type="month" name="birthmonth">
+
+
+<!-- Input Type: number -->
+<!-- A control for entering a number with a spinner and default validation. -->
+<input type="number" name="quantity" min="1" max="5">
+
+
+<!-- Input Type: password -->
+<!-- A single-line text field whose value is obscured. -->
+<input type="password" name="pwd">
+
+
+<!-- Input Type: radio -->
+<!-- A radio button, allowing a single value to be selected from multiple choices with the same name. -->
+<input type="radio" name="gender" value="male" checked> Male
+<input type="radio" name="gender" value="female"> Female
+
+
+<!-- Input Type: range -->
+<!-- A slider for entering a number whose exact value is not crucial. -->
+<input type="range" name="volume" min="0" max="100">
+
+
+<!-- Input Type: reset -->
+<!-- A button that resets the contents of the form to default values. -->
+<input type="reset" value="Reset">
+
+
+<!-- Input Type: search -->
+<!-- A single-line text field for entering search strings, with line-breaks automatically removed. -->
+<input type="search" name="googlesearch">
+
+
+<!-- Input Type: submit -->
+<!-- A button that submits the form. -->
+<input type="submit" value="Submit">
+
+
+<!-- Input Type: tel -->
+<!-- A control for entering a telephone number. -->
+<input type="tel" name="usrtel">
+
+
+<!-- Input Type: text -->
+<!-- A single-line text field. Default type if 'type' attribute is not specified. -->
+<input type="text" name="firstname">
+
+
+<!-- Input Type: time -->
+<!-- A control for entering a time value with no time zone. -->
+<input type="time" name="usrtime">
+
+
+<!-- Input Type: url -->
+<!-- A field for entering a URL with validation parameters. -->
+<input type="url" name="homepage">
+
+
+<!-- Input Type: week -->
+<!-- A control for entering a week number and year. -->
+<input type="week" name="weekyear">
+
+
+<!-- Deprecated Input Type: datetime -->
+<!-- Obsolete and no longer recommended for use. -->
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+
+
+<!-- CSS Selectors for Form Elements -->
+<!-- CSS selectors can target form controls based on UI features (UI pseudo-classes) and input types. -->
+<style>
+    /* Example: Styling checked checkboxes */
+    input[type="checkbox"]:checked {
+        outline: 2px solid blue;
+    }
+
+    /* Example: Styling disabled inputs */
+    input:disabled {
+        background-color: lightgray;
+    }
+</style>

@@ -1,0 +1,50 @@
+#programma che trasforma la variabile "word" in lista con tutti gli elementi che iniziano con la maiuscola
+
+word = "Football, basketball, skate"
+hobby = word.split(", ")
+for i in range(len(hobby)):
+    hobby[i] = hobby[i].capitalize()
+print(hobby)
+
+
+
+
+
+
+
+# programma che cerca il valore minimo dalle liste utilizzando una funzione
+
+def minimal(l):
+    min_number = l[0]
+    for el in l:
+        if el < min_number:
+            min_number = el
+    return min_number
+
+nums1 = [3, 4.6, 77, 1.6, 4]
+min1 = minimal(nums1)
+
+nums2 = [3.4, 17, 84, 0.7, 4]
+min2 = minimal(nums2)
+
+if min1 < min2:
+    print ("Minimal value of the lists: ", min1)
+else:
+    print("Minimal value of the lists: ", min2)
+
+
+
+
+
+
+
+# programma che chiede all'infinito all'utente di inserire un numero intero
+
+x = 0
+while x == 0:
+    try:
+        x = int(input("Insert your number: "))
+        x += 5
+        print(x)
+    except ValueError:
+        print("Insert a better number: ")

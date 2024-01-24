@@ -1,0 +1,82 @@
+
+>>>>>>>>>> Standard Special Methods <<<<<<<<<<
+
+
+
+
+#### FIX ME ####
+AGGIUNGERE ALTRI METODI SPECIALI!
+
+
+
+
+------------------------------------------------------------------------------------------------
+ALL SPECIAL METHODS
+
+
+
+
+>>>>>>>>>> __init__  (SPECIAL METHOD) <<<<<<<<<<
+
+__init__ e' un metodo-costruttore (in verita' e' un inizializzatore) di classi e serve per costruire le istanze della classe.
+Questo metodo viene chiamato sempre in automatico appena viene creata un'istanza di quella specifica classe.
+Questo metodo prende sempre il parametro self perche' e' un metodo di istanza.
+In poche parole il costruttore aiuta a personalizzare i valori iniziali che vogliamo attribuire a ciasquna istanza di quella classe.
+sintassi:
+
+class MyClass:
+	def __init__(self, message):
+		self.message = message
+	def printMessage(self):
+		print(self.message)
+
+Nel momento della creazione di un istanza (oggetto) di MyClass siamo obbligati a passare il valore per argomento message.
+Quindi per creare un istanza dobbiamo fornire subito l'attributo di istanza:
+>>> m1 = MyClass('primo')
+>>> m2 = MyClass('secondo')
+
+
+
+>>>>>>>>>> __str__  (SPECIAL METHOD) <<<<<<<<<<
+
+__str__ 
+	e' un metodo speciale (perche' e' difinito tra __definito_qua__)
+	e' string rapresentation of an object (quando chiamo print(object) 
+		al posto di numero di parte di memoria esce quello che ritorna questo metodo
+
+class Book():
+
+	def __init__(self, title, author, pages):
+		self.title = title
+		self.author = author
+		self.pages = pages
+	
+	def __str__(self):
+		return f"Title: {self.title}, Author: {self.author}, Pages: {self.pages}"
+
+>>>book1 = Book("Python", "Jose", 200)
+>>>print(book)
+	# Title: Python, Author: Jose, Pages: 200
+
+
+
+>>>>>>>>>> __len__  (SPECIAL METHOD) <<<<<<<<<<
+
+__len__ 
+	ritorna la lunghezza dell'oggetto (istanza) della classe
+
+	def __len__(self):
+		return self.pages
+
+
+>>>>>>>>>> __del__  (SPECIAL METHOD) <<<<<<<<<<
+
+__del__
+	quello che succede dopo che viene eliminato un oggetto (istanza di classe)
+
+	__del__(self):
+		print("a book is destroyed!")
+
+del(book1)
+	# a book is destroyed!
+

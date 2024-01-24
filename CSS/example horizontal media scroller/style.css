@@ -26,6 +26,8 @@ main {
 }
 
 .media-scroller {
+  width: 75vw;
+
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border-radius: 8px;
 
@@ -40,6 +42,13 @@ main {
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   background-color: var(--clr-media-scroller-bg);
+}
+
+/* for smarthphones */
+@media (max-width: 600px) {
+  .media-scroller {
+    grid-auto-columns: 45%;
+  }
 }
 
 /* scroll styling */

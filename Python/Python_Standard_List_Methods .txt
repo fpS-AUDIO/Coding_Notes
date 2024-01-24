@@ -1,0 +1,96 @@
+
+>>>>>>>>>> Standard functions and methods <<<<<<<<<<
+
+
+
+list = []
+------------------------------------------------------------------------------------------------
+ALL FUNCTIONS AND METHODS FOR LISTS
+
+
+l = [2, "e", [2, 3], "i"]
+    restituisce una lista  assocciata alla variabile "l"
+
+l = [element*3 for element in S if element !="i"]
+    esempio di generatore di lista
+    meglio usare il ciclo for
+
+list(iterable)
+    restituisce una lista a partire da un oggetto iterabile
+
+list.append(x)
+    aggiunge qualsiasi elemento alla fine della lista
+
+list.extend(L)
+    L = oggetto iterabile
+    estende la lista aggiungendo alla fine tutti gli elementi di "L" e non la "L". (es: non aggiunge la lista ma i suoi elementi)
+
+list.insert(i, x)
+    i = index
+    x = element
+    aggiunge un elemento in un determinato index spostando gli altri verso destra
+
+list.remove(x)
+    remuove il primo elemento trovato con valore "x"
+    se non trova elemento restituisce ValueError
+
+list.pop(i)
+    i (optional) = index
+    restituisce elemento con index "i" eliminandolo dalla lista
+    se non index non e' specificato viene eliminato ultimo elemento [-1]
+    se index e' sbagliato restituisce IndexError
+
+list.index(x, s, e)
+    restituisce il primo index trovato dell'elemento x oppure ValueError se non e' presente
+    s, e sono optional per il range
+
+list.count(x)
+    restituisce il numero degli elementi con il valore x
+
+list.sort(key=..., reverse=...)
+    ordina la lista (di default in modo crescente) e non resituisce nulla
+    reverse (optinal), se True ordina in modo descrescente
+    key (optinal) e' la funzione che fa da chiave di ordinamento (come len)
+
+
+sorted(list, reverse=..., key=...)
+    restituisce la lista ordinata (di default in modo crescente) ma non cambia quella originale
+    resto e' uguale a sort()
+
+list.reverse()
+    inverte l'ordine degli elementi di una lista
+
+list.copy()
+    restituisce coppia di una lista con un nuovo id senza cambiare quella originale
+
+list.clear()
+    elimina tutti gli elimenti di una lista
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+
+
+
+<!-- HTML BASICS --> 
+
+
+
+HTML (HyperText Markup Language): 
+    This is a markup language used to instruct web browsers on how to structure the web pages that you visit.
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+
+Element: 
+    An element is composed of an opening tag, content, and a closing tag.
+    <opening_tag>Content</closing_tag>
+    Example: <p>This is a paragraph.</p>
+
+Void elements:
+    Elements without a closing tag
+    example: <br>, <img>, <input>
+
+
+
+<!DOCTYPE html>                         <!-- Declares the document type and version of HTML -->
+<html>
+  <head>                                <!-- Head Section: Contains metadata, links to stylesheets, and scripts -->
+    <meta charset="utf-8">              <!-- Character encoding for the document -->
+    <title>Page Title</title>           <!-- The title of the document -->
+  </head>
+  <body>
+            <!-- Body Section: Contains the content of the document -->
+            <!-- This is a comment and will not be displayed in the browser -->
+  </body>
+</html>
+
+
+CSS and JavaScript Linking:
+    - Link CSS:             <link rel="stylesheet" type="text/css" href="style.css">
+    - Link JavaScript:      <script src="script.js"></script>
+
+
+<h1> to <h6>                <!-- Header tags, h1 is the largest and h6 is the smallest -->
+<p>This is a paragraph.</p>
+
+
+Text Formatting:
+    <p><b></b></p>:             Old way to make text bold.
+    <p><strong></strong></p>:   Modern way to emphasize text strongly (usually bold).
+    <p><i></i></p>:             Old way to italicize text.
+    <p><em></em></p>:           Modern way to emphasize text (usually italicized).
+
+
+Naming the Main Page:
+    It is a common practice to name the main page of a website index.html. 
+    This helps the server to identify and serve the starting page of the website.

@@ -1,0 +1,3469 @@
+						************ A.I.'s NOTES of Course_Python_Udemy ************ 
+
+
+
+		INDEX:
+
+	0.Teoria di Base  di OOP	
+
+	1. Oggetti, Nomi e Tipi
+	2. Basic Data Types
+	3. Strutture di dati
+	4. Strutture di codice
+	5. Object Orientation
+	6. Moduli e Package
+
+	7. Advanced Python
+	8. Gestione dei Files
+	9. Python 3.7 Aggiornamento
+	10. Python 3.8 Aggiornamento
+	11. Python 3.9 Aggiornamento
+	12. Python 3.10 Aggiornamento
+	13. RabbitMQ
+	14. MongoDB
+
+
+
+
+
+****** Teoria di Base  di OOP **********************************************************************************************************************************************************************************************************
+ 
+
+PRINCIPI DI BASE DI OOP:		
+	1. Oggetti (object) => elementi individuali (materiali, immateriali, immaginari) alla quale possiamo applicare un concetto e quindi riconoscere la natura dell'oggetto
+		Astrazione		=> 	Processo a partire dall'ossrevazione dove vengono ignorate alcuni informazioni e mantenute quelle piu' importanti per formare un concetto.
+		Classificazione 	=> 	Forma di astrazione che permette di assegnare un oggetto individuale al concetto che lo descrive
+		Istanza		=>	Oggetto e' un istanza di un concetto. 
+	2. Classi => Concetto (object type)	=>	Un modello generale utilizzato per unificare la comprensione di oggetti diversi (raggruppando oggetti simi)
+								e viene formato in mente attraverso il processo di astrazione.
+Classe contiene 2 membri:
+	1. Attriobuti	=>	Proprieta' (una telecamera ha lo zoom)				=> sono informazione per rappresentare ogni singola istanza di una certa classe
+	2. Metodi		=>	Funzionalita' (si puo' variera lo zoom in una telecamera)	=> funzioni con istruzione per svolegere determiati compiti
+		Questi metodi ed attributi possono essere:
+			- privati: non utilizzabili da oggetti di altri classi (incapsulamento)
+			- pubblici: progettati per interagire con oggetti esterni (senza dare info su quelli privati)
+		-> Questo meccanismo viene chiamato incapsulamento (information hiding)	
+
+Attraverso l'astrazione si puo' classificare, per esempio, diverse telecamere in una classe con caratteristiche e comportamenti in comune (telecamere)
+
+Membri di istanza		=> attributi e metodi che si referiscono alle singole istanze (oggetti) di una classe		=> per esempio una funzione per depositare i soldi su un conto corrente
+Membri di una classe	=> attributi e metodi utilizzati sulla classe stessa che viene considerata come un oggetto	=> per esempio una funzione che calcola quanti conti correnti sono aperti in quel momento
+
+Classi ed oggetti di OOP hanno diversi relazione:
+	1. Classificazione	=> relazione di tipo "is a" definita sopra ↑
+	2. Generalizzaione	=> relazione di tipo "kind of" ed e' un tipo di astrazione delle classi.
+		EXAMPLE:	veicolo e' una generalizzazione di un automobile, mentre un automobile e' una specializzaione di un autoveicolo.
+		Quindi:	Veicolo	=> superclasse
+				Automobile	=> sottoclasse	
+	3. Ereditarieta'		=> e' una relzione ed e' una conseguenza di generalizzazione che fa ereditare tutti ii membri della superclasse alla sottoclasse.							
+	4. Composizione			=> e' una relazione tra oggetti che dice che un oggetto al proprio intenro puo' contenere altri oggetti quindi contiene una gerarchia
+	5. Collaborazione		=> gli oggetti interagiscono fra loro fornendo dei servizi che altri oggetti possono utilizzare quando ne hanno bisogno
+		Servizio: e' un metodo che viene implementato all'interno di un oggetto che puo' essere invocato da altri oggetti in quanto viene esposto come parte della propria interfaccia pubblica
+
+Caratteristiche principali per difinire gli OGGETTI in un sistema software object oriented:
+	1. Stato			=> combinazione dei valori che gli attributi di un certo oggetto hanno in un certo istante di tempo e dovrebbero essere protetti (privati) tramite incapsulamento
+	2. Comportamento	=> insieme di metodi che un oggetto puo' eseguire o ereditare dalla propria classe o anche superclassi
+		Responsabilita':	insieme di comportamenti e delle proprieta' che un certo oggetto possiede
+					la responsabilita' si divide in 2 tipi:
+						Fare		=> espresse dai metodi
+						Conoscere	=> data dagli attributi ma, comunque, vengono resi dispobili  da altri metodi
+	3. Identita'	=> tutti gli oggetti hanno la propria identita' che gli mantiene distinti da altri oggetti che siano o meno istanza della stessa classe
+				   identita' generalmente viene garantita da 2 livelli:
+					Livello logico	=> valore di uno o piu' dei propri attributi e non a tutti gli oggetti serve un identita' a livello logico (EXAMPLE: codice univoco di un conto corrente)
+					Livello fisico	=> identita' che viene garantita dal compilatore (o interprete) di un linguaggio di programmazione e tutti gli oggetti hanno un identita' a livello fisico. 
+										Di solita non viene esposta al programmatore ma, volendo, si puo' risalirci.
+
+Object moduling in color:	=> concetto basato su un libro e si basa sull'idea di archetipi
+	Archetype: e' una catergoria che si puo' appliccare ad un insieme di classi. E' una sorta di griglia concettuale. Il modelli di Peter Code si basa su 4 elementi:
+		1. Moment-Interval		=>	rosso =>	(Quando)		->Il primo concetto da tenere in conto in OOP. Concetto di eventi (processi) estantanei (moment) o quelli che durano nel tempo (inteval)
+		2. Party, Place, Thing	=>	verde =>	(Chi/Che cosa)	->Classi come organizzazioni o persone (party), luoghi o oggetti in generale.	EXAMPLE: Una stanza (party) puo' essere una sala d'esposizione (role) o un magazzino (role)
+		3. Role					=>	giallo=>	(Ruolo)		->Modi di partecipazione di un party, place o thing.					EXAMPLE: Un'azienda (party) puo' essere un cliente (role) o un fornitore (role)
+		4. Description			=>	blu	=>	(Descrizione)	->classe di categorie prefissate, ovvero uno schema di classificazione        EXAMPLE: Come taglie di un vestito (Categorie prefissate: S, M, L, XL)
+		
+
+
+****** 1. Fondamenti del linguaggio => Oggetti, Nomi e Tipi **********************************************************************************************************************************************************************************************************
+
+Nel corso ci sono argomenti come mongo DB o RabbitMq (per sistemi di integrazione oppere nella progettazione di microservices)
+Viene utilizzato Python 3.11.0 e code.visualstudio.com 
+Nel promt dei comandi del terminale di VisualStudio digitare Python / Python3 per aprire la modalita' interattiva chiamata Shell
+Per eseguire lo script digitare python myscript.py
+
+
+
+Come funziona ambiente runtime in python:
+
+Linguaggio => 	
+	1. linguaggio compilato		=> 	Compilatore traduce istruzioni in un file eseguibile con il codice binario
+									Viene eseguito una volta per ogni archittetura (Windows,  in un certo sistema operativo
+	2. linguaggio interpretato	=> 	Interprete esegue direttamente il programma sorgente traducendo un'istruzione alla volta nel linguaggio macchina relativo all'archittetura
+									Ogni volta che viene passato all'interprete lo fa ripartire un'istruzione alla volta
+									Piu' semplice da implementare 
+		
+Linguaggio puo' anche essere compilato in bytecode:
+	Bytecode e' set di istruzioni per il microprocessore universale ed e' una specie di formato ibrido fra un linguaggio interpretato e un l. compilato.
+	Poi viene interpretato su una Virtual Machine e, in tempo di runtime, e tradotto in linguaggio macchina dell'archittettura fisica sottostante alla Virtual Machine
+	E' indipendente dalla piattaforma fisica sottostante
+
+Python e' una virtual machine e compila il codice in un file intermedio (bytecode) e, in certi casi, produce anche il file.
+Il file viene eseguito piu' velocemente di un programma interpretato ma non come un linguaggio compilato.
+Un programma Python contiene:
+	file sorgenti che contengono istruzioni e sono formati da:
+		-script =>	file principale da lanciare dalla linea di comando
+				contiene il flow principale del contrrollo del programma
+		-moduli =>	file suplementari (non obbligatori) tipo librerie importate
+
+
+
+>>>>>>>>>> Oggetti in Python. <<<<<<<<<<
+
+In python tutto e' un oggetto.
+Oggetti sono delle strutture di dati (fatte anche di codice) che hanno 3 caratteristiche:
+
+	1. identita' => 	identificatore numerico generato automaticamente da python durante runtime
+						differenzia tutti gli oggetti garantendo che siano tutti con la propria costante. E' tipo un indirizzo di memoria.
+	2. 	tipo	=>		determina la natura dell'oggetto (str, int, list...) ed e' immutabile
+	3. valore	=>		possono essere mutabili o immutabili
+
+Literal => forma letterale 	=> 	python possiede tipi di dato predefiniti nel linguaggio
+						durante il loro utilizzo python crea oggetti indicandone il valore in fomra letterale 
+						(per esempio semplicemente aprendo parentesi quadre capisce che e' una lista
+
+
+
+>>>>>>>>>> Concetto di variabile. <<<<<<<<<<
+
+Tendenzialmente non si usa identita' per riferirsi ad un oggetto.
+Quindi assegnamo un nome ad un oggetto che viene chiamato un variabile: a = 20
+Regole per fare un nome valido:
+	1. puo' contenere lettere, numeri, caratteri Unicode, underline (_)
+	2. non puo' iniziare con un numero
+	3. non utilizzare le parole riservate da Python (print)
+
+Una variabile:
+	- e' un nome assocciato ad un oggetto
+	- puo' puntare ad oggetti di tipo diverso
+	- puo' cambuiare ed essere associata ad un oggetto diverso
+	- se assegnamo un variabile ed una seconda varibile, l'oggetto non viene coppiato ma condiviso da entrambi i variabili
+
+Reference count	=>	- tutti gli oggetti hanno un contatore di riferimento (di nome)
+				- si autoincrementa ogni volta che un oggetto viene assocciato ad un nome
+				- anche se lo mettiamo come oggetto in un contenitore
+				- si decrementa da solo ma anche quando usiamo "del"
+				- serve per gestire la memoria
+				- quando Reference count va a 0 Python a runtime libero la memoria tramite garbage collector
+					QUINDI e' tipo la quantita' di elementi (variabili) che puntano allo stesso oggetto
+
+
+Objects	=>	Not Callable		=>	rappresentano dei dati e contengono valori, anche gruppi di valori (come liste)
+
+			Callable (chiamabile)	=>	rappresentano un codice eseguibile, quindi sono oggetti con istruzioni
+								dopo oggetto di solito c'e' "()" che significa che lo chiamiamo per eseguire
+								per esempio sono funzioni come print()
+
+
+>>>>>>>>>> Attributi: <<<<<<<<<<
+Gli oggetti in Pyhton hanno una serie di attributi.
+Attributi sono degli oggetti contenuti all'interno di un oggetto e ne specificano ulteriorio caratterisctiche e possono essere dei dati o dei funzioni.
+Quindo un attibuto e' una funzione viene chiamato metodo.
+Per accedere ad un attibuto si usa sempre un punto (dot notation):
+	example:	x.y		=>	nome_oggetto.attributo
+				x.y()	=>	nome_oggetto.attributo_funzione()
+
+			x = "python"	or	"python".upper()
+			x.upper()
+
+
+
+
+
+****** 2. Basic Data Types **********************************************************************************************************************************************************************************************************
+
+Basic Data Types	=>	Sono tipi di dato che python mette a disposizione:
+					1. tipi numerici + boolean
+					2. stringhe (str)
+					3. operatori (operazioni di base)
+					4. espressioni (istruzioni che producono un valore)
+					5. None = assenza di un valore (cmq e' un valore)
+
+
+>>>>>>>>>> Tipi Numerici forniti di base: <<<<<<<<<<
+	- Integer					=> numeri interi			=> int	=> 0, 20, -170, 10_000_000 (solo per migliorare la lettura)
+	- Float (floating-point)	=> numeri con parte decimale	=> float	=> 0., 0.0, 7.35, -1.40, 2e4, 2e-4 (2e4 significa 2x10 alla quarta =20k)
+	- Boolean					=> stati logici (True/False)	=> bool	=> e' un sottotipo di numero intero in python. 
+	- numeri immaginari			=> non si utilizzano quasi mai
+
+Tutti i tipi numerici in python sono immutabili.
+Significa che i variabili che puntano ad un oggetto possono essere puntati ad un altro oggetto ma l'oggetto nmon cambia piu'.
+Di default i numero sono espressi in base 10 (forma letterale) ma si puo' usare altri 3 base:
+	1. Binario		=> (inizia con 0b) base 2	=> 0b10011001 (153)
+	2. Ottale		=> (inizia con 0o) base 8	=> 0o1635 (925)
+	3. Esadecimale	=> (inizia con 0x) base 16	=> 0x1F8A (8074)
+
+
+>>>>>>>>>> Stringhe: <<<<<<<<<<
+	- sono il primo esempio di una sequenza (insieme ordinato di elementi).
+	- sono una sequenza di caratteri e sono oggetti di classe "str".
+	- devono appartenere ad un set di carattere Unicode
+	- sono oggetti immutabili
+	- si mettono in apici singoli o doppi: "python" or 'python'
+	- stringa vuota e' valida (a = "")
+
+Stringhe multiline (su piu' righe):
+
+'Si puo scrivere una \						# si usa una backslash (\) come ultimo carattere per segnlare la fine della linea ma che prosegue sulla linea successiva 
+ per mostrare che la stringa prosegue su \
+ prossima riga di codice'
+
+ """ si puo scrivere una stringa multiline
+utilizzando tre apici singoli o doppi """
+
+\		=>	per iniziare una sequenza di escape:
+\n		=>	inserire un ritorno a capo (esempio: s = "vado \na casa")
+\t		=>	inserire una tabulazione (Tab)
+\\		=>	indica semplicemente di inserire una backslash (stessa cosa vale anche per \` e \")
+
+Modi per formattare le stringhe:
+	1. %-formatting (modulo formatting)	=> modo piu' vecchio non utilizzato
+	2. str.format()						=> introdotta nella v. 2.6 utilizza metodo format associato alle stringhe
+	3. f-Strings						=> Formattazione di testo in Python con la sintassi introdotta nell v. 3.6
+
+>>>>>>>>>> str.format(espressioni python valide) <<<<<<<<<<
+example: x= "Item One: {y} Item Two: {x}".format(x="dog",y="cat")
+
+
+>>>>>>>>>> f-string	f"str{espressioni python valide}" <<<<<<<<<<
+String Interpolation	=> inserimento di espressioni valide all'interno di una stringa
+
+titolo = "Isola misteriosa"
+autore = "Giulio Verne"
+f"Titolo: {titolo}, Autore: {autore}."				==risultato=>	'Titolo: Isola nisteriosa, Autore: Giulio Verne.'
+f"Titolo: {titolo.upper()}, Autore: {autore}."		==risultato=>	'Titolo: ISOLA MISTERIOSA, Autore: Giulio Verne.'
+
+	Ci sono molti modi per alterare la forma interna (tipo upper()).
+	Per approfondirle:
+		cercare PEP 498 -- Literal String Interpolation su python.org
+
+
+
+>>>>>>>>>> Espressioni ed operatori. <<<<<<<<<<
+
+Un'istruzione (statement) e' un comando da mandare all'interprete python.
+Un espressione e' un tipo di statement che viene valutata dall'interprete e poi produce un valore.
+	esempio di espressione: x = 10 +5	x = 10(operando) +(operatore) 5(operando)
+
+
+>>>>>>>>>> Operatori aritmetici: <<<<<<<<<<
+	addizione					+	10 + 5 (15)
+	sottrazione					-	20 - 10 (10)
+	multiplicazione				*	10 * 5 (50)	
+	divisione Floating-point	/	7/2 (3.5)			produce un numero con la virgola se e' necessario
+	divisione intera			//	7//2 (3)			produce un numero intero come risultato in qualsiasi caso
+	modulo						%	12 % 5 (2)			torna il resto della divisione
+	esponenziale				**	4**3 (64)			elevare i numeri
+	meno unario					-	-4 (-4)				serve ad invertire il segno
+
+>>>>>>>>>> Operatori di assegnamento: <<<<<<<<<<
+	Serve per assegnare un nome ad una espressione
+	=
+	+=		a += b		=>		a = a + b
+	-=
+	*=
+	/=
+	//=
+	%=
+	**=
+
+>>>>>>>>>> Operatori di confronto: <<<<<<<<<<
+	Sono come im matematica e danno sempre un valore boleano (True/False)
+	x < y
+	x > y
+	x == y
+	x != y
+	x >= y
+	x <= y
+
+Gli operatori hanno la stessa precidenza come in matematica 10 + 5 * 3	e	(10 + 5) * 3
+
+>>>>>>>>>> Operatori logici. <<<<<<<<<<
+	and		5 < 10 and 7 > 8	False		entrambi
+	or		5 < 10 or 7 > 8		True		una delle due
+	not		5 > 10				True		not inverte i valori
+
+Tutti gli oggetti possono essere testati come valore di verita'.
+	Tutti gli oggetti alla creazione prendono un valore secondo questa regola:
+ 		None = False	=>		0, 0.0, '', (), [], {}
+ 		Tutti gli altri sono True
+
+>>>>>>>>>> Operatori di sequenze. <<<<<<<<<<
+	1. indexing:
+		s = "python programming"	
+		s[0]		=> p	=> variabile[offset/indice]
+		s[8]		=> r 
+		s[:]		=> python programming	
+		s[1:4]		=> yth	=> slice di sequenza
+		s[:4]		=> pyth
+		s[9:]		=> ogramming
+		s[1:12:3]	=> yopg	passo da ogni terzo
+		s[-2:]		=> ng	=> parte dal fondo con indice negativo e va verso la fine
+
+		QUINDI:	variabile [ start : stop_non_compreso : passo_compreso]
+
+	2. concatenazione:	=>	(sommare due stringhe)
+		s = "python"
+		r = "programming"
+		t = s + r
+
+	3. ci sono molte funzioni sulle sequenze...
+		alcuni esempi:
+		s = "python"
+			len(s)	=> 6	=> lunghezza stringa
+			min(s)	=> h	=> torna il minimo della sequenza => in una stringa prende alfabeto
+			max(s)	=> y	=> massimo
+		Approfondire altri funzioni di sequenza su python.org
+
+	Conversioni di tipo.
+	Si puo' convertire un tipo di dato in un altro tipo di dato.
+		Integer conversion:	=>	int() per convertire in integer
+			int(False)		=> 0	
+			int(True)		=> 1
+			int(20.5)		=> 20	=> perde la parte decimale
+			int("150")		=> 150	=> stringa diventa un numero
+			int("python")	=> ValueError
+
+		Float conversion:	=>	float() per convertire in floating point
+			float(False)	=> 0.0
+			float(True)		=> 1.0
+			float(20)		=> 20.0
+			float("150.5")	=> 150.0
+			float("python")	=> ValueError
+
+		String conversion:	=>	str() per convertire in stringa
+			str(False)		=> "False"
+			str(True)		=> "True"
+			str(150.0)		=> "150.0"
+			str(20)			=> "20"
+
+		Boolean conversion:	=> bool() per convertire in booleano
+			bool(10)		=> True
+			bool(10.5)		=> True
+			bool(0)			=> False	=> zero e' sempre False
+			bool("python")	=> True
+			bool("")		=> False	=> stringa vuota
+
+
+
+
+
+****** 3. Strutture di Dati **********************************************************************************************************************************************************************************************************
+
+Strtutte dei dati:
+	Sono dei contenitori che tengono piu' di un valore (elemento)
+	- liste	
+	- tuple
+	- dizionari
+	- set
+
+Sequenza => e' un insieme ordinato di elementi. Questi elementi vengonon indecizzati con dei numeri.
+Le sequenze sono le stringhe, le liste e le tuple.
+	EXAMPLE:	sequenza 	[20, -5, 150, 12, -95]
+				indici		0    1    2    3    4
+
+Le Liste e le tuple possono contenere qualsiasi tipo di elemento ma:
+	liste sono mutabili		
+	tuple sono immutabili	
+
+
+>>>>>>>>>> Le LISTE: <<<<<<<<<<
+
+Liste sono sequenze mutabili che contengono elementi di qualunque tipo.
+type = list.
+	myList = []				=> lista vuota
+	myList = [10, 20, 30]	=> lista con elementi
+	myList = list()			=> funzione list() che e' un costruttore che restituisce oggetto lista vuoto
+
+Si puo' usare gli indici in modo uguale:
+	myList = [10, 20, 30]
+	myList[1]	=> 20
+
+Lista Bidimensionale:
+	myList = [[1,2], [2,3], [6,7]]
+	myList[1][1]	=> 3	=> si usano 2 offset
+
+Modificare una lista:
+	myList = [10, 20, 30]
+	myList[1] = 50
+		myList diventa [10, 50, 30]
+
+Slice di lista:		=> tipo sottolista
+	myList = [10, 20, 30]
+	myList[1:]
+		risultato: [20, 30]
+
+Lunghezza di una lista:
+	myList = [10, 20, 30]
+	len(myList)
+		risultato: 3 => quanti oggetti contiene
+
+Aggiungere elementi nella lista con metodo insert:
+	myList = [10, 20, 30]
+	myList.insert(2,50)											=> insert(offset,oggetto)
+		risultato: [10, 20, 50, 30]		=> elementi vengono spostati
+
+Aggiungere elementi nella lista con metodo append:
+	Funzione append aggiunge in coda alla lista un nuovo elemento
+	myList = [10, 20, 30]
+	myList.append(50)											=>append(oggetto)
+		risultato: [10, 20, 30, 50]
+
+Eliminare elementi dalla lista con metodo del:
+	myList = [10, 20, 30]
+	del myList[4]												=>del nomelista[index]
+		myList diventa [10, 30]
+
+Eliminare elementi dalla lista con metodo remove():
+	programming_languages = ["JavaScript", "Python", "Java", "C++"]
+	programming_languages.remove("JavaScript")
+	print(programming_languages)
+		risultato: ['Python', 'Java', 'C++']
+
+
+Operatore in:
+	Serve per verificare se un elemento e' presente nella lista. 
+	Ritorna sempre un boolean.
+	myList = [10, 20, 30]
+	20 in myList	=> True
+
+Due nomi, Una Lista:
+	Ci sono due nomi che puntano ad un oggetto e, se oggetto viene cambiato, cambia per tutti i due nomi.
+		myList = [10, 20, 30]
+		myList2 = myList
+		myList2[1] = 60
+			myList diventera' [10, 60, 30]
+	Per evitare questo si puo' usare la funzione copy() per creare nuovo oggetto.
+		myList = [10, 20, 30]
+		myList2 = myList.copy()
+		myList2[1] = 60
+			myList rimarra' [10, 20, 30]
+			myList2 diventera' [10, 60, 30]
+
+
+>>>>>>>>>> LE TUPLE: <<<<<<<<<<
+
+type = tuple
+Una tupla e' una sequenza come un lista, ma immutabile.
+Le tuple sono piu' efficienti rispetto alle liste dal punto di vista delle performance....
+	... durante l'esecuzione perche' python le ottimizza meglio perche' sa che gli oggetti dentro sono immutabili.
+		medaglie = ()								=> tupla vuota
+		medaglie = tuple()							=> funzione cotruttore di tuple che fa tornare una tupla vuota
+		medaglie = ("oro", "argento", "bronzo")		=> tupla con 3 elementi (stringhe) separati dalla virgola
+
+Tuple unpacking:
+	E' lo spacchettamento degli elementi della tupla ed assegnamento degli elementi alle variabili in ordine cronologico
+		Esempio:
+		medaglie = ("oro", "argento", "bronzo")
+		o, a, b = medaglie
+			risultato:	o == "oro"
+						a == "argento"
+						b == "bronzo"
+
+>>>>>>>>>> I DIZIONARI: <<<<<<<<<<
+
+I dizionari sono simili alle liste ma l'ordine non e' definito perche' non sono delle sequenze.
+Al posto di indici usano le chiavi (key) con i rispettivi valori(value).
+Quindi ogni singolo elemento del dizionario contiene due oggetti: chiave e valore.
+	Le chiavi possono essere di un tipo qualcuno ma immutabile.
+	I valori invece possono essere cambiati quindi i dizionari sono oggetti mutabili.
+type = dict	
+nome_dizionario = {key:value}
+
+Creazione:
+	myDict = {}			=> con formato Literal
+	myDict = dict{}		=> con la funzione predefinita
+
+Esempio:
+	myDict = {
+		"primo": 10,				=> key sono delle str
+		"secondo": 20,				=> valori sono int
+		"terzo": 30
+	}
+
+per aggiungere o cambiare un elemento in un dizionario:
+	myDict["quarto"] = 40			=>	nome_dizionario[key] = value
+
+per eliminare un elemento (key + value) in un dizionario:
+	del myDict["secondo"]			=> del nome_dizionario[key]
+
+per eliminare tutti gli elimenti nel dizionario:
+	1. myDict.clear()				=> nome_dizionario.clear()
+	2. myDict = {}					=> nome_dizionario = {}
+
+Per controllare se un elimento appartiene o no al dizionario (da' risultato buleano)
+	"terzo" in myDict				=> key in nome_dizionario
+
+Se si assegna un dizionario a piu' variabili, questi variabili condividono lo stesso oggetto.
+	Esemipo:
+		myDict2 = myDict			=> 2 variabili condividno 1 oggetto (dict)	
+		myDict2 = myDict.copy()		=> si crea una coppia, quindi si crea il secondo oggetto (dict)
+
+
+Funzioni dei dizionari items, update e dict:
+
+>>> d1 = {10:"a",20:"b"}			# creazione dei 2 dizionari
+>>> d2 = {30:"c"}
+>>> l1 = d1.items()					# items =>	trasforma un dict in dict_items	=>	una list che contiene le tuple (ogni tupla contiene key + velue)
+>>> l1								=> l1 diventa: dict_items([(10, 'a'), (20, 'b')])
+>>> l2 = d2.items()
+>>> d3 = dict(l1)					# dict	=>	trasfomra un dict_items in dict
+>>> d3								=> d3 tona ad essere dizionario: {10: 'a', 20: 'b'}
+>>> d3.update(dict(l2))				# update	=>	inserire oggetti in dizionari
+>>> d3								=> diventa un dizionario completo {10: 'a', 20: 'b', 30: 'c'}
+
+
+>>>>>>>>>> SET: <<<<<<<<<<
+
+type = set
+Set e' un contenitore di elementi e di default e' mutabile. 
+E' simile al dizionario ma contiene solo i key, senza valore, quindi non ha neanche indexes.
+Di solito si creano solo con lo scopo per verificare se un elemento fa parte di quel contenitore o meno.
+Si possono utilizzare tutte le operazioni matematici tipici degli insieme come intersezione o l'unione tra insiemi. 
+
+Per creare un insieme:
+	mySet = set()								=> set funzione che fa cotruire gli insiemi.
+	mySet = set([10,20,30,40])					=> set con parametro una lista
+	mySet = {10, 20, 30, 40}					=> forma literal => elementi senza key nelle parentesi graffe e separando degli elementi con le virgole 
+	NO	->	mySet = {}	->	si crea un dizionario vuoto
+
+Aggiungere gli elementi:
+	mySet.add(10)					=> aggiunto elemento 10 al set
+
+>>>>>>>>>> Frozenset. <<<<<<<<<<
+type = frozenset
+Frozen e' un set immutabile.
+	mySet = frozenset([10,20,30])
+		funzione add() non funzionera'
+
+Sia in set che frozenset si puo' verificare se un elemento fa parte del contenitore con funzione "in":
+	Esempio:
+	mySet = {10, 20, 30, 40}
+	30 in mySet						=> True
+
+Le operazioni piu' utili di set:
+	1. Intersezione:
+		mySet = {10, 20, 30, 40}
+		mySet2 = {30,40,50,60}
+		mySet & mySet2				
+			=> risultato: {40, 30}	=> "&" produce un nuovo set con tutti gli elimenti che hanno in comune i due set
+
+	2. Unione:
+		mySet = {10, 20, 30, 40}
+		mySet2 = {30,40,50,60}
+		mySet │ mySet2					=> │ si chiama "or logico"
+			risultato: {10, 20, 30, 40, 50, 60}	=>	produce un nuovo set con tutti gli elementi di entrambi i set
+
+	3. Differenza:
+		mySet = {10, 20, 30, 40}
+		mySet2 = {30,40,50,60}
+		mySet - mySet2
+			risultato: {10, 20}	=>	produce un nuvo set con tutti gli elementi che appartengono al primo set...
+									... ma che non appartengo al secondo insieme
+
+	4. OR Esclusivo (XOR):
+		mySet = {10, 20, 30, 40}
+		mySet2 = {30,40,50,60}
+		mySet ^ mySet2
+			risultato:	{10, 50, 20, 60}	=>	produce un nuovo set che contiene tutti gli elementi che non sono in comune
+
+
+
+
+
+****** 4. Strutture di Codice **********************************************************************************************************************************************************************************************************
+
+Un  programma python e' composta da Linee di codice:
+	Linee logiche composte da:	=> quella che vede python ed interpreta in un'istruzione
+		linee fisiche			=> quella che scriviamo noi (un commento "#" non fa parte delle linee fisiche)
+
+	Example:
+		s = {				=> 6 linee fisiche
+			1: "uno",		=> 2 linee logiche
+			2: "due",
+			3: "tre"
+		}
+		print(s)
+
+Blocco di codice 
+	- e' in insieme di linee di codice che, raggrupate insieme, rappresentato una strutture di codice.
+	- i blocchi di codice di solito vengono nidificati, ovvero possono essere creati uno dentro l'altro in una forma gerarchica.
+	- in Python non servono le coppie di parentesi per delimitare i propri blocchi di codice come in tanti altri linguaggio tipo Java.
+		al posto di parentesi usa indentazione, cioe' sposa in avanti il codice di 4 spazzi verso destra rispetto all'istruzione superiore.
+
+Statement.
+	- e' un istruzione
+	- si puo' rappresentare piu' istruzioni nella stessa linea fisica separandoli con ";" (che python li dividera' in piu' linee logiche)
+		Example:	s = "Python"; print(s)	=> in verita' e' fortemente sconsigliato
+	- possono essere:
+		1. semplici = non contiene altri statement ed e' situato in un'unica linea logica
+		2. composti = contiene altri statement ed e' scomposto in piu' linee logiche
+
+
+
+
+>>>>>>>>>> Lo statement IF. <<<<<<<<<<
+	- utilizzato per descrivere un'istruzione condizionale del codice,
+	  cioe' per compiere una serie delle azioni diverse sulla base di test di verita'.
+	- alle espressioni viene dato il valore buleano e viene esguito quello con valore True.
+	- potrebbero essere tutte False, e verra' eseguito "else"
+	- funziona anche per fare i test alfabetici. Esempio: "python" < "r"
+-> sintassi:
+
+if expression:				=> if e' l'unica obbligatoria
+	suite
+elif expression:			=> elif possono esserci da zero ad infinito
+	suite
+else:						=> else e' facoltativa ed e' massimo una
+	suite
+
+
+
+
+>>>>>>>>>> Lo statement WHILE: <<<<<<<<<<
+	- rappresenta un loop (ciclo)
+	- se while True, sara' eseguita affinche' avra' il valore True.
+	- else (se c'e') verra' eseguito in qualsiasi caso
+-> sintassi:
+
+while expression:			=> while e' obbligatoria
+	suite
+else:						=> else e' facoltativa
+	suite
+
+-> esempio:
+x = 0
+while x < 3:
+	print(x)
+	x += 1
+
+
+
+
+
+>>>>>>>>>> LOOP INFINITO e lo statement BREAK: <<<<<<<<<<
+	- per eseguire un loop affinche' non succede qualcosa ma non si sa quando succede 
+	- si usa loop infinito	=>	while True = per sempre
+	- per uscire dal loop infinito si usa lo statement break che interrompe il loop
+	- dopo il break il codice riprende dopo il blocco di codice while
+->sintassi:
+while True:
+	x = input("Inserisci una stringa: ")
+	if x == "stop":
+		break				=> quando scattera' il break print non sara' visualizzato
+	print(x)
+
+
+
+
+
+>>>>>>>>>> Lo statement CONTINUE: <<<<<<<<<<
+	- consente di ritornare in testa al loop interrompendo l'interazione attuale
+	- quindi nell'esempio sotto, se scatta "continue" non verra' eseguito print ma torna in testa al loop
+-> sintassi:
+while True:
+	x = input("Inserisci una stringa: ")
+	if x == "stop":
+		break
+	print(x)
+	if x < "b":
+		continue
+	print(X)
+
+
+
+
+>>>>>>>>>> Lo statement FOR: <<<<<<<<<<
+	- e' uno statament composto e
+	- si usa per iterare sugli elementi di una sequnza come una stringa, una tupla o una lista
+	- si usa anche con altri oggetti iterabili 
+	- per ogni operazione viene prelevato un singolo oggetto da questo iterable ↑ (tipo una lista)
+	- il valore prelevato (oggetto) viene assegnato a target che normalmente e' una variabile
+	- poi viene eseguita la suite
+	- termina quando tutti i target dell'iterator sono stati presi in considerazione
+	- break e continue funzionano ugualmente come in ciclo while
+-> sintassi:
+for target in iterator:
+	suite						=> si puo' aggiungere un break nella suite di for
+else:							=> else e' facoltativa e viene eseguita sempre se non si usciti dal ciclo con un break
+	suite
+
+Esempio nella lista:			=> viene eseguito 4 volte perche' ci sono 4 elementi nella lista
+	myList = [1,2,3,4]
+	for i in myList:
+		print(i)
+
+Esempio in una stringa:			=> viene eseguito 6 volte perche' ci sono 6 caratteri
+	myString = "python"
+	for i in miString:
+		print(i)
+
+Esempio in un dizionario:				=> viene eseguita 3 volte perche' ci sono 3 key
+	miDict = {"a":1, "b":2, "c":3}		
+	for i in myDict:
+	print(i)							=> di default verrano stampate le chiavi...
+
+		...per mostare i valori				=>	for i in myDict.values():
+		...per mostrare sia key che value	=>	for i in myDict.items():
+
+
+
+
+
+>>>>>>>>>> La funzione RANGE: <<<<<<<<<<
+	- e' una funzione che, se viene chiamata, restituisce un oggetto iterabile
+	- contiene una sequenza di numero progressivi
+-> sintassi:
+range(start, stop, step)
+	start:	facoltativo, se non e' indicato parte sempre da zero
+	stop:	obbligatorio e non e' incluso
+	step:	facoltativo, se non e' indicato e' 1 di default
+-> esempio:
+for i in range(10, 16, 2):			=> produciamo un oggetto iterabile formato da numeri che iniziano da 10, finiscono con 16 di saltandone due
+	print(i)
+
+
+
+
+
+>>>>>>>>>> List COMPREHENSION:
+	- e' un meccanismo che a partire da qualunque oggetto iterabile ne produce un altro in un'unica istruzione
+	- ma esegue un operazione abbastaza soffisticata a partire dai dati dell'oggetto di origine
+	- facciamo un esempio su una lista ->
+-> sintassi:
+[EXPRESSION for ITEM in ITERABLE if CONDITION]
+	[]				=>	perche' produce una lista come risultato
+	expression		=>	elabora item	=>	e' una regola che viene applicata ad item per produrre il valore che entrera' nella lista di destinazione
+	item			=>	e' la variabile dove viene inserito ogni singolo elimento dell'iterabile che stiamo scorrendo
+	iterabable		=>	e' una lista sorgente (di origine) che viene iterata 
+	for in			=>	loop
+	if condition	=>	se la condizione e' vera item riceve un elemento di iterabile e viciversa
+-> esempio:
+numbers = [1,2,3,4,5,6,7,8,9]
+newList = [n * n for n in numbers if n % 2 == 1]
+print(newList)
+	->risultato:	[1, 9, 25, 49, 81]
+	e' una lista nuova di numeri dispari messi al quadrato
+
+
+
+>>>>>>>>>> Dict COMPREHENSION: <<<<<<<<<<
+	- e' un meccanismo per creare un oggetto (dict) a partire da qualunque oggetto iterabile
+	- gli elimenti del dizionario di destinazione (key:value) sono ottenuti dall'elaborazione degli elimenti dell'oggetto di origine
+->sintassi:
+{key_expr: val_expr for ITEM in ITERABLE of CONDITION}
+	{}					=> perche' produce un dizionario come risultato
+	key_expr: val_expr	=> item viene scomposto in una parte key e una parte value
+	altro				=> tutto il resto e' uguale
+->esmpio:
+	a = "python"
+	b = {k: ord(k) for k in a}
+		-> risultato: {"p": 112, "y": 121, "t": 116, "h": 104, "o": 111, "n": 110}
+		-> perche':
+			.facciamo un eterazione nella sequenza "a" (che e' una stringa)
+			.quindi ogni item (carattere) viene assegnato ad una variabile k
+			.espressione a sinistra scompone questa k in due modi diversi
+			.quindi la chiave diventa k
+			.il valore viene prodotto da una funzione ord() che restituisce un valore numerico del carattere nello standard di unicode
+
+
+
+>>>>>>>>>> Set COMPREHENSION: <<<<<<<<<<
+	- teoria e' uguale alle precedenti
+	- racchiusa nella parentesi graffe
+	- pero' al posto di "key_expr: val_expr" c'e' una expression (regola)
+	- da ricordarsi che gli elimenti non sono dupplicati negli set
+		questo viene fatto in automatico ovviamente
+->sintassi:
+{EXPRESSION for ITEM in ITERABLE if CONDITION}
+->esempio:
+	a = "doppione"
+	c = {k for k in a}
+	->risulatato:
+		{"i", "e", "p", "n", "o", "d"}
+		i caratteri doppi sono stati inseriti sulo una volta
+
+
+
+
+
+>>>>>>>>>> LE FUNZIONI: <<<<<<<<<<
+
+Le Funzioni e':
+	-	un insieme di istruzioni...
+	-	al quale viene assegnato un nome...
+	-	e che puo' essere eseguita a richiesta in diversi parti del programma...
+	-	senza rescrivere tutte le istruzioni.
+	-	una funzione e' anche un oggetto (callable object)
+	-	si puo' fare 2 cose con una funzione:
+			1. definirla = darle un nome e le istruzioni
+			2. chiamarla = utilizzarla successivamente
+->sintassi:
+def FUNCTION_NAME(PARAMETERS):
+	statements
+
+->spiegazione:
+	def				=> define function
+	FUNCTION_NAME	=> nome assegnato all'oggetto funzione
+	(PARAMETERS)	=> elenco opzionale di nomi che verranno assegnati ai valori forniti (argomenti) durante la chiamata della funzione
+	statements		=> e' un blocco di istruzioni
+
+
+def func_name():
+	"""
+	THIS IS THE DOCSTREING FOR FUNC INFO
+	"""
+
+
+
+>>>>>>>>>> I parametri delle funzioni: <<<<<<<<<<
+
+Nominano/assegnano il valore di default per diffetto per parametri che vengono passati quando chiamiamo una funzione
+Tipi di parametri:
+	1. parametri posizionali
+		- parametri identificati con dei nomi 
+		- questi parametri sono obbligatori
+		- ogni volta che chiamiamo una funzione con questi parametri bisogna fornire un valore (argomento) correspondente per ogni parametro nell'ordine giusto
+		- esempio:
+			def myFunc(a, b, c, d):
+				print(a, b, c, d)
+		-chiamiamola:
+			myFunc(10, 20, 30, 40)
+	2. parametri keyword
+		- al momento della chiamata della funzione si puo' specificare gli argomenti attraverso i nomi dei parametri obbligatori
+		- il vantaggio e' nello specificare i valori nell'ordine diverso
+		- esempio:
+			def myFunc(a, b, c, d):
+				print(a, b, c, d)
+		-chiamiamola:
+			myFunc(b=10, a=20, d=30, c=40)
+				-> risultato: 20, 10, 40, 30
+		- si puo' chiamare la funzione utilizzando sia paramtri funzionali sia i parametri keyword, ma....
+			... in questo caso i parametri posizionali devono sempre precedere i parametri keyword
+			... esempio: myFunc(10, 20, d=30, c=40)
+	3. parametri opzionali
+		- i parametri obbligatori possono essere seguiti da parametri opzionali
+		- specificano oltre al nome del parametro anche il suo valore di default con questa sintassi:
+		- identifier = expression
+		- al momento della chiamata non e' obbligatoria specificare i valori di questi parametri
+		- cmq se indichiamo il valore diverso di quello di default di questi parametri, il valore verra' cambiato
+		- esempio:
+			def myFunc(a, b, c=3, d=4)
+		- chiamiamola:
+			a. myFunc(10, 20)			=> risultato: 10, 20, 3, 4
+			b. myFunc(10, 20, 30, 40)	=> risultato: 10, 20, 30, 40
+	4. parametri *args
+		- iniziano con "*" poi nome qualunque che di solito viene dato "args" argomenti
+		- raggruppano un numero variabile di argomenti posizionali all'interno di una tupla
+		- si puo' aggiungere all'inizio anche dei parametri posizionali
+		- esempio:
+			def myFunc(a,b,*args):
+				print(a,b,args)				
+		- chiamiamola:
+			myFunc(1,2,3,4,5)			=> risultato: 1 2 (3, 4, 5)
+	5. parametri **kwargs
+		- iniziano con "**" poi qualsiasi nome ma di solito vengono chiamati kwargs keyword arguments
+		- raggruppa un numero variabile di argomenti keyword all'interno di un dizionario
+				.questo dict contiene come key i nomi dei parametri
+				.questo dict contiene come value i valori forniti per i corrispondenti argomenti
+		- esempio:
+			def myFunc(**kwargs)
+				print(kwargs)
+		- chiamiamola:
+			myFunc(a=1, b=2, c=3)			=> risultato: {"a" : 1, "B" : 2, "c" : 3}
+
+
+
+
+>>>>>>>>>> Lo Statemente RETURN: <<<<<<<<<<
+
+Tutte le funzioni in python ritornano semore un valore: implicito o esplicito.
+Return torna un valore da una funzione.
+Puo' esistere solo dentro il corpo di una funzione.
+
+->Sintassi:
+def sum(a,b):
+	return a + b
+
+return:
+	- Puo' opzionalmente essere seguito da una espressione (istruzione che produceun valore)
+	- Se non viene indicata nessuna espressione dopo return torna il valore predefinito che e' oggetto "None"
+	- Se non e' indicato return e finiscono le istruzioni dentro il corpo di una funzione torna cmq il valore "None"
+
+
+
+
+>>>>>>>>>> Chiamare una funzione: <<<<<<<<<<
+
+->Sintassi:
+FUNCTION_NAME(arguments)
+
+Per chiamare la funzione si usano le parentesi tonde.
+Gli argomenti, quando vengono assocciati ai parametri della funzione, vengono passati per riferimento:
+	(cioe' se passiamo una variabile come argomento, l'oggetto che e' associato a questa variabile
+	viene passato come argomento della funzione e quindi viene associato al parametro corrispondende della funzione, 
+	quindi oggetto passa da argomento a parametro).
+	Se questo oggetto e':
+	1.	immutabile	=>
+
+		definiamo la funzione...
+		def myFunc(x):				=>	definiamo una funzione myFunc con 1 parametro obbligatorio
+			x = 10						questo parametro, dentro la funzione, viene assegnato ad un valore intero (oggetto 10 type int)
+			print(x)					poi questo numero viene visualizzato
+	 	
+		poi chiamiamo questa funzione...
+		y = 20						=> 20, un oggetto immutabile esistente assegnato ad una variabile y
+		myFunc(y)	=>	10			=> usiamo questa varibile come argomento, e dentro gli istruzioni della funzione, questa varibile viene puntata ad un'atro oggetto
+
+		print(y)	=>	20			=> quando usciamo fuori dalla funzione, oggetto 20 punta alla stessa variabile 
+										perche' questo oggetto e' immutabile 
+
+	2. mutabile =>
+
+		definiamo la funzione...
+		def muFunc(x)				=> questa funzione accetta un parametro x e ci si aspetta che sia un dizionario (mutabile)
+			x['func'] = 10			=> creiamo una chiave chiamata "func" di tipo stringa e le associamo un valore 10
+
+		poi chiamiamo questa funzione...
+		d = {'a':5}					=> abbiamo un dizioanario assegnato ad una varibile d
+		myFunc(d)					=> passiamo questo oggetto (dict) come parametro di quetsa funzione
+
+		print(d)					=> fuori dalla funzione il dizionario e' cambiato	=>	{'a':5, 'func':10}
+										quindi abbiamo cambiato puntato da d (dict) perche' e' un oggetto mutabile
+
+
+>>>>>>>>>> Usare funzioni come oggetti <<<<<<<<<<
+
+def sum(x, y):						=> esempio della funzione
+	print(x + y)
+
+	-	sum(10,5)						# per chiamare la funzione servono ()
+	-	sum								# funzione come oggetto
+			type(sum)					=>	type "function"
+
+Alcuni esempi per tirare fuori vantaggi da funzioni come oggetto:
+
+1. Funzioni nidificate
+
+	- si chiama cosi' quando uno statement def viene inserito nel corpo di un'altra funzione.
+	- si chiama anche inner function
+	- esempio:
+
+	def outer(x,y):
+		def sum(a,b):					=> funzione nidificata
+			return a + b
+		print(sum(x,y))					=> visualizza invocazione alla funzione sum...
+											...quindi funzione1 chiama la funzione inner, gli passa i propri parametri...
+											...poi visualizza quello che la funzione sum ritorna
+
+	- proviamo a chiamare la func:
+		outer(10,5)		=>	il risultato sara' 15
+	- quindi possiamo inserire la definizione di un oggetto all'interno della definizione di un altro oggetto
+
+2. Funzione come valore di ritorno:
+
+	- definire una funzione che ritorna come oggetto una funzione 
+	- esempio:
+
+	def outer():
+		def inner(a,b):
+			print(a+b)
+		return inner
+
+	proviamo a chiamare la func:
+		f = outer()		=>	assocciamo l'oggetto di tipo function alla variabile f
+		f(10,5)			=>	se diamo (10,5) alla variabile f, forniamo indirettamente i parametri alla funzione inner...
+								... quindi otteniamo la corretta visualizzazione della somma dei due numeri forniti come argomento. 
+
+3. Funzione come parametro:
+
+	- possiamo passare una funzione oggetto come parametro ad un'atra funzione
+	- esempio:
+
+	def sum(a,b):
+		print(a + b)
+
+	def MyFunc(f, x, y):				=> myFync ha 3 parametri: (funzione, 2 valori numerici)
+		f(x,y)							=> si utilizza il riferimento ottenuto dall'esterno di questa funzione puntata da f...
+											... viene chiamata questa funzione f con parametri x, y
+	proviamo a chiamare la func:
+		myFunc(sum, 10, 5)				=> usiamo la funzione sum come oggetto e lo passiamo come primo argomento ...
+											... func "myFunc" utilizzerebbe il riferimento all'oggetto func "sum"...
+											... invocherebbe il codice assocciato a "sum" fornendo i due parametri 10 e 5
+
+
+
+>>>>>>>>>> Namespace e Scope <<<<<<<<<<
+
+Namespace:
+	- e' una mappa che collega i nomi agli oggetti e viene usata per mantenere destinti i nomi che assegnamo agli oggetti
+		in zone diverse di un programma per garantire la loro univocita' (per evitare la collissione tra loro).
+	- quando un programma python va in esecuzione (runtime) ci sono molti namespace che, tra di loro, si organizzano in una forma gerarchica.
+	- namespace hanno dei cicli di vita differenti, quindi durante runtime non sono sempre tutti attivi
+
+Scope:
+	- e' contesto
+	- cioe' e' un area di codice che determina il namespace da utilizzare per la risoluzione dei nomi
+
+Gerarchia LEGB di namespace:
+	local	->	enclosed	->	global	->	built-in
+	BASSO			----->>>>>					ALTO
+
+1. Local Scope
+	- e' il livello interno ad una funzione
+	- quindi gli argomenti e le variabili che si trovano all'interno di una funzione vengono chiamati local namespace
+	- viene creato ogni volta che chiamiamo una certa funzione
+	- viene rimosso quando una funzione ritorna
+	- esempio:
+	def sum(x,y):		
+		c= x + y				-> x, y, c formano local namespace della funziona sum
+		return c
+
+2. Enclosed Scope
+	- namespace che consente a risalire ai nomi che non sono definiti dentro una funzione
+	- ma sono definiti dentro la funzione (outer func) che racchiude la nostra funzione inner.
+	- esempio:
+	def outer(x):
+		y = 20					-> x, y formano eclosed namespace della funzione outer
+		def inner():
+			print(x + y)
+		inner()
+
+3.	Global Scope
+	- il namespace globale consente di accedere a tutti i nomi definiti a livello di file sorgente dove stiamo scrivendo il programma
+	- quindi e' il namespacedefinito al di fuori di tutte le funzioni
+	- esempio:
+	x = 100						-> "x" e' una variabileglobale perche' definita fuori da tutte le funzioni
+	def myFunc(y):				-> invece "y" e' definita nel local namespace
+		print (x + y)
+
+4. Built-in Scope
+	- e' namespace predefinito che si trova al livello piu' alto della gerarchia
+	- e' fornito direttamente dall'ambiente di runtime di python
+	- questo namespace, per esempio, contiene delle funzioni predefinite
+	- esempio:
+	print('python')				-> "print" si trova all'interno di built-in namespace
+
+
+
+
+>>>>>>>>>> global e nonlocal <<<<<<<<<<
+
+Global e nonlocal sono delle parole chiave che servono per alterare il comportamento di
+	python nell'utilizzo standard della gerarchia di namespace.
+
+Viriable hiding	=	e' la regola generica di gerarchia che utilizza python secondo la quale una varibile locale nasconde quella globale.
+					x = 100
+					def myFunc():
+						x = 20
+						print(x)
+
+					>>> myFunc()	=> 20
+					>>> print(x)	=> 100
+
+Per alterare questo comportamento standard si puo' utlizzare 2 statament diversi:
+
+1.	global
+	- per fare eseguire ad una funzione l'assegnamento di una variabile globale all'interno di un namespace locale
+	- esempio:
+
+	x = 100
+	def myFunc():
+		global X				-> con "global x" la func "myFunc" accede direttamente alla varibile globale
+		x = 20						quindi non crea una nuova variabile locale nel proprio namespace 
+		print(x)
+
+	>>> myFunc()	=> 20
+	>>> print(x)	=> 20		-> cosi' anche la x globale ha cambiato il valore
+
+2. nonlocal
+	- nonlocal consente di accedere ad un nome presente ad una funzione esterna (outer func) da parte di una funzione nidificata (inner func)
+	- mentre global cerca una varibile globale, nonlocal cerca una variabile enclosed
+	- esempio:
+
+	def outer():
+		y = 20
+		def inner():
+			nonlocal y			-> "nonlocal y" per utilizzare la varibile di enclosed namespace
+			y = 50
+			print(y)
+		inner()
+		print(y)
+
+	>>> outer()		=> 50 & 50	-> entrambi print() di inner() e outer() saranno 50
+
+
+
+
+
+>>>>>>>>>> Function Decorator <<<<<<<<<<
+
+Il decoratore di una funzione e' una funzione che pero' prende in input un parametro funzione ...
+	... la decora (quindi la arricchisce  di istruzioni aggiungendo del proprio codice) e poi ritorna ...
+	... questa funzione come valore di ritorno. 
+
+Quindi un decoratore serve per poter alterare o arricchire il comportamento di una funzione che esiste gia' ...
+	... senza dover modificare direttamente il codice di questa funzione, anche perche' non possiamo ad esempio.
+
+
+
+Decorare SENZA decoratore:
+
+Esempio:
+def myDecorator(f):						=> definiamo una funzione che prende in input come parametro "f", un altra funzione
+	def decorator():					=> all'interno creiamo una funzione inner con i propri istruzioni
+		print("ho decorato")
+		f()								=> facciamo eseguire la funzione di input "f" 
+	return decorator					=> come valore di ritorno facciamo tornare oggetto funzione inner che ha arricchito funzione di input e l'ha fatta eseguire
+
+def myFunc():
+	print("la funzione myFunc)
+
+myFunc = myDecorator(myFunc)			=> stiamo decorando la funzione originale ...*
+
+	*... quindi se chiamiamo la funzione "myDecorator" e le passiamo in input la funzione "MyFunc"
+	... otteniamo il valore di ritorno una nuova funzione "decorator" e la riasseniamo alla variabile "myFunc" originaria ...
+	... quindi si puo' dire che abbiamo sostituito la funzione "myFunc" con una nuova funzione che siama ancora cosi ...
+	... solo perche' le abbiamo riassegnato lo stesso nome (variabile). 
+
+Se eseguiamo questa funzione:
+	>>> myFunc()
+il risultato sara': 
+	"ho decorato"
+	"la funzione myFunc"
+
+
+
+Decorare CON decoratore:
+
+Python consente di sintetizzare l'idea di sopra in un formato piu' semplice attraverso annotazione @funzione_decoratore
+@funzione_decoratore deve essere posizionata sopra la funzione da decorare
+
+def myDecorator(f):						
+	def decorator():					
+		print("ho decorato")
+		f()								
+	return decorator
+
+@myDecorator
+def myFunc():
+	print("la funzione myFunc")
+
+se eseguiamo la funzione "myFunc()" otteniamo lo stesso risultato:
+	"ho decorato"
+	"la funzione myFunc"
+
+
+
+>>>>>>>>>> Functions LAMBDA <<<<<<<<<<
+
+Oltre allo statement def si puo' definire le funzioni tramite un espressione che genera un oggetto funzione.
+Questa espressione viene chiamata lamda.
+Al posto di assegnare un nome ad una funzione (con def), lambda torna un oggetto funzione anonimo.
+-> sintassi:
+lambda arg1, arg2,... argN : expression (con gli argomenti)
+	lambda		=>	inizia con qesta parola chiave
+	arg1		=>	seguono gli argomenti (sono quelli che vanno in parentesi)
+	:			=>	sono obbligatori e vanno iniziare espressione
+	expression	=>	espressione che utilizza gli argomenti forniti nella parte sinistra per produrre una funzione e ritornarla
+
+-> esempio:
+
+def myFunc(a,b):			=> normale definizione di una funzione
+	return a ** b
+>>> myFunc(2,3)				=> risulatato 8
+
+f = lambda a, b: a ** b		=> associamo la funzione anonima lambda ad una variabile
+>>> f(2,3)					=> risulatato 8
+
+
+
+
+
+****** 5. Object Orientation **********************************************************************************************************************************************************************************************************
+
+
+Classi e istanze
+
+Nella programmazione Object oriented esistino 2 tipi di oggetti:
+	1. class object:
+		Forniscono in generale i comportamenti di default, contengono la definizione di 
+		attributi e metodi e servono per produrre le proprie istanze
+	2. instance object:
+		Sono oggetti individuali che vengono prodotti a partire dalla definizione della propria classe
+		e svolgono delle attivita' nei programmi python quando organizziamo i programmi secondo paradigma object oriented.
+
+
+>>>>>>>>>> Lo Statement Class <<<<<<<<<<
+
+Lo statement class e' uno statament composto che serve per definire (creare) un oggetto classe e ad assegnarli un nome.
+Sintassi:
+
+class NAME(base-classes):
+	statements
+
+class			=> parola chiave per creare una classe
+NAME			=> nome assegnato a questa classe (identificatore), di solito il nome della classe si scrive dalla maiuscola
+base-classes	=> nomi facoltativi di altri classi (esempio di superclassi), quindi se deriva da altri classi
+statements		=> istruzioni, attibuti, metodi
+
+esempio:
+
+class MyClass:
+	pass
+
+>>> type(MyClass)	=> controlliamo l'object type
+<class 'type'>		=>	la nostra classe e' un istanza della classe 'type'.
+						quindi 'type' e' un tipo predefinito di python (classe) che ha come istanze tutte le classi che andiamo a definire.
+
+
+myObj = MyClass()	=> per creare un'istanza della nostra classe (oggetto)
+						quando viene creata eredita gli attributi e crea il proprio namespace
+
+
+
+Attributi di Classe.
+Gli attributi di classe vengono codivisi da tutte le istanze di quella classe.
+esempio:
+
+classMyClass:					=> definiamo la classe
+	myAttr = 10
+
+>>> MyClass.myAttr				=> per accedere all'attributo di classe
+risulatato: 10
+
+m1 = MyClass()					=> creiamo oggetto
+
+>>> m1.myAttr					=> per accedere all'attributo di classe tramite oggetto
+risulatato: 10
+
+>>> m1.myAttr = 90				=> se cambiamo attributo, questo diventa attributo solo di quel istanza, quindi non cambia quella di classe.
+
+
+
+>>>>>>>>>> Metodi di istanza <<<<<<<<<<
+
+	- Se inseriamo una funzione dentro una classe questa funzione diventa un attributo della classe e si chiamera' metodo.
+	- Anche i metodi della classe sono codivisi da tutte le istanze della classe.
+	- Per fare riconoscere al metodo quale istanza lo sta invocando, il suo primo parametro diventa "self".
+		"self" e' il nome convenzionale, si potrebbe chiamarlo in qualsiasi altro modo ma tutti i programmatori utilizzano parola self
+		self rappresenza istanza specifica che sta invocando il metodo
+	- il parametro self non compare nella chiamata del metodo anche se e' il suo primo parametro
+		perche' quando usiamo la dot notation sull'istanza per invocare il metodo python chiama il metodo sulla classe
+		pero' passa come il primo argomento a questo metodo oggetto sul quale il metodo viene invocato.
+		Quindi python in automatico passa queso parametro.
+		m1 = myClass()
+		m1.myMethod()
+
+-> esempi:
+class MyClass:
+	def myMethod(self):				=> questo metodo visualizza identificatore di oggetto self
+		print(id(self))				=> self e' l'istanza sulla quale stiamo chiamando il metodo
+										quindi quando questo metodo viene applicato alle istanze, ciascuna istanza ha il proprio id 
+
+
+class myClass:
+	def myMethod(self, message):
+		print(message)
+m1 = myClass()
+m1.myMethod('python')				=> non serve passare il parametro self
+
+
+
+
+>>>>>>>>>> Attributi di istanza <<<<<<<<<<
+
+Sono specifici nei loro valori per ciascuna istanza di quella classe. 
+Per crearli bisogna associare un nuovo attributo non nel corpo della classe, ma all'interno di un metodo ...
+	... associandolo all'oggetto self che rappresenta ogni singola istanza di quella claasse.
+Esempio:
+
+class MyClass:
+	def setMessage(self, message):				=> parametro "message"
+		self.message = message					=> questo parametro viene assegnato ad un attributo di self, quindi stiamo creando un attributo a livello di istanza
+	def printMessage(self)						=> metodo per visualizzare attributo di istanza (self.message)
+		print(self.message)
+
+m1 = MyClass()
+m2 = MyClass()
+
+m1.setMessage('primo')				=> m1 e m2 mantengono il proprio valore specifico a livello di istanza per questo attibuto message
+m2.setMessage('secondo')
+
+m1.printMessage()					=>	risultato 'primo'
+m2.printMessage()					=>	risulatato 'secondo'
+
+
+Se creiamo un nuovo oggetto m3:
+>>> m3 = MyClass()
+e chiamiamo subito il metodo printMessage
+>>> m3.printMessage()
+ovviamente salta fuori un errore perche' non e' stato definito l'attributo
+Per evitare questo problema strutturale si puo' usare il costruttore __init__.
+
+
+
+>>>>>>>>>> __init__  (SPECIAL METHOD) <<<<<<<<<<
+
+__init__ e' un metodo-costruttore (in verita' e' un inizializzatore) di classi e serve per costruire le istanze della classe.
+Questo metodo viene chiamato sempre in automatico appena viene creata un'istanza di quella specifica classe.
+Questo metodo prende sempre il parametro self perche' e' un metodo di istanza.
+In poche parole il costruttore aiuta a personalizzare i valori iniziali che vogliamo attribuire a ciasquna istanza di quella classe.
+sintassi:
+
+class MyClass:
+	def __init__(self, message):
+		self.message = message
+	def printMessage(self):
+		print(self.message)
+
+Nel momento della creazione di un istanza (oggetto) di MyClass siamo obbligati a passare il valore per argomento message.
+Quindi per creare un istanza dobbiamo fornire subito l'attributo di istanza:
+>>> m1 = MyClass('primo')
+>>> m2 = MyClass('secondo')
+
+
+
+>>>>>>>>>> __str__  (SPECIAL METHOD) <<<<<<<<<<
+
+__str__ 
+	e' un metodo speciale (perche' e' difinito tra __definito_qua__)
+	e' string rapresentation of an object (quando chiamo print(object) 
+		al posto di numero di parte di memoria esce quello che ritorna questo metodo
+
+class Book():
+
+	def __init__(self, title, author, pages):
+		self.title = title
+		self.author = author
+		self.pages = pages
+	
+	def __str__(self):
+		return f"Title: {self.title}, Author: {self.author}, Pages: {self.pages}"
+
+>>>book1 = Book("Python", "Jose", 200)
+>>>print(book)
+	# Title: Python, Author: Jose, Pages: 200
+
+
+
+>>>>>>>>>> __len__  (SPECIAL METHOD) <<<<<<<<<<
+
+__len__ 
+	ritorna la lunghezza dell'oggetto (istanza) della classe
+
+	def __len__(self):
+		return self.pages
+
+
+>>>>>>>>>> __del__  (SPECIAL METHOD) <<<<<<<<<<
+
+__del__
+	quello che succede dopo che viene eliminato un oggetto (istanza di classe)
+
+	__del__(self):
+		print("a book is destroyed!")
+
+del(book1)
+	# a book is destroyed!
+
+
+>>>>>>>>>> Metodi di classe <<<<<<<<<<
+
+Sono dei metodi pensati per essere eseguiti sull'oggetto classe e non su ogni singola istanza della classe 
+Declares a class method.
+The first parameter must be cls, which can be used to access class attributes.
+The class method can only access the class attributes but not the instance attributes.
+The class method can be called using ClassName.MethodName() and also using object.
+It can return an object of the class.
+
+Class MyClass():
+	counter = 0					=> attributo definito nel body di una classe che sara' condiviso tra tutte le istanze
+									... questo attirbuto counter servira' per contare quante sono le istanze di questa classe
+	def __init__(self):			=> costruttore che aumenta di uno il counter di classe MyClass
+		MyClass.counter =+ 1
+
+	@classmethod				=> decoratore di un metodo di classe per dichiarare che non e' un metodo pensato per essere invocato sulle istanze, ma sulle classi
+	def istanze(cls):			=> in un metodo di classe di usa "cls" (class) al posto di "self" (istanza). E' un nome convenzionale come self ma viene sempre rispettato.
+		print(cls.counter)		=> visualizza il contatore della classe
+ 
+
+P.S. 
+Esistono anche dei >>>>>>>>> Metodi Statici <<<<<<<<<<
+Un metodo statico viene decorato con @staticmethod
+A differenza di un metodo di classe, un metodo statico non acquisce come il primo parametro ne un istanza ne la classe stessa.
+Quindi e' semplicemente un metodo che puo' essere invocato sulla classe pero' serve per fornire un servizio in modo minimale ...
+	... che non si riferisce ne alla classe stessa ne alle singole istanze. 
+Serve solo per potere chiamare questo metodo utilizzando il nome della classe
+
+! @Staticmethod e' un metodo ivocabile direttamente sulla classe stessa ...
+	... senza necessità di creare istanze di questa classe.
+
+Esempio:
+
+class MyClass():
+	@staticmethod
+	def somma(a,b):
+		retunr(a+b)
+>>> s = MyClass.somma(10,5)
+>>> print(s)
+
+Non si usano moltissimo i metodi statici.
+
+
+
+
+>>>>>>>>>> Inheritance <<<<<<<<<<
+ 
+Inheritance (ereditarieta') significa che le istanze che vengono generate dalle classi ereditano gli attributi della propria classe.
+Ma anche le classi ereditano gli attributi da altre classi madri. 
+In questo modo e' possibile creare delle vere e proprie gerarchie di oggetti classe: superclasse e sottoclasse.
+Le sottoclassi ereditano gli attributi dalle proprie superclassi e possono anche redefinirli (override degli attributi) e possono anche aggiungerci nuovi.
+
+Esempio:
+
+class BClass:						=> e' una superclasse di AClass
+	pass
+class Aclass(Bclass):				=> e' una sottoclasse e tra parentesi viene specificata la classe madre.
+	pass
+
+Quando creiamo un'istanza, questa oltre ad esserer istanza della propria classe, diventa un istanza di tutte le sue superclassi.
+isinstance()			=> funzione predefinita che restituisce valore buleano e ...
+							... serve per verificare se oggetto (primo parametro) e' o non e' istanza di una determinata classe (secondo parametro)
+
+m1 = AClass()
+>>> isinstance(m1,BClass)		=> risulatato: True perche' AClass deriva da BClass
+
+
+
+>>>>>>>>>> override semplice <<<<<<<<<<
+
+Override e' meccanismo che ci permette di redefinire un attributo all'interno di una sottoclasse.
+Una volta fatto l'override, dal punto di vista gerarchico si utilizzera' il metodo della sottoclasse rescritto.
+
+esempio per fare override di un metodo:
+class BClass:
+	def setMessage(self, message):
+		self.message = message
+	def printMessage(self)
+		print(self.message)
+
+class AClass(BClass):
+	def printMessage(self):						=> stiamo riscrevendo lo stesso metodo della superclasse
+		print("AClass" + self.message)
+
+
+
+>>>>>>>>>> La funzione super <<<<<<<<<<
+
+Super e' una funzione predefinita che ci consente di accedere ai metodi delle superclassi dall'interno delle sottoclassi.
+Super, se la chiamiamo all'interno di un metodo (per esempio __init__), ottiene come valore di ritorno la definizione della superclasse ...
+	... quindi se chiamiamo super().metodo(parametri) ....
+	... dobbiamo immaginare di sostituire alla chiamata della funzione super l'oggetto classe (per esempio BClass) ...
+	... e su questo invocare la funzione (per esmpio __init__) passando il parametro 
+ovviamente super funziona su qualunque metodo (non solo su costruttore) e ...
+	... serve se non vogliamo fare override completo ma vogliamo prima fare eseguire il metodo della superclasse e poi finire con il codice aggiornato.
+
+	>>>Override di __init__ con funzione super<<<
+
+esempio:
+
+class BClass:
+	def __init__(self, message):
+		self.message = message
+	def printMessage(self):
+		print(self.message)
+
+class AClass(BClass):
+	def __init__(self, message, valore):
+		super().__init__(message)				=> nel costruttore della sottoclasse forniamo il parametro message come richiesto ... 
+		self.valore = valore						... cosi attributo message si inizializza corettamente e poi aggiungiamo secondo attributo
+
+>>> m1 = AClass('python', 20)
+>>> m1.valore							=>	risulatato: 20
+>>> m1. printMessage()					=>	risulatato: python
+
+
+
+>>>>>>>>>> Properties <<<<<<<<<<
+
+Normalmente i linguaggi di programmazione supportano il concetto di Information hiding (incapsulamento).
+Singifica che gli attributi che rappresentano dei dati vengono resi privati, e i metodi sono pubblici.
+Questi non dovrebbero essere mai acceduti dall'esterno di una classe ...
+	... ma dai metodi chiamati:
+		- setter	=> impostano
+		- getter	=> leggono
+
+Pyhton non ha un vero e proprio supporto agli attributi privati,
+	ma consente di leggere e scrivere gli attributi attraverso le properties.
+
+Esemipio di definizione di Property:
+
+class MyClass():
+	def __init__(self, my_attr):				=> definiamo il costruttore, quindi viene costruita un'istanza le forniamio...
+		self.priv_attr = my_attr					... l'argomento che viene memorizzato nell'attributo chiamato priv_attr
+	
+	def get_attr(self):							=> getter
+		return self.priv_attr
+
+	def set_attr(self, attr):					=> setter
+		self.priv_attr = attr
+	
+	attr = property(get_attr, set_attr)			=> creiamo la property ...*
+
+*... e' una spacie di costruttore di una classe property che deve nascondere la chiamata
+	in lettura e scrittura di attributo "priv_attr".
+	Come parametro le forniamo i nomi dei due metodi (oggetti funzione setter e getter).
+	E quello che questo costruttore property ci torna indietro è proprio un'istanza di una proprietà.
+	Noi questa property la assocciamo ad un nome "attr".
+
+proviamo a creare un'istanza....
+>>> obj = MyClass('python')
+>>> obj.attr					-> usiamo questa proprietà "attr" come se fosse un normale attributo ...
+'python'							... python ci consente di gestire "attr" come se fosse variabile normalissima ... 
+>>> obj.attr = 'prova'				... ma dietro le quinte accediamo ad una coppia di metodi ad un attributo che poi si chiama diversamente.
+>>> obj.attr
+'prova'
+
+Comunque si puo' chiamare direttamente i due metodi setter e getter anche senza questa property.
+	Si puo' anche accedere direttamente all'attributo priv_attr.
+	Python ci consente di creare queste property ma non nasconde veramente il meccanismo di funzionamento
+	quindi delle properties dobbiamo sapere che è solo una forma di protezione ma una protezione per così dire convenzionale.
+
+Cmq c'e' un modo per aggirare parzialmente questo problema...
+	Gli attributi che iniziamo con "__" non sono resi visibili al di fuori della classe.
+	quindi tutti gli attributi dobbiamo chiamarli __priv_attr al posto di priv_attr.
+			def __init__(self, my_attr):
+				self.__priv_attr = my_attr
+
+			def set_attr(self, attr):
+				self.__priv_attr = attr
+	Con questi due underscore dichiariamo che questi elementi sono privati.
+	>>> obj = MyClass('python')
+	>>> obj.__priv_attr
+	ci dara' errore perche' nasconde attributo e dira' che non esiste.
+	Questo processo si chiama Name Mangling:
+		Python in verita' non ha reso privato l'attributo ma ha solamente storpiato il nome.
+		Ha aggiunto il nome della classe preceduto da un'ulteriore underscore.
+		Con questo nome ha chiamato il nostro attributo.
+		>>> obj._MyClass__priv_attr
+		'python'
+
+
+
+
+>>>>>>>>>> PROPERTY DECORATORS <<<<<<<<<<
+
+Si puo' ottenere lo stesso risultato di "finto incapsulamneto" utilizzando i decoratori.
+Questi decoratori si chiamano property decorators.
+Si usa nello stesso identico modo. 
+
+@property			=> decoratore del metodo getter
+@NAME.setter		=> decoratore del metodo setter	=> name va sostituito con nome del metodo
+
+Esempio:
+
+class MyClass():
+	def __init__(self, my_attr):
+		self.__priv_attr = attr
+
+	@property
+	def attr(self):
+		return self.__priv_attr
+	
+	@attr.setter
+	def attr(self, my_attr):
+		self.__priv_att = my_attr
+	
+
+
+>>>>>>>>>> Exceptions <<<<<<<<<<
+
+Python utilizza le eccezioni per comunicare e gestire in qualche modo gli errori e le anomalie che si ...
+	verificano all'interno di un programma durante la sua esecuzione.
+Eccezioni sono degli oggetti che appartengono ad una gerarchia predefina di classi.
+Oltre alle eccezioni predefinite si puo' creare anche le classi di eccezioni custom.
+
+esempio:
+
+def myFunc(a,b):
+	return a // b
+>>>myFunc(10,0)
+ZeroDivisonError:.......
+
+L'esecuzione del codice si ferma automaticamente nel punto in cui è stata sollevata
+	questa eccezione cioè in cui si è verificato questo errore.
+Quando si verifica una condizione di errore inaspettata:
+	- esecuzione del codice si ferma automaticamente nel punto di errore
+	- questo oggetto eccezione (errore)	controlla se abbiamo scritto un codice particolare per gestirla
+		localmente (quindi all'interno della funzione dove si e' verificata)
+	- altrimenti comincia a risalire un livello alla volta nella gerarchia di chiamate a funzione
+	- quindi cerca la soluzione nella funzione che ha chiamato la funzione locale
+	- se non trova il codice per gestire eccezione sale ancora di un livello nella funzione precedente
+	- E cosi via si sale nella pila di chiamata delle funzioni (stack) fino a quando non arriva alla funzione di livello principale
+	- livello principale e' lo script che rappresenta il programma che noi abbiamo eseguito e se nemmeno lì questa eccezione viene gestita
+	- interrompe l'esecuzione del programma e uscire alla riga di comando mostrando l'errore
+
+Tutte le eccezioni sono istanze di una determinata classe che fa parte sempre di una particolare gerarchia di classi predefinite in Python 
+che rappresentano tipi di eccezione quindi tutti gli oggetti eccezione che noi troviamo individuiamo e a volte anche noi creiamo all'interno dei programmi.
+
+ZeroDivisonError -> ArithmeticError -> Exception -> BaseException -> object
+
+
+
+
+
+>>>>>>>>>> LO Statement TRY EXCEPT AS Else Finally <<<<<<<<<<
+
+Try except e' uno statament composto che ci fornisce il meccanismo per gestire le eccezioni in python.
+Il corpo della clausola except dove gestiamo le eccezioni si chiama exception handler.
+
+	--->SINTASSI 1: (Try, Except)
+
+try:
+	suite							=> se dentro la suite viene sollevata un'eccezione il programma al posto di risalire in stack...
+except:
+	suite							=> ... passa nel blocco except
+
+->esempio:
+def f(x,y):
+	return x // y
+try:
+	c = f(4,0)						=> nel nostro esempio la divisione per zero non puo' essere eseguito
+except:
+	print("ERROR")					=> quindi passa nel blocco di codice except
+
+
+	--->SINTASSI 2: (Expression)
+
+try:
+	suite
+except EXPRESSION:					=> viene specificata la classe di eccezione (nome errore)
+	suite
+except (EXPRESSION, EXPRESSION):	=> si puo' mettere il numero infinito di questi excpet e deve scattare solo uno di quelli per entrare nel corpo
+	suite:
+....								=> si puo' mettere altri except ancora
+
+->esempio:
+def f(x,y):
+	return x // y
+try:
+	c = f(4,0)
+excpet ZeroDivisonError:			=> abbiamo specificato il tipo di eccezione	per gestirla
+	print("Divisone per zero!")
+except IndexError:
+	print("Index Error!")			=> un'atro tipo di eccezione, ma per tutti gli altri errori programma risale in stack
+
+
+	--->SINTASSI 3: (As)
+
+se except viene usata in combianazione con la parola chiave as:
+	ci consente di assegnare un eccezione ad un nome (variabile)
+	in modo da poterla utilizzare all'interno della suite della clausola except.
+
+try:
+	suite
+except EXPRESSION as target:
+	suite
+
+->esempio:
+def f(x,y):
+	return x // y
+try:
+	c = f(4,0)
+except ZeroDivisonError as e:		=> la variabile "e" verra' assegnata all'oggetto exception 
+	print(e.args)					=> visualizza con attributo "args" la stringa quando si blocca programma ...
+										... ci sono anche altri attributi delle eccezioni
+
+
+	--->SINTASSI 3: (Finally, else)
+
+La suite dentro la clausola opzionale "finally" viene eseguita sempre ed a prescindere se e' presente all fine.
+La suite dentro la clausola opzionale "else" viene messa dopo tutti gli except e prima di finally ...
+	... e viene eseguita solo se non scatta nessun except.
+
+try:
+	suite
+except:
+	suite
+else:
+	suite
+finally:
+	suite
+
+
+	--->SINTASSI FINALE:
+
+try:								=> "try" obbligatoria
+	suite
+except EXPRESSION:					=> "except" obbligatorio da 1 a infinito
+	suite
+except EXPRESSION as target:		=> "target" per assegnare un eccezione ad una variabile
+	suite
+except EXPRESSION, EXPRESSION:		=> piu' "EXPRESSION" per la stessa suite
+	suite
+....
+else:								=> "else" facoltativa, max 1 e viene posizionata dopo tutti gli except
+	suite
+finally:							=> "finally" facoltativa, viene messa alla fine e viene eseguita sempre se c'e'
+	suite
+
+
+
+>>>>>>>>>> Gli Statement raise e asset <<<<<<<<<<
+
+Con raise e' possibile utilizzare l'istruzione frase per sollevare esplicitamente un'eccezione.
+>>>raise exception
+La classe di eccezione presente dopo la parola chiave raise e' facoltativa.
+	Generalmente pero' e' presente una exception (un istanza di eccezione o la classe stessa)
+
+ci sono diversi tipi di questi statement:
+
+	1. raise:
+		Indichiamo solo la classe di eccezione dopo la parola chiave raise
+		quindi chiamiamo questa classe senza argomenti significa che chiediamo a Python
+		di creare automaticamente per noi una istanza di questa classe
+		e quindi di sollevare un'eccezione di questo tipo.
+ 
+for i in range(50):				
+	print(i)						
+	raise IndexError				
+
+
+	2. raise:
+		Se oltre alla classe indichiamo un costruttore della classe 
+		quindi creiamo un istanza di classe d'eccezione
+		possiamo fornire la stringa che spiega la causa dell'errore
+		quindi nel momento dell'errore esce anche la stringa "errore nel loop".
+
+for i in range(50):	
+	print(i)									
+	raise IndexError("Errore nel Loop!")		
+
+
+	3. raise:
+		Se non indichiamo ne istanza ne una classe dopo la parola chiave raise
+		serve per risollevare un'eccezione dentro except che avevamo già intercettato
+		all'interno di una clausola except e viene risollevata lo stesso tipo di eccezione.
+		Cosi' l'errore viene gestito atrove.		
+
+try: 
+	c = 4 // 0						 
+exception ZeroDivisonError:
+	print("ERROR")					 
+	raise
+
+
+	4. assert expression, argument:
+		Quando inseriamo istruzione assert, chiediamo a python di valutare espressione
+		per vedere se e' vera o falsa. Nel caso sia falsa viene sollevata un eccezione di tipo
+		"assertion error" e, se dopo la virgola mettiamo anche indicazione di un argument (che di solito e' una stringa),
+		questa stringa verra' aggiunta al messaggio di assertion error.
+
+x = 10
+assert x == 5, "valori diversi"
+
+
+
+
+
+****** 6. Moduli e Package **********************************************************************************************************************************************************************************************************
+
+
+>>>>>>>>>> Moduli <<<<<<<<<<
+
+Un modulo e' un programma che, al proprio interno, contiene la definizione di dati e di codice.
+ - contiene gli attributi che possono essere utilizzati da parte di altri moduli.
+ - tutti gli atributi (quindi tutti i nomi degli oggetti) vengono definiti nel file sorgente (livello piu' alto)
+ - queti attributi formano un namespace
+ - questo vuol dire che due moduli diversi, anche se contengono nomi uguali che rappresentano oggetti,
+	comunque vengono considerati attributi diversi perche' appartengono a diversi moduli.
+
+Il programma python e' fatto dai file di testo che contengono istruzioni e si dividono in:
+	1. Primo livello		=>	script.py (flusso principale del programma)
+
+	2. Moduli supplementari	=>	librerie di oggetti, quindi contenitori di funzioni e/o classi e/o database
+								e vengono riutilizzati tramite importazione nello script (o anche in altri moduli)
+
+esempio:
+import modulo2				=>	importiamo il modulo nello script che contiene attributi (per esempio funzione "myFunc" o classe)
+modulo2.myFunc(10)			=>	accediamo agli attributi tramite la dot notation Nome_Modulo.Nome_Attributo
+
+
+
+>>>>>>>>>> Importazione di Moduli <<<<<<<<<<
+
+Per importare un modulo bisgona utilizzare lo statement l'istruzione "import"
+
+import Nome_Modulo 			=> e' il nome del file senza .py
+
+import provoca una serie di azioni:
+	1.	individuazione del modulo
+		(utilizza module search path per localizzre il modulo all'interno del file system)
+	2.	compilazione in bytecode 
+		(se gia' non esiste e confronta la data di modifica del sorgente con eventuale bytecode gia' generato)
+	3.	esecuzione del modulo
+		(viene eseguito dall'alto verso il basso, un istruizione alla volta e una volta sola per ogni importazione)
+
+
+Module Serach Path:
+	E' modalita' per individuare e prelevare il file che contiene modulo.
+	Quindi e' una fase di ricerca.
+	Esiste una sequenza di priorita' per cercare il file:
+		1. la home directory (cartella) del programma
+			(se nella directory corrente dello script c'e' il file)
+		2. la directroty PYTHONPATH
+			(poi va a vedere con tutte le directory che possono essere indicate
+			in una variabile d'ambiente che si chiama python Path, 
+			quidni sono una serie di directory opzionali dove python va a cercare)
+		3. la directory della standard libriry
+			(la libreria standard è contenuta in una directory che viene automaticamente
+			generata e mantenuta da Python dal momento in cui python viene installato.
+			Questa libreria standard contioene molti moduli.)
+		4. la directory site-packages
+			(e' una sotto-directory della libreria standard.
+			In questa directory vengono installati i moduli prodotti da terzi parti tipo framework)
+
+I moduli (e non gli script) che devono essere importati, quando vengono compilati la prima volta,
+	producono un file vero e proprio che contiene bytecode. Questo viene fatto per risparmiare 
+	dalla volta successiva in poi il tempo di caricamento e traduzione in bytecode di questi moduli.
+
+	Questo file ha un nome ed e' composto dal nome_modulo.versione_python.pyc 
+	(esempio: modulo.cpython-36.pyc)
+
+	Python archivia questi file compilati in una sottodirectory rispetto alla directory del modulo,
+	quindi nella cartella del modulo.py crea una sottocartella __pycache__.
+	All'interno di questa cartella cache archivia tutti i moduli compilati.
+
+
+
+
+>>>>>>>>>> Lo Statement import (+ as, from, __name__) <<<<<<<<<<
+
+Tutti gli oggetti definiti all'interno di un modulo sonno attributi di questo oggetto modulo.
+Questo perche' gli attributi sono oggetti che si trovano all'interno di un'altro oggetto.
+E si puo' accedere a questi oggetti tramite la dot notation.
+Attraverso input tutti gli elementi del modulo vengono resi disponibili 
+	(perche' e' un sistema di importazione globale se e' utilizzata in questo modo)
+
+>>>import modulo1
+>>>type(modulo1)
+<class 'module'>
+
+Il modulo1 e' un istanza della classe module.
+Quindi se importiamo nello scirpt il modulo1 che e' un oggetto e questo modulo contiene altri oggetti come funzioni,
+	e questi si chiamano atrributi e possiamo accedere agli attributi tramite la dot notation possiamo scrivere:
+	modulo1.myFunc(10)		=> in questo caso myFunc e' una funzione di modulo1
+
+Altre  caratteristiche di import:
+1.	si puo' indicare piu' moduli con un'unica istruzione input:
+	>>>import modulo1, modulo2, ...
+
+2.	si puo' dare un alias (nomignolo) al modulo importato:
+	>>>import modulo1 as m
+	>>>m.myFunc(10)
+
+3.	si puo' importare solo alcuni attributi di un modulo tramite lo statement from.
+	in questo modo si puo' accedere direttamente all'oggetto (attributo del modulo)
+	tramite il suo nome senza necessita' di anteporre il nome del modulo utilizzando la dot notation
+	>>>from modulo1 import myFunc
+	>>>myFunc(10)
+
+4.	si puo' importare tutti i nomi presenti a livello principale nel modulo in un colpo solo
+	Con * si importano tutti gli attributi che possono essere utilizzati con il loro nome senza la dot notation.
+	Questa e' una pratica fortemente sconsigliata.
+	>>> from modulo1 import *
+	>>>myFunc(10)
+
+5.	e' possibile utilizzare la parola chiave "as" anche nello statament "from"
+	"As" usata in questo frangente consente di definire un alias per l'attributo di un modulo.
+	Quindi in questo modo si puo' riferirsi ad un singolo attributo tramite alias.
+	Questo puo' servire per eseguire disambiguazione degli attributi quando hanno lo stesso nome.
+	Questo e' possibile fare perche' ogni modulo e' un namespace globale.
+	>>>from modulo1 import myFunc as f1
+	>>>from modulo3 import myFunc as f3
+	>>>f1(20)
+
+6.	Ogni tanto e' necessario eseguire un modulo (non script) direttamente dalla linea di comando.
+	Tutti i moduli possiedono un attributo predefinito che si chiama __name__.
+	Se il modulo viene importato in un altro modulo, python assegna a runtime automaticamente
+	come valore per questo attributo __name__ il nome del modulo.
+
+	Pero' se il modulo viene eseguito come uno script (cioe' se lo lanciamo dalla linea di comando),
+	il __name__ di questo modulo non e' il nome del modulo m a e' un nome specifico che e' __main__
+	perche' diventa lo script principale.
+
+	Possiamo utilizzare questo attributo al nostro vantaggio per verificare se questo modulo l'abbiamo eseguito
+	dalla linea di comando o l'abbiamo importato all'interno di un'altro modulo con un test condizionale.
+	def myFunc(x):
+		print(x)
+	if __name__='__main__':
+		myFunc(150)
+	
+	Questo e' il sistema per trasformare temporaneamente un modulo creato per essere importato in uno script.
+
+
+
+>>>>>>>>>> I Package <<<<<<<<<<
+
+Si puo' strutturare ulteriormente i moduli nelle package.
+Package:
+	- e' una directroy (cartella) che contiene un insieme di moduli (file)
+	- possono avere una struttutra gerarchiaca, quindi possono essere inseriti in un albero di directory
+
+Per considerare un albero di cartelle come un package ci deve essere un file __init__.py in ogni livello di directory:
+La struttura di questa directory e' relativa e non assoluta:
+	questo perche' la struttura di directroty che forma un package deve essere contenuta, a sua volta,
+	all'interno di una directory che fa parte del Module Serach Path.
+	In questo modo, quando andiamo a importare questo package, python deve sapere dove cercarlo,
+	solo che non cerca un file ma cerca un isieme di directory.
+La prima cartella (nel nostro caso "directory_A") che sta a livello superiore e' la radice del package,
+	e quello che consente a python di localizzare il package, ma questa directory non fa parte di quel package,
+	infatti non contiene il file __init__.py 
+			=>
+	In poche parole questa directory ha la funzione di essere una radice presente all'interno di Module Serach Path,
+	in modo che quando andiamo ad importare il package python capisce dal nome della parte relativa di questa directory
+	e unirla a quella fisica per capire dove si trova nel file system. 
+
+->esempio:
+directory_A
+	- directory_B
+		- __init__.py
+		- directory_C
+			- __init__.py
+			- modulo1.py
+			- modulo2.py
+
+
+Import di un Package:
+	I moduli che fanno parte di un package di importano nello stesso modo dei moduli normali.
+	L'unica cosa bisogna specificare una gerarchia delle directory:
+
+		>>>import directory_B.directory_C.modulo1
+		>>>from directory_B.directory_C.modulo1 import myFunc
+
+I file __init__.py oltre ad essere "segnaposto" che servono a far capire a Python che le directory in cui 
+	si trovano fanno parte di un package possono ovviamente contenere del codice perche' sono dei file pythno.
+	All'interno di questi file __init__.py viene inserito il codice di inizializzazione del package,
+	quindi vengono eseguiti una volta sola, quando viene importato il package.
+
+
+
+
+
+****** 7. Advanced Python **********************************************************************************************************************************************************************************************************
+
+
+>>>>>>>>>> Multiple Inheritance <<<<<<<<<<
+
+Multiple Inheritance = Ereditarieta' multipla
+Ereditariera':
+	1. singola	=>	derivare una classe python da una superclasse
+	2. multipla	=>	derivare una sottoclasse da piu' superclassi
+
+Ereditarieta' multipla:
+	Le superclassi devono essere indicate una dopo altra separate da virgole nel header della definizione della sottoclasse.
+->sintassi:
+
+class BClass:
+	b = 10
+class CClass:
+	c = 20
+class AClass(BClass, CClass)
+	pass
+
+a = AClass()
+print(a.b)		=> 10
+print(a.c)		=> 20
+
+
+
+>>>>>>>>>> Method Resolution Order (MRO) <<<<<<<<<<
+
+Se entrambi le superclassi definiscono lo stesso attributo (example: 2 metodi con stessa signature)
+Per decidere quale dei 2 metodi applicare segue method resolution order, cioe' ordine di risoluzione di metodi.
+
+MRO sale un livello alla volta affinche' trova attributo, lo usa e interrompe la ricerca:
+	1. All'inzio attributo viene ricercato nella classe da dove e' stato chiamato
+	2. Va nella gerarchia delle superclassi, le esamina nell'ordine in cui sono state definite
+		nella dichiarazione della sottoclasse nelle parentesi.
+	3. Se nella prima superclasse dichiarata non trova attributo, va nella prossima superclasse dichiarata ecc..
+	4. Se attributo non si trova nelle superclassi, cerca nella classe predefinita Object,
+		che praticamente e' la superclasse di ordine generale di tutte le superclassi.
+		perche' in teoria:	class BClass:	=	class BClass(object):
+	5. Se non trova da nessuna parte questo attibuto si ottinee un eccezione "AttributeError"
+
+class BClass:
+	def xFunc(self):
+		print("B")
+class CClass:
+	def xFunc(self):
+		print("C")
+class AClass(BClass, CClass):			=> prima e' stata definita' BClass
+	pass
+a = AClass()
+a.xFunc()								=> Quindi il risultato sara' "B"
+
+MRO puo' propagarsi anche su più livelli di generalizzazione, 
+	cioè anche nelle super classi delle super classi.
+	Pero' segue sempre lo stesso ordine da sinistra verso destra.
+
+
+
+
+>>>>>>>>>> object e type <<<<<<<<<<
+
+Object e' una delle due classi base in python e tutti gli oggetti sono istanze di questa classe.
+	Anche le classi, essendo oggetti in python, sono istanze della classe  object.
+
+Type e' una classe base in pyhton come object ma, a differenza di object, contiene come proprie 
+	istanze solo gli oggetti classe sia quelle predefinite (come liste o dizionari) ma anche le 
+	classi che definiamo noi come class BClass.
+
+object e' un istanza di:
+	- object
+	- type
+
+type e' un istanza di:
+	- type
+	- object
+
+
+
+
+>>>>>>>>>> Il Costruttore __new__ <<<<<<<<<<
+
+__new__
+	- e' un costruttore di oggetti ed e' un metodo statico
+		(anche se e' statico non serve usare il decoratore perche' e' un metodo predefinito)
+	- di solito viene prima chiamato __new__ e poi __init__ 
+		(perche' __init__ riceve in ingresso un istanmza gia' pronta
+		che viene creata proprio dal metodo __new__)
+	- new viene chiamato per creare un'istanza di una classe 
+		(infatti "cls" e' il primo parametro del methodo)
+	- dopo la classe si puo' fornire altri argomenti opzionali
+		(questi, se forniti, in automatico saranno passati all'__init__
+		una volta che istanza e' stata creata con successo)
+	- sintassi:
+		__new__(cls [, ...])
+
+esempi:
+
+class MyClass():
+	def __new__(cls):
+		istanza = super().__new__(cls)		=> si invoca il corrispondente metodo __new__ nell'immediata
+		print("istanza creata")					superclasse della nostra classe utilizzando metodo super()
+		return istanza							e fornendo la classe come parametro. 
+	def __init__(self):
+		print("istanza inizializzata")
+mc = MyClass()
+
+
+class MyClass():
+	def __new__(cls, message):
+		istanza = super().__new__(cls)
+		return istanza
+	def __init__(self, message):
+		self.message = message
+		print(self.message)
+mc = MyClass("Python")
+
+
+
+
+>>>>>>>>>> Iterabili e Iteratori <<<<<<<<<<
+
+Container e' un oggetto che rappresenta una struttura di dati che contengono vari elementi e
+	supporta un test particolare, cioe' il test di appartenenza.
+	(List, Dictionary, Set, Tuple, String)
+
+esempio per verificare se e' presente in contenitore:
+>>>ls = [1,2,3,4,5]
+>>>e = 3 in ls
+>>>e
+True
+
+Un contenitore e' un iterable (oggetto iterabile).
+Non tutti gli iterabili sono dei contenitori.
+	(per esempio un file aperto e' un iterabile ma non e' un contenitore)
+
+
+Iterable:
+	- e' un oggetto iterabile, cioe' che ritorna un oggetto iteratore 
+		allo scopo di poter iterare sui propri elementi.
+	- per essere considerato tale deve implementare un metodo speciale __iter()__
+		che ritorna oggetto iteratore
+
+Iterator:
+	- e' un oggetto iteratore, cioe' un oggetto che produce il prossimo elemento
+		di un iterable, attraverso il metodo __next()__
+
+Un oggetto puo' essere nello stesso momento sia iterabile che iteratore
+	se puo' implementare si il metodo __iter()__ che il metodo __next()__
+	(per esempio una lista)
+
+>>>myList = ["primo", "secondo", "terzo"]
+>>>it1 = iter(myList)
+
+>>>next(it1)
+'primo'
+>>>next(it1)
+'secondo'
+>>>next(it1)
+'terzo'
+>>>next(it1)
+Error StopIteration
+
+for e in myList:
+	print(e)
+
+
+
+
+>>>>>>>>>> Generator Functions <<<<<<<<<<
+
+
+yield => cedere, dare
+
+Funzione generatore e' una normale funzione che contiene la parola chiave "yield" allora 
+	intera funzione viene trasformata in un iteratore e iterazione avviene nel punto dove 
+	compare la parola "yield". In quel punto specifico la funzione si ferma, cede il valore 
+	corrente dell'iterazione al chiamante della funzione e se viene invocata nuovamente
+	riparte dall'istruzione successiva della parola chiave "yield".
+	
+ esempio:
+
+def get_doppio_gen():
+	e = 2
+	while (e < 300):
+		yield e
+		e *= 2
+
+Dopo la parola chiave yield abbiamo messo "e" che contiene il valore attuale dell'iterazione.
+	In quel punto preciso la funzione si interrompe e ritorna il controlla al chiamante della funzione
+	fornendo il valore attuale di "e".
+	Quando la funzione riprende il controllo il valore di "e" viene multiplicato per 2
+	e si rientra un altra volta nel loop fino alla prossima yield.
+
+
+Come utilizzare questo generatore...:
+
+gen = get_doppio_gen()			=> quello che otteniamo dalla funzione lo inseriamo nella variabile "gen"
+print(gen)						=> abbiamo ottenuto un oggetto generatore che poi e' un iteratore 
+print(next(gen))				=> usiamo questo iteratore con il percorso piu' lungo senza il ciclo for
+print(next(gen))
+print(next(gen))
+....
+
+Quando dichiariamo una funzione generatore, Python produce dietro le quinte un oggetto analogo 
+	del tutto ad un iteratore una sorta di iteratore. 
+	next(gen)	=>	gen.__next__()
+	Questo significa che quando chiamiamo la funzione next fornendo il nostro oggetto generatore
+	in verita noi chiamiamo il metodo speciale __next__() sullo stesso oggetto esattamente come 
+	nel caso di un normale iteratore.
+	Infatti poteva sostituire le chiamate alla funzione next con le chiamate al metodo speciale __next__
+	print(gen.__next__()) che il python ha sintetizzato per noi e il risultato non cambiera'.
+
+All'interno di una funzione generatore possiamo usare anche istruzione return per interrompere
+	la funzione generatore e ritornare quindi per fermare iterazione.
+	Se facciamo questa cosa con un generatore viene sollevata un eccezione : StopIteration.
+
+proviamo a rescrivere la funzione:
+
+def get_doppio_gen2():
+	e = 2
+	while (True):
+		yield e
+		e *= 2
+		if (e >= 300):
+			return
+
+gen2 = get_doppio_gen2():
+for el in gen2:
+	print(el)
+
+
+
+
+>>>>>>>>>> Generator Expressions <<<<<<<<<<
+
+Espressione generatore e' molto simile alla list comprehension ma cambia qualche cosa:
+	1. si usano "()" al posto di "[]"
+	2. il type non e' una lista ma e' un generatore
+	2. generator expression si puo' scorrere gli lementi una volta sola perche' si esaurisce 
+		durante la prima iterazione, mentre un lista si puo' scorrere piu' volte.
+		Puo' essere utile perche':
+			- List comprehension produce in uscita una lista e la creazione di questa lista con
+				tutto il suo contenuto viene eseguita subito tutto in una volta. 
+			- Generator expression viene eseguito in modo "lazy", cioe' un elemento alla volta
+				durante iterazione dei suoi elementi di destinazione. 
+				Se ci fossere veramente tanti elementi da iterare gen. expr. diventa piu' performante.
+				(o addirittura l'unico modo per farlo)
+
+-> esempio:
+
+>>>numbers = [1,2,3,4,5,6,7,8,9]
+>>>newList = [n * n for n in numbers if n % 2 == 1]		=>	list comprehension
+>>>newGen = (n * n for n in numbers if n % 2 == 1)		=>	generator expressions
+
+>>>type(newList)
+<class 'list'>
+>>>type(newGen)
+<class 'generator'>
+
+
+
+
+
+****** 8. Gestione dei Files **********************************************************************************************************************************************************************************************************
+
+File = e' una specie di contenitoreutilizzato per archiviare dei dati in un dispositivo di storage.
+	Ogni file ha il proprio nome seguita da un punto e la sua estensione che indica la tipologia del
+	contenuto del file. Un file generalmente viene memorizzato all'interno di un file system.
+
+File System = e' un componentye fondamentale del sistema operativo che gestisce organizzazione dei dati
+	memorizzati nei supporti di storage. Organizzazione del file system e' di tipo gerarchico, cioe'
+	organizza i contenuti all'interno delle directories (folders)..
+
+Directory = e' un conenitore logico specifico di un file system che possiede un nome, e che si trova
+	in una certa posizione dentro una struttura ad albero che e' proprio la gerarchia. Una directory puo'
+	contenere un insieme di file e/o altre directory. 
+
+I file in Python appartengono ad uno dei due tipi:
+	- text Files	=> contengono caratteri organizzati in un insieme di linne di testo che finiscono con
+		carattere speciale EOL (end of line) che per default corrisponde al carattere new line "\n".
+	- binary Files	=> contengono dei dati che non vengono mai interpretati con caratteri o caratteri speciali
+		e non sono organizzati nelle linee di testo ma in una lunga catena di byte
+		(per esempio codice binario di un programma oppure un immagine digitale).
+
+Un oggetto file in python e' uyn flusso di dati che agisce come un iteratore.
+
+
+
+>>>>>>>>>> Apertura e Chiusura File <<<<<<<<<<
+
+Per lavorare con file bisogna sempre aprirlo e chiuderlo.
+
+Aprie file:
+	- La funzione "open" apre il file e torno un oggetto (file_object) che rappresenta un file aperto.
+	- Se file non puo' essere aperto per qualunque motivo viene generata un eccezione: "FileNotFoundError".
+	- Ogni volta che un file viene aperto viene generato un file pointer, cioe' un puntatore alla posizione
+		all'interno del file e questa posizione determina un offset, cioe' la distanza rispetto alla 
+		posizione zero che rappresenta inizio del file. ovviamente offset puo' cambiare. 
+funzione:
+	file_object = open(filename, mode)
+	"open" prevede 2 parametri:
+		1. "filename" => stringa con il nome del file 
+			(se indichiamo solo il nome del file senza posizione all'interno del file system,
+			python aprira' il file che si trova nella stessa directory dello script.
+			Invece per utilizzare un percorso per aprire il file bisgona importare un modulo
+			standard "pathlib").
+
+			Uno dei modi per usare path (indifferentemente da OS) e' costruire un path (percorso)
+			fornendo in input come stringa i singoli elementi che formano un percorso.
+
+			ESEMPIO di un percorso parziale (perche' non contiene la radice del file system):
+			from pathlib import path
+			path = Path("directory1", "directory2", "myfile.txt")
+			f = open(path)
+
+			ESEMPIO di un percorso completo:
+			home = Path.home()		=> metodo home sull'oggetto Path che ritorna alla radice del file system.
+			path = Path(home, "directory1", "directory2", "myfile.txt")	=> forniamo home al percorso 
+			f = open(path)
+
+		2. "mode" => stringa con modalita' di apertura utilizzando una sequenza di zero o piu' caratteri.
+			se non forniamo il parametro di default apre in lettura un file di testo.
+
+Bisgona sempre chiudere un file quando abbiamo finito di usarlo con il metodo close() invocato sull'oggetto
+	ricevuto dalla funzione open():
+	file_object.close()
+	Esiste anche un'altro modo per chiudere un file.
+
+
+
+
+>>>>>>>>>> Il Context Manager <<<<<<<<<<
+
+Il context manager e' il gestore del file, 
+	e puo' essere comodo per chiudere automaticamente il file.
+
+Lo statament "with" permette di eseguire delle istruzioni in un contesto 
+	controllato dall'oggetto speciale "context manager".
+
+with open("isolamisteriosa.txt") as f:
+	print(f.encoding)
+
+	- "with" attiva il context manager
+	- open(file) fa tornare un oggetto (puntatore a file) assegnato alla variabile "f"
+	- questo oggetto viene gestito in modo autonomo nel blocco di codice "with", quindi lo chiude automaticamente
+	- nel blocco di codice ovviamente abbiamo l'accesso alla variabile "f" che punta al file
+	- per esempio possiamo controllare il tipo di codifica dei dati tramite attibuto "encoding"
+		assocciato all'oggetto "f".
+	- il context manager (in questo caso puntatore al file) appena esce dal blocco di codice 
+		"with" chiude da solo il file. 
+
+
+
+>>>>>>>>>> Il metodo read() <<<<<<<<<<
+
+Metodo read() puo' essere utilizzato sia con i file di testo, che con i file binari.
+read(), senza parametri, legge intero contenuto del file e lo assegna ad una variabile.
+
+with open("isolamisteriosa.txt", "rt") as f:
+	text = f.read()
+	print(text)
+
+"rt"		=>	"r" e' read	=> aprire il file per solo lettura
+				"t" e' text	=> aprire il file considerandolo un file di testo e non binario
+
+read(33)	=>	parametro "33" e' il numero di byte (caratteri) da leggere,
+				utile per i file grossi
+				parte sempre da dove e' posizionato offest
+
+
+
+>>>>>>>>>> I metodi readline() e readlines() <<<<<<<<<<
+
+1).Il metodo readline() legge tutti i caratteri fino a che non trova un carattere end of line
+	quando il file e' aperto in modo testuale.
+
+with open("isolamisteriosa.txt", "rt") as f:
+	line = f.readline()
+	print(line)
+
+
+2).Il metodo readlines(), quando viene invocato ad oggetto file associato ad un file di testo, 
+	ritorna una lista che contiene tutte le linee di testo del file. 
+
+with open("isolamisteriosa.txt", "rt") as isolam:
+	lines = isolam.readlines()
+	for line in lines:
+		print(line)
+
+
+>>>>>>>>>> bytes e bytearray <<<<<<<<<<
+
+Oltre a codificare i dati numerici e le stringhe, ci sono altri metodi per codificare i dati in python:
+	Dati "raw" non interpretati e dati text interpretati rappresentati da caratteri Unicode.
+	due di questi metodi sono:
+	1. bytes
+		- consente di leggere e scrivere i dati in forma binaria
+		- sequenze immutabili di bytes (ogni byte contiene un numero da 0-255)
+		- per creare un oggetto di tipo bytes	=>	
+			b'string'
+
+		- esempio:
+			>>>s = b'sequenza'
+			>>>type(s)
+			<class 'bytes'>
+
+
+	2. bytearray
+		- consente di leggere e scrivere i dati in forma binaria
+		- sequenze mutabili di bytes (si comporta come una lista)
+		- adatto in tutti casi dove la costruzione del valore avviene, ad esempio un po alla volta
+		- per creare un oggetto di tipo bytearray	=>	
+			bytearray('string', 'format')
+
+		- esemipo:
+			>>>s = bytearray('sequenza', 'utf-8')
+			>>>type(s)
+			<class 'bytearray'>
+			>>>s.extend(b' di bytes')
+			>>>s
+			bytearray(b'sequenza di bytes')		
+
+
+
+
+>>>>>>>>>> encoding e decoding <<<<<<<<<<
+
+encode	=>	per codificare oggetti text e codifica un valore in formato bytes (text -> bytes)
+	>>>x = "sequenza"
+	>>>y = x.encode("utf-8")		=> utf-8 e' formato di codifica molto diffuso
+	>>>type(y)
+	<class "bytes">
+
+
+decode	=>	per decodificare oggetti bytes in un oggetto text (bytes -> text)
+	>>>x = b"sequenza"
+	>>>y = x.decode("utf-8")		=> formato di rappresentazione dati
+	>>>type(y)
+	<class "str">
+
+
+
+>>>>>>>>>> metodo write() <<<<<<<<<<
+
+Metodo write() puo' essere invocato su qualcuque oggetto che contiene un puntatore a file.
+	Il parametro di write() e' una stringa di testo o una valore di oggetto bytes.
+	sintassi	=>	file.write(str)
+
+3 modalita' di apertura di un file di TESTO per scrittura:
+	1. "w"	write		=>	file aperto per scittura in modo testo
+							se file non esiste viene creato pronto per la scrittura
+							se file esiste, viene pulito per sovrascrivere
+							offset viene posto all'inizio del file
+
+	2. "a"	append		=>	file aperto per scittura in modo testo in accodamento
+							se file non esiste viene creato pronto per la scrittura
+							se file esiste, i nuovi dati vengono aggiunti in coda a quelli gia' presenti
+							offset viene posto alla fine del file 
+
+	3. "x"	exclusive	=>	se file non esiste viene creato pronto per la scrittura
+							se file esiste, viene generata un eccezione 
+							serve per impedire la sovrascrittura di dati gia' esistenti
+
+
+
+3 modalita' di apertura di un file BINARIO per scrittura:
+	1. "wb"	write binary
+	2. "ab" append binary		=> stesse regole di file di testo
+	3. "xb" exclusive binary
+
+Altre modalita' di apertura:
+	1. "r+", "rb+"	read/write		=>	aggiornamenti del file, sia per apertura che per scrittura (con "b" per binary file)
+	2. "w+", "wb+"	read/write		=>	aggiornamenti del file, sia per apertura che per scrittura (con "b" per binary file)
+	3. "a+", "ab+"	append/read		=>	per aprire il file in lettura e accodamento (con "b" per binary file)
+
+
+
+
+>>>>>>>>>> metodi tell() e seek() <<<<<<<<<<
+
+Appena viene aperto il file viene impostato un file pointer (offset) che si posiziona:
+	- all'inizio del file (valore 0) se e' in lettura/scrittura
+	- alla fine se viene aperto col metodo "a"	append
+
+offset = file.tell()
+n = file.seek(offset)
+
+file.tell()					=>	tell() ritorna il valore corrente dell'offset
+								tell() non richiede parametri
+
+file.seek(offset, whence)	=>	seek() sposta offset e prende parametro integer offset
+								seek() funziona con i file binari e non di testo, 
+									quindi aprire il file in modalita' binary
+								parametro "whence" non e' obbligatorio
+								"whence" specifica "a partire da dove" calcoliamo offset all'interno del file
+	valori ammessi per parametro "whence":
+		-> 0	=> il valore dell'offset viene impostato all'inizio del file
+		-> 1	=> il valore dell'offset viene calcolato a partire dalla posizione corrente del puntatore corrente
+		-> 2	=> il valore dell'offset viene calcolato a partire dalla fine del file e viene richiesto il valore negativo
+					(cioe' di quanti bytes vogliamo tornare indietro a partire dalla fine del file)
+	Se importiamo il modulo predefinito "os" (import os), avremmo accesso ai valori predefiniti:
+		1. SEEK_SET (0)
+		2. SEEK_CUR (1)		=> contengono valori 0, 1, 2
+		3. SEEK_END (2)			ed e' un metodo piu' leggibile per fare la stessa cosa
+
+
+!!! ESEMPI:
+
+f = open("isolamisteriosa.txt", "rb")
+f.tell()
+f.seek(119)	
+str1 = f.read(7)
+print(str1)
+
+	# SPEIGAZIONE:
+		- apriamo il file in madalita' binary per utilizzare il metodo seek()
+		- chiediamo dove sta il puntatore
+		- portiamo il puntatore al 119esimo byte
+		- assegnamo alla variabile "str1" il conenuto dei prossimi 7 byte 
+			a partire da dove e' posizionato il puntatore utilizzando il metodo read(7)
+		- print
+
+
+import os
+f.seek(-9, os.SEEK_END)
+str2 = f.read()
+print(str2)
+f.close()
+
+	# SPEIGAZIONE:
+		- importiamo il modulo "os" per utilizzare il valore predefinito "SEEK_END"
+		- posizioniamo il puntatore alla posizione "-9" a partire dalla fine (SEEK_END)
+		- assegnamo alla variabile "str2" il restante contenuto 
+			del file con metodo read() perche' senza parametri 
+		- print
+		- ovviamente chiudiamo il file.
+	
+
+
+
+****** 9. Python 3.7 Aggiornamento **********************************************************************************************************************************************************************************************************
+
+Nel 2018 e' uscita la vers. 3.7
+
+A partire dalla versione 3.7 anche i dizionari adesso garantiscono l'ordinamento 
+	naturale delle chiavi secondo l'ordine di inserimento.
+
+myDict = {
+	"primo":10,
+	"secondo":20,
+	"terzo":30
+}
+ myDict["quarto"] = 40
+myDict.keys()			=> "key" torna le chiavi del dizionario e 
+							viene preservato l'ordine di inserimento delle chiavi
+
+
+PEP	=>	Python Enhancement Proposals
+		Proposta di miglioramento da apportare al Python.
+		Quindi e' un documento che viene sottoposto pubblicamente alla comunita' di Python nel quale
+			qualcuno descrive una proposta per una modifica da apportare al linguaggio.
+
+
+
+>>>>>>>>>> PEP 3107 -- Function Annotations <<<<<<<<<<
+
+PEP 3107 -- Function Annotations:
+introduce la possibilita' di annotare i parametri e anche i valori di ritorno di una funzione.
+	FORMA: def foo(a: expression, b: expression = 5):
+
+Annotazione	=>	qualunque espressione valida, inserita dopo ":", che segue immediatamente il nome di un parametro.
+				Puo' essere inserita anche dopo un parametro che ha un valore di default, purhce' viene specificata prima del valore di default.
+
+				Quando passiamo ai valori di ritorno della funzione, annotazione e' comuqnue un espressione che
+					viene specificata dopo le parentesi tonde della funzione e viene preceduta da "->"
+					def sum() -> expression:
+				
+				Non hanno effetto reale durante il runtime, sono solo indicazioni per gli editor
+				
+				Per accedere a questi annotazioni si usa il dizionario:
+
+		esempio:
+
+		def myFunc(x: "parametro") -> "ritorno":
+			return x
+
+		print(myFunc.__annotations__)
+			risultato: {'x': 'parametro x', 'return': 'ritorno'}
+
+
+>>>>>>>>>> PEP 484 -- Type Hints <<<<<<<<<<
+
+PEP 484 -- Type Hints:
+	Introdotta nel 2014 
+	Sono suggerimenti di annotazione di tipo
+	Utilizza la sintassi delle annotazioni per specificare e suggerire i data type 
+		dei parametri e dei valori di ritorno delle funzioni.
+
+def myFunc(x, s = "python"):			# 2 parametri, parametro s ha il valore di default
+	print(x)
+	return s
+
+def myFunc(x: int, s: str = "python"):	# abbiamo dichiarato che "x" dovrebbe essere un intero
+	printx(x)							# e "s" dovrebbe essere una stringa
+	return s							# rimane cmq il parametro con il valore di default
+
+def myFunc(x: int, s: str = "python") -> str:	# opzionalmente possiamo anche annotare il tipo 
+	printx(x)									# ... del valore di ritorno di una funzione aggiungendo "-> tipo"
+	return s
+
+print(myFunc.__annotations__)	=> torna un dizionario con annotazioni
+
+
+
+>>>>>>>>>> PEP 526 -- Syntax for Variable Annotations <<<<<<<<<<
+
+PEP 526 -- Syntax for Variable Annotations:
+	introdotta nel 2016
+	parla di una sintassi per l'annotazione delle variabili
+
+a: int = 10					# annotazione per una variabile
+print(a)
+print(__annotations__)		# dict __annotations__ e' un attributo del modulo che siano variabili globali o locali
+							# la variabile deve essere annotata ed inizializzata per accedere al valore di questa variabile
+						
+Annotazioni di tipo possono essere usate anche all'interno delle classi
+	per annotare delle variabili di istanza e variabili di classe.
+
+class MyClass:
+	nome: str
+	cognome: str
+
+	def __init__(self, nome, cognome):
+		self.nome = nome
+		self.cogno = cognome
+
+
+>>>>>>>>>> Data Classes <<<<<<<<<<
+
+Data Classes sono un aggiunta alla libreria standard di python e servono per arricchire 
+	di significato la definizione stessa delle classi, in particolare quando le classi 
+	che noi andiamo a definire rappresentano prevalentemente dei dati più che dei 
+	comportamenti da cui proprio deriva il nome di data classes.
+
+Il principio di data classes ruota intorno ad un decoratore @dataclass 
+	che e' definito all'interno del modulo dataclasses.
+
+	from dataclasses import dataclass		# bisogna sempre importare il decoratore dal modulo
+
+	Questo modulo fornisce un decoratore e funzioni che servono per aggiungere 
+	in modo automatico ad un classe un serie di metodi. 
+	E' molto utile per un classe che contiene molti attributi piu' che metodi.
+
+
+from dataclasses import dataclass
+@dataclass
+class MyClass:
+	nome: str			# attributi (variabili) che utilizzano annotazione di tipo
+	cognome: str
+
+A partire da annotazioni di tipo che Python puo' inferire degli oggetti "Field", cioe' dei campi
+	che rappresentano i campi della classe, cioe' le proprieta' di dati introdotta in modo esplicito
+	all'interno della classe di cui abbiamo fornito tramite annotazione di tipo.
+
+Dopo questo passaggio entra in azione il decoratore @dataclass 
+	ed aggiunge dietro le quinte una serie di metodi:
+
+	1. un inizializzatore __init__ che prende in input tutti i campi che abbiamo introdotto nella nostra classe.
+		def __init__(self, nome: str, cognome: str) -> None:
+			self.nome = nome
+			self.cognome = cognome
+	
+		Questo __init__ viene generato automaticamente in questa forma direttamente dal decoratore.
+	
+	2. Inoltre viene aggiunto automaticamente il metodo __repr__ (representation)
+		che serve a rappresentare il contenuto di un istanza attraverso le sue proprieta'. 
+	
+	3. Vengono aggiunte anche le implementazioni di metodi  
+		- __eq__	=> equal (==)		=> sono operatori di confronto sotto forma di metodi
+		- __ne__	=> not equal (!=)
+
+		confrontato tutti i campi dichiarati e, in base al loro contenuto, se le istanze sono uguali o meno.
+
+esempio:
+
+from dataclasses import dataclass
+@dataclass
+class MyClass:
+	nome: str			
+	cognome: str
+
+mc = MyClass(nome = "Giulio", cognome = "Verne")
+mc2 = MyClass(nome = "Mario", cognome = "Rossi")
+print(mc2)
+
+
+Il decoratore @dataclass ammette anche dei parametri:
+@dataclass(init=True, repr=True, order=True, frozen=False)
+	- init di default e' True, e serve per iniziarlizzare le istanze
+	- repr di default e' True, e serve per la visualizzazione più chiara del contenuto dei campi dell'istanza
+		(per poter utilizzareper per esempio print(mc) ed avere piu' info con quel metodo)
+	- order di default e' False, e consente di generare o no una serie di metodi che corrispondono agli operatori di confronto
+		( < <= > >= e se e' True si puo' eseguire il confronto come print(mc < mc2) ed avere un risultato booleano)
+	- frozen  di default e' False, e significa che possiamo modificare i valori dei campi delle istanze di dataclass
+		(se e' True l'intera classe diventa Frozen, e quindi non si puo' modificare i valori dei suoi campi )
+	- ci sono altre cose che ha introdotto @dataclass
+
+
+
+
+
+****** 10. Python 3.8 Aggiornamento **********************************************************************************************************************************************************************************************************
+
+V. 3.8 Python e' rilasciata 10/2019
+
+
+>>>>>>>>>> PEP 572 Assignment Expressions <<<<<<<<<<
+
+Assignment Expressions sono espressioni con assegnamento hanno introdotto Walrus Operator (operatore tricheco)
+	1. Nome: Walrus operator
+	2. sintassi: :=
+	3. Operatore per assegnamento delle espressioni
+	4. In alcuni casi non si puo' utilizzare le espressioni per assegnare il valore di ritorno ad una variabile
+		Per esempio non si puo scrivere cosi:
+			if x = somma(5,3) > 6:				SBAGLIATO
+				print("x maggiore di 6")
+	5. per poterlo fare bisgona usare walrus operator:
+			if (x := somma(5,6)) > 6:			GIUSTO CON WALRUS OP.
+				print("x maggiore di 6")
+	6. gli espressioni con assegnamento sono proibite al primo livello se non sono contenute tra parentesi:
+		Per esempio:
+
+			def somma(a,b):
+				retunr a + b 
+				
+		GIUSTO:
+			(x := somma(5,3))		or		x = somma(5,3)
+			print(x)						print(x)
+
+		SBAGLIATO:
+			x := somma(5,3)
+			print(x)
+
+Altri esempi:
+
+1).	myList = [1,2,3,4,5]
+	while (x := len(mylist)) !=0:
+		print(x, mylist.pop())
+
+2).	def saluta(nome = (n := "Susanna")):
+		print("Ciao", nome)
+		print("Ciao", n.upper())
+	saluta("Alessandro")
+
+	# Ciao Alessandro
+	# Ciao SUSANNA
+
+
+
+>>>>>>>>>> PEP 570 Parametri Positional-Only Parameters <<<<<<<<<<
+
+Keyword Arguments servono per fornire argomenti nell'ordine diverso.
+	Per esempio:
+		def somma(a,b,c):
+			return a + b + C
+		x = somma(b=10, c=4, a=2)
+
+Per non lasciare ad alcuni parametri ammettere keword arguments ma farli accettare solo 
+	quelli posizionali si usano positional-only arguments.
+	Sintassi	=>	... argomento, /, ...
+
+def somma(a, /, b, c):		# ora "a" ammette solo argomenti posizionali
+	return a + b + C
+x = somma(10, C=4, b=2)
+
+
+
+
+
+****** 11. Python 3.9 Aggiornamento **********************************************************************************************************************************************************************************************************
+
+v. 3.9 Python e' rilasciata nel 10/2020
+
+
+>>>>>>>>>> Union Operators per i Dizionari <<<<<<<<<<
+
+Sono stati introdotti 2 nuovi operatori per fare la fusione (unione) dei dizionari.
+merge = unione, fusione
+
+|	union operator
+	unisce due dizionari creandone uno terzo
+
+|=	in-place union operator
+	dizionario indicato alla destra dell'operatore viene unito al primo dizionario (quello a sinistra)
+	quindi non viene generato un terzo dizionario
+
+	PROBLEMA:
+
+ABBIAMO 2 DIZIONARI:
+my_dict1 = {"a":"primo", "b":"secondo", "c":"terzo}
+my_dict2 = {"d":"quarto", "a":"quinto"}
+
+DOBIAMO UNIRLI:
+my_dict12 = my_dict1.copy()
+for key, value in my_dict2.items():
+	my_dict12[key] = valore
+
+RISULTATO:
+my_dict12	=>	{"a":"quinto", "b":"secondo", "c":"terzo, "d":"quarto"}
+Nel secondo dict c'e' la stessa key gia' presente nel primo ma con valore differente.
+Nel momento della fusione, la chiave del secondo dizionario viene sovrascritta di quello di prima.
+
+SOLUZIONE CON UNION OPERATOR:
+my_dict12 = my_dict1 | my_dict2
+my_dict12	=>	{"a":"quinto", "b":"secondo", "c":"terzo, "d":"quarto"}
+
+SOLUZIONE CON IN-PLACE UNION OPERATOR:
+my_dict1 |= my_dict2
+my_dict1	=>	{"a":"quinto", "b":"secondo", "c":"terzo, "d":"quarto"}
+
+
+
+
+>>>>>>>>>> Methods removeprefix() e removesuffix() <<<<<<<<<<
+
+Alcuni dei metodi di default per rielaborare le stringhe:
+lstrip()	=>	remuove una serie di caratteri a sinistra 
+strip()		=>	remuove una serie di caratteri a sinistra e a destra
+rstrip()	=>	remuove una serie di caratteri a destra 
+	con parametri "caratteri" eliminano "caratteri" se e' presente (! non "str")
+	senza parametri eliminano gli spazzi
+
+esempio 1:
+>>>a = "resettare e ritentare"
+>>>a.rstrip("re")
+<"resettare e ritenta">
+
+esempio 2:
+>>>a = " resettare e ritentare  "		# 1 spazio davanti e 2 dietro
+>>>a.sstrip()
+<"resettare e ritentare">				# zero spazi davanti e dietro
+
+	problema:
+	>>>a = "resettare e ritentare"
+	>>>a.rstrip("er")					
+	<"resettare e ritenta">
+
+	Ha tolto "re" alla fine anche se nell'argomento era segnato "er".
+	Questo perche':
+	Le funzion i strip (tutte 3) usano come argomento un insieme di caratteri e non delle stringhe.
+
+
+
+2 nuovi metodi che gestiscono le stringhe:
+removeprefix()	=> remuove un prefisso se presente (inizio)
+removesuffix()	=> remuove un suffisso se presente (fine)
+	prendono "str" come parametro e non "carattere" quindi tolgono solo se 
+	il carattere corrispone esattamente all'argomento fornito
+
+esempi:
+>>>a = "resettare e ritentare"
+
+>>>a.removeprefix("re")
+<"settare e ritentare">
+
+>>>a.removeprefix("er")				# non ha effetto perche' argomento e' diverso
+<"resettare e ritentare">
+
+>>>a.removesuffix("re")
+<"resettare e ritenta">
+
+>>>a.removesuffix("er")				# non ha effetto perche' argomento e' diverso
+<"resettare e ritentare">
+
+
+
+
+****** 12. Python 3.10 Aggiornamento **********************************************************************************************************************************************************************************************************
+
+
+>>>>>>>>>> Pattern Matching <<<<<<<<<<
+
+Fare Pattern Matching = controllare se e' presente o meno un pattern all'interno di un oggetto composito,
+	cioe' di un oggetto dotato della propria struttura.
+	Pattern matching viene realizzato tramite uno statement composito chiamato match case.
+
+Pattern e' un modello (forma) piu' o meno generale da applicare a piu' casi particolari.
+
+SINTASSI:
+
+match subject_value:
+	case pattern:
+		pass
+	case pattern:
+		pass
+	...
+
+SPIEGAZIONE:
+
+Il processo inizia con un soggetto valore che va confrontato con i pattern.
+Si usa la parola chiave "match" per specificare intero blocco di codice di pattern matching.
+Nel corpo di "match" vengono inseriti una serie di pattern.
+Ogni pattern inizia con la parola chiave "case" seguita da un pattern.
+Ogni pattern ha il proprio blocco di codice da eseguire se scatta True (matching).
+I pattern vengono valutati uno alla volta dall'alto verso il basso.
+Una volta che scatta un pattern, tutti gli altri vengono scartati.
+Se non avviene nessun match, non si ottiene nessun errore,
+	semplicemente il programma passa oltre e termina in quanto 
+	non ci sono altre istruzioni da eseguire.
+
+ESEMPIO:
+
+subject_value = ["primo", "secondo"]	# 1
+match subject_value:					# 2
+	case [p, s]:						# 3
+		print(f"trovato {p} e {s}")		# 4		=>	"trovato primo e secondo"
+
+SPIEGAZIONE DELL'ESEMPIO:
+
+1.	Abbiamno creato un valore da confrontare puntato dalla variabile "subject_value"
+	Questa variabile punta ad una lista di 2 elementi con le stringhe.
+2.	Attiviamo il match untilizzando la lista come soggetto (in questo caso definita in una variabile)
+3.	Introduciamo un primo pattern che possiamo confrontare con il soggetto
+	Pattern controlla se il soggetto ha o meno una certa struttura (True/False)
+	La nostra struttura e' fatta di 2 elementi come soggetto quindi e' True
+4.	Se il pattern si adatta nella sua forma al soggetto, viene eseguito il blocco di codice del case
+	E intera operazione di pattern matching viene conclusa
+
+QUINDI:
+
+Il pattern che viene confrontato con il soggetto puo' provocare 2 tipi di risultato:
+	1.	Il primo risulatato e' matching, quindi una corrispondenza tra la propria forma la propria struttura e quella del soggetto.
+	2.	Il secondo risultato (facoltativo) che possiamo attendere dalla valutazione di un pattern e' il binding.
+		Binding e' assegnamento di nomi agli elementi del soggetto in tutto o in parte.
+
+
+
+
+>>>>>>>>>> Capture Pattern <<<<<<<<<<
+
+Capture Pattern =>
+	pattern che catturano i valori dei soggetti assegnandole poi a delle variabili.
+
+ESEMPIO:
+
+subject_value = [1,2,3]						# soggetto
+match subject_value:
+	case [p, s]:							# questo pattern fallisce perche' la nostra lista ha 3 elementi
+		print(f"trovato {p} e {s}")	
+	case [p, s, t]:							# pattern con tre elementi che soddifano il soggetto, quindi e' un match
+		print(f"trovato {p}, {s} e {t}")
+
+# si poteva anche scrivere:
+	case (p, s, t)
+		oppure
+	case p, s, t
+
+ESEMPIO:
+
+subject_value = [1,2,3,4]						
+match subject_value:
+	case [p, s]:				
+		print(f"trovato {p} e {s}")	
+	case [p, s, t]:
+		print(f"trovato {p}, {s} e {t}")
+	case _:									# wildcard
+		print("case di default")
+
+Pattern definito da "_" si chiama wildcard. 
+E' un jolly opzionale che scatta solo se nessuno dei precedenti pattern ha provocato un match.
+Questo pattern non genera una lista e soddisfa qualsiasi soggetto.
+Va posizionato sempre alla fine, altrimenti salta fuori errore.
+
+
+
+
+>>>>>>>>>> Literal Pattern <<<<<<<<<<
+
+Questa modalita' (Capture Pattern) non e' legat al binding ma al confronto diretto dei valori specificati.
+	Quindi in questo caso perdiamo opzione del binding.
+E' una forma di pattern che usa i valori precisi al posto di variabili.
+
+ESEMPIO 1:
+
+subject_value = [1,2,3]						
+match subject_value:
+	case [1, 2, 3]:				
+		print(f"trovata lista 1, 2, 3")
+
+Soggetto e' una lista con 3 valori interi.
+Pattern ha una forma nuova:
+	Al posto di variabili che servivano a provocare un binding automatico,
+	vengono specificati i literal (valori espressi in chiaro), in questo caso 3 numeri interi.
+Pattern viene confrontato con soggetto elemento per elemento e, se
+	la forma ed ogni singolo elemento soddisfa il soggetto, il pattern ha successo.
+
+ESEMPIO 2:
+
+subject_value = [1,2,3]						
+match subject_value:
+	case [1, *resto]:				
+		print(f"il resto e' {resto}")
+
+# risultato: "il resto e' [2, 3]"
+
+Specifichiamo nel pattern solo il primo valore in chiaro (1).
+Poi introduciamo il nome di una variabile seguito da una asterisco (*).
+Il pattern viene soddisfatto quando il primo elemento fa il match.
+Tutti gli elementi successivi (se ci sono) verranno assegnati alla variabile tramite il binding.
+Quindi "*" significa "tutti gli elementi successivi".
+
+
+
+>>>>>>>>>> Or Patterns <<<<<<<<<<
+
+Or Patterns => fa parte dei pattern compositi => | => or logico => alt + 124
+
+subject_value = ["autunno", "stagione autunnale"]
+	match subject_value:
+		case ["autunno", msg] | ["inverno", msg]
+			print(f"Nella {msg} fa piu' freddo")
+
+Soggetto e' composto da 2 strunghe.
+Nel primo case (in questo caso l'unico), ci sono 2 pattern.
+Ogni pattern e' composto da un literal (valore che deve coincidere nel confronto) ed una variabile (per il binding).
+I 2 pattern sono divisi da | che e' or logico.
+Questo significa che e' un pattern composito. 
+Quindi questo pattern soddisfa il match se il primo elemento della lista e' "autunno" oppure "inverno".
+In entrambi i casi assegna il secondo elemento della lista del soggetto alla variabile "msg".
+!!!	I pattern possono essere soddisfatti contemporaneamnte nelle loro alternative.
+	Se in quel caso ci sono le variabili, queste variabili devono essere sempre le stesse (stesso nome)
+
+
+
+>>>>>>>>>> As Patterns <<<<<<<<<<
+
+As Patterns => fa parte dei pattern compositi => as
+Questo pattern consente:
+	- sia di verificare il match di un valore espresso in chiaro (specifico) di un elemento con il vincolo strutturale
+	- sia di eseguire il binding del risultato di questo match
+
+subject_value = "estate"
+match subject_value:
+	case "primavera" | "estate" as stagione:
+		print(f"Nella {stagione} fa piu' caldo")
+	case "inverno" | "autunno" as stagione:
+		print(f"Nella {stagione} fa piu' freddo")
+
+Soggetto e' rappresentato da una stringa.
+Poi facciamo partire lo statement match.
+Nel primo case abbiamo un or pattern.
+Quindi questo pattern dice che il soggetto deve essere una stringa con valore "primavera" oppure "estate"
+Se il pattern fa il match, assegnamo il valore del match alla 
+	variabile "stagione" tramite binding con la parola chiave "as".
+
+
+
+>>>>>>>>>> Conditional Patterns <<<<<<<<<<
+
+Conditional Patterns aggiungono la possibilita' di eseguire dei test condizionali.
+Possiamo aggiungere una "guard" all'interno di uno o piu' di nostri case.
+Questa guard esegue un test condizionale in coda al pattern 
+	per determinare se il valore e' True e quindi fa il match.
+Quindi guard e' uno statement "if" inserito in coda al pattern.
+
+subject_value = ["pari, "50"]
+	match subject_value:
+		case ["pari", value] if int(value) % 2 == 0:
+			print(f"Il numero {value} e' pari)
+		case ["dispari" value] if int(value) % 2 != 0:
+			print(f"Il numero {value} e' dispari)
+		case _:
+			print(f"C'e' un errore nei dati")
+
+
+
+
+
+
+****** 13. RabbitMQ **********************************************************************************************************************************************************************************************************
+
+Applicazioni server che siano scalabili e distribuite.
+Per farlo si usa RabbitMQ che e' un message broker.
+
+Ci sono diverse tipi di architettura utilizzate nelle applicazioni distribuite:
+ 
+Probabilmente la piu' famosa e' Client-Server:
+Applicazione client che richiede l'esecuzione di un servizio (request).
+Applicazione server che eroga un servizio (response). 
+	nella maggior parte dei casi si trovano su machine diverse.
+	un esempio puo' essere browser (client) che chiede dati a un web application server (sever)
+		il server in questo caso usa la logica applicativa, accede al database ecc....
+In questo tipo di archittetura le app sono divise sia a livello logico che fisico.
+
+
+Un'altro tipo di architettura puo' essere Producer-Consumer:
+Producer =>
+	app che producono delle informazioni (dati)
+	al verificarsi di un determinao evento genera un messaggio con dei dati (testo, json, immagine, XMl	, binary ecc...)
+Consumer => 
+	app che consumano informazioni
+	aspetto dei ricevere dei dati quando questi si rendono disponibili
+
+Questo tipo di archittetura ha alcuni requisiti che devono essere soddisfatti dall'architettura ...
+... fisica sottostante o dall'app che consente questo tipo di archittetura.
+Quelli principali sono:
+	1. Quando producer produce il messaggio, app consumer potrebbe non essere disponibile (inattiva)
+		ma il messaggio non per forza viene perduto
+	2. Il messaggio puo' essere destinato a piu' consumer che possono essere diverse fra loro e disponibili in diverso tempo.
+	3. Il producer non deve essere mai direttamente a conoscenza di quali sono e quanti sono i consumer. 
+		(cosi' le app prodcuer e consumer rimangono disaccoppiate e indipendenti)
+	4. Ci sono altri requisiti meno importanti. 
+
+Per risolvere questi "problemi" si puo' introdurre un elemento che disaccoppia i produttori e consumatori.
+Questa soluzione si chiama Message Broker.
+
+Message Broker e' un software che viene installato su uno o piu' server 
+	(che normalmente non sono quelli che contengono i producer o consumer).
+	E' una specie di intermediario perche'
+		- i produttori possono fornirli dei messaggi appena sono dispobili
+		- i messaggi possono essere consegnati a tutti i consumatori connessi al broker.
+	Questo software consente di implementare tutti i requisiti di questa archittetura.
+	Message Broker puo' essere settato con le regole di instradamento anche abbastanza sofisticate 
+		per gestire contemporaneamente un numero variabile di consumer e instradare anche diversamente 
+		questo stesso messaggio ai consumer differenti a seconda del contenuto del messaggio stesso.
+		Questo dev'essere possibile fare non andando ad intaccare ne le app producer ne le app consumer.
+	Puo' fare in modo che siano disaccoppiate fra loro sia fisicamente che logicamente.
+	Ci sono diversi messagge broker con diversi funzionalita' e protocolli (ma fanno tutti piu' o meno la stessa cosa)
+		Fra questi esiste "RabbitMQ" che uno dei piu' potenti e diffuse ed e' anche open source.
+		RabbitMQ dispone di driver (librerie) e di software per un numero molto elevato di linguaggi di programmazione.
+
+Per installare RabbitMQ:
+	1. Instalare la lingua di programmazione Erlang sulla quale e' scritto RabbitMQ
+	2. Scaricare ed installare RabbitMQ
+	3. Installare il driver per il linguaggio di programmazione (per python e' Pika)
+		per farlo aprire la Shell ed eseguire il comando >>>pip3 install pika
+		Pika serve per scrivere app in python che sono in gradi di conettersi al RabbitMQ.
+
+Per controllare se il package in Python e' installato correttamente:
+	1. lanciare il terminale in pyhton (comando in Shell >>>python3 )
+	2. Provare ad importare il package/libreria ( >>>import pika )
+
+
+
+>>>>>>>>>> UN PO' DI TEORIA SU RabbitMQ <<<<<<<<<<
+
+Archittetura che Rabbit utilizza per il suo funzionamento:
+
+											QUEUE
+PRODUCER	->	EXCHANGE	->	BINDING	->	QUEUE	->	CONSUMER
+											QUEUE
+
+Rabbit da' la possibilita' di creare delle code (queue) per il consumatore (consumer).
+Queue sono create per contenere ed archiviare i messaggi (come caselle postali)
+	e poi consegnarli nel momento opportuno al consumer che sottoscrive interesse di ricevere questi messaggi.
+Si possono creare diverse code e bisogna decidere quale queue consumer utilizzera' per ricevere i messaggi.
+Il producer (produttori di messaggi) utilizzano gli exchange (scambi) che sono un punto di ingresso al RabbitMQ
+	che permette di fare consegnare i messaggi al RabbitMQ. 
+Nel message broker ci sono delle regole (binding) che vengono configurate per collegare tra loro gli exchange con le code.
+Grazie ai binding i producer e i consumer sono completamente disaccoppiate.
+
+
+Conessione al RabbitMQ:
+
+			CHANNEL															CHANNEL
+PRODUCE	->	CHANNEL	->	CONNECTION	->	MESSAGE BROKER	<-	CONNECTION	<-	CHANNEL	<-	CONSUMER
+			CHANNEL															CHANNEL
+
+
+RabbitMQ (message broker) chiede di stabilire una conessione sia al producer che a consumer.
+	quindi bisogna chiedere al server di rabbitmq una conessione.
+Una volta che si ha la conessione si puo' richiedere un canale di comunicazione per arrivare al MB (message broker)
+Una singola conessione puo' ospitare piu' canali di comunicazione (minimo 1).
+Piu' applicazioni diversi possono utilizzare i canali diversi ma la stessa conessione.
+
+
+Sapendo questi informazioni si possono realizzare diverse architteture in RabbitMQ piu' o meno complesse.
+Di seguito ci sara' l'archittetura Producer-Worker:
+	cioe' conettere consumatori diversi (quindi processi diversi) tutti sulla stessa singola coda.
+Di solito questa configazione si usa per disribuire il carico di lavoro di molti messaggi ai consumer concorrenti (chiamati worker)
+	e, per esempio, si puo' immaginare che per ogni messaggio generato da un'applicazione producer debbano essere svolte una serie di 
+	lavorazioni anche complesse o lunghe prima di archiviare poi magari dati in un database.
+	Ciascuno di questi worker fara' stessa cosa ma la puo fare in parallelo.
+
+Se mettiamo tutti consumer sulla stessa queue, RabbitMQ in automatico:
+	il primo messaggio consegnato al broker dal producer viene consegnato al primo consumer tramite una queue.
+	Il secondo messaggio viene consegnato al secondo cocumer.
+	Il terzo messaggio viene consegnato al terzo consumer.
+	E cosi' via fino a che non finiscono i consumer, poi riparte dall'inizio dal primo consumer.
+	Questo meccanismo si chiama Round Robbin.
+Round robin e consente di implementare applicazioni veramente scalabili perche' quando il numero di messaggi in arrivo dai producer 
+	e' estremamente alto i consumer (chiamati worker) in questo caso lavorano in parallelo.
+	Potremmo anche aprirne veramente molti su una singola macchina di questi processi e attraverso questo
+	sistema di smistamento che Rabbit esegue attraverso un'unica coda noi potremmo arrivare ad avere performance
+	estremamente alte.
+
+Scriviamo questo scenario Producer-Worker in Python:
+Code in:
+d:\Coding_Projects\RabbitMQ\Example\...
+
+
+
+
+****** 14. MongoDB **********************************************************************************************************************************************************************************************************
+
+Modello piu' tradizionale per strutturare un database e' il modello relazionale.
+	Esempio sono: MySQL, Oracle, SQL Server, SQLite ...
+	In questo modello si accede ai dati tramite linguaggio SQL.
+
+MongoDB:
+	- non e' basato su SQL con modello relazionale dei dati
+	- e' un database orientato sui documenti
+	- e' un motore di databse distribuito su cluster di server, 
+		quindi e' molto flessibile e scalabile 
+	- e' uno dei principali motori di dsatabese no SQL
+	- viene gestito attraverso la libreria ufficiale pymongo
+	- con MongoDB si puo' sviluppare delle app che gesticonono delle quantita' enormi di info
+
+
+
+>>>>>>>>>> Il modello relazionale SQL <<<<<<<<<<
+
+In un modello di database relazionale, modellazione ed archiviazione avviene tramite le tabelle.
+
+Tabella:
+	E' una matrice bidimensionale che rappresenta un'entita' logica
+	Sono organizzate in una serie di righe e colonne.
+	Un riga (chiamata Record) rappresenta una singola entita'
+	Le colonne rappresentano i dati ad una specifica proprieta' posseduta da quell'entita'
+		(ogni colonna ha la propria intestazione (schema) che contiene il nome della colonna e il tipo di dato)
+	Tra incrocio di una singola riga e colonna viene definita una cella (campofield)
+		(quindi una cella contiene un valore specifico di un certo record per una determinata colonna)
+	
+Ogni cella possiede esattamente un valore (questa cosa si chiama normalizzazione).
+Potrebbe essere un problema se
+per esempio:
+
+ID		Nome		Cognome		Eta'	Computer
+1		Mario		Rossi		30		Asus
+2		Giuseppe	Verdi		45		Apple
+
+Se Mario avesse piu' computer bisognerebbe fare delle colonne in piu' per specificare il secondo, terzo pc...
+Non possiamo mettere piu' PC sulla stessa cella, ma e' scomodo inserire piu' colonne.
+La soluzione puo' essere quella di creare una seconda tabella. 
+
+			COMPUTER
+	ID PERSONA		COMPUTER
+	1				Asus
+	1				Apple
+	2				Apple
+
+Per fare questo, nel modello relazione, viene introdotta una chiave esterna che riporta identificativo univoco della tabella principale.
+ID 1		=>	Primary Key		=>	non sono dupplicabili
+ID PERSONA	=>	Foreign Key 	=>	punta alla Primary Key 
+Se si organizza la tabella in questo modo interrogazione con SQL viene piu' semplice.
+Questo tipo di giunzioni fra tabelle diverse fra Foreign Key e Primary Key vengano dette join all'interno del modello relazione dei dati.
+
+
+
+>>>>>>>>>> JSON <<<<<<<<<<
+
+Organizzazione delle informazioni attraverso MongoDB.
+
+JSON (Javascript Object Notation, cioe' annotazione di oggetti Javascriopt):
+	e' un formato di rappresentazione e interscambio di dati testuale 
+	basato sulla sintassi del linguaggio JavaScript.
+
+JSON e' costruito a partire da 2 struttre di base:
+	1. object
+		Sono una specie di dizionari in Python
+		Sono delle associazioni fra nomi e valori (key:value)
+	2. array
+		Sono delle liste ordinate di valori
+
+
+SINTASSI per rappresentare un oggetto JSON:
+
+{"string":value, "string":value, "string":value...}
+	where value can be:
+		- string / number
+		- object / array
+		- true/ false / null
+
+EXAMPLE:
+{
+	"nome": "Mario",
+	"cognome": "Rossi",
+	"eta": 30,
+	"computer": {						# oggetto nidificato dentro un'altro oggetto JSON
+		"comp1": "Asus",
+		"comp2": "Apple"
+	}
+}
+
+
+SINTASSI per rappresentare un array JSON:
+
+[value, value, value...]
+	where value can be:
+		- string / number
+		- object / array
+		- true/ false / null
+
+EXAMPLE:
+{
+	"nome": "Mario",
+	"cognome": "Rossi",
+	"eta": 30,
+	"computer" : ["Asus", "Apple"]
+}
+
+
+
+
+>>>>>>>>>> BSON <<<<<<<<<<
+
+BSON (Binary JSON)
+	e' una forma di serializzazione codificata in formato binario 
+	di documenti simili a JSON. 
+	(quindi e' tipo un salvataggio di JSON in binary)
+
+BSON:
+	- supporta la forma di rappresentazione JSON
+	- aggiunge estensioni a JSON ed e' il suo sovrainsieme (contiene tutti i suoi elementi)
+		(questi estensioni consentono di rappresentare altri datatypes)
+	- alcuni datatypes extra:
+		ObjectId, data, timestamp, double, int, long, decimal128, binary Data, boolean
+	- ObjectId e' molto importante per MongoDB ed e' identificatore univoco per un oggetto e occupa 12 byte
+
+BSON serve prencipalmente a 2 scopi in MongoDB:
+	1. archiviazione	=>	perche' il formato in cui i dati vengono archiviati
+	2. interscambio		=>	e' il formato in cui questi dati vengono trasmessi 
+							(per esempio quando si fa una query su MongoDB dove query=domandare)
+
+
+
+>>>>>>>>>> Documenti e collezioni in MongoDB <<<<<<<<<<
+
+In un database relazionale i dati vengono organizzati in tabelle, all'intenro dei quali vengono 
+	memorizzati dei record che contengono un'insieme di valori relativi ad una singola entita'.
+
+In MongoDB:
+	- l'idea di un record in databse relazionale corrisponde all'idea di un documento in MongoDB
+	- Un insieme di documenti viene chiamato una collezione (Collection) che corrisponde all'idea di tabella (in modo molto parziale)
+	- un insieme di collezioni viene chiamato un database
+	- un database puo' essere partizionato in un cluster
+		(Una partizione, in informatica, indica una suddivisione logica di un'unita' di memorizzazione fisica)
+Un documento all'interno di una Collection:
+	-	consente di archiviare una struttura di dati in BSON
+	-	e' molto piu' flessibile rispetto al record 
+		(ci consente anche di creare delle struttura gerarchiche)
+	-	tutti i documenti devono sempre contenere un "_id"
+		.	ha lo stesso scopo della Primary Key
+		.	puo' essere generato manualmente o autoincrementa
+		.	deve essere univoco altrimenti viene scartato
+		.	BSON datatype <objectId> 
+	-	non hanno la struttura predefinita, cioe' lo stesso schema come in modello relazionale
+		(anche se e' consigliato creare strutture simili per evitare caos)
+	-	
+
+COLLECTION
+{
+	"_id":	"89204c94d953",
+	"nome": "Mario",
+	"congome": "Rossi"
+	"eta": 30
+},
+...
+{
+	"_id":	"63047c94d953",
+	"nome": "Giuseppe",
+	"congome": "Verdi"
+	"eta": 45
+	"PC": ["Asus", "Apple"]
+}
+
+
+Installare MongoDB versione gratuita (Community Server) e settarlo
+Esiste un tool visuale per MongoDB chiamato Compass (Community Edition e' gratuita)
+Installare la libreria ufficiale per accedere al MongoDB con Python
+	$ pip install pymongo
+Per usare MongoDB bisogna attivare il processo che rappresenta engine del database che si mette in ascolto.
+	digitare nel terminale: $ mongod
+	per default engine e' disponibile sulla porta localhost:27017
+
+Codice della crezione del database e della sua querry:
+d:\Coding_Projects\MongoDB\example\
+
+Connect Using VS Code:
+	1.	Install MongoDB for VS Code.
+		In VS Code, open "Extensions" in the left navigation and search for "MongoDB for VS Code." 
+		Select the extension and click install.
+	2.	In VS Code, open the Command Palette.
+		Click on "View" and open "Command Palette."
+		Search "MongoDB: Connect" on the Command Palette and click on "Connect with Connection String."
+	3.	Connect to your MongoDB deployment.
+		Paste your connection string into the Command Palette.
+		mongodb+srv://<user>:<password>@cluster01.kolziff.mongodb.net/test
+		Replace <user> with the username.
+		Replace <password> with the password for the <user> user.
+		When entering your password, make sure all special characters are URL encoded.
+	4.	Click "Create New Playground" in MongoDB for VS Code to get started.
+
+# si consiglia di leggere la documentazione per estendere conoscenza del database MongoDB
+
+
+
+
+
+
+
+*************************************************************************************************************************************************************************************************************************************
+****** FUNCTIONS / METHODS **********************************************************************************************************************************************************************************************************
+*************************************************************************************************************************************************************************************************************************************
+
+id()						=>	restituisce identita' dell'oggetto
+type()						=>	restituisce tipo dell'oggetto
+oggetto.upper()				=>	trasfoma una stringa in maiuscola
+	cercare PEP 498 -- Literal String Interpolation su python.org per altri modi di interpolazione di stringhe
+bin(125)					=>	convertire in formato binario 125
+pass						=> statament che non fa nulla per definire una funzione/classe nulla
+isinstance(m1,BClass)		=> funzione predefinita che restituisce valore buleano e ...
+								... serve per verificare se oggetto (primo parametro) e' o non e' istanza di una determinata classe (secondo parametro)
+ELEMENT in CONTAINER		=> torna valore boleano se o non e' presente l'oggetto in un contenitore
+iter(ITERABLE)				=> metodo predefinito per produrre un oggetto iteratore.
+next(ITERATORE)				=> 
+
+offset = file.tell()
+n = file.seek(offset)
+
+
+Alcuni dei metodi per rielaborare le stringhe:
+lstrip()	=>	remuove una serie di caratteri a sinistra 	
+strip()		=>	remuove una serie di caratteri a sinistra e a destra			# prendono "caratteri" come parametro
+rstrip()	=>	remuove una serie di caratteri a destra 
+
+removeprefix()	=> remuove un prefisso se presente (inizio)						# prendono "str" come parametro
+removesuffix()	=> remuove un suffisso se presente (fine)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

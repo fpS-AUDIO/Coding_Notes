@@ -1,0 +1,320 @@
+
+>>>>>>>>>> Module datetime <<<<<<<<<<
+
+
+import datetime as dt
+------------------------------------------------------------------------------------------------
+DATETIME MODULE CLASSES 
+
+Classi:
+1. dt.date(year, month, day)
+    data standart, oggetto immutabile
+
+2. dt.time(hour=0, minute=0, second=0, microsecond=0, tzinfo=None)
+    tempo standard non collegato alla data
+
+3. dt.timedelta
+    differenza tra 2 momenti del tempo fino a microsecondi
+
+4. dt.tzinfo
+    classe astratta per info sulla zona temporanea (es: fuso orario/ora legale)
+
+5. dt.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None)
+    combinazione di tempo e data
+
+
+------------------------------------------------------------------------------------------------
+DEFINIZIONI PER CAPIRE I METODI DELLE CLASSI
+
+
+unix timestamp      => differenza di secondi tra una data particolare e 01/01/1970 UTC.
+dt_object           => time object  <class 'datetime.datetime'> (oppure datetime.date/time/timedelta)
+Gregorian date      => calendario gregoriano e' il calendario solare ufficiale di quasi tutti i paesi del mondo
+Gregorian ordinal   => numero di giorni passati da 01/01/0001
+format              => codice standrd di formato C dal 1989 per rappresentare data e ora (tabella in basso)
+tz                  => fuso orario 
+                        usare il modulo pytz e meglio sempre esprimerlo in UTC e non GMT
+time.struct_time    => named tuple contentente tutti gli attributi di data e tempo (dove valore -1 = unknown).
+                            si puo' accedere agli attributi tramite index oppure attribute name.
+
+Per chiamare metodi di istanza:
+    dt.date.ctime(dt_object) ==  dt_object.ctime()
+
+Molti metodi delle classi date, time e datetime funzionano su classi diversi,
+    esempio:        dt.date.ctime(dt_object) 
+    funziona anche: dt.datetime.ctime(dt_object)
+
+
+------------------------------------------------------------------------------------------------
+METODI DELLA CLASSE DATETIME 
+
+
+datetime_obj1 = dt.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0, tzinfo=None, *, fold=0)
+    ritorna un dt_object con data e ora inserite
+    si puo' accedere agli attributi di dt_object:
+        print(datetime_obj1.date().year)
+        print(datetime_obj1.time())
+
+dt.datetime.today()
+    ritorna dt_object con ora e data corrente
+
+dt.datetime.now(tz=None)
+    ritorna dt_object con ora e data corrente ma con possibilita' di aggiungere fuso orario
+    tz (optional, default=0) = fuso orario
+
+dt.datetime.fromtimestamp(timestamp)
+    ritorna dt_object a partire da timestamp
+
+dt.datetime.timestamp(dt_object)
+    ritorna timestamp da dt_object
+
+dt.datetime.fromordinal(ordinal)
+    ritorna dt_object a partire da Gregorian ordinal
+
+dt.datetime.toordinal(dt_object)
+    metodo di istanza, ritorna Gregorian ordinal a partire da dt_object
+
+dt.datetime.combine(date, time)
+    retorna dt_object a partire da un oggetto date ed un oggetto time
+
+dt.datetime.strftime(format)
+    metodo di istanza, ritorna una stringa formattata contente data e ora a partire da un dt_object
+    example:    variable_dt_object.strftime("%A %d-%B %Y")
+
+dt.datetime.strptime(date_string, format)
+    ritorna un dt_object a partire da una stringa 
+    example:    date_string = "21 June, 2018"
+                date_object = dt.datetime.strptime(date_string, "%d %B, %Y")
+
+dt.datetime.replace(year, month, day, hour, minute, second, microsecond, tzinfo)
+    metodo di istanza, ritorna un dt_object a partire da un dt_object
+    serve per sostituire un attributo di dt_object specificando il parametro da sostituire
+    es: >>>d = date(2002, 12, 31)
+        >>>d.replace(day=26)
+        datetime.date(2002, 12, 26)
+    
+dt.datetime.timetuple(dt_object)
+    ritrona una tupla (named tuple) di tipo time.struct_time a partire da un dt_object
+
+
+------------------------------------------------------------------------------------------------
+METODI DELLA CLASSE DATE (funzionano anche con la classe datetime)
+
+
+date1 = dt.date.today()
+    ritorna dt_object con data corrente
+    si puo' accedere direttamente agli attributi di date dt_object:
+        print("year: ", date1.year)
+        print("month: ", date1.month)
+        print("day: ", date1.day)
+
+dt.date(year, mounth, day)
+    ritorna dt_object con data specificata con parametri obbligatori
+
+dt.datetime.isoformat(sep='T')
+    metodo di istanza, ritorna una stringa che rappresenta una data in formato ISO 8601 YYYY-MM-DD
+    es: >>>date(2002, 12, 4).isoformat()
+        '2002-12-04'
+
+dt.datetime.fromisoformat(date_string)
+    ritorna un dt_object da una date string contente dati in formato ISO: (yyyy-mm-dd)
+    es: birthday_Picaso = "1881-10-25"
+        picasoBirthDate = datetime.date.fromisoformat(birthday_Picaso)
+
+dt.date.isocalendar()
+    metodo di istanza, ritorna una tupla (named tuple) contente ISO anno, numero settimana e numero giorno.
+    funziona anche con la classe datetime
+    es: >>>date(2004, 1, 4).isocalendar()
+        datetime.IsoCalendarDate(year=2004, week=1, weekday=7)
+
+dt.date.fromisocalendar(year, week(1-52/53), day(1-7))  
+    ritorna la data in formato gregoriano a partire da una data in formato ISO 
+    metodo inverso di isocalendar()
+    funziona anche con la classe datetime
+    es: today = dt.date(2021,12,18)
+        iso_today = dt.date.fromisocalendar(today.year ,50 ,6)
+
+dt.datetime.weekday()
+    metodo di istanza, ritorna un numero integer che rappresenta il numero del giorno della settimana
+    Dove: Monday = 0 e Sunday = 6
+    es: print(dt.date(2002, 12, 4).weekday())    => 2 perche' e' un mercoledi'
+
+dt.datetime.isoweekday()
+    metodo di istanza, ritorna un numero integer che rappresenta il numero del giorno della settimana
+    Dove: Monday = 1 e Sunday = 7
+    es: print(dt.date(2002, 12, 4).isoweekday())    => 3 perche' e' un mercoledi'
+
+dt.date.ctime()
+    metodo di istanza, ritorna una stringa che rappresenta una data
+
+
+------------------------------------------------------------------------------------------------
+METODI DELLA CLASSE TIME (funzionano anche con la classe datetime)
+
+time1 = dt.time(hours, minutes, seconds, microsec)
+    ritorna  dt_object con un orario
+    si puo' accedere direttamente agli attributi di time dt_object:
+        print("Hour: ", time1.hour)
+        print("minutes: ", time1.minute)
+        print("seconds: ", time1.second)
+        print("micseconds: ", time1.microsecond)
+
+
+------------------------------------------------------------------------------------------------
+TIMEDELTA
+
+dt.timedelta(parameters)
+    ritorna un oggetto (timedelta object) contenente una durata di tempo
+    questo oggetto permette di manipolare la durata o differenza tra due momenti diversi
+    parametri (optional, default=0):
+        days = 0
+        seconds = 0
+        microseconds = 0
+        millisecond = 0
+        minutes = 0
+        hours = 0
+        weeks = 0
+
+    examle:
+        dt.timedelta(days=10) + dt.datetime.today()
+
+    Con timedelta object si puo' fare:
+        t1 = t2 + t3
+        t1 = t2 - t3
+        t1 = t2 * int
+        t1 = t2 * float
+        float = t2 / t3
+        t1 = t2 / float(or int)
+        t1 = t2 // int
+        t1 = t2 % t3
+        q, r = divmod(t1, t2)
+        +t1
+        -t1
+        abs(t)
+        str(t)
+        repr(t)
+
+
+------------------------------------------------------------------------------------------------
+FORMATS      examle: "%d %B %Y"
+
+DIRECTIVE
+    MEANING
+        EXAMPLE
+
+%a
+    Weekday as locale’s abbreviated name.
+        Sun, Mon, …, Sat (en_US)
+%A
+    Weekday as locale’s full name.
+        Sunday, Monday, …, Saturday (en_US)
+%w
+    Weekday as a decimal number, where 0 is Sunday and 6 is Saturday.
+        0, 1, …, 6
+%d
+    Day of the month as a zero-padded decimal number.
+        01, 02, …, 31
+%b
+    Month as locale’s abbreviated name.
+        Jan, Feb, …, Dec (en_US)
+%B
+    Month as locale’s full name.
+        January, February, …, December (en_US)
+%m
+    Month as a zero-padded decimal number.
+        01, 02, …, 12
+%y
+    Year without century as a zero-padded decimal number.
+        00, 01, …, 99
+%Y
+    Year with century as a decimal number.
+        0001, 0002, …, 2013, 2014, …, 9998, 9999
+%H
+    Hour (24-hour clock) as a zero-padded decimal number.
+        00, 01, …, 23
+%I
+    Hour (12-hour clock) as a zero-padded decimal number.
+        01, 02, …, 12
+%p
+    Locale’s equivalent of either AM or PM.
+        AM, PM (en_US)
+%M
+    Minute as a zero-padded decimal number
+        00, 01, …, 59
+%S
+    Second as a zero-padded decimal number.
+        00, 01, …, 59
+%f
+    Microsecond as a decimal number, zero-padded to 6 digits.
+        000000, 000001, …, 999999
+%z
+    UTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).
+        (empty), +0000, -0400, +1030, +063415, -030712.345216
+%Z
+    Time zone name (empty string if the object is naive).  	
+        (empty), UTC, GMT
+%j
+    Day of the year as a zero-padded decimal number.
+        001, 002, …, 366
+%U
+    Week number of the year (Sunday as the first day of the week) as a zero-padded decimal number. 
+    All days in a new year preceding the first Sunday are considered to be in week 0.
+        00, 01, …, 53
+%W
+    Week number of the year (Monday as the first day of the week) as a zero-padded decimal number. 
+    All days in a new year preceding the first Monday are considered to be in week 0.
+        00, 01, …, 53
+%c
+    Locale’s appropriate date and time representation.
+        Tue Aug 16 21:30:00 1988 (en_US)
+%x
+    Locale’s appropriate date representation.
+        08/16/88 (None)
+        08/16/1988 (en_US)
+%X
+    Locale’s appropriate time representation.
+        21:30:00 (en_US)
+%%
+    A literal '%' character.
+        %
+
+Several additional directives not required by the C89 standard are included for convenience. 
+These parameters all correspond to ISO 8601 date values.
+
+%G
+    ISO 8601 year with century representing the year that contains the greater part of the ISO week (%V).
+        0001, 0002, …, 2013, 2014, …, 9998, 9999
+%u
+    ISO 8601 weekday as a decimal number where 1 is Monday.
+        1, 2, …, 7
+%V
+    ISO 8601 week as a decimal number with Monday as the first day of the week. Week 01 is the week containing Jan 4.
+        01, 02, …, 53
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

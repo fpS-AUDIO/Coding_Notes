@@ -1,0 +1,80 @@
+
+
+<!-- HTML TABLES GUIDE -->
+
+
+<!-- Basic Structure of HTML Tables -->
+
+<!-- <table> - Container for the table -->
+<!-- <thead> - Header section of the table -->
+<!-- <tr> - Table row -->
+<!-- <th> - Table header cell -->
+<!-- <td> - Table cell -->
+<!-- <tbody> - Body section of the table -->
+<!-- <tfoot> - Footer section of the table -->
+
+
+<!-- --------------------------------------------------------------- -->
+<!-- Example HTML Table -->
+
+
+<table>
+
+    <!-- Table Caption -->
+    <caption>Monthly Expenses January</caption>
+
+
+    <!-- Column Grouping and Styling -->
+    <colgroup>
+        <col>                                       <!-- First column -->
+        <col style="background-color: aqua;">       <!-- Second column with aqua background -->
+    </colgroup>
+
+
+    <!-- Table Header -->
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Cash</th>
+        </tr>
+    </thead>
+
+
+    <!-- Table Body -->
+    <tbody>
+        <tr>
+            <td>01/01</td>
+            <td>$12</td>
+        </tr>
+        <tr>
+            <td colspan="2">Return processed!</td>    <!-- Cell spanning two columns -->
+        </tr>
+        <tr>
+            <td rowspan="2">02/02</td>                <!-- Cell spanning two rows -->
+            <td>$23</td>
+        </tr>
+        <tr>
+            <td>$24</td>
+        </tr>
+    </tbody>
+
+
+    <!-- Table Footer -->
+    <tfoot>
+        <tr>
+            <td>Total Expenses</td>
+            <td>$59</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+<!-- Additional Notes and Best Practices -->
+<!-- - Use <thead>, <tbody>, and <tfoot> for semantic clarity and accessibility. -->
+<!-- - Place <tfoot> after <thead> and <tbody> in the markup; it renders at the bottom. -->
+<!-- - Avoid using tables for layout; prefer CSS grid or flexbox. -->
+<!-- - Nested tables are possible but not recommended. -->
+<!-- - Style tables with CSS for better appearance control. -->
+<!-- - Use CSS classes and IDs for consistent and reusable styles. -->
+
+<!-- --------------------------------------------------------------- -->

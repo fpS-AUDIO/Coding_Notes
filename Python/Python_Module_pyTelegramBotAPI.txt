@@ -1,0 +1,47 @@
+
+>>>>>>>>>> pyTelegramBotAPI <<<<<<<<<<
+
+
+https://core.telegram.org/bots
+pyp install pyTelegramBotAPI
+
+
+
+------------------------------------------------------------------------------------------------
+BASE
+
+
+# connettersi al bot
+import telebot
+token = 'token'
+bot = telebot.TeleBot(token)
+
+
+# farlo funzionare in continuazione, mettere a fine script
+bot.polling()
+
+
+
+------------------------------------------------------------------------------------------------
+COMMAND TRACKING
+
+
+@bot.message_handler(commands=['start', 'help'])
+def echo(message):
+    user = message.from_user.first_name                                 # riconosce il nome dell'user
+    bot.reply_to(message=message, text="hello")                         # risponde a messaggio
+    bot.send_message(chat_id=message.chat.id, text="hello")             # manda un messaggio
+    bot.send_message(message.chat.id, f"Ciao {user}")                   # manda un messaggio con f" string e il nome dell'user
+
+
+
+
+
+
+
+
+
+
+
+
+

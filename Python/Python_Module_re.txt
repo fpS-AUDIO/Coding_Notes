@@ -1,0 +1,243 @@
+
+>>>>>>>>>> Modulo re <<<<<<<<<<
+
+
+
+r'text_here'	<=	per fare una raw string
+rf'text_here'	<=	per fare una raw f string
+
+------------------------------------------------------------------------------------------------
+Modulo di default
+
+match object => object che tornano da metodi:
+    1.  re.match
+    2.  re.search
+    3.  re.fullmatch
+    4.  re.finditer
+
+
+------------------------------------------------------------------------------------------------
+4 MATODI CHE TORNANO MATCH OBJECT:
+
+re.match(espressione_regolare, testo)
+        torna object match 
+        cerca coincidenza dell'inizio del testo con pattern(espressione_regolare)
+        cerca dall'inizio la coincidenza
+        es: re.match(r'123', '123')             => match='123'
+        es: re.match(r'123', 'dsa123')          => None
+        es: re.match(r'123', '123dasd')         => match='123'
+
+re.search(espressione_regolare, testo)
+        torna object match
+        e' uguale a re.match ma cerca la coincidenza da qualsiasi parte
+        es: re.search(r'123', 'da123ds')        => match='123'
+ 
+re.fullmatch(espressione_regolare, testo)
+        torna object match
+        non cerca la coincidenza ma controlla se tutto il testo e' uguale al pattern
+        es: re.search(r'\d{3}', '123')            => match='123'
+        es: re.search(r'\d{3}', 'da123')          => None
+        es: re.search(r'\d{3}', '123ds')          => None
+
+re.finditer(espressione_regolare, testo)
+        Torna oggetto iterabile con object match
+        es:     iteratore1 = re.finditer(r'\d{3}', 'ds123gfg346dfdf765')
+                for i in iteratore1:
+                        print(i)
+
+
+------------------------------------------------------------------------------------------------
+ALTRI METODI DEL MODULO RE CHE NON TORNANO MATCH OBJECT:
+
+re.findall(espressione_regolare, testo)
+        Torna la lista con tutte le coincidenze del pattern nel testo
+        es: re.findall(r'\d{3}', 'ds123gfg346dfdf765')  =>      [123,346,765]
+
+		Se ci sono gruppi:
+		Torna la lista con le tuple dei gruppi
+		e la parte dell'espressione regolare non rinchiusa nel gruppo viene ignorata
+
+
+re.split(espressione_regolare, testo, countX)
+        Torna la lista con elementi in str divedendo il testo nel punto dove trova la coincidenza
+        countX e' un parametro non obbligatorio e indica quante volte al massimo facciamo split
+
+		Se ci sono gruppi:
+		Se mettiamo una parte dell'espressione regolare nel gruppo
+		nella lista finale, nel punto della divisione ci sara' anche il risultato del gruppo
+		es:	res = re.split(r'\s([+-*/])\s', '2 + 2 * 2 - 5 / 6'
+			print(res)	=> ['2', '+', '2', '*', '2', '-', '5', '/', '6']
+			senza gruppo ([+-*/]) nella lista finale "res" ci sarebbero solo i numeri senza segni
+
+
+re.sub(espressione_regolare, nuovo_testo, testo, count)
+        Sostituisce la coincidenza con il "nuovo_testo"
+        countX e' un parametro non obbligatorio e indica quante volte al massimo sostituiamo il testo
+
+		Se ci sono gruppi:
+		La parte del "nuovo_testo" si puo' sostituire con il numero del gruppo dell'espressione_regolare
+		es:	num = "Numero: "
+			re.sub(r'(test)(\d)', rf'{num}\2\1ooo', 'test1 test2 test3')
+			risulatato: Numero: 1testooo Numero: 2testooo Numero: 3testooo
+			abbiamo sostituito il posto mettendo prima il secondo gruppo e poi il primo
+			ed abbiamo aggiunto elementi in piu' facendolo diventare una rf'' string
+		
+		In piu' si puo' sosituire "nuovo_testo" con una funzione o una lambda funzione
+		es:	def func(x):				# 'x' e' il match object
+				print(x)
+				word = x[0]				# per avere tutte le coincidente del pattern
+				print(word)
+				return f'{word[4]}{[:4]}'	# torna prima il quarto index della stringa word e poi
+									tututto fino al quarto index => 1test 2test 3test
+			re.sub(r'(test)(\d)', func, 'test1 test2 test3')
+
+			re.sub(r'(\d{3})', labda match1: str(int(macth1[0] ** 2)), '234 633 123')
+
+		
+
+re.subn(espressione_regolare, nuovo_testo, testo, count)
+        E' uguale al metodo sub ma al posto di tornare il testo gia' modificato...
+        ... torna tuple con il primo elemento il testo gia' modificato
+        e il secondo elemento e' la quantita' delle volte che e' stata fatta la sostituzione
+
+		Se ci sono gruppi:
+		Stessa cosa come metodo re.sub
+
+
+re.escape(espressione_regolare)
+        Aggiunge il carattere di escape \ prima di ogni simbolo speciale
+
+
+re.compile(espressione_regolare)
+	Permette di compilare un'espressione regolare in una variabile
+	es:
+	var = re.compile(r'\d{3}')
+	var.findall('123')	=	re.findall(r'\d{3}', '123')
+
+
+------------------------------------------------------------------------------------------------
+METODI PER GRUPPI DEL MATCH OBHECT:
+
+esempio: 
+Match1 = re.search(r'(?P<nome_gruppo1>\d{2})(?P<nome_gruppo1>\d{2})(\d{2})', '1243123543543512')
+
+	1.  Match1.group
+		Match.group(0)
+		Mostra quello che ha preso l'espressione regolare
+		Come parametro prende il numero del gruppo.
+		Gruppo 0 e' TUTTA la regular expression anche se non ha gruppi
+		es: print(Match1.group(0)) = print(Match1[0])
+		es: print(Match1.group("nome_gruppo")) = print(Match1["nome_gruppo"])
+
+	2.  Match1.groups
+		Non prende parametri
+		Torna tutti i gruppi che ha trovato l'espressione regolare
+		Se non ci sono i gruppi restituisce una tupla vuota
+		
+	3.  Match1.groupdict
+		Torna solo i gruppi che hanno un nome
+		E torna un dizionario dove key(nome_gruppo):value(valore_del_gruppo)
+
+	4.  Match1.start
+		Torna str con index dell'inizio dell'espressone regolare (da dove trova la coincidenza)
+		Match1.start(numero_gruppo/nome_gruppo)
+
+	5.  Match1.end
+		Torna str con index della fine dell'espressione regolare (dove finisce la coincidenza)
+		Match.end(0) => 3
+
+	6.  Match1.span
+		Torna tuple con inizio e fine della coincidenza dell'espressione regolare
+
+
+------------------------------------------------------------------------------------------------
+FLAGS:
+
+Flags:
+	- consentono di cambiare il comportamento delle espressioni regolari. 
+	- hanno il nome lungo e il nome corto
+	- ci sono tre metodi per usarli:
+		1. Scrivere i flag alla fine con parametro keyword "flags".
+			re.findall(r'I like flags', 'i like flags I LIKE FLAGS I like flags', flags=re.IGNORCASE + re.MULTILINE + re.DOTALL)
+
+		2. Scrivere i flag alla fine con parametro keyword "flags" ma abbreviato.
+			re.findall(r'I like flags', 'i like flags I LIKE FLAGS I like flags', flags=re.S + re.M)
+
+		3. Scrivere i flag all'inizio nell'espressione regolare con r'(?flags)....'
+			re.findall(r'(?ims)I like flags', 'i like flags I LIKE FLAGS I like flags')
+
+
+Flag types:
+
+	1). re.INGORCASE = re.I
+		esegue un confronto senza tener conto del registro
+		cioe' r'(?i)spam'	=> SPAM spam spAM
+
+	2). re.LOCALE = re.L
+		rende i metasimboli \w \W \b \B dipendenti dal sistema locale e non dal database Unicode.
+		cioe' per Unicode \w = [A-Za-z] e non prende, per esempio, alfabeto cirilico
+		se nel sistema e' impostato anche cirilico con (?l) le lettere ciriliche come "ё" vengono considerate lettere \w
+		rallenta un po' la compilazione
+
+	3). re.MULTILINE = re.M
+		per fare funzionare i metasimboli '^' e '$' non solo all'inizio ed alla fine di ogni linea,
+		ma farli funzionare anche in ogni riga di ogni linea. 
+
+	4). re.NOFLAG
+		indica che il flag non viene utilizzato e il valore è 0. 
+		questo flag puo' essere usato come valore predefinito per l'argomento di una funzione ...
+		... o come valore di base, che verrà combinato condizionalmente con altri flag.
+		esempio:
+		def myfunc(text, flag=re.NOFLAG):
+			return re.match(text, flag)
+
+i prossimi funzionano solo da Python 3.11:
+
+	5). re.DOTALL = re.S
+		obbliga metasimbolo "." corrispondere a qualsiasi altro simbolo compreso "\n".
+		senza re.DOTALL "." corrisponde a tutto ma non a "\n".
+		
+	6). re.ASCII = re.A
+		obbliga metasimboli \w, \W, \b, \B, \s, \S eseguire un confronto solo con ASCII al posto di intero database Unicode.
+		funziona solo con pattern del Unicode e non con i byte string b'...'
+
+	7). re.VERBOISE = re.X
+		consente di scrivere le espressioni regolari in modo piu' leggibile perche'
+		lo spazio dentro espressione regolare viene ignorato
+		almeno che non e' dentro una classe di simboli opure e' preceduto dal simbolo di escape backslash(\)
+		In piu' re.VERBOISE consente di aggiungere i commenti(#) che ovviamente sarannop ignorati.
+		esempio:
+		charref = re.compile(r"""
+		&[#]                  # Start of a numeric entity reference
+		(
+			0[0-7]+         # Octal form
+		    | [0-9]+          # Decimal form
+		    | x[0-9a-fA-F]+   # Hexadecimal form
+		)
+		;                   # Trailing semicolon
+		""", re.VERBOSE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

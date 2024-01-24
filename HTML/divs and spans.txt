@@ -1,0 +1,46 @@
+
+<!-- DIVS AND SPANS --> 
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+<div> (Division)
+
+    - A block-level element used to group together HTML elements and apply CSS styling or JavaScript functionality.
+    - Represents a generic container with no semantic meaning.
+    - By default, it occupies the full width available and starts on a new line.
+
+Example:
+
+<div class="groupone">
+    <!-- Other elements here -->
+    <p>Paragraph inside a div.</p>
+</div>
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+<span>
+
+    - An inline element used for grouping a small section of HTML elements, often for styling purposes.
+    - Does not cause a line break and takes up only as much width as necessary.
+    - Useful for styling a part of a text, or for applying CSS to a small segment without affecting the entire block.
+
+Example:
+
+<p>This is a paragraph with <span class="highlight">highlighted text</span>.</p>
+
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+Best Practices:
+
+    - Use <div> for grouping larger blocks of code and creating layout structures.
+    - Use <span> for smaller, inline elements, especially within texts.
+    - Avoid overusing <div> tags, known as 'divitis'. 
+        Use semantic HTML5 elements (<header>, <footer>, <article>, etc.) where appropriate for better readability and SEO.
+    - Keep the class and id names descriptive for maintainability.
+
+
+    

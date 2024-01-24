@@ -1,0 +1,127 @@
+
+>>>>>>>>>> Standard functions and methods <<<<<<<<<<
+
+
+
+set()
+example: prime_numbers = {2, 3, 5, 7}
+------------------------------------------------------------------------------------------------
+ALL METHODS FOR SETS
+
+set.add(elem)
+    aggiunge elemento al set, se e' gia' presente non fa nulla
+
+set.clear()
+    rimuove tutti gli elementi dal set
+
+set.copy()
+    ritorna una coppia del set
+    si puo' farlo anche usando "=": new_set = set
+
+setA.difference(setB)
+    ritorna un set che contiene solo gli elementi del setA che non ci sono nel setB
+    i 2 set di origine rimangono invariati
+    si puo' farlo anche usando "-": setA - setB
+
+setA.difference_update(setB)
+    fa setA - setB (come deffirence()) ma aggiornando il setA che ha chiamato il metodo
+
+set.discard(x)
+    rimuove elemento x dal set
+    non succede nulla se il set non contiene elemento x 
+
+setA.intersection(*setB, setC...)
+    ritorna un set con gli elementi in comune di tutti i set
+    si puo' farlo anche usando "&": setA & setB & setC...
+    
+setA.intersection_update(*setB, setC...)
+    cerca gli elementi in comune di tutti i set ed aggiorna il setA che ha chiamato il metodo
+    lasciando solo gli elementi che hanno in comune tutti i set.
+    i set passati come parametro rimangono invariati
+
+setA.isdisjoint(iterable)
+    ritorna True se non ci sono elementi in comune, altrimenti e' False
+    si puo' passare un iterabile come argomento che viene convertita in set prima di fare il confronto
+    se iterabile e' dict vengono confrontati solo le chiavi
+
+setA.issubset(setB)
+    ritorna True se tutti gli elementi del setA sono presenti nel setB, altrimenti e' False
+
+setA.issuperset(setB)
+    ritorna True se setA contiene tutti gli elementi del setB
+
+set.pop()
+    rimuove un elemento a random dal set e ritorna questo elemento eliminato
+    TypeError se il set e' vuoto
+
+set.remove(x)
+    rimuove elemento x dal set
+    KeyError se elemento non esiste
+
+setA.symmetric_difference(setB)
+    ritorna un set che contiene solo gli elementi originali dei 2 set, e non quelli in comune
+    se sono superset uno dell'altro, torna un set vuoto
+    si puo' farlo anche usando "^": setA ^ setB ^ setC (usando ^ funziona con piu' di 2 set)
+
+setA.symmetric_difference_update(setB)
+    aggiorna satA che ha chiamato metodo dopo aver individuato solo gli elementi originali dei 2 set
+    quindi vengono tolti dal setA elementi in comune ed aggiunti elementi dal setB che non sono in comune
+    setB rimane invariato
+
+setA.union(*setB, setC...)	
+    ritorna un set che contiene elementi di tutti i set
+    si puo' farlo anche usando "|": setA | setB | setC
+
+setA.update(*iterable1, iterable2...)	
+    aggiorna setA che ha chiamato il metodo aggiungengogli tutti gli elementi degli iterabili passati come argomento
+    con dizionario vengono presi solo le chiavi
+    con str vengono prese le lettere
+
+frozenset(iterable)
+    ritorna un oggetto immutabile frozenset
+    senza parametri torna un frozenset vuoto
+
+
+------------------------------------------------------------------------------------------------
+ALL FUNCTIONS FOR SETS
+
+all(iterable)
+    ritorna True se tutti gli elementi dell'iterable sono True oppure se iterable e' vuoto
+    altrimenti e' False
+
+any(iterable)
+    ritorna True se almeno 1 elemento dell'iterable e' True, altrimenti e' False, anche se iterable e' vuota
+
+enumerate(iterable, start=0)
+    aggiunge un contatore ad una iterabile e la ritorna come enumerate object
+    start (optional, default: 0) = da quanto inizia il contatore
+    si puo' convertire il lista enumerate object prima di printarlo
+
+len(iterable)
+    ritorna il numero degli elementi che contiene un iterable
+
+max(iterable)
+    ritorna elemento piu' grande
+
+min(iterable)
+    ritorna elemento piu' piccolo
+
+sorted(iterable, key=None, reverse=False)
+    ritorna una lista ordinata contente gli elementi del set (non ordina il set stesso)
+    key=None (optional) = funzione secondo quale ordinare
+    reverse=False (optional) = se True ordina dal piu' grande al piu' piccolo
+
+sum(iterable, start)
+    ritorna la somma degli elementi se sono numeri
+    start (optional, default:0) = numero da aggiungere alla somma degli elementi
+
+
+
+
+
+
+
+
+
+
+

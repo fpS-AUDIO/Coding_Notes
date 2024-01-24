@@ -1,0 +1,91 @@
+
+
+
+<!-- HTML LISTS --> 
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+Ordered Lists (<ol>)
+
+Used for lists where the order of items is important.
+
+Attributes:
+    - type: Specifies the type of list marker (e.g., 1, A, a, I, i).
+    - start: Specifies the start number of the list.
+    - reversed: Indicates the list should be in reverse order.
+
+
+Example:
+
+<ol type="A" start="3">
+  <li>Third item</li>
+  <li>Fourth item</li>
+</ol>
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+Unordered Lists (<ul>)
+
+Used for lists where the order of items is not important.
+
+Attributes:
+    - type: Deprecated. Previously used to define the bullet style (e.g., disc, circle, square).
+
+Example:
+
+<ul>
+  <li>First item</li>
+  <li>Second item</li>
+</ul>
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+Description Lists (<dl>)
+
+Used for lists where you have a set of terms and descriptions.
+Contains <dt> (Description Term) and <dd> (Description Data) elements.
+
+Example:
+
+<dl>
+  <dt>HTML</dt>
+  <dd>Hypertext Markup Language</dd>
+  <dt>CSS</dt>
+  <dd>Cascading Style Sheets</dd>
+</dl>
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+Nested Lists
+
+Lists can be nested within other lists.
+
+Example:
+
+<ul>
+  <li>First item</li>
+  <li>
+    Second item with nested list:
+    <ol>
+      <li>Sub-item 1</li>
+      <li>Sub-item 2</li>
+    </ol>
+  </li>
+</ul>
+
+
+
+<!-- --------------------------------------------------------------------- --> 
+Best Practices
+
+    - Use ordered lists for sequences or rankings, and unordered lists for general lists without an inherent order.
+    - Description lists are ideal for glossaries, key-value pairs, or Q&A formats.
+    - Remember to use CSS for styling lists, as the type attribute in <ul> is deprecated.
+    - Keep list items concise and to the point for better readability and accessibility.
+
+
+    

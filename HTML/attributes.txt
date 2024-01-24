@@ -1,0 +1,94 @@
+
+
+
+
+<!-- HTML ATTRIBUTES GUIDE -->
+
+<!-- Basic Syntax of HTML Attributes -->
+<!-- <element attribute_name="attribute_value"> -->
+
+
+<!-- --------------------------------------------------------------- -->
+
+
+<!-- Commonly Used HTML Attributes: -->
+
+
+
+<!-- Image (<img>) Attributes -->
+<!-- 'src' - Specifies the URL of the image -->
+<!-- 'alt' - Provides alternate text for the image if it cannot be displayed -->
+<img src="path/to/image.png" alt="Image description">
+
+
+<!-- Anchor (<a>) Attributes -->
+<!-- 'href' - Specifies the URL of the page the link goes to -->
+<!-- 'title' - Provides extra information about the link (displayed as a tooltip) -->
+<!-- 'target' - Specifies where to open the linked document -->
+<!-- 'rel' - Defines the relationship between the current and linked documents -->
+<a href="http://www.example.com" title="Visit Example" target="_blank" rel="noopener">Open in new tab</a>
+
+
+<!-- Boolean Attributes -->
+<!-- Attributes that are either true or false -->
+<!-- Example: 'checked' attribute for input type checkbox -->
+<input type="checkbox" checked>
+
+
+<!-- Linking to an Email Address -->
+<!-- 'mailto:' scheme in 'href' attribute for creating email links -->
+<a href="mailto:example@example.com">Send Email</a>
+
+
+<!-- Linking Within the Same Page -->
+<!-- Use 'id' attribute to define sections -->
+<!-- Link to sections using '#' in 'href' attribute -->
+<h2 id="about">About Section</h2>
+<a href="#about">Jump to About</a>
+
+
+<!-- Styling with 'class' and 'id' Attributes -->
+<!-- 'class' - Used for applying CSS to multiple elements -->
+<!-- 'id' - Unique identifier for styling a single element -->
+<div class="container">
+    <!-- Content goes here -->
+</div>
+<div id="header">
+    <!-- Content goes here -->
+</div>
+
+
+<!-- Data Attributes (data-*) -->
+<!-- Custom attributes to store extra information -->
+<div data-product="12345" data-color="blue">
+    <!-- Content goes here -->
+</div>
+
+
+<!-- Accessibility Attributes (aria-*) -->
+<!-- Enhance website accessibility -->
+<button aria-label="Close">X</button>
+
+
+<!-- Form Attributes -->
+<!-- 'placeholder' - Provides a hint to the user about what to enter in the input -->
+<!-- 'required' - Indicates that the input field is required -->
+<input type="text" placeholder="Enter your name" required>
+
+
+<!-- Additional Attributes -->
+<!-- 'download' - Indicates that the target will be downloaded when a user clicks on the hyperlink -->
+<a href="path/to/file" download>Download File</a>
+<!-- 'lang' - Specifies the language of the element’s content -->
+<p lang="en-us">English Text</p>
+<!-- 'role' - Defines the role of an element in the web page -->
+<div role="navigation"></div>
+
+
+<!-- --------------------------------------------------------------- -->
+
+<!-- Notes:
+     - Attributes provide additional information about elements.
+     - They are used to define properties, control behavior, or specify data values.
+     - It's important to use appropriate attributes to enhance functionality and accessibility.
+-->

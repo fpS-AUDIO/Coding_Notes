@@ -1,0 +1,120 @@
+
+
+
+<!-- HTML FORMS GUIDE -->
+
+
+<!-- Forms are used to collect user input. The <form> element can contain various types of input elements. -->
+
+<!-- Basic Form Structure -->
+<form class="" action="" method="">
+    <input type="text" name="" value="">
+    <input type="text" name="" value="">
+</form>
+
+<!-- 'class' is for CSS styling.
+     'action' is the URL where the form data will be sent.
+     'method' is the HTTP method (GET or POST) to be used when sending form data.
+     'type' specifies the type of input.
+     'name' is the name of the input, used to reference the form data.
+     'value' is the default value inside the input field. -->
+
+
+<!--    There are different types of input tags in HTML:
+        https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+        https://www.w3schools.com/tags/tag_input.asp   -->
+
+
+
+<!-- --------------------------------------------------------------- -->
+
+
+
+<!-- Example of an Email and Password Form -->
+<form action="https://facebook.com/" method="get">
+    <p>Enter your email and password:</p>
+    <input type="email" name="usermail" placeholder="Email here" required>
+    <input type="password" name="userpassword" placeholder="Password" required>
+    <input type="submit" value="Submit">
+</form>
+<!-- Submitting the form sends the user to the specified action URL with the input data. -->
+
+
+<!-- Label Tag -->
+<!-- The <label> tag is used to define labels for <input> elements. -->
+
+<!-- Using Label with 'for' Attribute -->
+<form>
+    <label for="userinput">Enter text:</label>
+    <input id="userinput" type="text" name="variable_user_input" value="text here">
+</form>
+<!-- The 'for' attribute of the label should match the 'id' of the input. This links the label with the input. -->
+
+
+<!-- Additional <form> Attributes -->
+<!-- 'autocomplete': Specifies whether a form should have autocomplete on or off.
+     'novalidate': Specifies that the form should not be validated when submitted. -->
+
+
+<!-- Additional <input> Attributes -->
+<!-- 'checked': Specifies that an input element should be pre-selected (for checkboxes and radio buttons).
+     'disabled': Disables the input element.
+     'readonly': The input element is visible but not editable.
+     'required': Specifies that an input field must be filled out before submitting the form.
+     'multiple': Allows multiple selections (for file input and select element).
+     'placeholder': Provides a hint to the user about what to enter in the input.
+     'maxlength': Defines the maximum number of characters allowed in the input.
+     ... and more. -->
+
+
+<!-- Fieldset and Legend -->
+<!-- <fieldset> groups related elements in a form. <legend> defines a caption for the <fieldset>. -->
+<form action="submission.php" method="POST">
+    <fieldset>
+        <legend>Personal Information</legend>
+        <!-- Form elements here... -->
+    </fieldset>
+</form>
+
+
+<!-- Data List -->
+<!-- The <datalist> element contains a set of <option> elements that represent the permissible values for other controls. -->
+<input list="browsers">
+<datalist id="browsers">
+    <option value="Chrome">
+    <option value="Firefox">
+    <!-- More options... -->
+</datalist>
+
+
+<!-- Input Types -->
+<!-- There are various input types like 'password', 'email', 'date', 'checkbox', 'radio', 'file', etc. -->
+
+
+<!-- Example of Checkbox -->
+<label for="interestSport">Interest in Sports:</label>
+<input type="checkbox" id="interestSport" name="sport" value="Basketball" checked>Basketball
+<input type="checkbox" id="interestSport" name="sport" value="Football">Football
+<!-- ... and more. -->
+
+
+<!-- Color Input -->
+<label for="favcolor">Favorite Color:</label>
+<input type="color" id="favcolor" name="favcolor">
+
+
+<!-- File Input -->
+<label for="fileUpload">Upload File:</label>
+<input type="file" id="fileUpload" name="fileUpload" multiple>
+
+
+<!-- Radio Buttons -->
+<label for="gender">Gender:</label>
+<input type="radio" id="gender" name="gender" value="Male">Male
+<input type="radio" id="gender" name="gender" value="Female">Female
+
+
+<!-- Reset and Submit Buttons -->
+<input type="reset">
+<input type="submit" value="Submit">
+

@@ -1,0 +1,248 @@
+
+>>>>>>>>>> Standard functions and methods <<<<<<<<<<
+
+
+------------------------------------------------------------------------------------------------
+STRING METHODS
+
+>>> S = 'spam'
+
+print(S + S)                
+        concatenazione
+    
+print(S * 3)                
+        dupplicazione della stringa
+
+len(S)                      
+        lunghezza della stringa
+
+S[2]                        
+        Accesso per index
+
+S[i:j:step]                 
+        Estrazione con slice [inizio : fine non compresa : passo]  
+
+S.find(text, start, end) 
+        Cerca text dentro la stringa. Restituisce index della prima coincidenza oppure -1
+        start, end sono optional per il range 
+
+S.rfind(text, start, end) 
+        Cerca text dentro la stringa. Restituisce index dell'ultima coincidenza oppure -1
+        start, end sono optional per il range
+
+S.index(text, start, end)
+        Cerca text dentro la stringa. Restituisce index della prima coincidenza oppure ValueError
+        start, end sono optional per il range
+    
+S.rindex(text, start, end)
+        Cerca text dentro la stringa. Restituisce index dell'ultima coincidenza oppure ValueError
+        start, end sono optional per il range
+    
+S.replace(old, new, count)
+        Cerca old e lo sostituisce con new
+        count e' optional per specificare quante volte viene rimpiazzato. Di default rimpiazza tutto
+
+S.split(separator, maxsplit)
+        Restituisce lista con elementi della stringa divisa nel punto di separator
+        separator (optional) dove viene tagliata la stringa. Di default lo fa negli spazzi.
+        maxsplit (optional) per quante volte al massimo viene tagliata la stringa. Di default lo fa dapertutto.
+
+S.isdigit()
+        Restituisce True se tutti gli elementi della stringa sono numeri.
+        Se almeno 1 carattere non e' numero e' False.
+
+S.isalpha()
+        Restituisce True se tutti gli elementi della stringa sono lettere.
+        Se almeno 1 carattere non e' lettera e' False.
+
+S.isalnum()
+        Restituisce True se tutti gli elementi della stringa sono lettere o numeri.
+        Se almeno 1 carattere non e' lettera o numero e' False.
+
+S.islower()
+        Restituisce True se tutti gli elementi della stringa sono lowercase.
+        Se almeno 1 carattere non e' lowercase e' False.
+
+S.isprintable()
+        Restituisce True se tutti gli elementi della stringa sono printable.
+        E' False se c'e' almeno un 1 carattere non printable (es: \n)
+
+S.isnumeric()
+        Restituisce True se tutti gli elementi della stringa sono numeri.
+        Se c'e' almeno un carattere non numero e' False. (½ e' anche numero)
+
+S.isidentifier()
+        Restituisce True se la stringa e' un identificatorw valido.
+        Restituisce False se la stringa non e' un identificatorw valido.
+        Valid identifier =>     se S contiene carattere alfanumerici o underscore "a-z", "0-9", o "_"
+                                non puo' iniziare con un numero oppure avere degli spazzi
+
+S.isdecimal()
+        Restituisce True se tutti gli elementi della stringa sono caratteri decimali.
+        Restituisce False se almeno 1 carattere non lo e'.
+
+S.isupper()
+        Restituisce True se tutti gli elementi della stringa sono uppercase.
+        Se almeno 1 carattere non e' uppercase e' False.
+
+S.isspace()
+        Restituisce True se tutti gli elementi della stringa sono fatti da qualsiasi tipo di spazio bianco (spazio, \t \n ...)
+        Se c'e' almeno 1 carattere visibile e' False.
+
+S.istitle()
+        Restituisce True se tutti le parole (non conta per simboli) iniziano la maiuscola e proseguono con le minuscole.
+        In tutti gli altri casi e' False.
+
+S.upper()
+        Trasforma tutta la string in uppercase
+
+S.lower()
+        Trasforma tutta la string in lowercase
+        meglio usare str.casefold() perche' non trasfroma alcuni caratteri come "ß"
+
+S.casefold()
+        Restituisce una stringa nuova trasformandola in lowercase
+        Trasforma anche "ß"
+
+S.startswith(text, start, end)
+        Restituisce True se la string inizia con text, altrimenti e' False
+        start e end sono optional per il range
+        S.startswith((text1, text2...), start, end) per scegliere uno dei due
+
+S.endswith(text, start, end)
+        Restituisce True se la string finisce con text, altrimenti e' False
+        start e end sono optional per il range
+        S.endswith((text1, text2...), start, end) per scegliere uno dei due
+
+S.join(iterable)
+        Restituisce una stringa unendo gli elementi di un iterable nel punto di S (es: S = ', ')
+
+ord(carattere)
+         Prende come parametro un carattere e restituisce il suo corespettivo numero Unicode
+
+chr(numero)
+        Prende come parametro un numero e restituisce il suo corespettivo carattere Unicode (0-1114111)
+
+S.capitalize()
+        Trasforma il primo carattere di S in uppercase e tutti gli altri caratteri in lowercase
+
+S.center(width, fill)
+        Restituisce la stringa centrata di lunghezze width
+        fill e' optional ed e' il simbolo chi viene aggiunto ai lati per arrivare a lunghezza desiderata. (spazio di default)
+
+S.count(text, start, end)
+        Restituisce il numero di coincidenze di text in S (cerca text in S e dice quante volte l'ha trovato)
+        start e end sono optional per il range
+
+S.expandtabs(tabsize)
+        Restituisce una coppia di S dove tutti \t vengono sostituiti con uno o piu' spazi in base alla colonna
+        tabsize e' iptional, di default e' 8 ed indica la lunghezza di \t
+
+S.lstrip(chars)
+        Restituisce una coppia remuovendo una serie di caratteri a sinistra della S (inizio)
+        chars e' optional, idica insieme di carattere (senza ordine) da rimuovere e, se non e' specificato, indica tutti gli spazzi
+        
+S.rstrip([chars])
+        Restituisce una coppia remuovendo una serie di caratteri a destra della S (fine)
+        chars e' optional, idica insieme di carattere (senza ordine) da rimuovere e, se non e' specificato, indica tutti gli spazzi
+
+
+S.strip([chars])
+        Restituisce una coppia remuovendo una serie di caratteri a sinistra e destra della S
+        chars e' optional, idica insieme di carattere (senza ordine) da rimuovere e, se non e' specificato, indica tutti gli spazzi
+
+S.removeprefix(str)
+        remuove un prefisso (inizio) espresso in str (con ordine) se presente, altrimenti restituisce stringa originale
+
+S.removesuffix(str)
+        remuove un suffisso (fine) espresso in str (con ordine) se presente, altrimenti restituisce stringa originale
+
+S.partition(sep_text)
+        Divide la S 1 volta nel punto di sep_text dove trova la prima coincidenza da sinstra verso destra
+        Restituisce una tupla con (parte_prima_di_sep, sep_text, parte_dopo_sep)
+        Se non trova sep_text restituisce una tupla con S e 2 spazi vuoti (S, '', '')
+
+S.rpartition(sep)
+        Divide la S 1 volta nel punto di sep_text dove trova l'ultima' coincidenza da sinstra verso destra
+        Restituisce una tupla con (parte_prima_di_sep, sep_text, parte_dopo_sep)
+        Se non trova sep_text restituisce una tupla con 2 spazi vuoti e S ('', '', S)
+
+S.swapcase()
+        Restituisce la stessa S ma trasfromando lowercase in uppercase e uppercase in lowercase
+
+S.title()
+        Restituisce una stringa con la prima lettera di ogni parola in maiuscola e tutte le altre in minuscole
+        
+S.zfill(width)
+        Restituisce una stringa di lunghezza width.
+        Se width e' superiore alla lunghezza originale aggiunge dei "0" all'inizio fino ad arrivare alla lunmghezza indicata
+        Se width e' uguale o minore alla lunghezza originale, torno la S originale
+        Se S inizia con + o - gli "0" saranno aggiunti dopo il segno
+
+S.ljust(width, fillchar)
+        Restituisce una stringa allineata a sinsitra di lunghezza width
+        Se la lunghezza e' superiore aggiunge carattere fillchar espresso in str alla fine
+        fillchar e' optional, di default e' spazio ed e' il segno da aggiungere alla fine
+        Se width e' uguale o minore alla lunghezza originale, torno la S originale
+
+
+S.rjust(width, fillchar)
+        Restituisce una stringa allineata a destra di lunghezza width
+        Se la lunghezza e' superiore aggiunge carattere fillchar espresso in str all'inizio
+        fillchar e' optional, di default e' spazio ed e' il segno da aggiungere all'inizio
+        Se width e' uguale o minore alla lunghezza originale, torno la S originale
+
+S.format(*args, **kwargs)
+        template.format(p0, p1, ..., k0=v0, k1=v1, ...)
+        https://www.programiz.com/python-programming/methods/string/format
+        https://pythonworld.ru/osnovy/formatirovanie-strok-metod-format.html
+
+S.format_map(**mapping)
+        E' simile al metodo format().
+        L'unica differenza e' che format() copia il dizionario e format_map() crea uno nuovo o viciversa lol
+
+S.translate(table1)
+        Restituisce una stringa dove ogni carattere e' stato trasformato utilizzando la mapping table presa come argomento.
+        Utilizza metodo statico str.maketrans(x)
+
+        table1 = str.maketrans(x, y, z)
+                Restituisce un mapping table ("tabella di trasfromazione") per la traduzione utilizzabile dal metodo translate()
+                x = obbligatorio.
+                        . Se e' specificata solo x, questa deve essere un dizionario con descrizione del rimpiazzamento
+                                dict = {elemento: elemento_trasformato} oppure dict con ASCII code dict = {83:  80}
+                        . Se ci sono da 2+ argomenti deve essere un stringa che specifica il carattere da rimpiazzare
+                y = optional. Stringa della stessa lunghezza di x ed x sara' rimpiazzata con y
+                z = optional. Stringa che specifica i caratteri da rimuovere dalla stringa originale. Prima vengono remossi e poi trasformati.
+
+S.splitlines(keepend)
+        Restituisce una lista divedendo la stringa nei punti di interruzione di riga (\n \r \u2029....) o con stringhe multiline.
+        keepend e' optional, di default e' False.
+                . Se e' True include i separatori di linee nella lista finale
+                . Se e' Falsa esclude i separatori di linee nella lista finale
+                . Se e' un numero mostra quani separatori includere
+
+S.encode(encoding, errors)
+        Restituisce la verisone codificata della stringa (b'str'). Quindi codifica un valore in formato bytes (str -> bytes)
+        Di default non prende i parametri utilizzando uft-8 e nel caso di fallimento restituisce UnicodeDecodeError exception.
+        encoding (optional) tipo di encoding da utilizzare
+        errors (optional) risposta durante falimento:
+                . strict = default response rasing UnicodeDecodeError exception
+                . ignore = ignores the unencodable unicode from the result
+                . replace = replaces the unencodable unicode to a question mark ?
+                . xmlcharrefreplace =  inserts XML character reference instead of unencodable unicode
+                . backslashreplace = inserts a \uNNNN escape sequence instead of unencodable unicode
+                . namereplace = inserts a \N{...} escape sequence instead of unencodable unicode
+
+S.decode()
+        Restituisce la verisone decodificata della stringa. Quindi decodifica oggetti bytes in un oggetto str (bytes -> str)
+        Tutto il resto e' uguale
+
+
+
+
+
+
+
+
+
+

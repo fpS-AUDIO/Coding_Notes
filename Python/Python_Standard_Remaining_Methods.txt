@@ -1,0 +1,118 @@
+
+
+
+
+
+
+
+
+
+
+
+
+print
+len
+int
+float
+list
+tuple
+dict
+set
+range
+bool
+enumerate
+zip
+def
+reversed
+sum
+min
+max
+sorted
+any
+all
+breakpoint
+dir
+vars
+type
+help
+open
+input
+repr
+super
+property
+issubclass 
+isinstance
+hasattr, getattr, setattr, delattr
+classmethod и staticmethod
+next
+iter
+callable
+filter and map
+Round
+divmod
+bin, oct and hex
+abs
+hash
+object
+
+
+
+
+ord и chr
+exec и eval
+compile
+slice
+bytes, bytearray и memoryview
+ascii
+frozenset
+__import__
+format
+pow
+complex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Встроенные функции Python
+	all()	any()	ascii()
+bin()	bool()	bytearray()	bytes()
+callable()	chr()	classmethod()	compile()
+complex()	delattr()	dir()
+divmod()	enumerate()	eval()	exec()
+filter()format()	frozenset()
+getattr()	globals()	hasattr()	hash()
+hex()	id()	input()	int()
+__import__()	iter()	isinstance()	issubclass()
+	list()	locals()	map()
+	memoryview()		next()
+oct()	object()	open()	ord()
+	property()	print()	range()
+repr()	reversed()		set()
+setattr()	slice()	sorted()
+staticmethod()	sum()	super()	
+type()	vars()	zip()	

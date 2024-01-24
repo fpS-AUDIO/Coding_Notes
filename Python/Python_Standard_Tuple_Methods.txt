@@ -1,0 +1,52 @@
+
+>>>>>>>>>> Standard functions and methods <<<<<<<<<<
+
+
+
+tuple = ()
+------------------------------------------------------------------------------------------------
+ALL FUNCTIONS AND METHODS FOR TUPLES
+
+
+len(tuple)
+    torna il numero di elementi che contiene la tupla
+
+max(tuple)
+    torna elemento della tupla con il valore piu' grande
+
+min(tuple)
+    torna elemento della tupla con il valore piu' piccolo
+
+tuple.index(x, a, b)
+    torna index della prima coincidenza di un specifico elemento di una tupla. ValueError se elemento non esiste
+    x = elemento da cercare
+    a, b sono optional per il range
+
+tuple.count(x)
+    torna il numero di quante volte compare la "x" dentro una tupla.
+    "x" puo' anche essere un'altra tupla, lista...
+
+tuple(x)
+    torna una tupla
+    x (optional) = oggetto iterabile oppure iteratore. Senza "x" torna tupla vuota.
+    P.S. da un dict prende solo i key
+
+sorted(tuple, reverse)
+    ordina la tupla in modo ascendente
+    reverse (optional) se reverse=True ordina in modo descendente
+    
+sum(tuple)
+    torna la somma degli elementi di una tupla
+
+
+
+
+
+
+
+
+
+
+
+
+

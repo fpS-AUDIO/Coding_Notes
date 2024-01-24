@@ -1,0 +1,95 @@
+
+>>>>>>>>>> Standard functions and methods <<<<<<<<<<
+
+
+------------------------------------------------------------------------------------------------
+NUMBERS 
+
+int(x) 
+	to convert x to a plain integer.
+
+long(x) 
+	to convert x to a long integer.
+
+float(x) 
+	to convert x to a floating-point number.
+
+complex(x) 
+	to convert x to a complex number with real part x and imaginary part zero.
+
+complex(x, y) 
+	to convert x and y to a complex number with real part x and imaginary part y. x and y are numeric expressions
+
+abs(x)
+	restituisce valore assoluto (modulo) quindi il numero positivo (es: da -33.1 restituisce 33.1)
+
+max()
+	restituisce elemento piu' grande
+	1. max(iterable, *iterables, key, deafult)
+		iterable = un iterabile come lista, tupla, dict...
+		*iterables (optional) = altri iterabili se ci sono...
+		key (optional) = funzione chiave in cui vengono passati gli iterabili e il confronto viene eseguito in base al suo valore di ritorno
+		deafult (optional) = cosa deve restituire se iterabile e' vuota (default: ValueError)
+	2. max(arg1, arg2..., key)
+		arg1 = un oggetto numero, stringa ecc...
+		arg2 = un oggetto numero, stringa ecc...
+		key (optional) = funzione chiave in cui vengono passati gli iterabili e il confronto viene eseguito in base al suo valore di ritorno
+
+min()
+	uguale a max() ma trova elemento piu' piccolo
+
+pow(x, y, z)
+	x ** y
+	z (optional) = modulo = (x**y) % z
+
+round(number, digits)
+	restituisce un numero floating-point arrotondato 
+	number = numero da arrotondare
+	digits (optional, default = 0) = quanti numeri mostrare dopo la virgola
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

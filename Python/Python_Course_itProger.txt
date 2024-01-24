@@ -1,0 +1,619 @@
+					************ A.I.'s CODE NOTES  PYTHON ************ 
+
+
+
+****** String functions and Indexes ************************************************************************************************************************************
+
+print ("Hello World! ", 7, 3, 1, sep="", end="!\n")		# print -> mostra info
+sep="x"									# sep -> si mette alla fine per sostituire tutti gli spazzi con "x"
+end="!\n"									# Stampa "!" alla fine  +  \n per fare new line
+print("\nT\nh\ni\nr\nd \nLine")					# \n -> new line si puo mettere ovunque
+print("\"Third line\"")							# \" -> per fare capire che " è solo un simbolo
+print("Fouth \t line")							# \t -> per fare piu spazzi tipo TAB
+print(6 * 6)								# print 6 per 6
+print(min(3, 6, 7, 8, -11, 12))					# min -> print valore minimo, quindi "-11"
+print(max(3, 6, 7, 8, -11, 12))					# max -> print valore massimo, quindi "12"
+print(abs(-5))								# abs -> print sempre valore positivo quindi "+5"
+print(pow(5,3))								# pow -> elevare alla potenza quindi 5 al cubo che fa 125	
+print(round(5/3))								# round -> arrotonda il risultato al piu vicino quindi "2" in questo caso
+print(5//3)									# // -> arrotonda la divisione al risulato minore quindi "1" in questo caso
+
+word = "Football, basketball, skate"     ( <- example )
+print(word[3])								# print index N.3 della variabile "word" quindi "t"
+print(len(word))								# len -> N. di caratteri (lunghezza) della variabile "word"
+print(word.count("a"))							# count -> conta quanti simboli "a" ci sono nella variabile "word"
+
+
+****** INPUT + TRANSFORM VAR. ************************************************************************************************************************************
+
+input("La vostra eta: ")						# funzione di inserimento dati
+Number = 5.61								# aggiunta variabile chaiama "Number", puo avere lettere, essere negativa, 
+del(number)									# del -> cancella variabile "number"
+print(word + str(number))						# str per fare diventare un numero in una string (es: word = "5")
+print(number + int(word))						# int fa trasforma una parola in un numero (integer o float)
+num1 = int(input("Insert the first number: "))			# input fa inserire al cliente variabile num1
+print(number + float(word))						# float fa diventare un numero con virgola
+bool()									# bool trasforma in varibile di tipo bool (false, true)
+
+
+
+
+****** IF ELIF ELSE ************************************************************************************************************************************
+
+username = str(input("Insert your username: "))				
+password = str(input("Insert your password: "))
+if username == "Mario" and password == "1234":
+    print ("Access granted")
+elif username == "Mario" and password != "1234":
+    print("Sorry Mario, your password is wrong. Try Again")
+    password = str(input("Mario, please insert your password: "))
+    if username == "Mario" and password == "1234":
+        print("Access granted")
+    else:
+        print("Sorry, access denied. Try again...")
+else:
+    print("Sorry, access denied. Try again...")
+
+
+data = input("Insert a number with a word from one to ten: ")	
+number = 5 if data == "Five" else 0						# ternary operator
+print(number)
+
+
+
+
+****** FOR ************************************************************************************************************************************
+
+for i in range(1, 6, 2):							# for VARIABILE in range(valore iniziale, valore finale non incluso, step) 
+    print(i)									 (se solo 1 num. sta x la quantita delle volte da eseguire)
+ESEMPIO:
+count = 0										# for si usa sempre con "in" e si specifica sempre il range, o cosa stiamo cercando e dove.
+word = "Hello world"								# "break" fa uscire dal ciclo
+for i in word:									# "continue" fa saltare operazione se corretta
+    if i == "o":
+        count += 1
+print("Count: ", count )
+
+
+
+
+****** While ************************************************************************************************************************************
+											
+n = 5											# V cikle "while" mozhno prosto ukazat' opredelennoe uslovie
+while n <= 26:
+    print(n)
+    n += 3
+    if n == 17:
+        break
+	
+
+
+
+****** LIST ************************************************************************************************************************************
+
+num_list = [5, 7, 2, 4, 7, "Hello", True, 6.7, [5, 7.1]]		# VARIABILE = [ELEMENTI DELLA LISTA, ANCHE DIVERSI TIPI DI INFO] -> p.s. si puo farlo anche vuoto
+num_list[0] = 50									# SOSTITUIRE ELEMNTI -> 0 e' index dell'elemento quindi "5" viene sostituito con "50"
+num_list[5] = "Hello World"
+
+print(num_list)									# mostra tutta la lista
+print(num_list[5])								# mostra quinto elemento -> quindi "Hello world" in questo caso
+print(num_list[-1],[5])								# con lo "zero" davanti conta dalla fine e non dall'inizio
+
+numbers = [5, 2, 7]
+numbers.append(100)								# append -> aggiunge elemento alla fine (100 in questo caso)
+numbers.insert(0, True)								# insert -> aggiunge elemento con index (INDEX, ELEMENTO)
+numbers.extend([5, 6, 8])							# extend -> aggiunge piu' elementi sotto forma di lista			
+b = [325, 64, 3]
+numbers.extend(b)									# si puo' aggiungere variabili nella lista
+numbers.sort()									# sort -> ordina dal piu' piccolo al piu' grande
+numbers.reverse()									# reverse -> sposta elementi al contrario (non ordina)
+
+numbers.pop()									# pop -> elimina ultimo elemento
+numbers.pop(-2)									# si puo' aggiungere index alla funzione "pop"
+numbers.remove(5)									# remove -> elimina il primo elemento con valore "5"
+numbers.clear()									# clear -> elimina tutti gli elementi della lista
+
+print(numbers)
+print(numbers.count(5))								# count -> conta quanrti elementi ci sono con valore "5"
+print(len(numbers))								# len -> dice quanti elementi ci sono nella lista
+
+
+
+
+****** Tuple ************************************************************************************************************************************
+
+# TUPLE = e' una lista che NON si puo' modificare, pesa un pochino meno della lista e serve principalmente per il trasferimento dati
+# Si fa con parentesi "()" e non "[]" come per le liste, tutto il resto e' uguale come per le liste
+
+data0 = (4, 6, 7, 3, 6, True, 5.6, "Hello")				# it's a tuple
+data1 = 5, 7, "Hello"								# it's a tuple
+data2 = (5,)									# it's a tuple
+data3 = 5,										# it's a tuple
+data4 = (5)										# it's a NOT tuple
+
+print(data[2:-2:3])								# Valgono le stesse regole di indici e scorciatoie
+
+nums = [5, 6, "Holaaa"]			( <- example )							
+new_data = tuple(nums)								# tuple -> funzione che traforma una lista in tuple
+word = tuple("Hello world!")							#	     funziona anche con le variabili
+
+
+
+
+****** Dictionaries (dict) and their  functions ************************************************************************************************************************************
+
+# Nei dizionari si usano "keys" al posto di "indexes"
+# I dizionari sono comodi per descrivere gli oggetti
+# In dizionario creato con "{}" si puo' usare qualsiasi tipo di info come KEY (Int, Float, Str, Bool, )
+# in dizionario creato con funzione "dict" si puo' usare solo stringhe come Key (Str)
+
+country0 = {"country": "Italy", "code": "it", "population": 66}
+country1 = dict(country="Russia", code="ru", population=150)
+
+
+print(country0.items())    						# items -> fa una LISTA dove ogni elemento diventa un TUPLE
+
+
+for key in country0:       						# stampa solo keys
+    print(key)
+
+
+for key, value in country0.items():  				# stampa keys e value con funzione "items"
+    print(key, " - ", value)
+
+
+print(country1["code"])           					# bisogna inserire KEY per mostrare VALUE
+print(country1.get("code"))     					# "get" ha stessa funzione di "[]"
+
+country0.clear()                      				# clear() -> svuota dizionario
+country1.pop("code")                  				# pop(key) -> elimina un certo elemento
+country1.popitem()                    				# popitem() -> cancella ultimo elemento
+
+print(country1.keys())                				# ottenere keys
+print(country1.values())              				# ottenere value
+print(country1.items())               				# ottenere sia key che value
+
+country1.update(population=150)       				# primo metodo per aggiornare (aggiungere/cambiare) un dizionario
+country1["code"] = "ru"               				# secondo metodo per aggiornare (aggiungere/cambiare) un dizionario
+
+
+
+
+****** Set and Frozenset ************************************************************************************************************************************
+
+# Set ("Mnozhestvo") e' una lista dove gli elementi hanno un ordine a random (no index) e non hanno gli elementi uguali
+# Funziona tutto uguale alle liste solo che NON si puo' chiamare un elemento tramite il suo index e non si puo' cambiarlo
+# Pero' si puo' aggiungere ed eliminare elementi
+
+data = set("Hello")            					# set per creare un set o trasformare una lista in set
+data1 = {5, 7, 4, 3, 5}       				  	# se si indica solo il value (senza key) utilizzando "{}" non e' un dizionario ma e' un set
+
+data1.add(32)                        				# add -> per aggiungere elemento
+data1.update(["32", True, 4, 7])       				# update -> aggiunghe piu' elementi
+data1.remove(True)                   				# remove -> elimena elemento tra parentesi
+data1.pop()                            				# pop -> elimina il primo elemento
+data1.clear()                       				# clear -> elimina tutti gli elementi del set
+
+print(data1)
+
+nums = [6, 45, 34, 6, 7]           ( <- example )
+new_nums = set(nums)                				# fatta nuova varibile e trasformata una lista in un set
+nums = set(nums)								# trasformata una lista in un set
+
+
+# FROZENSET e' un un mix di un TUPLE e un SET
+# Quindi e' un set che non si puo' modificare
+
+new_data = frozenset(["32", True, 4, 7, 5, 7, 4, 3, 5])		# frozenset -> per fare un frozenset
+
+
+
+
+****** Functions (def, lamba) ************************************************************************************************************************************
+
+# sono un specie di sottoprogrammi all'inerno dei quali contenono il codice
+# che si ripete spesso e quindi al posto di trascriverlo usiamo solo la funzione
+# quindi funzioni accorciano il codice
+# ci sono gia' funzioni standard integrati tipo "print" o "input"
+
+def test_funct():                                  			# def NOME_FUNZIONE(parametri):
+    pass                                           			# pass -> non fare nulla
+
+def summa1(a, b):									# parametri "a" e "b" hanno le stesse proprieta' di una variabile, ma non si vedono fuori dalla funzione
+    result = a + b
+    return result   								# return -> mostra quello che torna dalla funzione, utile per metterlo sucessivamente in una variabile                         
+                   
+result = summa1(5.6, 19)							# chiamiamo funzione con parametro diverso e lo inseriamo in una variabile
+print(result)									#					poi "printiamo" questa varibile
+print(summa1("H", "i"))								# "printiamo" direttamente il risultato saltando la variabile
+
+
+# LAMBDA sono funzioni anonime, vanno inseriti in una variabile
+# lambda sono funzioni piu' corti e si scrivono in solo una riga
+
+func = lambda x, y: x * y							# VARIABILE = lambda PARAMETRI: CODE
+print(func(6, 4))
+
+
+
+
+****** Work with FILES ************************************************************************************************************************************
+
+# per lavorare con i file bisogna aprire file, inserire metodo di lettura/scrittura e poi chiuderlo per evitare le perdita' di memoria
+
+file007 = open("data/text.txt", "w")                         	# VARIAIBLE = open("directory", "metodo di apertura")
+file007.write("Hello world! \n")                             	# write -> metodo che fa inserire testo in un file
+file007.write("My program is cool! \n")
+file007.close()                                              	# close() -> per chiudere il file
+
+data = input("Insert your text to add to file: ")			# fare inserire i dati all'user
+file008 = open("data/text.txt", "a")
+file008.write(data + "\n")
+file008.close()
+
+file01 = open("data/text.txt", "r")						# leggere i dati dal file
+print(file01.read(5))                                           	# read(27) -> mostra i primi 27 simboli del file da leggere (senza parametro tutto)
+
+for line in file01:								# leggere info riga per riga
+    print(line, end="")
+
+file01.close()
+
+
+
+
+****** Gestore di eccezioni. TRY, EXCEPT, ESLE, FINALLY ************************************************************************************************************************************
+
+# Eccezioni sono gli errori che compaiono durante l'esecuzione del programma.
+# Durante un errore il programma si ferma completamente mostrando errore all'utente
+# Con il nome del errore preso dalla console si puo' aggiugere un codice da eseguire nel caso di errore senza bloccare il programma
+
+try:											# try: -> proviamo ad eseguire il seguente codice
+    print("By what number will we divide 25?")
+    d = int(input("Please, insert the number: "))
+    print("The result is: ", 25/d)
+except ZeroDivisionError:							# except NOME_ERRORE: -> codice da eseguire nel caso di errore "1"
+    print("You can't divide by zero")
+except ValueError:								# except NOME_ERRORE: -> codice da eseguire nel caso di errore "2"
+    print("Insert a better number...")
+else:											# else: -> non e' obligatorio e viene eseguito solo se non viene eseguito nessun "except"
+    print("Do you really need to use a program to do such a division?")
+finally:										# finally: -> viene eseguito in qualsiasi caso, utile per chiudere un file 
+    print("By the way\nThe program was made by Lurker")
+
+
+
+
+****** Gestore di file: With, As ************************************************************************************************************************************
+
+# "With As" in automatico APRE e CHIUDE il file senza aggiungere il comando di chiusura file.close()
+# with open("FILE", "METODO LETTURA/SCRITTURA, encoding="NOME" non obbligatorio* as NOME_VARIABILE:
+
+try:
+    with open("text.txt", "w", encoding="utf-8") as file007:	# utf-8 -> codifica per l'apertura del file che permette leggere e scrivere sia in cirilico che latino
+        input("Insert your text: ")
+except FileNotFoundError:
+    print("File not found!")
+
+
+
+
+****** MODULES. Creare e lavorare con i moduli (Libraries and Frameworks) ************************************************************************************************************************************
+
+# Moudulo (Module) e' un file oppure un insieme di file che si possono integrare nel progetto per...
+# 						...aumentare funzionale del progetto stesso come dei libraries
+# Moduli si posso creare da soli, utilizzare quelli standrd oppure scaricare quelli di altri develpoers (libraries and frameworks)
+
+import time                         				# import NOME_MODULO
+import datetime as dt               				# as PSEUDONIMO -> si puo' dare un pseudonimo per accorciare il futuro codice
+import sys, platform os, platform as p       			# importare piu' moduli
+from math import sqrt, ceil         				# importa solo la funzione "sqrt" (radice quadrata) e "ceil" (arrotonda il numero) dal modulo "math"
+
+time.sleep(1)                       				# modulo.funzione(parametro) -> stoppa il programma per 3 secondi
+print(dt.datetime.now().date())     				# mostra data attuale
+print(dt.datetime.now().time())     				# mostra tempo attuale
+
+print(sys.path)                     				# link del file
+print(os.name)                      				# Nome del sistema operativo
+print(platform.system())            				# Nome della piattaforma utilizzata
+
+print(sqrt(144))                    				# calcolare la radice quadrata di " 144"
+
+
+
+
+# ESEMPIO DI UN NUOVO FILE.py CUSTOM MODULE "custom_module"
+name = "Bob"
+
+def hello():
+    print("Hello", name)
+
+def add_three_numbers(a, b, c):
+    if a !=0 and b != 0 and c != 0:
+        return a + b + c
+    else:
+        return "Something is zero"
+
+
+# ESEMPIO COME IMPORTARE CUSTOM MODULE "custom_module"
+
+import custom_module as cum
+from custom_module import add_three_numbers as addn
+
+print(cum.name)
+print(addn(3,5,0))
+
+
+# Package Manager Pyp viene installatto automaticamente sul PC quando viene installato Phyton
+# Tramite Pyp si puo' installare libraries e frameworks sul PC...
+# 	  ...per esempio "django" e' un framework per creare i siti
+# Per scaricare e installare una library bisogna inserire il codice nel terminal...
+# 								...per esempio "pip install cowsay"
+
+
+
+
+****** ESEMPI DI LINGUE E MODULI ************************************************************************************************************************************
+
+per fare i siti				=> HTML, CSS, JS, Django (framework)
+per fare i programmi per windows	=> Library PyQt
+per fare i giochi				=> Library PyGame
+per fare AI					=> matematica + Tensorflow (library)
+
+
+
+...
+
+
+
+
+****** OOP. Creazione di CLASSE con metodi ed attributi, OGGETTO ************************************************************************************************************************************
+
+# OOP = object oriented programming
+# Classe = definiscono dei tipi di dato e permettono la creazione degli oggetti secondo le caratteristiche definite nella classe stessa
+#  	Classe e' composta da attributi e metodi
+#   		Attributi (поля) = variabili
+#   		Metodi = funzioni
+# Oggetto = un'istanza di una classe, quindi una cosa piu' concreta con caratteristiche uniche ma definite dalla classe
+
+# Ereditarietà = possibile creare nuove classi a partire da quelle esistenti, estendendole con caratteristiche aggiuntive
+# polimorfismo = si indica il fatto che lo stesso codice eseguibile può essere utilizzato con istanze di classi diverse, aventi una superclasse comune
+# Incapsulamento = la proprietà per cui i dati che definiscono lo stato interno di un oggetto e i metodi che ne definiscono.....
+#         ...la logica sono accessibili ai metodi dell'oggetto stesso, mentre non sono visibili ai client....
+#         ...Per alterare lo stato interno dell'oggetto, è necessario invocarne i metodi pubblici, ed è questo lo scopo principale dell'incapsulamento
+
+
+class Cat:                                  			# class NOME_CLASSE: -> per creare classe
+    name = None                             			# attributi (variabili)
+    age = None
+    isHappy = None
+    other = [None]
+
+                                            			# aggiungiamo metodo (funzione) disponibile per tutti gli oggetti di questa classe
+    def set_data(self, name, age, isHappy): 			# self -> primo parametro, significa che si trova all'interno di una classe e puo' interagire con gli attributi della stessa classe
+        self.name = name                    			# altri parametri possono avere qualsiasi nome ma di solito coincidono con il nome degli attributi x comodita'
+        self.age = age                      			# self.age -> significa che ci stiamo riferendo all'attributo di questa classe e non al parametro
+        self.isHappy = isHappy
+
+
+    def get_data(self,):                    			# creiamo metodo per mostrare gli attributi della classe
+        print("Name: ",self.name, "\nAge: ", self.age, "\nHappy: ", self.isHappy)
+
+
+cat1 = Cat()                                			# NOME_OGGETTO = NOME_CLASSE() -> per creare un oggetto
+cat1.name = "Barsik"                        			# aggiungiamo caratteristiche SENZA il metodo "set_data" creato nella classe
+cat1.age = 3
+cat1.isHappy = True
+
+cat2 = Cat()                                			# creiamo secondo oggetto della classe "Cat"
+cat2.set_data("Murlika", 2, False)          			# aggiungiamo caratteristiche CON il metodo "set_data" creato nella classe
+
+print(cat1.name)
+cat2.get_data()
+
+
+
+
+****** OOP. Creazione di COSTRUTTORE ************************************************************************************************************************************
+
+# Grazie al costruttore si puo' eseguire un codice subito durante la creazione di un oggetto
+# Sono comodi per settare subito gli attributi ed accorciare il codice
+
+class Dog:
+    name = None
+    age = None
+    isHappy = None
+
+
+                                                        	# def __init__(self): -> per creare un costruttore
+    def __init__(self, name, age=0, isHappy = None):    	# si puo' settare alcuni paramatri di default ma quelli non settati vanno sempre inseriti durante la creazione di un oggetto per evitare errore. I parametri possono essere anche liste, dizionari...
+        self.name = name                                	# se non viene inserito parametro "name" durante la creazione di un oggetto uscira' errore
+        self.age = age
+        self.isHappy = isHappy
+
+        self.get_data()                                 	# self -> per fare capire che si indica il metodo dellastessa clsse anche se e' scritto dopo
+
+    def get_data(self):
+        print("\nName: ", self.name, "\nAge: ", self.age, "\nisHappy: ", self.isHappy)
+
+
+dog1 = Dog("laika", 2)                                  	# non e' inserito il terzo parametro perche' e' settato di default nel costruttore
+dog2 = Dog("Sharik", None, True)
+
+
+
+
+****** OOP. Ereditarietà, incapsulamento, polimorfismo ************************************************************************************************************************************
+
+# Ereditarietà = significa che ogni classe puo' avere una sottoclasse (tipo classe figlio)
+#                che eredita tutto dalla superclasse (classe genitore) come attributi, metodi e costruttori
+# In Python una sottoclasse non puo' avere piu' di una superclasse (EXAMPLE: in C++ si puo' fare)
+
+class Building:                                             # creiamo una classe che diventra' una superclasse
+    year = None
+    city = None
+    floors = None
+
+    def __init__(self, year = None, city = None, floors = None):
+        self.year = year
+        self.city = city
+        self.floors = floors
+
+    def get_data(self,):
+        print("\nYear: ", self.year, "\nCity: ", self.city, "\nFloors: ", self.floors)
+
+
+
+class School(Building):                                     # class NOME_SOTTOCLASSE(NOME_SUPERCLASSE): -> creare una sottoclasse
+    students = None                                         # aggiungiamo attributo solo per la sottoclasse "School"
+
+                                                            # costruttore di sottoclasse
+    def __init__(self, students, year=None, city=None, floors=None):       # super(Da_Quale_Classe_Chiamiamo, self).Metodo_Da_Chiamare(Quello_Che_Mandiamo)
+        super(School, self).__init__(year, city, floors)    # super -> chiama superclass.
+        self.students = students
+
+
+
+
+
+
+# Polimorfismo = Override
+# Polimorfismo = significa che si puo' rescrivere dei metodi dei superclassi in sottoclassi
+#                Quindi si puo' prendere un metodo della superclasse e modificarlo nella sottoclasse.
+
+
+
+    def get_data(self):                                     # Polimorfismo
+        super(School, self).get_data()
+        print("Students: ", self.students)
+
+class HighSchool(School):
+    pass
+
+school1 = School(764, 2001, "New York City", 36)
+school2 = School(634)
+#school3 = School(2022, "San Francisco", 4)
+
+school1.floors = 35
+school1.get_data()
+
+
+
+
+
+# Incapsulamento = significa che qualsiasi attributo di qualsiasi classe deve essere protetto, quindi e' la protezione dei dati.
+#                  In teoria non ci deve essere accesso diretto agli attributi, ma questi ultimi devono essere modificati solo con i costruttori e metodi.
+#                  Purtroppo incapsulamento in python non e' realizzarto molto bene perche' rimane sempre accesso agli attributi.
+
+class Birds:
+    __race = None                                       	# __ -> Incapsulamento
+    __population = None
+
+bird1 = Birds
+bird1.__race = "Penguins"                               	# funziona lo stesso aggiungendo "__" prima dell'attributo dell'oggetto
+print(bird1.__race)                                     	# funziona lo stesso (se non funziona togliere "__")
+
+
+
+
+****** Decoratori di funzioni ************************************************************************************************************************************
+
+# Decoratori = grazie a loro si puo' eseguire un codice prima e/o dopo una funzione
+# Struttura:
+def nome_funzione(func):                                    # func -> parametro di solito viene chiamato "func"
+    def wrapper():                                          # wrapper -> di solito nested_function viene chiamato wrapper (involucro/obertka)
+        print("questo viene eseguito PRIMA della funzione")
+        func()
+        print("questo viene eseguito DOPO la funzine ")
+    return wrapper                                          # senza "()" per non fare eseguire la funzione ma solo farla tornare
+
+
+# ESEMPIO PRATICO:
+def validator(func):                                        # decoratore che controlla se c'e' "." in URL
+    def wrapper(url):
+        if "." in url:
+            func(url)
+        else:
+            print("Wrong URL!")
+    return wrapper
+
+import webbrowser
+
+@validator                                      # @nome_decoratore -> per chiamare decoratore prima della funzione
+def open_url(url):                              # funzione per aprire un URL
+    webbrowser.open(url)
+
+open_url("https://pypi.org")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
