@@ -1,0 +1,104 @@
+
+
+
+<!-- HTML IMAGES GUIDE - FOCUS ON RESPONSIVE IMAGES -->
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Basic Image Tag Attributes -->
+
+<!-- 'src' is the image source URL. Local sources are preferred for speed and efficiency. -->
+<!-- 'alt' provides alternative text for accessibility and SEO purposes. -->
+<!-- 'height' and 'width' can be set for sizing, but it's often better handled in CSS for responsiveness. -->
+<!-- 'title' gives a tooltip on hover; not significantly used by search engines. -->
+
+<img src="path/to/image.jpg" alt="description" height="100" width="100" title="tooltip text">
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Using <figure> and <figcaption> for semantic grouping of image and description -->
+
+<figure>
+    <img src="path/to/image.jpg" alt="description">
+    <figcaption>Caption for the image</figcaption>
+</figure>
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Responsive Images: Method 1 - Using 'srcset' and 'sizes' -->
+
+<!--    'srcset' defines different image files for the browser to choose based on device characteristics.
+        Format: [image source] [image width in pixels with "w" (not "px")].
+
+        'sizes' defines the display size of the image in different conditions (e.g., screen widths).
+        Format: [condition] [slot width for the image]
+
+        'src' attribute is used as a fallback if 'srcset' and 'sizes' are not supported. -->
+
+<img 
+    srcset="image-320w.jpg 320w,
+            image-480w.jpg 480w,
+            image-800w.jpg 800w" 
+    sizes="(max-width: 320px) 280px,
+           (max-width: 480px) 440px,
+           800px"
+    src="image-800w.jpg" 
+    alt="description">
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Responsive Images: Method 2 - Using <picture> and <source> -->
+
+<!--    The <picture> element contains multiple <source> elements for different conditions and a fallback <img>.
+        Each <source> can have 'media' to specify the condition (e.g., screen width) and 'srcset' for the image source.
+        The 'type' attribute in <source> can specify the MIME type for further optimization.
+        The <img> inside <picture> serves as a fallback if no <source> is matched. -->
+
+<picture>
+    <source media="(max-width: 799px)" srcset="small-image.jpg">
+    <source media="(min-width: 800px)" srcset="large-image.jpg">
+    <img src="fallback-image.jpg" alt="description">
+</picture>
+
+<picture>
+    <source type="image/webp" srcset="image.webp">
+    <source type="image/jpeg" srcset="image.jpg">
+    <img src="fallback-image.jpg" alt="description">
+</picture>
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Additional Best Practices -->
+
+<!--    - Use vector images (like SVG) for icons and illustrations for scalability without quality loss.
+        - Consider image compression and the correct format (JPEG, PNG, WebP) for performance optimization.
+        - Use lazy loading for images (attribute 'loading="lazy"') to improve page load time.
+        - Ensure proper aspect ratios to avoid layout shifts and improve visual consistency.
+        - Use descriptive 'alt' text for accessibility and SEO, especially for meaningful images.
+        - Test images on various devices and screen sizes for best user experience. -->
+
+<!-- Example of Lazy Loading -->
+<img src="image.jpg" alt="description" loading="lazy">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

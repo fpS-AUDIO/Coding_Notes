@@ -1,0 +1,111 @@
+
+
+
+<!-- VIDEOS IN HTML -->
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Basic Usage of <video> Tag -->
+
+<!--    - The <video> tag embeds video content into a web page.
+        - Common attributes: 'src', 'controls', 'width', 'height'. -->
+
+<video src="skate_clip.mp4" controls width="640" height="360">
+    <p>Your browser doesn't support HTML5 video. <a href="link_to_video">Link to the video</a> instead.</p>
+</video>
+
+<!--    Explanation:
+        - 'src': source/URL of the video file.
+        - 'controls': displays the default video controls (play, pause, volume, etc.).
+        - 'width', 'height': define the dimensions of the video player.
+        - The <p> tag inside <video> acts as a fallback for browsers that don't support the video tag. -->
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Multiple Source Formats for Compatibility -->
+
+<!--    - Use <source> elements within <video> for multiple video formats and browser compatibility.
+        - The browser chooses the first compatible format. -->
+
+<video controls width="640" height="360" autoplay loop muted poster="thumbnail.jpg" preload="auto">
+    <source src="skate_clip.mp4" type="video/mp4">
+    <source src="skate_clip.webm" type="video/webm">
+    <p>Your browser doesn't support HTML5 video. <a href="link_to_video">Link to the video</a> instead.</p>
+</video>
+
+
+<!--    Explanation:
+        - 'autoplay': Video starts automatically upon page load.
+        - 'loop': Video repeats indefinitely.
+        - 'muted': Audio is muted. Useful in conjunction with 'autoplay'.
+        - 'poster': URL of an image displayed before playback starts.
+        - 'preload': Advises the browser on how to preload the video. Options: 'none', 'metadata', 'auto'. -->
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Adding Subtitles and Captions -->
+
+<!--    - Use the <track> tag to specify text tracks (subtitles, captions).
+        - Important for accessibility and multilingual support. -->
+
+<video controls>
+    <source src="skate_clip.mp4" type="video/mp4">
+    <track kind="subtitles" src="subtitles_en.vtt" srclang="en" label="English" default>
+    <track kind="captions" src="captions_it.vtt" srclang="it" label="Italian">
+</video>
+
+<!--    Explanation:
+        - 'kind': Type of text track (subtitles, captions, descriptions, chapters, metadata).
+        - 'src': URL of the track file (typically .vtt format).
+        - 'srclang': Language of the track.
+        - 'label': Title of the track for browser track listing.
+        - 'default': Specifies which track is to be enabled if the user's preferences do not indicate a preference. -->
+
+
+
+<!-- ----------------------------------------------------------------------------------------- --> 
+<!-- Additional Best Practices and Considerations -->
+
+<!--    - Provide fallback content for unsupported browsers.
+        - Responsive video: Set width to '100%' and height to 'auto' for fluid resizing.
+        - Test playback across various browsers and devices.
+        - Accessibility: Provide subtitles and captions for hearing-impaired users.
+        - For better performance and user experience, consider using video hosting platforms like YouTube or Vimeo and embedding them using <iframe>.
+        - Keep video file sizes optimized to ensure faster page load times. -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

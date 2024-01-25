@@ -1,0 +1,57 @@
+
+
+
+<!-- HTML DATE AND TIME GUIDE -->
+
+
+
+
+<!--
+  Overview of the <time> Element:
+
+  1. Purpose:
+     - The <time> element represents a specific period in time.
+     - It can be used for dates, times, or both.
+
+  2. Attributes:
+     - datetime (required): Specifies the date and/or time in a machine-readable format.
+     - Format for datetime:
+       a. Dates: YYYY-MM-DD (e.g., 2024-01-25)
+       b. Times: HH:MM:SS (e.g., 14:30:00)
+       c. Date and Time: YYYY-MM-DDTHH:MM (e.g., 2024-01-25T14:30)
+
+  3. Human-readable Format:
+     - The content inside <time> can be in a human-readable format.
+     - The datetime attribute should contain the machine-readable equivalent.
+
+  4. Usage Examples:
+     - Date Only:
+       <time datetime="2024-01-25">January 25, 2024</time>
+     - Time Only:
+       <time datetime="14:30:00">2:30 PM</time>
+     - Date and Time:
+       <time datetime="2024-01-25T14:30">January 25, 2024, at 2:30 PM</time>
+
+  5. Styling and Accessibility:
+     - Can be styled with CSS like any other inline element.
+     - Screen readers can read the <time> element, making it accessible.
+
+  6. Best Practices:
+     - Always use the datetime attribute for clarity and machine readability.
+     - Ensure the human-readable format is clear and easy to understand.
+
+  7. Browser Support:
+     - Widely supported across modern browsers.
+
+  8. Example with Full Markup:
+     <!DOCTYPE html>
+     <html>
+     <head>
+       <title>Date and Time Example</title>
+     </head>
+     <body>
+       <p>Event Date and Time: <time datetime="2024-01-25T14:30">January 25, 2024, at 2:30 PM</time></p>
+     </body>
+     </html>
+-->
+

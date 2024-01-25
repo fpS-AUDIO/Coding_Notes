@@ -1,0 +1,73 @@
+
+
+<!-- HTML ADDRESS GUIDE -->
+
+
+
+<!--    Overview of <address> Tag:
+
+  1. Purpose:
+     - The <address> element represents the contact information for its nearest <article> or <body> ancestor.
+     - Typically used for author or owner of a document or an article.
+
+  2. Formatting:
+     - By default, most browsers will render the content inside <address> in italic.
+     - This can be overridden with CSS.
+
+  3. Semantics and Accessibility:
+     - Not intended for all postal addresses. Use it for contact information.
+     - Screen readers interpret <address> as contact information, enhancing accessibility.
+
+  4. Nesting and Content:
+     - Can contain flow content: links, paragraphs (<p>), and other formatting elements.
+     - Should not contain other <address> tags or heading tags (<h1> to <h6>).
+
+  5. Best Practices:
+     - Use for contact information related to the surrounding content.
+     - Avoid using it for general physical addresses unless it's contact information.
+
+  6. Styling with CSS:
+     - Custom styling can be applied to change the default italicized style.
+     - Example:
+       address {
+         font-style: normal;
+         /* other styles */
+       }    
+-->
+
+
+
+<!--Basic Example: -->
+
+<address>
+    <p>
+    Chris Mills<br>
+    Manchester<br>
+    The Grim North<br>
+    UK
+    </p>
+</address>
+
+
+
+<!--Advanced Example with CSS and Email Link: -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    address {
+    font-style: normal;
+    /* additional styling */
+    }
+</style>
+</head>
+<body>
+    <address>
+    <p>Chris Mills<br>Manchester<br>The Grim North<br>UK</p>
+    <p>Email: <a href="mailto:chris@example.com">chris@example.com</a></p>
+    </address>
+</body>
+</html>
+
+

@@ -1,0 +1,77 @@
+
+
+
+<!-- WEBSITE SEMANTIC STRUCTURE GUIDE -->
+
+
+
+
+
+<!--    Overview of Semantic HTML Elements:
+
+  1. Purpose of Semantic HTML:
+     - Semantic HTML elements provide meaningful information about the content they enclose, improving accessibility and SEO.
+     - They help in structuring the webpage content in a logically organized way.
+
+  2. Core Semantic Elements:
+     - <!DOCTYPE html>: Declares the document type and HTML version.
+     - <html>: The root element of an HTML page.
+     - <head>: Contains meta-information about the document, like <title>, <meta> tags, link to CSS, etc.
+     - <body>: Contains the content of the HTML document.
+       - <header>: Typically contains introductory content or navigational links.
+       - <nav>: Navigation bar, often includes <ul> for unordered lists of navigation links.
+       - <main>: Represents the primary content of the body, unique to the document.
+       - <article>: For self-contained, independent content, often used in blogs or news sites.
+       - <section>: Defines sections in a document, such as chapters, headers, footers, or any other sections of the document.
+       - <aside>: Used for content tangentially related to the content around the <aside> element, often as sidebars.
+       - <footer>: Represents footer content, typically containing information about the author, copyright data, or related links.
+       - <span>: An inline container used to mark up a part of a text, or a part of a document.
+       - <div>: A block-level container used to group together HTML elements and format them with CSS.
+
+  3. Other Structural Elements:
+     - <br>: Line break, used to break the line of text.
+     - <hr>: Thematic break, visually represented as a horizontal line.
+
+  4. Best Practices:
+     - Use semantic elements to improve accessibility and SEO.
+     - Avoid using <div> and <span> for everything; use them when no other semantic element is appropriate.
+     - Structure the HTML document in a logical flow for ease of reading and accessibility. -->
+
+
+
+
+    <!-- Example of Semantic HTML Structure:  -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <!-- Other head elements -->
+</head>
+<body>
+    <header>
+    <!-- Logo and navigation -->
+    </header>
+    <nav>
+    <!-- Navigation links -->
+    </nav>
+    <main>
+    <article>
+        <!-- Blog post or article content -->
+    </article>
+    <section>
+        <!-- Different section of the page -->
+    </section>
+    <aside>
+        <!-- Sidebar content -->
+    </aside>
+    </main>
+    <footer>
+    <!-- Footer content -->
+    </footer>
+</body>
+</html>
+
+
