@@ -1,0 +1,75 @@
+
+
+//////////////////
+// JS OPERATORS //
+//////////////////
+
+
+/* Operators in JavaScript are used to perform operations on variables and values. */
+
+
+/* 1. Mathematical Operators */
+// + (Addition), - (Subtraction), * (Multiplication), / (Division), ** (Exponentiation).
+let sum = 10 + 5; // 15
+let difference = 10 - 5; // 5
+let product = 10 * 5; // 50
+let quotient = 10 / 5; // 2
+let power = 2 ** 3; // 8
+
+
+/* 2. Assignment Operators */
+// = (Assignment), += (Addition assignment), -= (Subtraction assignment), *= (Multiplication assignment), /= (Division assignment).
+// ++ (Increment), -- (Decrement) - They modify the variable's value and return it.
+let x = 10;
+x += 5; // x is now 15
+x *= 2; // x is now 30
+// Note: ++ and -- can be prefix (e.g., ++x) or postfix (e.g., x++). Prefix returns the updated value, postfix returns the original value.
+let counter = 0;
+console.log(counter++); // 0 (original value)
+console.log(++counter); // 2 (updated value)
+
+
+/* 3. Comparison Operators */
+// > (Greater than), < (Less than), >= (Greater than or equal to), <= (Less than or equal to).
+let age = 18;
+let isAdult = age >= 18; // true
+
+
+/* 4. Equality Operators */
+// == (Loose equality), === (Strict equality), != (Loose inequality), !== (Strict inequality).
+// Loose equality (==) performs type coercion, while strict equality (===) compares both value and type.
+console.log("2" == 2);  // true (loose equality, type coercion)
+console.log("2" === 2); // false (strict equality, different types)
+
+
+/* 5. Logical Operators */
+// AND (&&), OR (||), NOT (!).
+// AND (&&) evaluates to true if both operands are true, otherwise false.
+// OR (||) evaluates to true if at least one operand is true.
+// NOT (!) inverts the truth value.
+let isTeenager = age > 12 && age < 20; // true
+let canDrive = age >= 16 || hasLicense; // true if age is 16 or above OR if the person has a license
+let isNotAdult = !isAdult; // false (as isAdult is true)
+
+
+/* 6. Ternary (Conditional) Operator */
+// A shorthand for if-else statements. Syntax: condition ? exprIfTrue : exprIfFalse.
+let drinkingAge = age >= 21 ? "Can drink" : "Cannot drink";
+
+
+/* 7. Nullish Coalescing Operator (??) */
+// Returns the right-hand operand when the left-hand operand is null or undefined, otherwise returns the left-hand operand.
+let userNickname = null;
+let displayName = userNickname ?? "Anonymous"; // "Anonymous"
+
+
+/* 8. Optional Chaining Operator (?.) */
+// Allows reading the value of a property located deep within a chain of connected objects without having to check that each reference in the chain is valid.
+let streetName = user?.address?.street; // undefined if user or user.address is null/undefined.
+
+
+/* Best Practices */
+// - Prefer strict equality (=== and !==) over loose equality (== and !=) to avoid unexpected type coercion.
+// - Use descriptive variable names for clarity when using boolean logic.
+// - Utilize ternary operators for simple conditional expressions for cleaner code.
+

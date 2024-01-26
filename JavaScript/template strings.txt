@@ -1,0 +1,74 @@
+
+
+
+/////////////////////////
+// JS TEMPLATE STRINGS //
+/////////////////////////
+
+
+/* Template strings, also known as template literals, are a feature in ES6 for creating strings. */
+
+
+/* Basic Syntax */
+// - Template strings are enclosed by backticks (` `) instead of single or double quotes.
+// - They can contain placeholders, indicated by the dollar sign and curly braces (${expression}).
+// - The expressions in the placeholders and the text between them get passed to a function.
+
+/* Data for Examples */
+const firstName = "John";
+let ageJohn = 39;
+let currentYear = 2023;
+
+
+// ----------------------------------------------------------------------------------------- //
+/* Concatenation Example (Old Way) */
+
+console.log("Hello, my name is " + firstName + " and I'm " + ageJohn + " years old");
+
+/* Multi-line String (Old Way) */
+console.log("String with \n\
+multiple \n\
+lines");
+
+
+// ----------------------------------------------------------------------------------------- //
+/* Template Strings Example */
+
+// - Easier syntax for concatenation.
+// - Supports interpolation of variables, expressions, and even function calls.
+console.log(`Hello, my name is ${firstName} and I'm ${ageJohn} years old`);
+console.log(`Next year, I'll be ${ageJohn + 1} years old`);
+
+/* Expression Inside Placeholder */
+// - You can perform operations or call functions inside the placeholders.
+console.log(`In 5 years, I'll be ${ageJohn + 5} years old`);
+
+/* Multi-line Strings */
+// - Template strings can span multiple lines for better readability.
+console.log(`String with
+multiple
+lines`);
+
+
+// ----------------------------------------------------------------------------------------- //
+/* Tagged Template Literals */
+
+// - Advanced use case: You can tag a template literal with a function.
+function highlight(strings, ...values) {
+    // This function can process the template string.
+    // 'strings' are the static parts, 'values' are the interpolated parts.
+    return strings.reduce((result, str, i) => {
+        return `${result}${str}<mark>${values[i] || ''}</mark>`;
+    }, '');
+}
+
+let highlightedString = highlight`My name is ${firstName} and I am ${ageJohn} years old.`;
+console.log(highlightedString); // Returns processed string with highlighted interpolated parts.
+
+
+// ----------------------------------------------------------------------------------------- //
+/* Best Practices */
+
+// - Use template strings for cleaner string concatenation.
+// - Prefer template strings for multi-line strings.
+// - Utilize template literals to embed expressions and variables directly within strings.

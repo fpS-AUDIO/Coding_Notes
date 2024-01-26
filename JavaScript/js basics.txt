@@ -1,0 +1,96 @@
+
+
+///////////////
+// JS BASICS //
+///////////////
+
+
+/* JavaScript Overview */
+// JavaScript is a high-level, object-oriented, multi-paradigm programming language.
+// - High-level: Abstracts away most of the complex details of the machine (like memory management).
+// - Object-oriented: Organizes code using objects containing data and behavior.
+// - Multi-paradigm: Supports various programming styles (e.g., imperative, declarative, functional).
+
+
+/* Web Development Core Languages */
+// 1. HTML: Structures web content (like the 'nouns' of a language).
+// 2. CSS: Styles web content (like the 'adjectives').
+// 3. JavaScript: Adds interactivity to web content (like the 'verbs').
+
+
+/* JavaScript Evolution */
+// JS has undergone multiple updates. A significant one was in 2015: ES6/ES2015.
+// - ES = ECMAScript: The standard JavaScript is based on.
+// - 'Modern JavaScript' refers to the versions post-2015, including new features and best practices.
+
+
+/* Including JS in Web Pages */
+// JS code can be included in web pages in two main ways:
+// 1. Inline Script: Within HTML using <script>...</script>.
+// 2. External Script: Linked as a separate .js file.
+//    Example: <script src="script.js" defer></script>
+//    - 'defer' attribute: Tells the browser to execute the script after the document has been parsed. 
+//      Used for external scripts only. It ensures that the script doesn't block page loading.
+
+
+/* Additional Key Points to Include */
+
+
+/* Variables and Data Types */
+// - var, let, const: Different ways to declare variables. 
+// - let: Block-scoped, mutable variable.
+// - const: Block-scoped, immutable variable.
+// - var: Function-scoped, mutable variable (less used in modern JS due to scope issues).
+// - Data types: String, Number, Boolean, Null, Undefined, Object, Symbol (ES6).
+
+
+/* Functions */
+// - Function Declaration: `function myFunc() {}`
+// - Function Expression: `const myFunc = function() {};`
+// - Arrow Functions (ES6): `const myFunc = () => {};`
+// - Functions are first-class citizens: Can be assigned to variables, passed as arguments, and returned from other functions.
+
+
+/* Control Structures */
+// - if-else, switch: Conditional statements.
+// - for, while, do-while: Looping structures.
+// - for...in (iterates over object keys), for...of (ES6, iterates over iterable objects like arrays).
+
+
+/* Object-Oriented Programming */
+// - Objects: Collections of key-value pairs.
+// - Prototypes: Mechanism for inheritance.
+// - Classes (ES6): Syntactical sugar over JavaScript's prototype-based inheritance.
+
+
+/* Asynchronous JavaScript */
+// - Callbacks: Functions passed into other functions to be executed later.
+// - Promises (ES6): An alternative to callbacks for handling asynchronous operations.
+// - async/await (ES7): Syntactic sugar over Promises, making asynchronous code look synchronous.
+
+
+/* Best Practices */
+// - Use 'let' and 'const' for variable declarations to avoid scope-related issues.
+// - Prefer arrow functions for anonymous functions.
+// - Use template literals (ES6) for easier string concatenation.
+// - Use strict mode ('use strict';) to enforce stricter parsing and error handling in your scripts.
+// - Understand and avoid common pitfalls like global variables, callback hell, and mutation of shared objects.
+
+
+/* Just random basics */
+// console.log();                          show staff on console
+// console.warn();                         show waring on console
+// console.error();                        show error on console
+// console.table(objectName);              show table of an object on console
+// alert("Hello world")                    make an alert
+// // this is a comment
+// /* this is a multiline comment */
+// \n                                      new line
+// \t                                      tab
+// \                                       escaping character ex: "\"hello\" world"
+// clear()                                 clear console in browser
+// prompt("Enter something")               get promt windows (it's like an input from alert)
+//                                         ex: let age = promt("Enter your age: ")
+// debugger;                               statement to open debuger tool in this point
+//                                         (it's like put a breakpoint in debugger)
+

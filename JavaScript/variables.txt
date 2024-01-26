@@ -1,0 +1,89 @@
+
+
+
+//////////////////
+// JS VARIABLES //
+//////////////////
+
+
+/* Storing Values in Variables */
+// - A variable in JavaScript can store data, which could be a string, number, object, etc.
+
+
+/* var Keyword */
+// var: Older way to declare variables. 
+// - Function-scoped, which can lead to unexpected behavior in block-level code.
+// Example:
+var firstNameVar = "Alex";
+firstNameVar = "Bob"; // Allowed.
+
+
+/* let Keyword */
+// let: Introduced in ES6 for block-scoped variables.
+// - Can be reassigned but not redeclared in the same scope.
+// - Preferred for variables that will be reassigned.
+// Example:
+let firstNameLet = "Alex";
+firstNameLet = "Bob"; // Allowed.
+// let firstNameLet = "Charlie"; // Error: already declared in the scope.
+
+
+/* const Keyword */
+// const: Also block-scoped, used for constants.
+// - Values assigned to const cannot be changed.
+// - Must be initialized at declaration.
+// Example:
+const birthYear = 1996;
+// birthYear = 1997; // TypeError: Assignment to constant variable.
+
+
+/* Naming Conventions */
+// - camelCase for variable names (firstWordLowercaseAndThenEachWordCapitalized).
+// - Variables must not start with a number (e.g., '3years' is invalid).
+// - Only letters, numbers, $, and _ are valid characters.
+// - Avoid reserved keywords (like 'new', 'class').
+// - Avoid using 'name' as it can conflict with global variables in browsers.
+// - Constants are often all uppercase (e.g., const PI = 3.1415).
+
+
+/* Primitive Values and Objects */
+// - Primitives: string, number, boolean, undefined, null, symbol, bigInt.
+// - Objects: Collections of key-value pairs.
+// Example:
+let primitiveValue = "Alex"; // Primitive string.
+let objectValue = { name: "Alex" }; // Object.
+
+
+/* Primitive Data Types */
+// - Number: Both integers and floats.
+// - String: Characters or text.
+// - Boolean: true or false.
+// - Undefined: A declared variable but not yet assigned a value.
+// - Null: Intentional absence of any value.
+// - Symbol (ES2015): Unique and immutable primitive, often used for object properties.
+// - BigInt: Larger integers than the Number type can hold.
+
+
+/* Dynamic Typing in JavaScript */
+// - Types are determined automatically (dynamic typing).
+// - Variables can be reassigned to different data types.
+// Example:
+let dynamicVar = true;
+dynamicVar = "Now a string";
+
+
+/* typeof Operator */
+// - Used to check the data type of a variable.
+// Example:
+console.log(typeof dynamicVar); // Output will be based on the current value of dynamicVar.
+
+
+/* Null Type Exception */
+// - typeof null returns "object", which is a bug and should be "null".
+console.log(typeof null); // 'object'
+
+
+/* Reassignment and Declaration */
+// - Use 'let' or 'const' for declaration, but not needed for reassignment.
+let jsIsFun = true;
+jsIsFun = "YES!"; // Reassignment without 'let'.
