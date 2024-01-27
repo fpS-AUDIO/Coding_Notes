@@ -1,0 +1,53 @@
+
+
+///////////////////////////////////////
+// JS CONDITIONAL (TERNARY) OPERATOR //
+///////////////////////////////////////
+
+
+/* Conditional (Ternary) Operator:
+ * - Provides a shorthand way for writing simple if-else statements.
+ * - Consists of three parts: a condition, an expression if true, and an expression if false.
+ */
+
+
+/* Syntax:
+ * condition ? exprIfTrue : exprIfFalse;
+ */
+
+
+// Example #1: Basic usage
+const age = 16;
+age >= 18 ? console.log('I like to drink wine') : console.log('I like to drink water');
+// Output: 'I like to drink water'
+
+// Example #2: Assigning a value based on condition
+const drink = age >= 18 ? 'wine' : 'water';
+
+/* Using in Template Literals:
+ * - Since the ternary operator is an expression, it can be used inside template literals.
+ */
+console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
+// Output: 'I like to drink water'
+
+/* Best Practices and Additional Notes:
+ * - Ideal for simple conditional assignments and inline expressions.
+ * - Avoid using nested ternary operators as they can reduce readability.
+ * - For more complex conditions, consider using if-else statements for clarity.
+ * - Remember, readability is key; don't sacrifice clarity for brevity.
+ */
+
+/* Advanced Usage:
+ * - Nested Ternary Operators (use with caution):
+ *   condition1 ? expr1 : condition2 ? expr2 : expr3;
+ * - Combining with other expressions for complex inline logic.
+ */
+
+// Example of Nested Ternary (use with caution for readability)
+const access = age < 13 ? 'child' : age < 18 ? 'teen' : 'adult';
+
+/* Combining with Other Expressions:
+ * - Ternary operators can be combined with other JavaScript expressions for more complex logic.
+ */
+const score = 75;
+const result = score >= 50 ? (score >= 75 ? 'Excellent' : 'Good') : 'Failed';

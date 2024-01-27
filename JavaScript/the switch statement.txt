@@ -1,0 +1,85 @@
+
+
+
+/////////////////////////////
+// JS THE SWITCH STATEMENT //
+/////////////////////////////
+
+/* Switch Statement:
+ * - An alternative to if/else statements for comparing a value against multiple options.
+ * - Uses strict equality (===) for comparisons.
+ * - Execution continues until a break is encountered or the end of the switch block.
+ */
+
+
+/* Basic Syntax:
+switch(expression) {
+    case value1:
+        // Code to execute when expression === value1
+        break;
+    case value2:
+        // Code to execute when expression === value2
+        break;
+    ...
+    default:
+        // Code to execute if expression doesn't match any case
+}
+*/
+
+
+
+// Example: Simple switch statement
+const day = 'monday';
+
+switch(day) {
+    case 'monday':
+        console.log('Plan studying');
+        console.log('Go coding');
+        break;
+    case 'tuesday':
+        console.log('Prepare video');
+        break;
+    case 'wednesday':
+    case 'thursday':
+        console.log('Do sport');
+        break;
+    case 'saturday':
+    case 'sunday':
+        console.log('Enjoy weekend');
+        break;
+    default:
+        console.log('Not a valid day');
+}
+
+/* Best Practices and Additional Points:
+ * - Always use 'break' to prevent fall-through (unless intentionally using it).
+ * - Grouping cases (as in 'wednesday' and 'thursday') is useful for executing the same code for multiple cases.
+ * - Default case is not mandatory but recommended for handling unexpected values.
+ * - Switch statements can be more readable than complex if-else chains, especially with numerous conditions.
+ * - Be cautious with data types; switch uses strict comparison.
+ * - Consider readability and maintainability; for very long or complex conditions, other structures might be more suitable.
+ */
+
+/* Advanced Usage:
+ * - Switch cases can execute complex statements and even call functions.
+ * - Variables can be declared in a switch block, but they should be enclosed in braces to create a block scope.
+ */
+
+// Advanced Example: Using functions and block scope in switch
+switch(day) {
+    case 'monday': {
+        let task = 'Study Math';
+        console.log(`Today's task: ${task}`);
+        break;
+    }
+    case 'friday': {
+        function celebrate() {
+            return 'Party time!';
+        }
+        console.log(celebrate());
+        break;
+    }
+    // Other cases...
+    default:
+        console.log('No specific plans');
+}

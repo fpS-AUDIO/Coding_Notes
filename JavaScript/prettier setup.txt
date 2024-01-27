@@ -1,0 +1,71 @@
+
+
+////////////////////
+// PRETTIER SETUP //
+////////////////////
+
+/* Prettier - Code Formatter (vs code extension):
+ * - Prettier is an opinionated code formatter that enforces a consistent style by parsing code and re-printing it.
+ * - It supports many languages and integrates with most editors.
+ */
+
+
+
+/* 1. Installing Prettier in VS Code:
+ * - Available as a VS Code extension.
+ * - Search for 'Prettier - Code Formatter' in the Extensions view and install it.
+ */
+
+/* 2. Setting Prettier as Default Formatter:
+ * - To ensure consistent formatting, set Prettier as your default formatter.
+ * - Go to Settings (File > Preferences > Settings or Ctrl+,).
+ * - Search for 'Default Formatter' and select 'esbenp.prettier-vscode'.
+ * - Also, enable 'Format On Save' for automatic formatting when you save a file.
+ */
+
+/* 3. Configuring Prettier:
+ * - Prettier can be configured via a ".prettierrc" file in your project directory.
+ * - This file allows you to override default settings.
+ * - Visit the Prettier documentation for available options (https://prettier.io/docs/en/options.html).
+ */
+
+// Example of .prettierrc Configuration
+{
+    "singleQuote": true,       // Use single quotes instead of double quotes
+    "arrowParens": "avoid"     // Avoid parentheses around a sole arrow function parameter
+}
+
+/* Best Practices:
+ * - Check for existing Prettier configuration in team projects to maintain consistency.
+ * - Use a shared configuration for team projects to ensure a consistent coding style.
+ * - Regularly update the Prettier extension to benefit from the latest features and fixes.
+ */
+
+/* Additional Configuration Options:
+ * - Line Width: Set the preferred line length for formatted code.
+ * - Tab Width: Set the number of spaces per indentation level.
+ * - Trailing Commas: Specify whether to add a comma at the end of multi-line lists.
+ * - Bracket Spacing: Controls the spaces between brackets in object literals.
+ * - JSX Brackets: Put the '>' of a multi-line JSX element at the end of the last line instead of a new line.
+ */
+
+/* Integrating with Other Tools:
+ * - Prettier can be integrated with ESLint, Stylelint, and other code quality tools.
+ * - Use the 'prettier-eslint' or 'prettier-stylelint' packages for seamless integration.
+ */
+
+/* Using Prettier in a Project Without Extension:
+ * - Prettier can also be used via command line or as a package in your project.
+ * - Install Prettier in your project using npm or yarn.
+ * - Run Prettier via scripts defined in your package.json.
+ */
+
+// Example: Installing Prettier as a Dev Dependency
+npm install --save-dev prettier
+
+// Example: Running Prettier as an npm script
+{
+  "scripts": {
+    "format": "prettier --write ."
+  }
+}

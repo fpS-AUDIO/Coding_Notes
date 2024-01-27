@@ -1,0 +1,81 @@
+
+
+///////////////
+// JS ARRAYS //
+///////////////
+
+/* Arrays:
+ * - Arrays are a data structure that can hold a collection of items.
+ * - Arrays in JavaScript can contain elements of different data types.
+ * - They are mutable, even when declared with `const`.
+ */
+
+/* Declaring Arrays:
+ * - Can use array literals or the Array constructor.
+ */
+
+// Using array literals (recommended)
+const friends = ['Michael', 'Steven', 'Peter'];
+
+// Using Array constructor (less common)
+const years = new Array(1996, 1994, 2001);
+
+/* Accessing Array Elements:
+ * - Use index to access elements (0-based indexing).
+ * - Array length and accessing the last element.
+ */
+
+console.log(friends[0]); // Accessing first element
+console.log(friends.length); // Getting array length
+console.log(friends[friends.length - 1]); // Accessing last element
+
+/* Modifying Arrays:
+ * - Can modify elements but cannot reassign the entire array if it's declared with `const`.
+ */
+
+friends[2] = 'Sasha'; // Modifying an element
+
+// Reassigning the entire array will cause an error
+// friends = ['Mattia', 'Paolo']; // TypeError if friends is const
+
+/* Array Methods:
+ * - JavaScript arrays come with a variety of built-in methods.
+ */
+
+// Commonly used methods
+const newLength = friends.push('Jay'); // Adds element at the end and returns new length
+const firstElement = friends.shift(); // Removes first element and returns it
+const newLengthAfterUnshift = friends.unshift('John'); // Adds element at the beginning
+const position = friends.indexOf('Steven'); // Returns the index of the element
+const isPresent = friends.includes('Steven'); // Returns true if the element is present
+
+/* Best Practices:
+ * - Prefer array literals for creation.
+ * - Use `const` for declaring arrays unless you plan to reassign the whole array.
+ * - Use appropriate methods for different operations (e.g., `map` for transformation, `filter` for filtering).
+ * - Remember `includes` uses strict equality for comparison.
+ */
+
+/* Advanced Concepts:
+ * - Iterating over arrays using methods like forEach, map, filter.
+ * - Chaining methods for more complex operations.
+ * - Using spread operator (...) for copying or merging arrays.
+ */
+
+// Example: Iteration with forEach
+friends.forEach(function(friend, index) {
+    console.log(`${index + 1}: ${friend}`);
+});
+
+// Example: Creating a new array with map
+const friendLengths = friends.map(function(friend) {
+    return friend.length;
+});
+
+// Example: Chaining methods
+const filteredFriends = friends
+    .filter(friend => friend.startsWith('S'))
+    .map(friend => friend.toUpperCase());
+
+// Example: Using spread operator
+const allFriends = [...friends, 'Lara', 'Tom'];

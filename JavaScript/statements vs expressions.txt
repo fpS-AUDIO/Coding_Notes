@@ -1,0 +1,66 @@
+
+
+//////////////////////////////////
+// JS STATEMENTS VS EXPRESSIONS //
+//////////////////////////////////
+
+
+
+/* Expressions:
+ * - A piece of code that produces a value.
+ * - Can be a part of a statement.
+ * - Includes operations, function calls, literals, and more.
+ */
+
+// Examples of expressions:
+3 + 4;                  // Arithmetic expression producing 7
+1991;                   // Number literal producing 1991
+true && !false;         // Logical expression producing true
+'Hello' + 'World';      // String concatenation producing 'HelloWorld'
+functionCall();         // Function call that returns a value
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+/* Statements:
+ * - A bigger piece of code that performs an action.
+ * - Does not produce a value directly.
+ * - Includes declarations, loops, conditionals, and more.
+ */
+
+// Examples of statements:
+if (18 > 10) {
+    const str = '18 is bigger';  // if statement, does not produce a value directly
+}
+for (let i = 0; i < 5; i++) {
+    // Loop statement, performs actions, does not produce a value directly
+}
+function myFunction() {
+    // Function declaration statement
+}
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+/* Additional Points and Best Practices:
+ * - Understanding the difference is crucial for writing idiomatic JavaScript.
+ * - Expressions can be used where JavaScript expects a value.
+ * - Statements define actions and control flow but don’t become a value.
+ * - In some contexts, like template literals or JSX, only expressions are allowed.
+ * - Use expressions for dynamic values and statements for control structures.
+ */
+
+/* Advanced Concepts:
+ * - Expression Statements: Some expressions can be used as statements.
+ * - Function expressions vs Function declarations: Function expressions can be used inline and anonymously.
+ */
+
+// Example of an expression statement:
+let x;
+x = 3 + 4;  // Assignment expression used as a statement
+
+// Function expression vs Function declaration
+const myFunc = function() { return 'Hello'; };  // Function expression
+function myDeclaredFunc() { return 'Hello'; }   // Function declaration

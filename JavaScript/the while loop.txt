@@ -1,0 +1,89 @@
+
+
+//////////////////////////////////
+// THE WHILE LOOP IN JAVASCRIPT //
+//////////////////////////////////
+
+/* While Loop:
+ * - Executes its statements as long as a specified condition evaluates to true.
+ * - Commonly used when the number of iterations is not known beforehand.
+ */
+
+/* Basic Syntax:
+ * while (condition) {
+ *     // Code to be executed as long as condition is true
+ * }
+ */
+
+/* Loop Control with 'break' and 'continue':
+ * - 'break': Immediately exits the loop.
+ * - 'continue': Skips the current iteration and continues with the next iteration.
+ */
+
+
+// The condition is evaluated before each iteration.
+// If the condition is true, the loop statements execute.
+// If the condition is false, the loop terminates.
+
+/* Best Practices:
+ * - Ensure the condition in a while loop eventually becomes false to avoid infinite loops.
+ * - Carefully manage variables involved in the condition to prevent unintended endless loops.
+ * - While loops are ideal when the number of iterations is not predetermined.
+ */
+
+/* Example: Rolling a Dice Until Six */
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+
+    if (dice === 6) {
+        console.log(`Nice! The dice is 6, and the loop is ending...`);
+    }
+}
+
+/* Using While Loop Without a Counter:
+ * - While loops don't require a counter variable, but one can be used if needed.
+ * - Useful in scenarios where you need to execute a block of code until a certain condition is met.
+ */
+
+/* Example: Basic Counter in a While Loop */
+let counter = 0;
+while (counter < 5) {
+    console.log(`Counter is ${counter}`);
+    counter++; // Increment the counter
+}
+
+
+/* Example: Using 'break' and 'continue' */
+let number;
+while (true) {
+    number = Math.trunc(Math.random() * 10) + 1;
+    console.log(`Current number: ${number}`);
+    if (number === 5) {
+        console.log('Breaking out of the loop as number is 5');
+        break;
+    }
+    if (number % 2 === 0) {
+        console.log('Encountered an even number, continuing...');
+        continue;
+    }
+}
+
+/* Additional Tips:
+ * - Prefer 'for' loops when the number of iterations is known.
+ * - Use 'while' loops for more dynamic situations where the end condition is not strictly based on a counter.
+ * - Ensure logic within the loop eventually makes the condition false to avoid infinite loops.
+ */
+
+/* Advanced Usage:
+ * - 'do...while' loops are a variation where the body is executed at least once before checking the condition.
+ */
+
+// Example: Do-While Loop
+let someValue = 10;
+do {
+    console.log(`Value is ${someValue}`);
+    someValue--;
+} while (someValue > 0);

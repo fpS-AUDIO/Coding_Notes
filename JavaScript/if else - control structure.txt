@@ -1,0 +1,85 @@
+
+
+
+///////////////////////////
+// JS IF-ELSE STATEMENTS //
+///////////////////////////
+
+
+/* 
+ * Official Name: Control Structure
+ * - Used for decision-making in programming.
+ */
+
+
+/* Basic Structure:
+ * if (condition1) {
+ *    // Execute some code if condition1 is true
+ * } else if (condition2) {
+ *    // Execute some code if condition2 is true
+ * } ... {
+ *    // Additional else if blocks as needed
+ * } else {
+ *    // Execute some backup code if all conditions above are false
+ * }
+ */
+
+
+/* Syntax and Usage:
+ * - Conditions are evaluated as boolean values, with type coercion if necessary.
+ * - The code within {} is a block and has its own scope, important for 'let' and 'const'.
+ */
+
+
+/* Enhanced Example with Best Practices */
+// Example: Checking driving eligibility
+
+const age = 16;
+const drivingAge = 18;
+const isOldEnough = age >= drivingAge; // Use clear variable names for conditions
+
+if (isOldEnough) {
+    console.log('Eligible for driving license.');
+} else {
+    const yearsLeft = drivingAge - age;
+    console.log(`Wait for ${yearsLeft} more year(s) to become eligible.`);
+}
+
+
+
+/* Additional Points and Best Practices:
+ * 1. Ternary Operator: Use for simple conditions.
+ *    const canVote = age >= 18 ? 'Yes' : 'No';
+ * 2. Truthy and Falsy Values: Understand what values are considered true or false.
+ * 3. Strict Comparison: Prefer === and !== over == and !=.
+ * 4. Nested If-Else: Avoid deep nesting; use switch statements or object literals.
+ * 5. Short-circuiting: Utilize && and || for short evaluations.
+ * 6. Error Handling: Use try-catch in complex conditions.
+ */
+
+/* Advanced Usage:
+ * - Switch Statement: For multiple else-if conditions.
+ * - Conditional (Ternary) Operator: For concise if-else statements.
+ * - Logical Operators in Conditions: && (and), || (or), ! (not).
+ */
+
+// Example: Switch Statement
+switch (age) {
+    case 16:
+        console.log('Just started driving.');
+        break;
+    case 18:
+        console.log('Eligible for voting.');
+        break;
+    default:
+        console.log('Age not specified.');
+}
+
+// Example: Using Logical Operators
+if (age > 18 && hasLicense) {
+    console.log('Can legally drive alone.');
+} else if (age === 18 || testPassed) {
+    console.log('Eligible for temporary license.');
+} else {
+    console.log('Not eligible for driving.');
+}

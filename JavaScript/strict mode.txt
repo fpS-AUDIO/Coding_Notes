@@ -1,0 +1,59 @@
+
+
+////////////////////
+// JS STRICT MODE //
+////////////////////
+
+
+/* Strict Mode:
+ * - A way to opt in to a restricted variant of JavaScript.
+ * - Helps catch common coding bloopers, prevents 'bad' syntax, and improves performance.
+ */
+
+/* Activation:
+ * - Place 'use strict'; at the beginning of a script or a function.
+ */
+'use strict'; // Activates strict mode
+
+/* Best Practices:
+ * - Always use strict mode to write secure and error-free JavaScript code.
+ * - Recommended to use at the beginning of every JavaScript file or function.
+ */
+
+/* Benefits of Strict Mode:
+ * 1. Makes debugging easier: Code errors that would otherwise have been ignored or failed silently are thrown.
+ * 2. Prevents accidental global variables: Assigning a value to an undeclared variable will throw an error.
+ * 3. Eliminates `this` coercion: `this` values are no longer defaulted to the global object.
+ * 4. Disallows duplicate parameter values: An error will be thrown in functions with duplicate parameters.
+ * 5. Introduces a shortlist of reserved keywords for future JavaScript versions.
+ * 6. Prohibits certain syntax likely to be defined in future ECMAScript versions.
+ */
+
+/* Example: Errors Thrown in Strict Mode */
+'use strict';
+
+function canDrive(age) {
+    if (age >= 18) {
+        var message = 'Can drive'; // No error
+        let message = 'Can drive'; // Throws SyntaxError in strict mode due to duplicate declaration
+    }
+    return message;
+}
+
+/* Additional Notes:
+ * - Strict mode can be applied to entire scripts or to individual functions.
+ * - It does not just forbid things; it changes the semantics of JavaScript slightly.
+ * - Functions invoked in strict mode do not have their `this` context pointing to the global object.
+ * - Some older browsers may not support strict mode.
+ */
+
+/* Advanced Concepts:
+ * - Secure JavaScript: Strict mode makes it easier to write "secure" JavaScript by modifying some fundamental aspects.
+ * - Performance Optimization: Some optimizations can be performed by the engine more reliably when code is in strict mode.
+ */
+
+// Example: Strict mode in function
+function myFunction() {
+    'use strict';
+    // Function code here
+}

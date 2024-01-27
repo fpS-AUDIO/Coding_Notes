@@ -1,0 +1,84 @@
+
+
+
+////////////////////////////////
+// JS CONVERSION AND COERCION //
+////////////////////////////////
+
+
+
+/* Type Conversion:
+ * - Manual conversion from one type to another.
+ */
+
+/* Type Coercion:
+ * - Automatic type conversion by JavaScript.
+ */
+
+/* Number() Function:
+ * - Used to convert a value to a number.
+ * - Returns NaN (Not a Number) if the conversion is not possible.
+ */
+// Example:
+const inputYear = '1991';
+const inputYearNumber = Number(inputYear); // Converts string '1991' to number 1991
+
+/* String() Function:
+ * - Used to convert a value to a string.
+ * - Adding a number to an empty string also converts the number to a string.
+ */
+// Example:
+const num = 123;
+const numStr = String(num);  // '123'
+const numStrAlt = num + '';  // '123' - alternative method using concatenation
+
+/* Boolean() Function:
+ * - Used to convert a value to a boolean.
+ * - Falsy values (0, '', null, undefined, NaN, false) convert to false.
+ * - Truthy values (all other values) convert to true.
+ */
+// Example:
+const truthyValue = Boolean(1); // true
+const falsyValue = Boolean(0);  // false
+
+/* Null Conversion:
+ * - There is no Null() function in JavaScript.
+ * - Explicitly assigning 'null' is the way to set a variable to null.
+ */
+// Example:
+let someVar = null; // Sets the variable to null explicitly
+
+
+
+/* Additional Points on Conversion and Coercion:
+ * 1. Using '+' Operator for String Concatenation and Coercion:
+ *    - When a number is added to a string, JavaScript coerces the number into a string.
+ * 2. Implicit Coercion in Comparisons:
+ *    - Using '==' allows coercion; '===' does not (strict equality, no coercion).
+ * 3. Conversion in Array Context:
+ *    - Arrays convert to strings based on their elements.
+ * 4. Date Conversion:
+ *    - Date objects can be converted to strings or numbers.
+ */
+
+/* Best Practices:
+ * - Prefer explicit conversion over implicit coercion for clarity and predictability.
+ * - Use '===' for equality checks to avoid unintended type coercion.
+ * - Be cautious with type coercion in arithmetic and logical operations.
+ */
+
+/* Examples of Conversion and Coercion */
+// String concatenation (Coercion)
+const a = 'Year: ' + 2024; // 'Year: 2024'
+
+// Implicit coercion in comparisons
+const isEqual = '123' == 123; // true due to coercion, '123' === 123 would be false
+
+// Array to string conversion
+const arr = [1, 2, 3];
+const arrString = String(arr); // '1,2,3'
+
+// Date conversion
+const date = new Date();
+const dateString = String(date); // Converts date to string
+const dateNumber = Number(date); // Converts date to milliseconds since Unix Epoch

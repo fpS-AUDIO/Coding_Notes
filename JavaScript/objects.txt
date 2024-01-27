@@ -1,0 +1,118 @@
+
+
+////////////////
+// JS OBJECTS //
+////////////////
+
+
+
+/* Objects:
+ * - Objects are collections of key-value pairs.
+ * - They can store various data types as values, including arrays and functions.
+ * - Objects in JavaScript are mutable.
+ */
+
+
+/* Syntax for Object Creation:
+ * variable = { key: value, ... };
+ */
+
+// Example: Creating an Object
+const john = {
+    firstName: 'John',
+    lastName: 'Wick',
+    birthYear: 1996,
+    job: 'hacker',
+    friends: ['Bander', 'Lila', 'Mattia']
+};
+
+
+
+/* Accessing Object Properties:
+ * - Dot notation: object.property
+ * - Bracket notation: object['property'] (useful when property names are dynamic)
+ */
+
+console.log(john.lastName); // Using dot notation
+console.log(john['lastName']); // Using bracket notation
+
+/* Adding and Modifying Object Properties:
+ * - Can add new properties or modify existing ones.
+ */
+
+john.location = 'China'; // Adding a new property
+john['location'] = 'China'; // Equivalent to the line above
+
+/* Using Expressions with Bracket Notation:
+ * - Bracket notation can accept any expression.
+ */
+
+const nameKey = 'Name';
+console.log(john['first' + nameKey]);
+console.log(john['last' + nameKey]);
+
+/* Object Methods:
+ * - Functions attached to objects are called methods.
+ * - Methods can use 'this' to access properties of the same object.
+ */
+
+const johnWithMethods = {
+    firstName: 'John',
+    lastName: 'Wick',
+    birthYear: 1996,
+    job: 'hacker',
+    friends: ['Bander', 'Lila', 'Mattia'],
+
+    // Method using a function expression
+    calcAge: function() {
+        this.age = 2023 - this.birthYear;
+        return this.age;
+    }
+};
+
+// Accessing and calling a method
+console.log(johnWithMethods.calcAge());
+console.log(johnWithMethods.age); // Accessing the newly created 'age' property
+
+/* Best Practices:
+ * - Use dot notation for static property access and bracket notation for dynamic properties.
+ * - Define methods using concise method syntax in ES6.
+ * - Use 'this' keyword wisely to refer to the object itself within methods.
+ */
+
+/* Built-in Object Methods:
+ * - JavaScript provides several built-in methods to interact with objects.
+ * - These include methods to retrieve keys, values, entries, and more.
+ */
+
+// Examples of built-in Object methods
+const keys = Object.keys(john); // Gets all keys of the object
+const values = Object.values(john); // Gets all values of the object
+const entries = Object.entries(john); // Gets key-value pairs as an array
+
+/* Advanced Concepts:
+ * - Object destructuring: Extracting multiple properties into variables.
+ * - Object spread operator: Used to copy properties from one object to another.
+ * - Object.assign: Merges properties from one or more objects into a target object.
+ */
+
+// Example: Object Destructuring
+const { firstName, lastName } = john;
+console.log(firstName, lastName);
+
+// Example: Object Spread Operator
+const johnCopy = { ...john, location: 'USA' };
+console.log(johnCopy);
+
+/* Object.assign Usage:
+ * - Used for shallow copying or merging objects.
+ */
+const mergedObject = Object.assign({}, john, { location: 'USA', age: 27 });
+console.log(mergedObject);
+
+/* Instance Properties and Methods:
+ * - Instance properties and methods are those defined on the object instance itself.
+ */
+
+// Example: Using hasOwnProperty method
+console.log(john.hasOwnProperty('firstName')); // true

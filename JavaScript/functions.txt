@@ -1,0 +1,136 @@
+
+
+//////////////////
+// JS FUNCTIONS //
+//////////////////
+
+/* Functions:
+ * - Reusable pieces of code in JavaScript.
+ * - Used to encapsulate code that performs a specific task.
+ */
+
+
+/* Function Declaration vs Expression:
+ * - Function Declaration: Can be called before they're defined (hoisting).
+ * - Function Expression: Anonymous function assigned to a variable.
+ */
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+/* Function Declaration Syntax:
+ * function functionName() {
+ *     // Function body
+ *     console.log('Execute this code when we call the function');
+ * }
+ * 
+ * // Calling/Running/Invoking a function
+ * functionName();
+ */
+
+// Example: Basic Function Declaration
+function greet() {
+    console.log('Hello, world!');
+}
+greet(); // Calls the function
+
+/* Function with Parameters and Return Statement:
+ * - Parameters: Function can accept input data.
+ * - Return Statement: Returns a value and exits the function.
+ */
+function fruitProcessor(apples, oranges) {
+    const juice = `Juice with ${apples} apples and ${oranges} oranges`;
+    return juice;
+}
+
+const appleJuice = fruitProcessor(4, 0);
+console.log(appleJuice); // Output: 'Juice with 4 apples and 0 oranges'
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+// Function Expression
+const calculateAge2 = function (birthYear) {
+    return 2023 - birthYear;
+}
+const age2 = calculateAge2(1996);
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+/* Arrow Functions:
+ * - Concise syntax for writing function expressions.
+ * - No 'this' keyword; they inherit 'this' from the parent scope.
+ */
+
+// Example: Simple Arrow Function
+const calculateAge3 = birthYear => 2023 - birthYear;
+const age3 = calculateAge3(1996);
+
+// Arrow Function with Block Body
+const yearsUntilRetirement = birthYear => {
+    const age = 2023 - birthYear;
+    const retirement = 65 - age;
+    return retirement;
+}
+const retirementYears = yearsUntilRetirement(1996);
+
+// Arrow Function with Multiple Parameters
+const yearsUntilRetirement2 = (birthYear, firstName) => {
+    const age = 2023 - birthYear;
+    const retirement = 65 - age;
+    return `${firstName} retires in ${retirement} years`;
+}
+console.log(yearsUntilRetirement2(1996, 'Alex'));
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+/* Functions Calling Other Functions:
+ * - Functions can be used inside other functions.
+ */
+
+function cutFruitInPieces(fruit) {
+    return fruit * 4;
+}
+
+function fruitProcessor2(apples, oranges) {  
+    const applePieces = cutFruitInPieces(apples);
+    const orangePieces = cutFruitInPieces(oranges);
+
+    const juice = `Juice with ${applePieces} pieces of apples and ${orangePieces} pieces of oranges`;
+    return juice;
+}
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+/* Best Practices:
+ * - Choose clear and descriptive names for functions.
+ * - Functions should generally be focused on a single task.
+ * - Prefer const for function expressions and arrow functions.
+ * - Be aware of the difference in 'this' behavior in arrow functions and traditional functions.
+ */
+
+/* Advanced Concepts:
+ * - Immediately Invoked Function Expressions (IIFE): Functions that run as soon as they are defined.
+ * - Higher-order functions: Functions that take other functions as arguments or return functions.
+ * - Callback functions: Functions passed as an argument to another function.
+ */
+
+// Example of IIFE
+(function() {
+    console.log('This function runs right away');
+})();
+
+// Example of Higher-Order Function and Callback
+function processFruit(num, callback) {
+    return callback(num);
+}
+const processed = processFruit(4, cutFruitInPieces);
+console.log(processed); // Output: 16

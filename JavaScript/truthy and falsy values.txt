@@ -1,0 +1,59 @@
+
+
+
+////////////////////////////////
+// JS TRUTHY AND FALSY VALUES //
+////////////////////////////////
+
+
+/* Falsy Values:
+ * In JavaScript, a falsy value is a value that is considered false when encountered in a Boolean context.
+ * There are 6 falsy values in JavaScript:
+ * 1. 0 - The number zero
+ * 2. '' or "" (empty string)
+ * 3. undefined
+ * 4. null
+ * 5. NaN (Not a Number)
+ * 6. false - The boolean value false
+ */
+
+// Examples of falsy values
+console.log(Boolean(0)); // false
+console.log(Boolean("")); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean(null)); // false
+console.log(Boolean(NaN)); // false
+console.log(Boolean(false)); // false
+
+/* Truthy Values:
+ * A truthy value is a value that translates to true when evaluated in a Boolean context.
+ * Everything that is not a falsy value is truthy.
+ * This includes:
+ * - '0' (a string containing a single zero)
+ * - 'false' (a string containing the text “false”)
+ * - [] (an empty array)
+ * - {} (an empty object)
+ * - function(){} (an empty function)
+ */
+
+// Examples of truthy values
+console.log(Boolean('0')); // true, as '0' is a non-empty string
+console.log(Boolean('false')); // true, as 'false' is a non-empty string
+console.log(Boolean([])); // true, as an empty array is considered truthy
+console.log(Boolean({})); // true, as an empty object is considered truthy
+console.log(Boolean(function(){})); // true, as an empty function is considered truthy
+
+/* Best Practices:
+ * - Be cautious with truthy and falsy values in conditionals and logical operations.
+ * - Use triple equals (===) for comparisons to avoid unintended type coercion.
+ * - Explicitly check for values like null, undefined, 0, or '' if needed.
+ */
+
+// Best Practice Example
+let myVar = 0;
+// Explicit check for 0
+if (myVar === 0) {
+    console.log('myVar is zero');
+} else {
+    console.log('myVar is not zero');
+}

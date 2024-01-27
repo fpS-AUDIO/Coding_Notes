@@ -1,0 +1,83 @@
+
+
+/////////////////////////
+// SNIPPETS IN VS CODE //
+/////////////////////////
+
+/* Snippets in VS Code:
+ * - Snippets are templates that make it easier to enter repeating code patterns.
+ * - They are useful for speeding up coding by reducing repetitive typing.
+ */
+
+/* Creating Snippets in VS Code:
+ * 1. Go to File > Preferences > User Snippets.
+ * 2. Select 'New Global Snippets file...' and give it a meaningful name.
+ * 3. This will create a JSON file where you can define your snippets.
+ */
+
+/* Defining a Snippet:
+ * - Each snippet is defined in JSON format with keys like 'scope', 'prefix', 'body', and 'description'.
+ * - 'scope': Defines the language(s) where the snippet is applicable.
+ * - 'prefix': What you type to trigger the snippet.
+ * - 'body': The code that will be inserted. Use an array of strings for multiple lines.
+ * - 'description': A brief description of the snippet.
+ */
+
+// Example: Defining a Snippet
+{
+    "Print to console": {
+        "scope": "javascript,typescript",
+        "prefix": "cl",
+        "body": ["console.log($1);"],
+        "description": "Log output to console"
+    }
+}
+
+/* Using Snippets:
+ * - Type the snippet prefix ('cl' in the example) and press Enter or Tab.
+ * - The snippet expands where you typed the prefix.
+ * - Placeholders ($1, $2, etc.) are used for cursor positions and tab stops.
+ */
+
+/* Best Practices:
+ * - Create snippets for code patterns you frequently use.
+ * - Use meaningful prefixes that are easy to remember.
+ * - Include placeholders for parts of the snippet you expect to change frequently.
+ * - Organize snippets by language or functionality for better management.
+ */
+
+/* Advanced Snippet Features:
+ * - Use '${1:defaultText}' for placeholders with default text.
+ * - Nest placeholders for complex snippets.
+ * - Use variables like '$TM_FILENAME' for dynamic values based on the environment (e.g., current file name).
+ */
+
+// Example: Advanced Snippet with Default Text and Variable
+{
+    "New Function": {
+        "scope": "javascript,typescript",
+        "prefix": "newfunc",
+        "body": [
+            "function ${1:functionName}(${2:parameters}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a new function"
+    }
+}
+
+/* Tips:
+ * - Regularly update and refine your snippets as your coding style evolves.
+ * - Share snippets with team members for consistent coding practices.
+ * - Explore and customize pre-existing snippets from extensions for your languages or frameworks.
+ */
+
+/* Adding Snippets to Workspace:
+ * - You can also define snippets for a specific project by creating a '.code-snippets' file in the '.vscode' directory of your workspace.
+ * - This is useful for project-specific code patterns and standards.
+ */
+
+/* Importing and Exporting Snippets:
+ * - Snippets can be shared as JSON files.
+ * - Import snippets by placing the JSON file in the appropriate snippets directory or directly editing your global snippets file.
+ */
