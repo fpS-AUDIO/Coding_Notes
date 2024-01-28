@@ -1,0 +1,84 @@
+
+
+
+
+//////////////////////////////////////////
+// REGULAR FUNCTIONS VS ARROW FUNCTIONS //
+//////////////////////////////////////////
+
+
+// Example usage in an object
+const alex = {
+  firstName: 'Alex',
+  year: 1996,
+
+  calcAge: function() {
+    console.log(this);
+    console.log(2023 - this.year);
+
+    // 1st Solution (legacy) using regular function
+    // Here 'this' is undefined in strict mode, or global object in non-strict
+    const self = this;
+    const isMillennial = function() {
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    isMillennial();
+
+    // 2nd Solution using arrow function
+    // Arrow functions inherit 'this' from the parent scope
+    const isHeMillennial = () => {
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isHeMillennial();
+  },
+};
+alex.calcAge();
+
+/**
+ * Key Differences and Properties
+ **/
+
+// 1. 'this' Keyword Behavior
+// Regular Functions: Define their own 'this' based on how they are called.
+// Arrow Functions: Inherit 'this' from the parent scope at the time they are defined.
+
+// 2. 'arguments' Object
+// Regular Functions: Have access to 'arguments' object.
+// Arrow Functions: Do not have their own 'arguments' object.
+
+// 3. Constructor Use
+// Regular Functions: Can be used as constructors with 'new'.
+// Arrow Functions: Cannot be used as constructors.
+
+// 4. Method Definitions
+// Regular Functions: Commonly used for object or class methods.
+// Arrow Functions: Not ideal for methods when 'this' is required.
+
+// 5. Implicit Return
+// Arrow Functions: Allow implicit return of expressions.
+
+
+/**
+ * Best Practices
+ **/
+
+
+// - Use arrow functions for simple operations or when lexical 'this' is needed.
+// - Use regular functions for object methods and constructors.
+// - For inline functions and callbacks, arrow functions are a good choice.
+
+/**
+ * Advanced Examples
+ **/
+
+// Using Rest Parameters
+const sum = (...numbers) => numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum(1, 2, 3, 4)); // Outputs 10
+
+// Method in an Object
+const person = {
+  name: 'Alex',
+  greet: function() { console.log(`Hello, my name is ${this.name}`); },
+  // Using arrow function here might not work as expected due to 'this' scoping
+};
+person.greet(); // Logs 'Hello, my name is Alex'

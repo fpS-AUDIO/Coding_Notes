@@ -1,0 +1,115 @@
+
+
+
+
+/////////////////////////////////////////////////////////
+// PRIMITIVE VS OBJECTS (PRIMITIVE VS REFERENCE TYPES) //
+/////////////////////////////////////////////////////////
+
+
+
+/**
+ * Primitive Data Types
+ * - Include: Number, String, Boolean, Undefined, Null, Symbol, BigInt.
+ * - Stored in the Call Stack.
+ * - Are immutable (values cannot be altered once created).
+ */
+
+// Example: Primitive Types
+let age = 30;
+let newAge = age;
+age = 31;
+console.log(age);  // Output: 31
+console.log(newAge);  // Output: 30
+// 'age' and 'newAge' are separate entities in the stack, each with its own value.
+
+
+// ------------------------------------------------------------------------------------- //
+
+
+/**
+ * Reference Types (Objects)
+ * - Include: Object, Array, Function, and more complex data structures.
+ * - Stored in the Memory Heap.
+ * - Variables in the stack hold references (addresses) to objects in the heap.
+ */
+
+// Example: Reference Types
+const person1 = {
+  name: 'Alex',
+  age: 30
+};
+const person2 = person1;
+person2.age = 25;
+console.log(person1.age);  // Output: 25
+console.log(person2.age);  // Output: 25
+// 'person1' and 'person2' reference the same object in the heap.
+
+
+// ------------------------------------------------------------------------------------- //
+
+
+(!!!)
+When the object `person1` is created, it's stored in the heap.
+Memory heap has the memory adress and the value of this object.
+But the new created object (`person1`) is not poiting to the memory address in the heap,
+but it's poiting to the a new piece of memory that's created in the stack.
+And this new piece of memory will then point to the object
+that's in the heap by using the memory address as its value.
+
+This is why object are called reference types.
+Piece of memory in the call stack has the reference to to the piece of memeory in the heap.
+
+(!) even if we define the `person1` variable with const
+    we can actually still manipulate the object without problems
+    because we're actually not changing the value in memory, it's still D30F (In this example)
+    we're changing the value in the heap.
+    Only primitive values are immutable.
+
+CALL STACK
+ADRESS      VALUE       IDENTIFIER 
+0001        30          newAge
+0002        31          age
+0003        D30F        person1, person2
+
+MEMORY HEAP
+        {
+D30F        name: `Alex`;
+            age: 25;
+        }
+
+(!) If we really want to copy this object we can use 
+    Object.assign(x, y) method
+    Object.assign(x, y) merges two objects (x, y) and return a new one.
+
+
+// ------------------------------------------------------------------------------------- //
+
+
+// Copying Objects
+// Shallow Copy
+const sara = {
+  firstName: 'Sara',
+  lastName: 'Cattaneo',
+  age: 27,
+  family: ['Mattia', 'Paola'],
+};
+const saraMarried = Object.assign({}, sara);
+saraMarried.lastName = 'Bonini';
+saraMarried.family.push('Fabio');
+console.log(saraMarried.family);  // Both arrays are affected
+console.log(sara.family);  // Outputs the changed array
+
+// Deep Copy Solutions
+// JSON Serialization (Note: has limitations like not copying functions, symbols, etc.)
+const deepCopy = JSON.parse(JSON.stringify(sara));
+deepCopy.family.push('Marco');
+console.log(deepCopy.family);  // ['Mattia', 'Paola', 'Marco']
+console.log(sara.family);  // Unaffected, remains ['Mattia', 'Paola', 'Fabio']
+
+/**
+ * Best Practices
+ * - Be cautious with reference types to prevent unintended side effects.
+ * - Use appropriate copying methods for shallow or deep copy as needed.
+ */
+

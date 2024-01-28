@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Modal window</title>
+  </head>
+  <body>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse ducimus
+      dolores animi adipisci, voluptatum veniam cumque nulla quo quod
+      accusantium suscipit natus autem rem quibusdam atque porro a consectetur
+      fugit? Non dolorem molestias ad, doloribus aperiam aliquam corporis ipsum
+      omnis. Ipsam voluptates tempore illum sit. Magnam sint et reiciendis
+      cupiditate delectus illo.
+    </p>
+    <main>
+      <!-- DIALOG -->
+      <button class="btn open-modal-window">Open modal01</button>
+      <dialog id="dialog1" class="modal-window">
+        <div>Hello, I'm a Dialog window</div>
+        <button class="btn close-modal-window">Close</button>
+      </dialog>
+
+      <hr />
+
+      <button class="btn open-modal-window">Open form</button>
+      <dialog class="modal-window">
+        <form>
+          <input type="text" />
+          <button class="btn" formmethod="dialog">Cancel</button>
+          <button class="btn close-modal-window">Close</button>
+        </form>
+      </dialog>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

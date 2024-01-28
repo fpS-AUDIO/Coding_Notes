@@ -1,0 +1,61 @@
+/*  General Styling */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --btn-main-color: #000000;
+  --btn-secondary-color: #ffffff;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  min-width: 100vw;
+}
+
+.btn {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.8em 1.6em;
+  margin: 0.5em;
+  font-size: 1.2em;
+  font-weight: 700;
+  line-height: 1;
+  background: transparent;
+  color: var(--btn-main-color);
+  box-shadow: 0 0 0 3px var(--btn-main-color) inset;
+  /* transition: transform 200ms, background 200ms; */
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background-color: var(--btn-main-color);
+  color: var(--btn-secondary-color);
+}
+
+/*  Dialog Windows Styling */
+dialog.modal-window {
+  /* positioning */
+  position: fixed; /* deafult position of dialog */
+  padding: 0.5em;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 10;
+
+  /* styling */
+  background-color: white;
+  border-radius: 8px;
+}
+
+dialog::backdrop {
+  background-color: rgba(110, 110, 110, 0.5);
+}
