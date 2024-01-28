@@ -1,0 +1,108 @@
+
+
+
+
+//////////////////////////////////////////////
+// JS EXECUTION CONTEXTS AND THE CALL STACK //
+//////////////////////////////////////////////
+
+// After JavaScript code is compiled, it enters the execution phase.
+
+
+
+// GLOBAL EXECUTION CONTEXT:
+// - Created for top-level code (code not inside any function).
+// - Only one global execution context exists in a JavaScript program.
+
+// Example:
+const name = 'Alex'; // Executed in the global execution context
+
+const first = () => { // Function expression
+    let a = 1;
+    const b = second();
+    a += b;
+    return a;
+};
+
+function second() { // Function declaration
+    var c = 2;
+    return c;
+};
+
+// EXECUTION CONTEXT:
+// - An environment where JavaScript code is executed.
+// - Contains information needed for execution like variables, arguments, etc.
+
+// Call Stack:
+// - For each function call, a new execution context is created and added to the call stack.
+// - The call stack manages the order and execution of these contexts.
+
+// Execution Flow:
+// 1. Create global execution context.
+// 2. Execute top-level code.
+// 3. Execute functions and callbacks, adding each to the call stack.
+
+// Inside an Execution Context:
+// 1. Variable Environment: Stores variables, functions, and arguments.
+// 2. Scope Chain: References to variables located outside the current function.
+// 3. 'this' keyword: Refers to the object that is executing the current function.
+
+// Note:
+// - Execution contexts are created during a 'creation phase' before actual execution.
+// - Arrow functions do not have their own 'this' keyword or arguments object. They inherit these from the parent scope.
+
+// The Call Stack:
+// - Manages the execution contexts in a LIFO (Last In, First Out) manner.
+// - Helps to track where we are in the program's execution.
+
+
+
+// Example of Call Stack:
+function third() {
+    console.log('Third function');
+}
+
+function second() {
+    third();
+    console.log('Second function');
+}
+
+function first() {
+    second();
+    console.log('First function');
+}
+
+first(); // This will push 'first', 'second', and 'third' onto the call stack in that order.
+
+/*
+Call Stack Visualization:
+   [ third() execution context ]
+   [ second() execution context ]
+   [ first() execution context ]
+   [ Global execution context ]
+*/
+
+// Additional Points:
+
+// Error Handling and the Call Stack:
+// - When an error occurs, JavaScript throws an exception and looks for error handling mechanisms (like try/catch) up the call stack.
+// - If uncaught, the error propagates to the global execution context, potentially stopping the entire script.
+
+// Recursion and the Call Stack:
+// - Recursive functions can cause a 'stack overflow' if the call stack limit is exceeded.
+// - It's important to ensure that recursive functions have a termination condition to prevent this.
+
+// Event Loop Interaction:
+// - After executing the synchronous code, the JavaScript engine waits for asynchronous callbacks (like setTimeout, promises).
+// - These are managed through the event loop and executed when the call stack is clear.
+
+// Practical Example: Tracking Execution Contexts
+function multiply(a, b) {
+    return a * b;
+}
+
+function square(n) {
+    return multiply(n, n);
+}
+
+console.log(square(5)); // This will create execution contexts for 'square' and 'multiply'.

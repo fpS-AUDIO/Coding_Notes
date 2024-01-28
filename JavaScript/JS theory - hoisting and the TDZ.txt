@@ -1,0 +1,98 @@
+
+
+
+
+
+//////////////////////////
+// HOISTING AND THE TDZ //
+//////////////////////////
+
+/*  HOISTING:
+    - Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their containing scope during the compilation phase.
+    - It allows the use of functions and variables before they are declared in the code.    */
+
+
+// HOISTING BEHAVIOR BY TYPE:
+
+
+/* 
+1. Function Declarations:
+   - Hoisted: Yes
+   - Initial Value: Actual function
+   - Scope: Block (if 'strict mode' is enabled, otherwise function scope)
+   - Example:
+     console.log(myFunc()); // Outputs: 'Function called'
+     function myFunc() {
+       return 'Function called';
+     }
+*/
+
+/* 
+2. var Variables:
+   - Hoisted: Yes
+   - Initial Value: undefined
+   - Scope: Function
+   - Example:
+     console.log(myVar); // Outputs: undefined
+     var myVar = 'Hello';
+*/
+
+/* 
+3. let and const Variables:
+   - Hoisted: Technically yes, but not accessible before declaration (TDZ)
+   - Initial Value: uninitialized (TDZ)
+   - Scope: Block
+   - Example:
+     console.log(myLet); // ReferenceError: myLet is not defined
+     let myLet = 'Hello';
+*/
+
+/*
+4. Function Expressions and Arrow Functions:
+   - Depends on how they are declared (var, let, or const)
+   - If declared with var, they are hoisted with an initial value of undefined.
+   - If declared with let or const, they are in the TDZ.
+*/
+
+
+/* 
+TEMPORAL DEAD ZONE (TDZ):
+- The TDZ is a term used to describe the state where variables are in a scope but have not yet been declared.
+- Accessing a let or const variable in the TDZ results in a ReferenceError.
+- The TDZ starts at the beginning of the block where the variable is declared and ends at the variable declaration.
+*/
+
+// Example of TDZ:
+{
+    console.log(myVar); // Outputs: undefined (due to var hoisting)
+    console.log(myLet); // ReferenceError: Cannot access 'myLet' before initialization
+    var myVar = 'hello';
+    let myLet = 'world';
+}
+
+// Additional Insights:
+
+// Hoisting in Function Scopes:
+// - var declarations are hoisted to the top of their containing function or global scope.
+// - let and const declarations are hoisted to the top of their containing block scope.
+
+// Avoiding Confusion:
+// - To avoid confusion and potential errors, it is best practice to declare variables at the top of their scope.
+// - The introduction of let and const in ES6 has made the code more predictable compared to var.
+
+// Implications of var:
+// - var declarations can lead to unexpected results due to their hoisting behavior and function scope.
+// - They also create properties on the global window object in browser environments, which can lead to unintended global variables.
+
+// Practical Example: Hoisting in Functions
+function exampleFunction() {
+    console.log(a); // Outputs: undefined
+    var a = 3;
+}
+exampleFunction();
+
+/*
+Note:
+- Understanding hoisting and the TDZ is crucial for writing robust JavaScript code and for debugging issues related to variable declarations.
+- The use of let and const is encouraged in modern JavaScript development for clearer scoping and to avoid hoisting issues.
+*/

@@ -1,0 +1,76 @@
+
+
+
+
+///////////////////////////////
+// SCOPE AND THE SCOPE CHAIN //
+///////////////////////////////
+
+/*
+SCOPING:
+- Scoping in JavaScript controls how variables are organized and accessed.
+- Determines the visibility or accessibility of variables to different parts of the code.
+
+LEXICAL SCOPING:
+- In JavaScript, scoping is lexical, meaning the scope of a variable is defined by its location within the source code.
+- Lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available.
+
+TYPES OF SCOPE:
+1. Global Scope:
+   - Variables declared outside any function or block.
+   - Accessible from anywhere in the code.
+
+2. Function Scope (Local Scope):
+   - Variables declared within a function.
+   - Accessible only within the function, not outside of it.
+
+3. Block Scope (since ES6):
+   - Variables declared inside a block (denoted by {}) are scoped to the block.
+   - Applies to `let` and `const` variables. `var` does not have block scope.
+
+   Example:
+   if (true) {
+       let blockScopedVar = 'I am block scoped';
+       var functionScopedVar = 'I am function scoped';
+   }
+   console.log(blockScopedVar); // ReferenceError: blockScopedVar is not defined
+   console.log(functionScopedVar); // Outputs 'I am function scoped'
+
+(!) SCOPE CHAIN:
+- When a variable is used, JavaScript looks up the scope chain to find the variable’s value.
+- If the variable is not in the current scope, JavaScript looks in the outer scope, moving outwards until it finds the variable or reaches the global scope.
+- Variables in child or sibling scopes are not accessible.
+
+SCOPE CHAIN vs CALL STACK:
+- The scope chain is concerned with the visibility of variables, not the order of function execution.
+- It's determined by the lexical nesting of scopes, not by the order of function calls (the call stack).
+- The scope chain uses variable environments from execution contexts, but the order of function calls (call stack) does not influence the scope chain.
+
+ADDITIONAL INSIGHTS:
+
+- Shadowing: A variable in an inner scope uses the same name as a variable in an outer scope, 'shadowing' the outer variable.
+- Closures: Functions remember their lexical scope, even when the function is executed outside that scope. This is the principle of closures.
+- 'var' vs 'let'/'const': 'var' is function-scoped and can be hoisted, while 'let' and 'const' are block-scoped and cannot be accessed before declaration.
+- 'strict mode': Changes the behavior of JavaScript, including making functions block-scoped.
+- Best Practice: Minimize the use of global variables to avoid conflicts and unintended side-effects.
+
+EXAMPLE OF SCOPE CHAIN:
+
+const globalVar = 'global';
+
+function outerFunction() {
+    const outerVar = 'outer';
+    
+    function innerFunction() {
+        const innerVar = 'inner';
+        console.log(innerVar);   // 'inner'
+        console.log(outerVar);   // 'outer'
+        console.log(globalVar);  // 'global'
+    }
+
+    innerFunction();
+}
+
+outerFunction();
+// innerFunction has access to innerVar, outerVar, and globalVar due to the scope chain.
+*/

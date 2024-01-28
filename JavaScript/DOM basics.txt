@@ -1,0 +1,85 @@
+
+
+////////////////
+// DOM BASICS //
+////////////////
+
+/*  DOM (Document Object Model)
+    - Structured representation of HTML documents. 
+    - Allows JavaScript to access and manipulate HTML elements and styles.
+
+    The DOM is created by the browser when the HTML page loads and is stored in a tree structure.
+    In this tree, each HTML element is an object.
+
+    Document: The entry point to the DOM (main element of the tree).
+    - The first child of the 'document' is usually the HTML element, which is the root of HTML files.
+    - It has methods like querySelector() to select elements. */
+
+/*  (!) Note:
+    JavaScript conforms to the ECMAScript specification. DOM is not a part of JavaScript itself.
+    DOM and its methods are part of Web APIs provided by browsers.
+    API: Application Programming Interface. */
+
+
+// Accessing the DOM in the browser console:
+console.log(document);                 // Outputs HTML text of the page
+console.dir(document);                 // Outputs DOM tree with properties and values
+
+// Important document properties:
+console.log(document.URL);             // URL of the website
+console.log(document.body);            // Everything inside the body tag
+console.log(document.head);            // Everything in the head tag
+console.log(document.links);           // All the links on the page
+
+// Methods to select elements from the DOM:
+let elementById = document.getElementById("elementId");                    // Selects an element by its ID
+let elementsByClassName = document.getElementsByClassName("className");    // Selects elements by their class
+let elementsByTagName = document.getElementsByTagName("tagName");          // Selects elements by their tag name (e.g., 'div', 'p')
+let firstMatchingElement = document.querySelector(".selector");            // Selects the first element matching a CSS selector
+let allMatchingElements = document.querySelectorAll(".selector");          // Selects all elements matching a CSS selector
+
+// Examples:
+document.querySelector('.number').textContent = 22;                        // Changing text content
+document.querySelector('.input').value = 13;                               // Setting value of an input field
+
+
+/*  (!) Changing styles:
+    - Use element.style.property to change styles.
+    - Use camelCase for CSS properties (e.g., backgroundColor instead of background-color).
+
+    Example:
+    document.querySelector('body').style.backgroundColor = 'white';       // Changing background color */
+
+
+// Additional Best Practices and Methods:
+
+// Adding and removing classes (preferred over direct style manipulation for maintainability):
+element.classList.add('new-class');                                        // Adding a class
+element.classList.remove('existing-class');                                // Removing a class
+element.classList.toggle('toggle-class');                                  // Toggling a class
+
+// Setting attributes:
+element.setAttribute('attribute', 'value');                                // Sets a new value for an attribute
+
+// Creating new elements:
+let newDiv = document.createElement('div');                                // Creates a new div element
+document.body.appendChild(newDiv);                                         // Appends the new div to the body
+
+// Event handling:
+element.addEventListener('click', function() {
+    console.log('Element clicked!');
+});
+
+/*
+Note on Performance:
+    - Minimize DOM manipulations and reflows for better performance.
+    - Batch updates and changes to the DOM whenever possible.
+    - Use event delegation for handling events on multiple similar elements.
+*/
+
+// Practical example:
+document.querySelector('#submit-button').addEventListener('click', function() {
+    let inputValue = document.querySelector('#input-field').value;
+    console.log('Input Value:', inputValue);
+    // Further processing...
+});

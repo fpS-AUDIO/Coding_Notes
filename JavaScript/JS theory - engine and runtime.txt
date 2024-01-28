@@ -1,0 +1,80 @@
+
+
+
+
+///////////////////////////
+// JS ENGINE AND RUNTIME //
+///////////////////////////
+
+/*  JavaScript Engine: 
+
+    A program that executes JavaScript code. 
+    Each browser has its own JavaScript engine, e.g., Google's V8 engine, which powers both Google Chrome and Node.js. 
+    Node.js allows server-side JavaScript execution without a browser.
+
+    A JavaScript engine typically contains:
+    1. Call Stack: Manages execution contexts of function calls.
+    2. Memory Heap: An unstructured memory pool for storing objects needed by the application.  */
+
+
+
+// Compilation vs Interpretation in JavaScript:
+// 1. Compilation: Converts entire code into machine code at once, creating a binary file that can be executed.
+// 2. Interpretation: Executes source code line by line, converting it to machine code on the fly.
+
+// Just-In-Time (JIT) Compilation:
+// - Modern JavaScript engines use JIT compilation, a blend of compilation and interpretation.
+// - JIT compilation involves compiling the entire code into machine code at once and then executing it immediately.
+
+// How JIT Compilation Works:
+// 1. Parsing: The code is read and parsed into an Abstract Syntax Tree (AST), checking for syntax errors.
+// 2. Compilation: The AST is compiled into machine code.
+// 3. Execution: The machine code is executed in the engine's call stack.
+// 4. Optimization: Initially, an unoptimized version of the code is executed. It is then optimized and recompiled in the background.
+
+// Note:
+// - Parsing, compilation, and optimization occur in special threads separate from the main thread.
+
+
+
+// JavaScript Runtime:
+// - The runtime includes the JavaScript engine and additional tools and APIs.
+// - Components:
+//   1. JavaScript Engine (Call Stack, Heap)
+//   2. Web APIs (DOM, Timers, Fetch API, etc.) provided by the browser.
+//   3. Callback Queue: Holds callback functions ready for execution.
+//   4. Event Loop: Moves callbacks from the queue to the call stack when the stack is empty.
+
+
+// Event Loop Example:
+document.querySelector('.btn').addEventListener('click', () => {
+    console.log('Button clicked!');
+});
+// When the button is clicked, the callback function is queued and eventually executed by the event loop.
+
+
+
+// Additional Insights:
+
+// Node.js Runtime:
+// - Node.js runtime includes the V8 engine (2023) and replaces browser-specific Web APIs with its own, like file system access.
+
+// Microtasks and Macrotasks:
+// - JavaScript tasks are categorized as microtasks (e.g., Promises) and macrotasks (e.g., setTimeout).
+// - The event loop gives priority to microtasks over macrotasks.
+
+// Asynchronous Execution:
+// - JavaScript handles asynchronous operations (like I/O) through callbacks, promises, and async/await.
+// - These mechanisms work seamlessly with the event loop for non-blocking execution.
+
+// Example: Asynchronous setTimeout
+setTimeout(() => {
+    console.log('This is executed after 2 seconds');
+}, 2000);
+// 'setTimeout' is a Web API that schedules a callback for later execution.
+
+/*
+Note on Performance:
+- JavaScript's single-threaded nature and event loop model are efficient for handling I/O-intensive tasks.
+- However, for CPU-intensive tasks, Node.js offers options like worker threads to leverage multi-threading.
+*/

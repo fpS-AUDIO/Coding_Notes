@@ -1,0 +1,103 @@
+
+
+////////////////////////////
+// HANDLING EVENTS BASICS //
+////////////////////////////
+
+
+/*
+Event: An action or occurrence recognized by software, such as a mouse click, key press, or mouse movement.
+Event Listener: A JavaScript procedure that waits for an event to happen and then executes a function in response.
+*/
+
+
+// Steps to handle an event:
+
+
+// 1. Select the element on which the event should happen
+let button = document.querySelector('.btn'); // Selecting a button element with the class 'btn'
+
+// 2. Add an event listener to the element
+// Syntax: element.addEventListener(eventType, eventHandler)
+// eventType: Type of the event (e.g., 'click')
+// eventHandler: The function to execute when the event occurs
+
+// 3. Examples:
+
+// Example #1: Inline anonymous function
+button.addEventListener('click', function() {
+    // Code to execute when button is clicked
+    console.log('Button clicked!');
+});
+
+// Example #2: Referencing a pre-defined function
+function displayDate() {
+    // Function logic here
+    console.log('Date displayed!');
+}
+document.getElementById('myBtn').addEventListener('click', displayDate);
+
+
+/* 
+(!) Note: 
+    - The event handler function is not called immediately; it's provided as a value (reference) to the event listener.
+    - JavaScript's event loop calls this function when the specified event occurs.
+*/
+
+
+// Best Practices and Additional Information:
+
+// Using Arrow Functions (ES6+)
+button.addEventListener('click', () => {
+    console.log('Button clicked using arrow function!');
+});
+
+// Passing Event Object
+// The event listener function can receive an event object as a parameter.
+button.addEventListener('click', (event) => {
+    console.log('Event type:', event.type); // 'click'
+    console.log('Event target:', event.target); // button element
+});
+
+
+// Event Propagation (Bubbling and Capturing)
+// By default, events bubble up from the target element to the ancestor elements.
+// Use 'event.stopPropagation()' to stop the bubbling process.
+// Use 'event.stopImmediatePropagation()' to prevent other listeners of the same event from being called.
+
+
+// Removing Event Listeners
+// To remove an event listener, you must use the same function reference.
+function clickHandler() {
+    console.log('Clicked and will be removed!');
+    button.removeEventListener('click', clickHandler);
+}
+button.addEventListener('click', clickHandler);
+
+// Event Delegation
+// Instead of adding an event listener to each element, add a single event listener to a parent element.
+// Then determine the target element using the 'event.target' property.
+document.querySelector('.parent').addEventListener('click', (event) => {
+    if (event.target.matches('.child')) {
+        console.log('Child element clicked!');
+    }
+});
+
+// Practical example: Toggling a class on click
+button.addEventListener('click', () => {
+    button.classList.toggle('active');
+});
+
+// Prevent Default Behavior
+// Use 'event.preventDefault()' to prevent the browser's default action.
+// Common use case: preventing a form from submitting when clicking a submit button.
+document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    // Form processing logic here
+});
+
+// Keyboard Events
+// Handling keyboard events like 'keypress', 'keydown', 'keyup'
+document.addEventListener('keypress', (event) => {
+    console.log('Key pressed:', event.key);
+});
