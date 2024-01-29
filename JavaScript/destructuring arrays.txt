@@ -1,0 +1,71 @@
+
+
+
+
+
+//////////////////////////
+// DESTRUCTURING ARRAYS //
+//////////////////////////
+
+
+/*  Destructuring in JavaScript allows for unpacking values from arrays or objects into separate variables.
+    - It does not modify the original array.
+    - Introduced in ES6, it provides a more readable and concise syntax.    */
+
+// Basic Destructuring
+const arrayExample = [1, 4, 6, 7];
+const [a, b, , d] = arrayExample;  // Skipping elements by leaving holes
+console.log(a, b, d); // Output: 1 4 7
+
+// Destructuring Nested Arrays
+const nestedArray = [2, 5, 6, [4, 9]];
+const [x, , y, [, z]] = nestedArray; // Accessing nested array elements
+console.log(x, y, z); // Output: 2 6 9
+
+// Setting Default Values
+const arrayRandomLength = [8, 9];
+const [p = 1, q = 1, r = 1] = arrayRandomLength; // Default values for missing elements
+console.log(p, q, r); // Output: 8 9 1
+
+// Destructuring from Functions
+const restaurant = {
+  categories: ['Italian', 'Pizzeria', 'Vegan'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Caprese', 'Salat'],
+  mainMenu: ['Pizza', 'Carbonara', 'Risotto', 'Lasagna'],
+
+  order: function (indexStarterMenu, indexMainMenu) {
+    return [this.starterMenu[indexStarterMenu], this.mainMenu[indexMainMenu]];
+  },
+};
+
+const [starterDish, mainDish] = restaurant.order(1, 2); // Receiving returned array
+console.log(starterDish, mainDish); // Output: Bruschetta Risotto
+
+// Swapping Variables
+let [mainCategory, , secondaryCategory] = restaurant.categories;
+[mainCategory, secondaryCategory] = [secondaryCategory, mainCategory]; // Swapping without temp variable
+console.log(mainCategory, secondaryCategory); // Output: Vegan Italian
+
+
+// Advanced Techniques and Best Practices
+/*  - Rest Parameters in Destructuring: To handle an unknown number of values.
+    - Skipping Elements: Useful for ignoring certain elements in an array.
+    - Nested Destructuring: Handling arrays within arrays.
+    - Destructuring Assignment: Separate from variable declaration.
+    - Use Cases: Particularly useful in function parameter handling, multiple return values, and parsing arrays.    */
+
+
+// Example: Rest Parameters in Destructuring
+const numbers = [1, 2, 3, 4, 5, 6];
+const [first, second, ...restOfNumbers] = numbers; // Using rest parameters to gather remaining elements
+console.log(first, second, restOfNumbers); // Output: 1 2 [3, 4, 5, 6]
+
+// Example: Destructuring Assignment
+let e, f;
+[e, f] = [7, 8]; // Destructuring assignment separate from declaration
+console.log(e, f); // Output: 7 8
+
+// Remember:
+// - Destructuring is a powerful feature in JavaScript for working with arrays and objects.
+// - It can greatly simplify data access and manipulation, making your code more readable and maintainable.
+*/

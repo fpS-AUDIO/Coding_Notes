@@ -1,0 +1,93 @@
+
+
+
+
+///////////////////////////
+// DESTRUCTURING OBJECTS //
+///////////////////////////
+
+
+/*  Object destructuring in JavaScript allows extracting properties from objects and binding them to variables. 
+    - It uses curly braces {}.
+    - Property names in the destructuring assignment must match the property names in the object.
+    - Order of properties is irrelevant, unlike array destructuring.    */
+
+
+// EXAMPLE OBJECT FOR EXPLAINING BELOW:
+
+const restaurant = {
+  categories: [`Italian`, `Pizzeria`, `Vegan`],
+  starterMenu: [`Focaccia`, `Bruschetta`, `Caprese`, `salat`],
+  mainMenu: [`Pizza`, `Carbonara`, `Risotto`, `Lasagna`],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+
+  // pass-in and destructure the object parameter to get 4 variables (use exact name property)
+  orderDelivery: function ({
+    starterMenuIndex,
+    mainMenuIndex,
+    address,
+    time = `19:00`,
+  }) {
+    console.log(
+      `Order Recieved! ${this.starterMenu[starterMenuIndex]} and ${this.mainMenu[mainMenuIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+};
+
+
+// Basic Destructuring of an Object
+const { categories, openingHours } = restaurant;
+console.log(categories, openingHours); // Accesses categories and openingHours from restaurant
+
+// Changing Variable Names
+const { categories: categoryVariable, openingHours: hours } = restaurant;
+console.log(categoryVariable, hours); // Renames categories to categoryVariable and openingHours to hours
+
+// Setting Default Values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+// Sets default values for menu and starterMenu, useful if the property does not exist
+
+// Mutating Variables While Destructuring Objects
+let a = 100, b = 200;
+({ a, b } = objectExample); // Enclose in parentheses to avoid syntax error
+console.log(a, b); // Outputs: 23 9
+
+// Destructuring Nested Objects
+const {
+  fri: { open, close: closingHours = 24 },
+} = openHours;
+console.log(open, closingHours); // Accesses nested properties and renames close to closingHours
+
+// Destructuring in Function Parameters
+restaurant.orderDelivery({
+  address: `Via San Casio, 25`,
+  starterMenuIndex: 2,
+  mainMenuIndex: 0,
+  // time property will take the default value as defined in the function
+});
+
+/*  Best Practices and Additional Notes:
+    - Destructuring is particularly useful when dealing with function parameters or multiple return values.
+    - It improves readability and maintainability, especially in cases of objects with a large number of properties.
+    - Always consider setting default values for properties that may not always be present in the object.
+    - Remember that destructuring creates a shallow copy of the value; it does not deeply clone nested objects.
+    - You can also combine destructuring with rest parameters to handle dynamic properties. */
+
+// Example: Destructuring with Rest Parameters
+const { thu, ...weekendHours } = openHours;
+console.log(weekendHours); // Contains all properties of openHours except thu
+
