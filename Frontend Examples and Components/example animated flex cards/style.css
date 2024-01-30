@@ -88,15 +88,15 @@ body {
   transform: translateY(0) !important;
 }
 
-.card[for="c1"]{
-    background-image: url("https://picsum.photos/id/221/1920/1080");
+.card[for="c1"] {
+  background-image: url("https://picsum.photos/id/221/1920/1080");
 }
-.card[for="c2"]{
+.card[for="c2"] {
   background-image: url("https://picsum.photos/id/222/1920/1080");
 }
-.card[for="c3"]{
+.card[for="c3"] {
   background-image: url("https://picsum.photos/id/223/1920/1080");
 }
-.card[for="c4"]{
+.card[for="c4"] {
   background-image: url("https://picsum.photos/id/220/1920/1080");
 }
