@@ -1,0 +1,82 @@
+
+
+
+
+//////////////////////////////
+// ENHANCED OBJECT LITERALS //
+//////////////////////////////
+
+
+// Introduced in ES6, enhanced object literals provide a more concise and readable syntax for creating objects. 
+// These enhancements include:
+
+
+
+//--------------------------------------------
+// 1. Computed Property Names
+
+// Before ES6, property names had to be statically defined. 
+// With ES6, you can dynamically compute property names using expressions inside square brackets [].
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  // Computed property name using an expression
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  // Another example with an expression
+  [`day-${3 + 3}`]: {
+    open: 0,
+    close: 24,
+  },
+};
+
+
+
+//--------------------------------------------
+// 2. Property Value Shorthand
+
+// Before ES6, when assigning a variable to a property of the same name, you had to repeat the variable name. 
+// ES6 allows you to specify the name only once.
+
+const restaurant = {
+  name: `La Cascata`,
+
+  // Before ES6
+  openingHours: openingHours,
+
+  // After ES6 - Shorthand syntax
+  openingHours, // This is equivalent to openingHours: openingHours
+
+
+
+//--------------------------------------------
+// 3. Method Definition Shorthand
+
+  // Before ES6, methods had to be defined with the function keyword. ES6 introduced a shorthand syntax.
+
+  // Before ES6
+  restaurantInfo: function () {
+    console.log(this.name, this.openingHours);
+  },
+
+  // After ES6 - Shorthand syntax
+  restaurantInfo2() {
+    console.log(this.name, this.openingHours);
+  },
+};
+
+console.log(restaurant);
+restaurant.restaurantInfo2();
+
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+// - Use computed property names when you need to dynamically create property names based on variables or expressions.
+// - Leverage the property value shorthand when the property name and the variable name are the same, to make your object definitions cleaner and more concise.
+// - Prefer the method definition shorthand for a more succinct syntax when defining methods within objects.
+// - These enhancements not only make the code more readable and concise but also align with modern JavaScript practices.

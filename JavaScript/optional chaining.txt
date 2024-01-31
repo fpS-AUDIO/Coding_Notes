@@ -1,0 +1,91 @@
+
+
+
+////////////////////////////
+// OPTIONAL CHAINING (?.) //
+////////////////////////////
+
+
+// Introduced in ES2020, optional chaining (?.) provides a concise way to access deeply nested properties of an object without having to check each level for existence.
+
+
+// - Works with objects, methods, and arrays.
+// - Returns `undefined` immediately if a property doesn't exist, instead of throwing an error.
+// - Checks if the property before `?.` exists.
+
+// Note: Optional chaining uses the nullish concept (null or undefined) to determine the existence of a property. 
+// It considers properties with values of 0 or "" (empty string) as existing.
+
+//--------------------------------------------
+// Data for Example
+
+const restaurant = {
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Note: 0 is considered an existing value.
+      close: 24,
+    },
+  },
+  // Example method for demonstration
+  order(day, meal) {
+    console.log(`Order received for ${meal} on ${day}`);
+  }
+};
+
+
+//--------------------------------------------
+// Problem and Solution with Optional Chaining
+
+// Accessing undefined properties leads to TypeError
+// Example error scenario:
+// console.log(restaurant.openingHours.mon.open); // Would throw TypeError
+
+// Using optional chaining to safely access properties
+console.log(restaurant.openingHours?.mon?.open); // Outputs: undefined safely
+
+
+//--------------------------------------------
+// Real World Example Using Optional Chaining and Nullish Coalescing
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of weekdays) {
+  // Use optional chaining with variables as property names and nullish coalescing to provide a default value
+  const openingHour = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, the restaurant is opened at ${openingHour}.`);
+}
+
+
+//--------------------------------------------
+// Optional Chaining with Methods
+
+// Checks if a method exists before calling it, preventing errors if the method is not defined
+console.log(restaurant.order?.(0, 1) ?? `Method doesn't exist.`);
+
+
+//--------------------------------------------
+// Optional Chaining with Arrays
+
+// Checks if an array index exists
+const players = [
+  { name: 'Alex', level: 31 },
+  { name: 'Jack', level: 46 },
+];
+console.log(players[2]?.name ?? `Player doesn't exist.`); // Safe access to array elements
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+// - Use optional chaining when there's uncertainty about the existence of a property in the chain.
+// - Combine optional chaining with nullish coalescing (`??`) to provide default values when accessing potentially undefined properties.
+// - Remember that optional chaining should be used judiciously; not every property access needs to be guarded with `?.`, especially if you expect the property to exist or if its absence should indeed raise an error.
+// - While optional chaining helps prevent errors due to undefined references, it's also important to understand the structure of the objects you're working with to avoid overuse.

@@ -1,0 +1,87 @@
+
+
+
+/////////////////////////////////
+// LOGICAL ASSIGNMENT OPERATORS //
+/////////////////////////////////
+
+
+// Introduced in ES2021, logical assignment operators combine logical operations with assignment.
+
+
+
+//--------------------------------------------
+// Example Setup
+
+const restaurant1 = {
+  name: `La Cascata`,
+  numberGuest: 20,
+  numberPizzaMen: 0,
+};
+
+const restaurant2 = {
+  name: `La Piazza`,
+  owner: `Giovanni Rossi`,
+  numberGuest: 0,
+};
+
+
+
+//--------------------------------------------
+// OR Assignment Operator (||=)
+
+// If the left-hand operand is falsy, assign the right-hand value to it.
+// This is useful for setting default values.
+
+restaurant1.numberGuest ||= 10;
+restaurant2.numberGuest ||= 10;
+// Equivalent to:
+// restaurant1.numberGuest = restaurant1.numberGuest || 10;
+// restaurant2.numberGuest = restaurant2.numberGuest || 10;
+
+console.log(restaurant1.numberGuest); // 20 (unchanged because original value is truthy)
+console.log(restaurant2.numberGuest); // 10 (assigned because original value is falsy)
+
+
+
+//--------------------------------------------
+// Nullish Assignment Operator (??=)
+
+// Assigns the right-hand value only if the left-hand operand is null or undefined.
+// It's more precise than ||= for default values, as it doesn't consider 0 or '' (empty string) as values to be overwritten.
+
+restaurant1.numberPizzaMen ??= 2;
+restaurant2.numberPizzaMen ??= 2;
+// Equivalent to:
+// restaurant1.numberPizzaMen = restaurant1.numberPizzaMen ?? 2;
+// restaurant2.numberPizzaMen = restaurant2.numberPizzaMen ?? 2;
+
+console.log(restaurant1.numberPizzaMen); // 0 (unchanged because original value is not null/undefined)
+console.log(restaurant2.numberPizzaMen); // 2 (assigned because original value is undefined)
+
+
+
+//--------------------------------------------
+// AND Assignment Operator (&&=)
+
+// Assigns the right-hand value to the left-hand operand only if the left-hand operand is truthy.
+// It's useful for overwriting values based on conditions, or for initializing properties that must not be falsy.
+
+restaurant1.owner &&= `anonymous`;
+restaurant2.owner &&= `anonymous`;
+// Equivalent to:
+// restaurant1.owner = restaurant1.owner && `anonymous`;
+// restaurant2.owner = restaurant2.owner && `anonymous`;
+
+console.log(restaurant1.owner); // undefined (property doesn't exist, so no assignment happens)
+console.log(restaurant2.owner); // anonymous (changed because property exists and is truthy)
+
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+// - Use ||= for defaulting when any falsy value should trigger the default.
+// - Use ??= for defaulting when only null or undefined should trigger the default, especially important for numbers and strings that can be empty or zero.
+// - Use &&= to conditionally assign a new value if the current value is truthy, useful for applying updates or defaults based on existing truthy properties.
+// - Be mindful of the operand types and values to ensure the logical assignment behavior matches the intended logic, especially when dealing with potentially falsy values like 0, '', or NaN.

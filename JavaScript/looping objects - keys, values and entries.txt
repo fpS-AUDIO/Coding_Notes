@@ -1,0 +1,87 @@
+
+
+
+
+///////////////////////////////////////////////
+// LOOPING OBJECTS: KEYS, VALUES, AND ENTRIES //
+///////////////////////////////////////////////
+
+// While objects in JavaScript are not iterable in the same way as arrays,
+// we can use Object.keys(), Object.values(), and Object.entries() to loop over them.
+
+
+//--------------------------------------------
+// Example Data
+
+const restaurant = {
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Note: 0 is a valid time, implying midnight.
+      close: 24, // Represents 24 hours, or the end of the day.
+    },
+  },
+};
+
+
+
+//--------------------------------------------
+// Loop Over the Object Keys
+
+// Object.keys(obj) returns an array of a given object's own property names.
+
+const days = Object.keys(restaurant.openingHours);
+console.log(`Opening days: ${days.join(', ')}`);
+// Output: Opening days: thu, fri, sat
+
+// Using Object.keys() to create a string with opening days
+let openStr = `We are open ${days.length} days: `;
+for (const day of days) {
+  openStr += `${day}, `;
+}
+console.log(openStr.trimEnd() + '.');
+// Output: We are open 3 days: thu, fri, sat.
+
+
+
+//--------------------------------------------
+// Loop Over Object Values
+
+// Object.values(obj) returns an array of a given object's own enumerable property values.
+
+const values = Object.values(restaurant.openingHours);
+for (const { open, close } of values) {
+  console.log(`Open from ${open} to ${close}`);
+}
+// This loop will log opening and closing times for each day.
+
+
+
+//--------------------------------------------
+// Loop Over Entire Object
+
+// Object.entries(obj) returns an array of a given object's own enumerable string-keyed property [key, value] pairs.
+
+for (const [day, { open, close }] of Object.entries(restaurant.openingHours)) {
+  console.log(`On ${day}, we open at ${open} and close at ${close}`);
+}
+// Output: Logs opening and closing times with respective days.
+
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+// 1. Use Object.keys() when you need the keys from the object.
+// 2. Use Object.values() when you need the values from the object.
+// 3. Use Object.entries() when you need both keys and values from the object.
+// 4. These methods are especially useful for objects that represent collections or complex data structures.
+// 5. Remember to check for the existence of properties or use optional chaining (`?.`) when you're not sure if a property exists to avoid runtime errors.
+// 6. When destructuring in loops (e.g., for...of), ensure property names match those in the object to successfully extract values.

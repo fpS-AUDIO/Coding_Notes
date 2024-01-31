@@ -1,0 +1,175 @@
+
+
+
+
+
+////////////////
+// MAPS IN JS //
+////////////////
+
+
+/*  Maps are key-value pairs collections, where keys can be of any data type.
+    Introduced in ES6 to address limitations with objects, which only support string or symbol keys.
+    Maps maintain the insertion order of elements.  */
+
+
+//--------------------------------------------
+// Creating a Map
+
+// Initialize a new Map
+const restaurant = new Map();
+
+
+
+//--------------------------------------------
+// Maps Methods and Properties
+
+// new Map() - Creates a new Map object.
+// set(key, value) - Adds a new element with a specified key and value to the Map. Returns the Map object, enabling chaining.
+// get(key) - Returns the value associated with the specified key, or undefined if the key doesn't exist.
+// has(key) - Returns true if the Map contains an element with the specified key.
+// delete(key) - Deletes the element associated with the specified key. Returns true if the element existed and has been removed, or false if the element does not exist.
+// clear() - Removes all elements from the Map.
+// entries() - Returns a new Iterator object that contains an array of [key, value] for each element in the Map in insertion order.
+// keys() - Returns a new Iterator object that contains the keys for each element in the Map in insertion order.
+// values() - Returns a new Iterator object that contains the values for each element in the Map in insertion order.
+// forEach(callbackFn[, thisArg]) - Executes a provided function once for each key/value pair in the Map, in insertion order. The optional thisArg parameter sets the 'this' value for each callback.
+// size - A property that returns the number of key/value pairs in the Map.
+
+
+
+//--------------------------------------------
+// Adding Elements to a Map
+
+// The `set` method adds or updates an element with a specified key and value to the Map. 
+// It returns the Map itself, allowing for method chaining.
+
+restaurant
+  .set('name', 'La Cascata')
+  .set(1, 'Sondrio, Italy')
+  .set(2, 'Berbenno, Italy')
+  .set('food', ['Salad', 'Pizza', 'Carbonara', 'Risotto', 'Lasagna'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, "We're open!")
+  .set(false, "We're closed!");
+
+
+
+//--------------------------------------------
+// Accessing Map Values
+
+// The `get` method retrieves a value by a specific key.
+console.log(restaurant.get('close')); // Output: 23
+
+// Practical Example: Checking if the restaurant is open based on the current time.
+const timeNow = 21;
+console.log(restaurant.get(timeNow > restaurant.get('open') && timeNow < restaurant.get('close')));
+// Output: "We're open!"
+
+
+
+//--------------------------------------------
+// Checking for a Key's Presence
+
+// The `has` method checks if a Map contains a key.
+console.log(restaurant.has('food')); // Output: true
+
+
+
+//--------------------------------------------
+// Deleting Map Elements
+
+// The `delete` method removes a specified element from a Map by key.
+restaurant.delete(2); // Removes the entry with key 2
+
+
+
+//--------------------------------------------
+// Map Size
+
+// The `size` property returns the number of key/value pairs in the Map.
+console.log(restaurant.size); // Outputs the current size of the Map
+
+
+
+//--------------------------------------------
+// Clearing a Map
+
+// The `clear` method removes all elements from the Map.
+//restaurant.clear(); // Commented out to preserve data for further examples
+
+
+
+//--------------------------------------------
+// Using Objects (and other types) as Keys
+
+// Demonstrating unique object references as keys
+const arrKey = [1, 2];
+restaurant.set(arrKey, 'Test value');
+console.log(restaurant.get(arrKey)); // Output: "Test value"
+
+
+
+//--------------------------------------------
+// Initializing a Map with Array Entries
+
+// Directly initializing a Map with an array of [key, value] pairs.
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C++'],
+  [2, 'Ruby'],
+  [3, 'Python'],
+  [4, 'JavaScript'],
+  ['correct', 4],
+  [true, 'Correct!'],
+  [false, 'Try again.'],
+]);
+
+
+
+//--------------------------------------------
+// Converting Objects to Maps
+
+// Converting an object to a Map using Object.entries()
+const openingHoursMap = new Map(Object.entries(openingHoursObject));
+console.log(openingHoursMap);
+
+
+
+//--------------------------------------------
+// Iterating Over Maps
+
+// Maps are iterable, allowing direct iteration over their [key, value] pairs.
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+// Using the response from a hypothetical prompt to check correctness
+const answer = 4; // Simulated user answer
+console.log(question.get(answer === question.get('correct')));
+
+
+
+//--------------------------------------------
+// Conversion to Arrays
+
+// Maps can be easily converted to arrays.
+console.log([...question]); // Convert the whole Map
+console.log([...question.keys()]); // Convert just the keys
+console.log([...question.values()]); // Convert just the values
+
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+/*  - Use Maps over objects when keys of any type are required.
+    - Maps provide better performance for large sets of data and when adding or removing data frequently.
+    - Utilize the iteration capabilities of Maps to simplify data processing.
+    - Remember, directly setting an object as a key (without a reference) and then retrieving it without the exact reference will result in 'undefined'.
+    - For DOM manipulation or instances where elements are dynamically generated, Maps can associate data directly with DOM nodes efficiently.  */
+
+
+    

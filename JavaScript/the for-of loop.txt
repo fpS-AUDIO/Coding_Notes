@@ -1,0 +1,64 @@
+
+
+
+
+/////////////////////////////////////
+// LOOPING ARRAYS: THE FOR-OF LOOP //
+/////////////////////////////////////
+
+
+//  Introduced in ES6, the for-of loop offers a simpler and cleaner way to iterate over arrays 
+//  and other iterable objects (like NodeLists, Maps, Sets, etc.) compared to traditional for loops.
+
+
+//--------------------------------------------
+// Example Array
+const menu = [
+  'Focaccia',
+  'Bruschetta',
+  'Caprese',
+  'Salad',
+  'Pizza',
+  'Carbonara',
+  'Risotto',
+  'Lasagna',
+];
+
+//--------------------------------------------
+// Basic Syntax of For-Of Loop
+
+// Syntax: for (const element of iterable) { body }
+// Iterates over the array, giving access to each item directly.
+for (const item of menu) console.log(item);
+
+//--------------------------------------------
+// To Get Also the Current Index
+
+// The .entries() method returns an iterator of [index, element] pairs, allowing access to the index in the for-of loop.
+for (const item of menu.entries()) {
+  console.log(`${item[0]} is the index of '${item[1]}' item`);
+}
+
+//--------------------------------------------
+// Modern Solution to Get Index and Element
+
+// Destructuring within the for-of loop offers a more readable approach to accessing both the index and the element.
+for (const [index, element] of menu.entries()) {
+  console.log(`${index} is the index of '${element}' item`);
+}
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+// - The for-of loop is best used when you need to access each element in an array or iterable object directly, without needing the index.
+// - If you require the index, consider whether the added complexity of using .entries() and destructuring fits your use case, or if a traditional for loop might be more readable.
+// - Remember, the for-of loop works with iterable objects, not with non-iterable objects (like regular objects `{}` without an iterator defined).
+// - The for-of loop can be used with 'continue' and 'break' keywords to control the flow of the loop effectively.
+// - Although you can omit the curly braces `{}` for a single statement within the loop, using braces can improve readability, especially when the loop body might be expanded in the future.
+
+// Example using 'break' and 'continue'
+for (const [index, element] of menu.entries()) {
+  if (element === 'Salad') continue; // Skip 'Salad'
+  console.log(`${index} is the index of '${element}'`);
+  if (element === 'Risotto') break; // Stop the loop after 'Risotto'
+}

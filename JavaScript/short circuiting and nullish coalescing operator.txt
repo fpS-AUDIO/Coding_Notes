@@ -1,0 +1,83 @@
+
+
+
+//////////////////////////////////////////////////////////////////
+// SHORT CIRCUITING (&& AND ||) AND NULLISH COALESCING OPERATOR //
+//////////////////////////////////////////////////////////////////
+
+
+
+// -------------- Short Circuiting (&& and ||) -------------- //
+
+// The && and || operators:
+// - Work with any data type.
+// - Return any data type.
+// - Perform short-circuit evaluation.
+
+
+
+//--------------------------------------------
+// Using || (Logical OR)
+
+// The || operator returns the first truthy value or the last value if no truthy value is found.
+// This process is known as short-circuiting.
+
+// Examples:
+console.log(3 || `Alex`);                                  // Outputs: 3
+console.log('' || `Alex`);                                 // Outputs: Alex
+console.log(undefined || null);                            // Outputs: null
+console.log(undefined || null || `` || `Hello` || 28);     // Outputs: Hello
+
+// Use case: Setting default values
+// Instead of a ternary operator, || can be used to assign default values.
+
+// Example:
+const guests = restaurant.numberOfGuests || 50;
+// Equivalent to: restaurant.numberOfGuests ? restaurant.numberOfGuests : 50;
+
+
+
+//--------------------------------------------
+// Using && (Logical AND)
+
+// The && operator returns the first falsy value found or the last value if no falsy value is found.
+console.log(3 && `Alex`); // Outputs: Alex
+console.log(0 && `Alex`); // Outputs: 0
+console.log(undefined && null); // Outputs: undefined
+console.log(`hello` && 27 && `Alex` && null && 28); // Outputs: null
+
+// Use case: Conditional execution
+// Instead of an if-else statement, && can be used for conditional execution.
+
+// Example:
+restaurant.orderPizza && restaurant.orderPizza(`mushrooms`);
+// This will call restaurant.orderPizza(`mushrooms`) if restaurant.orderPizza is truthy.
+
+
+
+// -------------- Nullish Coalescing Operator (??) -------------- //
+
+// The nullish coalescing operator (??) was introduced in ES2020.
+// It returns the right-hand side operand when the left-hand side operand is null or undefined, otherwise returns the left-hand side operand.
+
+// Important: ?? treats null and undefined as "nullish" but does not treat 0 or '' (empty string) as falsy like || does.
+
+
+// Common Problem with ||:
+const restaurant = {};
+restaurant.numberOfGuests = 0;
+
+const guestsWrong = restaurant.numberOfGuests || 50;
+console.log(guestsWrong); // Outputs: 50
+// Issue: 0 is falsy, leading to unwanted defaulting with ||.
+
+// Solution with Nullish Coalescing Operator:
+const guestsCorrect = restaurant.numberOfGuests ?? 50;
+console.log(guestsCorrect); // Outputs: 0
+// Now, 0 is treated as a valid value, correcting the logic flaw seen with ||.
+
+// **Best Practices & Additional Notes**
+// - Use || for default values when falsy values (like '', 0) are not expected as valid.
+// - Use ?? when defining defaults that should only account for null or undefined, especially useful for numbers and strings that can be empty or zero.
+// - Be mindful of the JavaScript version compatibility if your environment doesn't support ES2020 features.
+ 

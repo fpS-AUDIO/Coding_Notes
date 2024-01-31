@@ -1,0 +1,236 @@
+
+
+
+
+
+//////////////////////////
+// WORKING WITH STRINGS //
+//////////////////////////
+
+/*  JavaScript treats strings as primitive values but allows string manipulation through methods provided by the String object. 
+    This is possible due to the 'boxing' process, where string primitives are temporarily wrapped in String objects to access these methods.    */
+
+/*  the following method are not changging the immutable primitive strings!
+    Also these methods always return a new string
+    And they are all case sensitive (uppercase/lowercase) */
+
+
+
+const airLine = `TAP Air Milan`;
+const airPlane = `A320`;
+
+//--------------------------------------------
+// Part 1
+ 
+
+// you can access the index of a string
+console.log(airPlane[0]); // A
+
+// you can calculate the string length (not 0 based)
+console.log(airPlane.length); // 4
+
+// you can obtain an index of first coincidence (included)
+console.log(airLine.indexOf(`Air`)); // 4
+
+// you can obtain an index of last coincidence (included)
+console.log(airLine.lastIndexOf(`i`)); // 9
+
+// slice(start, end)  you can extract part of strings (substring)
+// index of end is NOT included (start yes)
+// (!)  the length of substring is always endIndex - startIndex
+console.log(airLine.slice(4, 9)); // Air M
+
+// start counting from the end by using negative index of begining counter
+// so the number of negative index is also the length of how many last characters are catched
+console.log(airLine.slice(-3)); // lan
+
+/////// example of extracting the first word ///////
+console.log(airLine.slice(0, airLine.indexOf(` `))); // TAP
+
+/////// example of extracting the last word ///////
+console.log(airLine.slice(airLine.lastIndexOf(` `) + 1)); // Milan
+
+
+//--------------------------------------------
+// Part 2
+
+
+// you can transform all the string to lowercase or uppercase
+console.log(airLine.toLowerCase()); // tap air milan
+console.log(airLine.toUpperCase()); // TAP AIR MILAN
+
+// replace(stringToBeReplaced, newString) to change ONLY 1st coincidence parts of strings
+const priceEU = `218,26€`;
+const priceUS = priceEU.replace(`€`, `$`).replace(`,`, `.`);
+console.log(priceUS); // 218.26$
+
+// replaceAll(stringToBeReplaced, newString) to change ALL coincidences
+console.log(`2222`.replaceAll(`2`, `3`)); // 3333
+// we could use old way with regular expressions
+console.log(`11111`.replace(/1/g, `3`)); // 33333
+
+
+
+const plane = `Boeing 737 MAX`;
+
+// includes() boolean check if there is a string inside
+console.log(plane.includes(`737`)); // true
+
+// startsWith() boolean check if string starts with that string parameter
+console.log(plane.startsWith(`Boeing`)); // true
+
+// endsWith() boolean check if string ends with that string parameter
+console.log(plane.endsWith(`MAX`)); // true
+
+/////// example of fixing the capitalization in a name ///////
+const passenger = `aLeXaNder`;
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect); // Alexander
+
+/////// example of comparing an input mail to the correct mail ///////
+const correctMail = `hello@gmail.com`;
+const inputMail = `    Hello@GMail.com   \n`;
+// trim() deletes spaces around (also trim can be only start or only end)
+const normalizedMail = inputMail.toLowerCase().trim();
+
+
+//--------------------------------------------
+// Part 3
+
+
+// split()  split a string in multiple parts based on a divider string
+// and it will then store the results into elements of a new array
+console.log(`I'm+so+cool`.split(`+`)); // ["I'm", 'so', 'cool']
+
+// join() join the elements of an array in a string and place parameter string between them
+console.log([`Mr.`, `Alexander`, `Hamilton`].join(` `)); // Mr. Alexander Hamilton
+
+// repaet(times) allows to repeat string multiple times
+console.log(`Plese wait... `.repeat(3)); // Plese wait... Plese wait... Plese wait...
+
+
+
+(!)  padding strings = adding characters to obtain desidered length
+const testMessage = `hello`;
+
+// padStart(totalLength, strToAdd)  adds given string to to the start until we get the desidered length
+console.log(testMessage.padStart(10, `-`)); // -----hello
+
+// padEnd(totalLength, strToAdd)    adds given string to to the end until we get the desidered length
+console.log(testMessage.padEnd(10, `-`)); // hello-----
+
+// (!)  you can chain the methods padStart() and padEnd()
+console.log(testMessage.padStart(10, `-`).padEnd(15, `-`)); // -----hello-----
+
+
+//--------------------------------------------
+// Part 4
+
+
+// charAt(index)
+// Returns the character at the specified index.
+console.log('hello'.charAt(1)); // 'e'
+
+
+// charCodeAt(index)
+// Returns the Unicode of the character at the specified index.
+console.log('hello'.charCodeAt(1)); // 101
+
+
+// startsWith(searchString [, position])
+// Determines whether a string begins with the characters of a specified string.
+console.log('JavaScript'.startsWith('Java')); // true
+
+
+// endsWith(searchString [, length])
+// Determines whether a string ends with the characters of a specified string.
+console.log('JavaScript'.endsWith('Script')); // true
+
+
+// match(regexp)
+// Retrieves the matches when matching a string against a regular expression.
+console.log('The rain in SPAIN stays mainly in the plain'.match(/ain/g)); // ['ain', 'ain', 'ain']
+
+
+// search(regexp)
+// Searches a string for a specified value and returns the position of the match.
+console.log('hello world'.search('world')); // 6
+
+
+// substr(start [, length])
+// Returns the characters in a string beginning at the specified location through the specified number of characters.
+console.log('Mozilla'.substr(1, 2)); // 'oz'
+
+
+// toLocaleLowerCase()
+// Returns the calling string value converted to lower case, according to any locale-specific case mappings.
+console.log('İstanbul'.toLocaleLowerCase('tr-TR')); // 'i̇stanbul'
+
+
+// toLocaleUpperCase()
+// Returns the calling string value converted to upper case, according to any locale-specific case mappings.
+console.log('istanbul'.toLocaleUpperCase('tr-TR')); // 'İSTANBUL'
+
+
+// trimStart() / trimEnd()
+// Removes whitespace from the beginning/end of a string.
+console.log('   hello world   '.trimStart()); // 'hello world   '
+console.log('   hello world   '.trimEnd()); // '   hello world'
+
+
+// concat(string2, string3[, ..., stringN])
+// Joins two or more strings.
+console.log('Hello, '.concat('world', '!')); // 'Hello, world!'
+
+
+// includes(searchString[, position])
+// Determines whether one string may be found within another string.
+console.log('Hello world'.includes('world')); // true
+
+
+
+//--------------------------------------------
+// Part 5
+
+
+/////// example of function which capitalize given names ///////
+const capitalizeName = function (nameStr) {
+  const nameStrLower = nameStr.toLowerCase();
+  const names = nameStrLower.split(` `);
+  const namesCapitalized = [];
+  for (const word of names) {
+    namesCapitalized.push(word.replace(word[0], word[0].toUpperCase()));
+  }
+  console.log(namesCapitalized.join(` `));
+};
+capitalizeName(`alex ivanov`);
+capitalizeName(`aLex ivANov`);
+capitalizeName(`Alex Ivanov`);
+
+
+
+/////// example of function which masking a piece of credit card number ///////
+const maskCreditCard = function (number) {
+  const numberStr = number + ``;
+  const last4Digits = numberStr.slice(-4);
+
+  console.log(last4Digits.padStart(numberStr.length, "*"));
+};
+maskCreditCard(12345235); // ****5235
+ 
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+/*  - Always consider the immutability of strings when applying methods; original strings are not altered.
+    - Chain methods carefully to enhance readability and maintain code clarity.
+    - Use template literals for dynamic string construction, especially when incorporating variables or expressions.
+    - Regular expressions are powerful for complex search and replace operations.
+    - Be mindful of string encoding when working with special or non-ASCII characters.  */
+
+
+
+

@@ -1,0 +1,77 @@
+
+
+
+
+////////////////
+// SETS IN JS //
+////////////////
+
+// Sets were introduced in ES6 as a new data structure to store unique values of any type, whether primitive values or object references.
+
+// Characteristics of Sets:
+// - Store unique values without any duplicates.
+// - Are iterable, allowing the use of the for...of loop and forEach method.
+// - Maintain insertion order for the iteration, even though individual elements are not indexed.
+// - Do not have keys, and the order is not meaningful in a typical sense (unlike arrays).
+
+
+//--------------------------------------------
+// Creating a Set
+
+// To create a Set, use the new Set() constructor, optionally passing an iterable object (like an array) to initialize the Set.
+const orderSet = new Set(['pasta', 'pizza', 'pizza', 'risotto', 'pasta', 'pizza']);
+console.log(orderSet); // Output: Set(3) {'pasta', 'pizza', 'risotto'}
+
+
+//--------------------------------------------
+// Set Methods and Properties
+
+// new Set() - Creates a new Set object.
+// add(value) - Adds a new element with the specified value to the Set.
+// delete(value) - Removes the specified element from the Set.
+// has(value) - Returns true if the Set contains the specified value.
+// clear() - Removes all elements from the Set.
+// forEach(callbackFn) - Executes a provided function once for each value in the Set.
+// values() / keys() - Returns a new Iterator object containing the values in the Set.
+// entries() - Returns a new Iterator object that contains an array of [value, value] for each element in the Set, mimicking the Map structure for compatibility.
+// size - Property that returns the number of elements in the Set.
+
+
+//--------------------------------------------
+// Examples of Using Set Methods
+
+// Getting the size of a Set
+console.log(orderSet.size); // Output: 3
+
+// Checking if an element is in the Set
+console.log(orderSet.has('pizza')); // Output: true
+
+// Adding an element to the Set
+orderSet.add('bread');
+console.log(orderSet); // Output: Set(4) {'pasta', 'pizza', 'risotto', 'bread'}
+
+// Deleting an element from the Set
+orderSet.delete('pizza');
+console.log(orderSet); // Output: Set(3) {'pasta', 'risotto', 'bread'}
+
+// Converting a Set to an Array
+const arrayFromSet = [...orderSet];
+console.log(arrayFromSet); // Output: ['pasta', 'risotto', 'bread']
+
+// Clearing all elements from the Set
+orderSet.clear();
+console.log(orderSet); // Output: Set(0) {}
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+
+// 1. Use Sets when the uniqueness of elements is a priority, and you need to efficiently check for the presence of items.
+// 2. Although Sets maintain insertion order, consider using arrays if the order of elements is significant for your use case.
+// 3. For complex data structures, remember that object references in Sets are unique, so two objects with the same content are considered different.
+// 4. Leveraging the spread operator (...) or Array.from() to convert Sets to arrays is a useful technique for deduplication of array elements.
+// 5. The forEach method in Sets passes the value twice to the callback function for compatibility with the Map object (value, value, set).
+
+// Correction: The clear method does not take any arguments.
+// Incorrect: orderSet.clear(orderSet);
+// Correct: orderSet.clear();

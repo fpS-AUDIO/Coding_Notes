@@ -1,0 +1,87 @@
+
+
+
+
+
+/////////////////////////////////
+// REST PATTERN AND PARAMETERS //
+/////////////////////////////////
+
+
+
+// The Rest pattern has the same syntax as the spread operator (...)
+// but serves the opposite purpose.
+
+
+// **Key Points**
+// - The rest pattern is used to merge multiple values into an array.
+// - Typically used in destructuring assignments and function parameters.
+// - It collects all remaining elements (hence, "rest") into an array.
+// - There can only be one rest element in any destructuring assignment.
+
+//--------------------------------------------
+// Basic Syntax Example
+
+// Destructuring with rest pattern
+const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(a, b, others);
+// Expected output: 1 2 [3, 4, 5, 6, 7, 8, 9]
+
+//--------------------------------------------
+// Rest Parameters in Functions
+
+// Function using rest parameters to handle an arbitrary number of arguments
+const addNumbers = function (...numbers) {
+  return numbers.reduce((acc, cur) => acc + cur, 0);
+};
+
+console.log(addNumbers(2, 3, 5, 6));
+// Expected output: 16
+
+console.log(addNumbers(...[2, 3, 5, 6]));
+// Spread operator used to pass array elements as separate arguments
+
+//--------------------------------------------
+// Additional Examples
+
+// Example with more context (e.g., a restaurant object)
+const restaurant = {
+  categories: ['Italian', 'Pizzeria', 'Vegan'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Caprese', 'Salad'],
+  mainMenu: ['Pizza', 'Carbonara', 'Risotto', 'Lasagna'],
+
+  // Object with nested objects
+  openingHours: {
+    thu: { open: 12, close: 22 },
+    fri: { open: 11, close: 23 },
+    sat: { open: 0, close: 24 },
+  },
+
+  // Function with rest parameters
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(`Ordering Pizza with ${mainIngredient} and ${otherIngredients.join(', ')}`);
+  },
+};
+
+// Destructuring with rest to separate selected dishes from the rest
+const [dish1, , dish2, ...otherDishes] = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(dish1, dish2, otherDishes);
+// Expected output: Focaccia Caprese ['Salad', 'Pizza', 'Carbonara', 'Risotto', 'Lasagna']
+
+// Destructuring with rest on objects
+const { sat, ...otherDays } = restaurant.openingHours;
+console.log(otherDays);
+// Expected to show opening hours for days other than Saturday
+
+restaurant.orderPizza('Mozzarella', 'Tomato', 'Basil', 'Olive Oil');
+// Demonstrates ordering a pizza with multiple ingredients
+
+
+
+
+//--------------------------------------------
+// **Best Practices & Additional Notes**
+// - Use descriptive names for rest parameters and variables to enhance readability.
+// - The rest pattern can simplify functions that accept a variable number of arguments.
+// - When using rest parameters in functions, consider how you might handle different types of input (e.g., validation).
+// - The rest pattern is invaluable for working with arrays and objects, especially when you need to separate a few elements from the rest.
