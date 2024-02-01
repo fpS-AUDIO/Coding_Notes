@@ -1,7 +1,7 @@
 
 06. A CLOSER LOOK AT THE FUNCTIONS
-        - Default parameters
-        - How passing arguments works: value vs reference
+        - Default parameters                                V
+        - How passing arguments works: value vs reference   V
         - First-class and higher-order functions
         - Functions accepting the callback functions
         - Functions returning functions
@@ -58,105 +58,6 @@
 
 ___________________________________________________________________________________________________________________________________
 06. A CLOSER LOOK AT THE FUNCTIONS
-
-
-
-
-
-
-
-////////////////////////
-// Default parameters //
-////////////////////////
-
-(!) default values of parameters of a function can contain any expression
-    and you can also use the values of the other parameters that were set BEFORE it
-
-
---------------------------------------------
-    EXAMPLE:
-
-const bookings = [];
-
-// setting up the defualt values for parameters inside a function (indeed can be overwrited)
-const createBooking = function (flightNum, numPassengers = 1, price = 99 * numPassengers) {
-
-  // ES5 Method:
-  // numPassengers = numPassengers || 1;
-  // price = price || 99;
-
-  const booking = {
-    flightNum,
-    numPassengers,
-    price,
-  };
-  console.log(booking);
-  bookings.push(booking);
-};
-
-// set flightNum and numPassengers
-createBooking(`MLN428`, 2);
-
-// set flightNum and price
-createBooking(`RMA364`, undefined, 76)
-
-
-
-
-
-
-/////////////////////////////////////////////////////
-// How passing arguments works: value vs reference //
-/////////////////////////////////////////////////////
-
-
-(!) JavaScript DOESN'T have passing by reference but only passing by value
-    even if it looks like it's passing by reference.
-
-Reference
-    in some languages like C++ you can pass a reference to any value,
-    instead of the value itself. This works even with primitives,
-    so you can pass a reference to the value of 99, and then the original value,
-    outside of the function, would be changed.
-
-You pass the objects as arguments in a reference (memory address of the object).
-But that reference itself is still a value that contains a memory address.
-So you pass a reference to the function, but you don't pass by reference.
-
-
---------------------------------------------
-    EXAMPLE:
-
-const flight = `MLN123`;
-const Alex = {
-  name: `Alex Smitt`,
-  passport: 123456789,
-};
-
-const checkIn = function (fligntNumber, passenger) {
-  fligntNumber = `MLN999`;
-  passenger.name = `Mr.` + passenger.name;
-};
-
-checkIn(flight, Alex);
-console.log(flight); // didn't changed
-console.log(Alex); // name is changed:  name: 'Mr.Alex Smitt'
-
-
-(!) when you pass the "flight" (primitive value) as argument inside the function 
-    it's gonna be a copy of original value. So "fligntNumber" contains a copy and not original value.
-    like when you write:    const flightNum = flight;
-    So inside the function we just changed a completely different variable and "flight" didn't changed.
-
-    when you passed the  "Alex" object as argument inside the function,
-    inside the function you changed the object: passenger.name = `Mr.` + passenger.name;
-    and the original object changed too!
-    Because you passed a reference type to a function, it's copied just a reference to the object in the memory heap.
-    So they all pointing to the same object in memory.
-    like when you write:    const passenger = Alex;
-
-
-
 
 
 

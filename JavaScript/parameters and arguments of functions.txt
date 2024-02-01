@@ -1,0 +1,102 @@
+
+
+
+
+///////////////////////////////////////////////////
+// PARAMETERS AND ARGUMENTS IN JAVASCRIPT FUNCTIONS //
+///////////////////////////////////////////////////
+
+
+
+//--------------------------------------------------------------------------------- //
+/*  Default Parameters:
+  - Default parameter values can be any valid JavaScript expression.
+  - Parameters defined later can use the values of previously defined parameters.   */
+
+// Example: Setting default values for function parameters
+const bookings = [];
+
+const createBooking = function (flightNum, numPassengers = 1, price = 199 * numPassengers) {
+  // ES6+ way to set default parameters, more concise and readable
+  const booking = {
+    flightNum,
+    numPassengers,
+    price,
+  };
+  console.log(booking);
+  bookings.push(booking);
+};
+
+// Usage examples
+createBooking('MLN428', 2); // Uses default price calculation
+createBooking('RMA364', undefined, 76); // Uses default numPassengers, custom price
+
+
+
+//--------------------------------------------------------------------------------- //
+/*  Passing Arguments: Value vs. Reference
+    - JavaScript always passes arguments by value, but for objects, the value is a reference to the object.
+    - This means changes to object properties inside functions affect the original object.
+    - However, reassigning an object inside a function affects only the local reference.    */
+
+
+// Example: How passing arguments affects values and references
+const flight = 'MLN123';
+const passenger = {
+  name: 'Alex Smith',
+  passport: 123456789,
+};
+
+const checkIn = function (flightNumber, passenger) {
+  flightNumber = 'MLN999'; // This change is local to the function
+  passenger.name = 'Mr. ' + passenger.name; // This change affects the original object
+};
+
+checkIn(flight, passenger);
+console.log(flight); // Output: MLN123 (unchanged)
+console.log(passenger); // Output: { name: 'Mr. Alex Smith', passport: 123456789 } (changed)
+
+
+/*  when you pass the "flight" (primitive value) as argument inside the function 
+    it's gonna be a copy of original value. So "fligntNumber" contains a copy and not original value.
+    like when you write:    const flightNumber = flight;
+    So inside the function we just changed a completely different variable and "flight" didn't changed.
+
+    when you passed the  "passenger" object as argument inside the function,
+    inside the function you changed the object: passenger.name = `Mr.` + passenger.name;
+    and the original object changed too!
+    Because you passed a reference type to a function, it's copied just a reference to the object in the memory heap.
+    So they all pointing to the same object in memory.
+    like when you write:    const passenger01 = passenger; */
+
+
+
+/*  - It's crucial to understand that when we are "passing by value" for objects, 
+        we are passing a copy of the reference to the object, not the object itself.
+    - Modifying the object through this reference will affect the original object because 
+        both the original and copied reference point to the same object.
+    - Reassigning the reference inside the function will not affect the original reference. */
+
+
+/*  Rest Parameters and Spread Syntax:
+  - Rest parameters (introduced in ES6) allow functions to accept an indefinite number of arguments as an array.
+  - Spread syntax allows an iterable such as an array to be expanded in places where zero or more arguments (for function calls) 
+    or elements (for array literals) are expected.
+
+  Best Practices:
+  - Use default parameters to set default values and avoid undefined values in functions.
+  - Be cautious when modifying objects passed as arguments to functions, as it can lead to side effects.
+  - Use rest parameters and spread syntax to work with functions that accept a variable number of arguments.
+  */
+
+// Rest parameters example
+const sumAll = (...numbers) => {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+};
+
+console.log(sumAll(1, 2, 3, 4)); // Output: 10
+
+// Spread syntax example
+const nums = [1, 2, 3];
+const newNums = [...nums, 4, 5];
+console.log(newNums); // Output: [1, 2, 3, 4, 5]

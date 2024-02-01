@@ -1,0 +1,313 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  /* just for debugging: */
+  outline: 1px solid lightslategrey;
+}
+
+:root {
+  --color-background-main: #e3f2fd;
+
+  --color-sidebar-background: #ffffff;
+  --color-sidebar-search: #efeff8;
+  --color-sidebar-highlight: #1565c0;
+  --color-sidebar-text-primary: #161a1d;
+  --color-sidebar-text-secondary: #fffcfc;
+}
+
+body {
+  display: grid;
+  grid-auto-flow: column;
+  background-color: var(--color-background-main);
+}
+main {
+  padding: 1em;
+}
+
+/*////////////////////////
+// SibeBar by fpS-AUDIO //
+////////////////////////*/
+
+.noSelect {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.noSelect:focus {
+  outline: none !important;
+}
+
+aside.sidebar-wrapper {
+  font-size: calc(0.5rem + 1vw);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-wrap: balance;
+
+  height: 100svh;
+  width: 10em;
+
+  border-radius: 0 16px 16px 0;
+  background-color: var(--color-sidebar-background);
+  z-index: 5;
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 600px) {
+  aside.sidebar-wrapper {
+    font-size: calc(1rem + 1vw);
+  }
+}
+
+.sidebar-header {
+  /* height: 15svh; */
+  grid-row: 2 / -1;
+  align-self: start;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar-header h4 {
+  font-size: calc(0.4em + 1vw);
+}
+.sidebar-header h5 {
+  font-size: calc(0.3em + 1vw);
+}
+
+.sidebar-header .sidebar-account-img {
+  height: 2em;
+  width: 2em;
+  border-radius: 6px;
+  margin: 0.5em;
+
+  color: var(--color-sidebar-text-secondary);
+  background-color: var(--color-sidebar-highlight);
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-header .sidebar-account-name {
+  grid-column: 2 / -1;
+
+  display: grid;
+  gap: 0.2em;
+}
+
+.sidebar-header .sidebar-label-checkbox-width {
+  display: grid;
+  justify-content: end;
+}
+
+.sidebar-header .sidebar-icon-width {
+  display: inline-block;
+  background-color: var(--color-sidebar-highlight);
+  color: var(--color-sidebar-text-secondary);
+  width: 1em;
+  width: 1em;
+  text-align: center;
+  border-radius: 50%;
+  transform: translateX(50%);
+  transition: all 0.3s ease;
+}
+
+#sidebar-checkbox-width {
+  display: none;
+}
+
+#sidebar-checkbox-width:checked
+  + .sidebar-label-checkbox-width
+  .sidebar-icon-width {
+  transform-origin: center;
+  transform: translateX(50%) rotate(180deg);
+}
+
+.sidebar-body {
+  overflow-y: scroll;
+  grid-row: 2;
+  align-self: start;
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+}
+
+.sidebar-element {
+  cursor: pointer;
+  margin: 0.2em 0.5em;
+  border-radius: 6px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar-icon {
+  display: block;
+  height: 20px;
+  width: 20px;
+
+  border-radius: 6px;
+  margin: 0.5em;
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+
+  /* overflow: hidden; */
+}
+
+.sidebar-icon.search {
+  background-image: url(./icons/search.svg);
+}
+.sidebar-icon.home {
+  background-image: url(./icons/home.svg);
+}
+.sidebar-icon.notification {
+  background-image: url(./icons/notification.svg);
+}
+.sidebar-icon.man {
+  background-image: url(./icons/man.svg);
+}
+.sidebar-icon.money {
+  background-image: url(./icons/money.svg);
+}
+.sidebar-icon.options {
+  background-image: url(./icons/options.svg);
+}
+.sidebar-icon.logout {
+  background-image: url(./icons/logout.svg);
+}
+.sidebar-icon.moon {
+  background-image: url(./icons/moon.svg);
+}
+
+.sidebar-element.search-element {
+  cursor: default;
+  background-color: var(--color-sidebar-search);
+}
+
+.sidebar-element .sidebar-search-container {
+  background-color: var(--color-sidebar-search);
+}
+
+.sidebar-element:hover,
+.sidebar-element:focus {
+  background-color: var(--color-sidebar-highlight);
+}
+.sidebar-element:hover .sidebar-link-text,
+.sidebar-element:focus .sidebar-link-text {
+  color: var(--color-sidebar-text-secondary);
+}
+
+.sidebar-element:hover .sidebar-icon,
+.sidebar-element:focus .sidebar-icon {
+  filter: invert(1);
+}
+
+.sidebar-element.search-element:hover,
+.sidebar-element.search-element:focus {
+  background-color: var(--color-sidebar-search);
+}
+
+.sidebar-element.search-element input[type="text"] {
+  border: none;
+  background-color: var(--color-sidebar-search);
+  padding-right: 0.5em;
+  font-size: calc(0.8rem + 1vw);
+  overflow: hidden;
+}
+.sidebar-element.search-element input[type="text"]:focus {
+  border: none;
+  outline: none;
+}
+
+.sidebar-element .sidebar-link-text {
+  display: flex;
+  align-items: center;
+
+  color: var(--color-sidebar-text-primary);
+}
+.sidebar-footer {
+  grid-row: 3;
+  align-self: end;
+}
+
+.sidebar-footer .sidebar-darkmode-container {
+  margin: 0.2em 0.5em;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--color-sidebar-search);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.sidebar-footer .darkmode-box {
+  border-radius: 6px;
+  margin: 0.5em;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.darkmode-toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 62px;
+  height: 32px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50px;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #707070;
+  transition: background-color ease 0.3s;
+}
+
+.darkmode-toggle:before {
+  content: "on off";
+  display: block;
+  position: absolute;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  font: 10px/28px Helvetica;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-indent: -22px;
+  word-spacing: 37px;
+  color: #fff;
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+}
+
+.darkmode-toggle:checked {
+  background-color: #4cd964;
+}
+
+.toggle:checked:before {
+  left: 32px;
+}
