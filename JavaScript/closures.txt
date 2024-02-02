@@ -1,0 +1,129 @@
+
+
+//////////////
+// CLOSURES //
+//////////////
+
+
+
+/*  Formal Definition:
+- A closure is the combination of a function and the lexical environment within which that function was declared.
+- This environment consists of any local variables that were in-scope at the time the closure was created.
+
+
+    Key Points:
+- Closures allow a function to access variables from an outer function scope after the outer function has returned.
+- This mechanism keeps the outer function's variables alive in the inner function.
+- They are a natural outcome of function definitions and scope.     
+
+
+    Easy Explanayion:
+- When the outer function finishes execution, its execution context is no longer on the call stack.
+- The function returned (inner) from the outer function creates a new execution context on top of the call stack.
+- The variable environment of this context is empty because there are no variables declared in this function.
+- Since the second function is in the global context, it is now a child scope of the global scope.
+- However, any function always has access to the variable environment of the execution context in which the function was created (even after that execution context is gone).
+- So, a closure is a mechanism that connects the variable environment to the function exactly as it was when the function was created.  */
+
+
+// Closure Example: Counter
+function createCounter() {
+  let count = 0; // `count` is a local variable created by `createCounter`
+  return function() {
+    count++; // Access `count` from the outer scope
+    console.log(count);
+  };
+}
+
+const counter = createCounter();
+counter(); // 1
+counter(); // 2
+counter(); // 3
+// Each call to `counter()` increments and logs the `count` variable, which is retained through a closure.
+
+
+
+/*  Understanding Closure Behavior:
+- The closure's scope chain contains the variables of the outer function even after the outer function exits.
+- Closures are created every time a function is created, at function creation time.
+- The inner function retains a reference to the outer function's variables and parameters.  */
+
+
+
+// ------------------------------------------------------------------------------------- //
+
+
+
+// Practical Example: Secure Data Handling
+function secureDataHandler() {
+  let secureData = 'This is secure data';
+  return function() {
+    console.log(secureData);
+  };
+}
+
+const showSecureData = secureDataHandler();
+showSecureData(); // Logs 'This is secure data'
+// The `secureData` variable is accessible by `showSecureData` via closure, despite `secureDataHandler` has finished execution.
+
+// Closure in Event Listeners and Asynchronous Code
+function setupButtonClickListener(buttonId, message) {
+  document.getElementById(buttonId).addEventListener('click', function() {
+    alert(message);
+  });
+  // The anonymous function retains a closure over `message`.
+}
+
+setupButtonClickListener('myButton', 'Button clicked!');
+// Clicking the button alerts 'Button clicked!' due to the closure over `message`.
+
+
+
+/*  Best Practices:
+- Closures are a powerful feature for creating private variables and encapsulating functionality.
+- Be mindful of memory leaks with closures in large applications, especially when attaching to DOM elements.
+- Utilize closures for factory functions, module patterns, and currying.
+
+Understanding Closures in Debugging:
+- Tools like `console.dir` can be used in browsers to inspect the closure properties of a function.
+- This can be helpful to understand which variables are captured in a closure.  */
+
+
+
+// ------------------------------------------------------------------------------------- //
+
+
+
+// Advanced Closure Example: Reassigning Closures
+
+
+let externalFunction;
+
+function setupA() {
+  const a = 100;
+  externalFunction = function() {
+    console.log(a);
+  };
+}
+
+function setupB() {
+  const b = 200;
+  externalFunction = function() {
+    console.log(b);
+  };
+}
+
+setupA();
+externalFunction(); // 100
+setupB();
+externalFunction(); // 200
+// This demonstrates how reassigning `externalFunction` updates the closure it retains.
+
+
+
+/*  Conclusion:
+- Closures are not just a feature of the language, they are a fundamental aspect of JavaScript functions.
+- They enable powerful patterns like modules, private variables, and curried functions.
+- Understanding closures is crucial for effective JavaScript programming.   */
+
+

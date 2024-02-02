@@ -1,0 +1,153 @@
+
+
+///////////////////////////////////////
+// BASIC ARRAY METHODS IN JAVASCRIPT //
+///////////////////////////////////////
+
+/*  Array manipulation methods are essential for data handling in JavaScript. 
+    They allow for the modification, extraction, and combination of array elements.
+    Understanding these methods is key to effective coding and data processing.   */
+
+
+
+// Data setup for examples
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [6, 7, 8, 9, 10];
+
+
+
+// Adding and Removing Elements
+// -----------------------------
+
+// push() - Adds one or more elements to the end of an array and returns the new length.
+// Good for adding elements dynamically to the array's end.
+arr1.push(6); // arr1 is now [1, 2, 3, 4, 5, 6]
+
+// unshift() - Adds one or more elements to the beginning of an array and returns the new length.
+// Useful for adding elements to the start but can be less performant on large arrays due to reindexing.
+arr1.unshift(0); // arr1 is now [0, 1, 2, 3, 4, 5, 6]
+
+// pop() - Removes the last element from an array and returns that element.
+// Simple way to remove the last element, useful in stack-like structures.
+const lastElement = arr1.pop(); // lastElement is 6, arr1 is now [0, 1, 2, 3, 4, 5]
+
+// shift() - Removes the first element of an array and returns that element.
+// Useful for queue-like structures, but like unshift(), can be less performant for large arrays.
+const firstElement = arr1.shift(); // firstElement is 0, arr1 is now [1, 2, 3, 4, 5]
+
+
+
+// Searching and Slicing
+// ---------------------
+
+// indexOf() - Searches the array for an element and returns its first index. Returns -1 if not found.
+// Great for finding the index of an element when it exists.
+const index = arr1.indexOf(3); // index is 2
+
+// includes() - Checks if an array contains a specified element. Returns true or false.
+// More straightforward than indexOf for checking existence.
+const includesElement = arr1.includes(4); // includesElement is true
+
+// slice(start, end) - Returns a shallow copy of a portion of an array into a new array object.
+// Does not mutate the original array. End index is not included.
+// Useful for creating subarrays without altering the original.
+const slicedArr = arr1.slice(1, 3); // slicedArr is [2, 3]
+
+
+
+// Mutation Methods
+// ----------------
+
+// splice(start, deleteCount, item1, item2, ...) - Changes the contents of an array by removing or replacing existing elements and/or adding new elements.
+// This method mutates the array.
+// Commonly used for removing elements from an array or inserting new elements in the middle of an array.
+arr1.splice(2, 1, 99); // arr1 is now [1, 2, 99, 4, 5]
+
+// reverse() - Reverses an array in place. The first array element becomes the last, and the last becomes the first.
+// This method mutates the original array.
+arr2.reverse(); // arr2 is now [10, 9, 8, 7, 6]
+
+
+
+// Combining Arrays
+// ----------------
+
+// concat() - Merges two or more arrays. This method does not change the existing arrays but instead returns a new array.
+const combinedArr = arr1.concat(arr2); // [1, 2, 99, 4, 5, 10, 9, 8, 7, 6]
+
+// Alternatively, the spread operator (...) offers a succinct syntax to combine arrays.
+const combinedWithSpread = [...arr1, ...arr2]; // Same result as concat
+
+
+
+// Joining Elements
+// ----------------
+
+// join(separator) - Joins all elements of an array into a string, optionally using a specified separator between each element.
+const joinedStr = arr1.join(" - "); // "1 - 2 - 99 - 4 - 5"
+
+
+
+// Accessing Elements
+// ------------------
+
+// at(index) - Takes an integer value and returns the item at that index, allowing for positive and negative integers.
+// Negative integers count back from the last item.
+const lastItem = arr1.at(-1); // 5
+
+
+
+/*  Best Practices:
+- Prefer non-mutating methods like slice() over mutating methods like splice() when you want to avoid changing the original array.
+- Use the spread operator (...) for combining arrays as it offers cleaner syntax and is more versatile.
+- For readability and maintainability, favor methods like includes() for existence checks over indexOf() unless the index is specifically needed.
+
+Conclusion:
+Understanding and effectively using array methods can significantly enhance your JavaScript coding, making data manipulation tasks more intuitive and efficient.    */
+
+
+
+
+// ---------------------------- ALL ARRAY METHODS ---------------------------- //
+/*
+at()                Returns an indexed element of an array
+concat()            Joins arrays and returns an array with the joined arrays
+constructor         Returns the function that created the Array object's prototype
+copyWithin()        Copies array elements within the array, to and from specified positions
+entries()           Returns a key/value pair Array Iteration Object
+every()             Checks if every element in an array pass a test
+fill()              Fill the elements in an array with a static value
+filter()            Creates a new array with every element in an array that pass a test
+find()              Returns the value of the first element in an array that pass a test
+findIndex()         Returns the index of the first element in an array that pass a test
+flat()              Concatenates sub-array elements
+flatMap()           Maps all array elements and creates a new flat array
+forEach()           Calls a function for each array element
+from()              Creates an array from an object
+includes()          Check if an array contains the specified element (returns true or false)
+indexOf()           Search the array for an element and returns its position (index)
+isArray()           Checks whether an object is an array
+join()              Joins all elements of an array into a string
+keys()              Returns a Array Iteration Object, containing the keys of the original array
+lastIndexOf()       Search the array for an element, starting at the end, and returns its position
+length              Sets or returns the number of elements in an array
+map()               Creates a new array with the result of calling a function for each array element
+pop()               Removes the last element of an array, and returns that element
+prototype           Allows you to add properties and methods to an Array object
+push()              Adds new elements to the end of an array, and returns the new length
+reduce()            Reduce the values of an array to a single value (going left-to-right)
+reduceRight()       Reduce the values of an array to a single value (going right-to-left)
+reverse()           Reverses the order of the elements in an array
+shift()             Removes the first element of an array, and returns that element
+slice()             Selects a part of an array, and returns the new array
+some()              Checks if any of the elements in an array pass a test
+sort()              Sorts the elements of an array
+splice()            Adds/Removes elements from an array
+toString()          Converts an array to a string, and returns the result
+unshift()           Adds new elements to the beginning of an array, and returns the new length
+valueOf()           Returns the primitive value of an array
+toLocaleString()    Converts an array to a localized string representation
+of()                Creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments
+*/
+// ------------------------------------------------------------------------------ //
+

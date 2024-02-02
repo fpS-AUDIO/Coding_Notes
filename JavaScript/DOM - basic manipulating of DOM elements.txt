@@ -1,0 +1,100 @@
+
+
+///////////////////////////////////////////////////
+//  DOM - BASIC MANIPULATING OF DOM ELEMENTS.TXT //
+///////////////////////////////////////////////////
+
+
+
+/*  Manipulating the Document Object Model (DOM) allows JavaScript to change both the structure and content of web pages dynamically. Here are some of the core methods and properties used in DOM manipulation.    */
+
+
+// -------------------------------- innerHTML -------------------------------- //
+
+
+/*  The `innerHTML` property is used to get or set the HTML content of an element.
+- Unlike `textContent`, it includes HTML tags in the output or input.
+- Setting `innerHTML` to an empty string (`""`) clears the element's content.   */
+
+// Setting the innerHTML
+container.innerHTML = `<p>New paragraph</p>`;
+
+// Getting the innerHTML
+console.log(container.innerHTML);
+
+// Caution: Using `innerHTML` can expose your site to cross-site scripting (XSS) attacks if the content includes user input. Always sanitize input if necessary.
+
+
+// --------------------------- insertAdjacentHTML --------------------------- //
+
+
+/*  `insertAdjacentHTML()` method inserts the specified HTML content at a given position relative to the element.
+- It does not overwrite existing content like `innerHTML` might, making it more efficient for updating the DOM. */
+
+const htmlPiece = `<div>Additional content</div>`;
+
+// Adding content inside an element, at the beginning
+container.insertAdjacentHTML("afterbegin", htmlPiece);
+
+// Other positions include "beforebegin", "afterbegin", "beforeend", "afterend".
+
+
+// ----------------------------- preventDefault ----------------------------- //
+
+
+/*  The `preventDefault()` method is used to prevent the default action of an event from being triggered. 
+    This is commonly used in form submission or anchor tags to control their default behaviors.   */
+
+form.addEventListener("submit", function(event) {
+    event.preventDefault(); // Stops the form from submitting
+    // Additional actions here
+});
+
+
+// ---------------------------------- blur ---------------------------------- //
+
+
+/*  The `blur()` method is used to remove focus from an element. 
+    This is useful in form validation, among other scenarios, to control user interaction flow.    */
+
+inputField.blur(); // Removes focus from the inputField element
+
+
+// ---------------- Additional Methods for DOM Manipulation ---------------- //
+
+
+// createElement
+const newDiv = document.createElement("div"); // Creates a new div element
+
+// appendChild
+container.appendChild(newDiv); // Adds `newDiv` as the last child of `container`
+
+// removeChild
+container.removeChild(newDiv); // Removes `newDiv` from `container`
+
+// replaceChild
+const anotherDiv = document.createElement("div");
+container.replaceChild(anotherDiv, newDiv); // Replaces `newDiv` with `anotherDiv` in `container`
+
+// setAttribute
+newDiv.setAttribute("id", "new-div"); // Sets the id of `newDiv` to "new-div"
+
+// getAttribute
+const divId = newDiv.getAttribute("id"); // Gets the id attribute of `newDiv`
+
+// addEventListener
+newDiv.addEventListener("click", function() {
+    console.log("Div clicked");
+}); // Adds a click event listener to `newDiv`
+
+// querySelector
+const myElement = document.querySelector("#myElement"); // Selects the first element with the ID of "myElement"
+
+
+/*  Best Practices:
+- Minimize direct DOM manipulation for performance and maintainability.
+- Consider using `textContent` when dealing with text to avoid security risks associated with `innerHTML`.
+- Use `insertAdjacentHTML` for efficiently adding HTML structures to the DOM.
+- Always sanitize user input to prevent XSS attacks when using `innerHTML` or similar methods.  */
+
+

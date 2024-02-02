@@ -1,0 +1,84 @@
+
+
+///////////////////////////////////////
+// THE CALL, APPLY, AND BIND METHODS //
+///////////////////////////////////////
+
+
+
+/*  `call()` Method:
+    - Allows you to explicitly set the `this` context and pass arguments to a function.
+    - Syntax: function.call(thisArg, arg1, arg2, ...)
+
+    `apply()` Method:
+    - Similar to `call()`, but arguments are passed as an array.
+    - Syntax: function.apply(thisArg, [argsArray])
+    - Less common in modern JavaScript due to the spread operator.
+
+    `bind()` Method:
+    - Creates a new function that, when called, has its `this` keyword set to the provided value.
+    - Allows for the partial application of a function by pre-filling some of its arguments.
+    - Syntax: function.bind(thisArg[, arg1[, arg2[, ...]]])
+
+General Use Cases:
+- `call()` and `apply()` are typically used for invoking a function with a specific `this` context immediately.
+- `bind()` is used when you need a function to later be called with a certain context, useful in events.    */
+
+
+// Example Data
+const lufthansa = {
+  airline: `Lufthansa`,
+  flightCode: `LH`, // Corrected typo: fligthCode -> flightCode
+  bookings: [],
+  book(flightNumber, passengerName) {
+    console.log(`${passengerName} booked a seat on ${this.airline} flight ${this.flightCode}${flightNumber}`);
+    this.bookings.push({ flight: `${this.flightCode}${flightNumber}`, name: passengerName });
+  },
+};
+
+const eurowings = {
+  airline: `Eurowings`,
+  flightCode: `EW`,
+  bookings: [],
+};
+
+// Correct Use of call()
+lufthansa.book.call(eurowings, 23, `Sarah Williams`);
+// Outputs: Sarah Williams booked a seat on Eurowings flight EW23
+
+// Using apply()
+const flightData = [583, `George Cooper`];
+lufthansa.book.apply(eurowings, flightData);
+
+// Modern JavaScript way with the spread operator:
+lufthansa.book.call(eurowings, ...flightData);
+
+// The bind Method
+const bookEW = lufthansa.book.bind(eurowings);
+bookEW(26, `Steven Williams`);
+
+// Partial Application with bind()
+const bookEW23 = lufthansa.book.bind(eurowings, 23);
+bookEW23(`Martha Cooper`);
+
+// Event Listeners with bind()
+lufthansa.planes = 300;
+lufthansa.buyPlane = function() {
+  this.planes++;
+  console.log(`${this.airline} now has ${this.planes} planes.`);
+};
+document.getElementById('buyPlaneBtn').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial Application (without the need for `this`)
+const addTax = (rate, value) => value + value * rate;
+const addVAT = addTax.bind(null, 0.23); // VAT rate is 23%
+console.log(addVAT(100)); // 123
+
+
+
+/*  Best Practices and Insights:
+    - Use `call` or `apply` for immediate function invocation with a particular `this` context.
+    - Prefer `call` over `apply` in modern JavaScript, as spreading arguments is more intuitive than wrapping them in an array.
+    - Use `bind` for specifying the `this` context for functions that will be executed later, especially in event handlers or when needing partial application.
+    - Remember that `bind` can also be used for currying, where a function with multiple parameters is transformed into a sequence of functions each with a single parameter.   */
+

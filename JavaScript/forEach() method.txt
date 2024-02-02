@@ -1,0 +1,72 @@
+
+
+
+//////////////////////////
+// THE FOREACH() METHOD //
+//////////////////////////
+
+
+//    array.forEach(function(element, index, array) {....})
+
+
+/*  The `forEach()` method is a versatile way to iterate over the elements of an array, map, or set. 
+    It applies a callback function to each element of the collection.
+
+Key Points:
+- `forEach()` is a higher-order function that takes a callback function as an argument.
+- The callback can receive up to three parameters: the current element, the current index, and the entire collection being iterated.
+- Unlike `for` or `while` loops, you cannot use `break` or `continue` to exit a `forEach` loop prematurely.
+- In the context of arrays, `forEach` provides an elegant and readable way to perform operations on each element.
+- For maps and sets, `forEach` offers a straightforward method to access their elements.    */
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+// Example: Iterating over an Array
+const movements = [300, -250, -150, 200, -1500, -125];
+
+movements.forEach(function (movement, index) {
+  const type = movement > 0 ? "deposited" : "withdrew";
+  console.log(`Movement #${index + 1}: You ${type} ${Math.abs(movement)}`);
+});
+// Output: Movement #1: You deposited 300, etc.
+
+// Best Practice: Using Arrow Functions
+// Arrow functions can make your `forEach` loops more concise.
+movements.forEach((mov, i) => console.log(`Movement #${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`));
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+// Example: Iterating over a Map
+const currencies = new Map([
+  ["USD", "United States Dollar"],
+  ["EUR", "Euro"],
+  ["GBP", "Pound Sterling"],
+]);
+
+currencies.forEach((value, key) => {
+  console.log(`${key} is the ${value}`);
+});
+// Output: USD is the United States Dollar, etc.
+
+
+// ----------------------------------------------------------------------------------------- //
+
+
+// Example: Iterating over a Set
+const currencyUnique = new Set(["Euro", "USD", "Euro", "GBP", "Euro", "GBP"]);
+
+currencyUnique.forEach((value) => {
+  console.log(`${value} is unique in the set`);
+});
+// Output: Euro is unique in the set, etc.
+
+
+/*  Note on Sets:
+- The `forEach` method for sets also provides three parameters (value, valueAgain, set), where the first two parameters are the same because sets don't have keys.
+- The underscore (_) is used as a convention to indicate that a parameter is not being used (a throwaway variable), which is useful in the context of sets where the key and value are the same.
+*/
+
