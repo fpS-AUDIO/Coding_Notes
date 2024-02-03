@@ -1,0 +1,69 @@
+
+
+
+////////////////////////////////////////
+//  Data transformations: findIndex() //
+////////////////////////////////////////
+
+// SYNTAX:
+//  array.findIndex(callback, thisValue)
+//  array.findIndex(callback(element, index, array), thisValue)
+
+
+// The array.findIndex() method requires a callback function that should return a boolean.
+// If returned boolean is true, the findIndex() method returns the index of that element.
+// The callback function can optionally accept three parameters: the current element, its index, and the entire array.
+// Note: If no values satisfy the testing function, the method returns -1.
+// Additionally, the second argument of findIndex() allows you to specify the value of the "this" keyword during execution.
+
+
+// EXAMPLE: Finding the index of the first element meeting a condition
+const testArray = [5, 10, 15, 20, 25, 30];
+
+// Finding the index of the first element divisible by 5 that equals 25
+const resultIndex = testArray.findIndex(function(el) {
+    return el / 5 === 5;
+});
+console.log(resultIndex); // 4
+
+// Using arrow function syntax for a more concise expression
+const resultIndexArrow = testArray.findIndex(el => el / 5 === 5);
+console.log(resultIndexArrow); // 4
+
+// ADDITIONAL CONSIDERATIONS:
+
+// Handling -1 return value
+// It's important to handle cases where findIndex returns -1, indicating no match was found.
+if (resultIndex === -1) {
+    console.log('No match found.');
+} else {
+    console.log(`Match found at index: ${resultIndex}`);
+}
+
+// Best Practices:
+// - Use `findIndex()` when you need the index of an element to use it in further operations, like splicing.
+// - Prefer arrow functions for shorter and more readable code, especially when the callback is a simple condition.
+// - Always consider the possibility that `findIndex()` may return -1 and handle this case to avoid errors in subsequent code.
+
+/* Additional Tips:
+- `findIndex()` is particularly useful in scenarios where you need to perform an operation on the element once found, like removing it from the array.
+- This method can also be used to find the index of objects within an array based on a property value.
+*/
+
+// Complex Example: Finding the index of an object in an array by property
+const people = [
+    { name: 'Alice', age: 30 },
+    { name: 'Bob', age: 25 },
+    { name: 'Charlie', age: 35 }
+];
+const index = people.findIndex(person => person.name === 'Bob');
+console.log(index); // 1 - Index of 'Bob' in the array
+
+// Using findIndex to update or remove an item
+if (index !== -1) {
+    // Update Bob's age
+    people[index].age = 26;
+    // Or remove the item
+    // people.splice(index, 1);
+    console.log(people);
+}

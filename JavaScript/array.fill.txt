@@ -1,0 +1,69 @@
+
+
+
+////////////////////////////////////////
+// Data transformations: array.fill() //
+////////////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+// THEORY:
+
+// Creating arrays in JavaScript can be done in several ways:
+const arr1 = [1, 2, 3, 4, 5]; // Direct initialization
+const arr2 = new Array(1, 2, 3, 4, 5); // Using Array constructor with elements
+console.log(arr1); // [1, 2, 3, 4, 5]
+console.log(arr2); // [1, 2, 3, 4, 5]
+
+// When the Array constructor is called with a single number argument, it creates an array with that many empty slots.
+const arr3 = new Array(5); // Creates an array with 5 empty slots
+console.log(arr3); // [empty × 5]
+
+// Note: Directly calling methods like map() on empty slots might not work as expected because the slots are "empty", not "undefined".
+// The fill() method comes into play here, as it allows us to initialize or overwrite elements in an array with a specific value.
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+// METHOD:
+
+// SYNTAX:  array.fill(value, startIndex, endIndex)
+
+
+/*  - `value`: The value to fill the array with.
+    - `start` (optional): The start index, default is 0.
+    - `end` (optional): The end index (not included in the fill), default is array.length.
+    - The method mutates the original array.    */
+
+// Examples:
+// Filling an array with a specific value
+const arr4 = arr3.fill(`Z`); // Fills all positions with 'Z'
+console.log(arr4); // ['Z', 'Z', 'Z', 'Z', 'Z']
+
+// Filling with a start index and end index
+const arr5 = arr4.fill(`A`, 1, 4); // Fills positions 1 to 3 with 'A'
+console.log(arr5); // ['Z', 'A', 'A', 'A', 'Z']
+
+
+
+// Best Practices and Additional Considerations:
+// - Use `fill()` for quickly initializing or resetting all or parts of an array with a specific value.
+// - Remember that `fill()` changes the original array, so if you need to preserve the original, consider copying the array first.
+// - `fill()` is especially useful when combined with the Array constructor to initialize an array to a specific value right from the start.
+
+// Example: Initializing and filling an array in one line
+const initializedArray = new Array(5).fill(0); // Creates an array of 5 zeros
+console.log(initializedArray); // [0, 0, 0, 0, 0]
+
+// Using fill() with Array.from() for more complex initializations:
+const complexArray = Array.from({ length: 5 }, () => new Array(2).fill('X'));
+console.log(complexArray); // [['X', 'X'], ['X', 'X'], ['X', 'X'], ['X', 'X'], ['X', 'X']]
+// This example demonstrates creating a 2D array where each inner array is filled with 'X'.
+
+// Note on using fill() with reference values:
+// When filling an array with an object or array, each slot gets a reference to the SAME object/array.
+const referenceArray = new Array(3).fill([]);
+referenceArray[0].push(1); // Adding an element to the first array also affects the others
+console.log(referenceArray); // [[1], [1], [1]]
+// This behavior highlights the importance of understanding reference vs. primitive value behavior in JavaScript.

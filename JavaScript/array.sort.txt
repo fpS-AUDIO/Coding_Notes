@@ -1,0 +1,79 @@
+
+
+
+
+//////////////////////////////////
+// Data transformations: sort() //
+//////////////////////////////////
+
+
+//  SYNTAX:
+//  array.sort(callback(a, b))
+//  a = current value, b = next value (of any iteration)
+
+// sort() method, by default (without arguments), does the sorting basing on strings from A to Z.
+// So if you sort numbers, without giving a callback function with its own rules,
+// it converts the numbers to the strings, sorts them (like strings in UTF-16 code units order), and reconverts them to numbers again.
+// Careful, this method mutates the original array and returns the reference to the same array.
+
+
+
+// Examples with default behavior:
+const arrayLetters = [`b`, `c`, `a`, `z`, `d`, `m`];
+const arrayNumbers = [-4, 135, 10, 27, -10, -9, 4];
+
+console.log(arrayLetters.sort()); // ['a', 'b', 'c', 'd', 'm', 'z']
+console.log(arrayNumbers.sort()); // [-10, -4, -9, 10, 135, 27, 4]
+
+
+
+// You can change the default behavior by adding the callback function with its own rules
+// sort() method keeps looping over the array applying the callback function until everything is sorted
+
+// Rules of the callback function:
+//   - If you return a negative value (like -1), then the value "a" will be placed before "b".
+//   - If you return a positive value (like 1), then the value "a" will be placed after "b".
+//   - If you return 0, the position remains unchanged.
+
+// So:
+//    - return < 0  -->  A, B (keep order)
+//    - return > 0  -->  B, A (switch order)
+//    - return 0    -->  position remains unchanged
+
+
+// sort in ascending order
+const ascendingArrayNumbers = arrayNumbers.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});
+
+// Sorting numbers in ascending order with a compare function:
+const ascendingArrayNumbers = arrayNumbers.sort((a, b) => a - b);
+console.log(ascendingArrayNumbers); // [-10, -9, -4, 4, 10, 27, 135]
+
+// Sorting in descending order:
+const descendingArrayNumbers = arrayNumbers.sort((a, b) => b - a);
+console.log(descendingArrayNumbers); // [135, 27, 10, 4, -4, -9, -10]
+
+
+
+// Best Practices:
+// 1. Always use a compare function for numeric sorting to avoid the default string-based sorting behavior.
+// 2. For complex sorting (like objects based on a property), ensure your compare function correctly implements the sorting logic you need.
+// 3. Remember that `sort()` changes the original array. If you need to keep the original array unchanged, make a copy of it before sorting.
+
+
+
+// Example: Sorting an array of objects based on a numeric property
+const items = [
+  { name: "Item1", value: 10 },
+  { name: "Item2", value: 5 },
+  { name: "Item3", value: 20 }
+];
+const sortedItems = items.sort((a, b) => a.value - b.value);
+console.log(sortedItems); // Items sorted by their value in ascending order
+
+// Making a copy of the array before sorting (to preserve the original array):
+const itemsCopy = [...items];
+itemsCopy.sort((a, b) => a.value - b.value);
+// Original 'items' array remains unchanged

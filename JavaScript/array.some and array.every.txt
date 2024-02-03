@@ -1,0 +1,79 @@
+
+
+///////////////////////////////////////////////
+//  Data transformations: some() and every() //
+///////////////////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+/////////// SOME ///////////
+
+
+// SYNTAX:  
+//  array.some(callbackFn, thisValue)
+//  array.some(function (element, index, array), thisValue)
+
+
+/*  - some() checks if at least one element in the array passes the test implemented by the provided function.
+    - some() returns "true" if at least one element of the array passes the test in the callback function
+    - some() method doesn't mutate the array    */
+
+
+// EXAMPLE: Check if there is at least one positive movement greater than 1000
+const movements = [500, -200, 1000, -300, -400, 49, 700, 300, -800, 1200, -500, -1000, 1500];
+const hasLargeDeposit = movements.some(el => el > 1000);
+console.log(hasLargeDeposit); // true
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+////////// EVERY //////////
+
+
+// SYNTAX:  
+//  array.every(callbackFn, thisValue)
+//  array.every(function (element, index, array), thisValue)
+
+
+/*  - every() method is exactly the same as some() but it returns true only if all elements pass the condition.
+    - Does not mutate the original array.   */
+
+
+// EXAMPLE: Check if all movements are positive
+const movements = [500, -200, 1000, -300, -400, 49, 700, 300, -800, 1200, -500, -1000, 1500];
+const allPositive = movements.every(el => el > 0);
+console.log(allPositive); // false
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+// Additional Notes:
+
+// The `includes()` method is a simpler alternative for checking the presence of a value without a condition.
+console.log(movements.includes(1000)); // true
+console.log(movements.includes(28)); // false
+
+// Best Practices:
+// - Use `some()` when you need to check if at least one element meets a particular condition.
+// - Use `every()` to ensure that every element in an array meets a certain criteria.
+// - Prefer arrow functions for concise and readable code when using `some()` and `every()`.
+// - Consider the use of `includes()` for direct value checks without conditions.
+
+/* Additional Examples:
+
+Using `some()` to check for any negative movements:
+*/
+const hasNegativeMovements = movements.some(movement => movement < 0);
+console.log(hasNegativeMovements); // true
+
+/*
+Using `every()` to check if all movements are significant (absolutely greater than 50):
+*/
+const allSignificantMovements = movements.every(movement => Math.abs(movement) > 50);
+console.log(allSignificantMovements); // true
+
+/*
+- Remember, `some()` and `every()` can be very useful for validations, such as checking input arrays before processing.
+- These methods promote a functional and declarative approach to array processing.
+*/

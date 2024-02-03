@@ -1,0 +1,64 @@
+
+
+
+/////////////////////////////////////
+//  Data transformations: filter() //
+/////////////////////////////////////
+
+//  SYNTAX:   array.filter(function(element, index, array) {...} )
+
+
+/*  Key Points:
+    1. Returns a new array containing elements that pass the test implemented by the provided function.
+    2. Does not modify the original array (immutability).
+    3. The callback function receives three arguments: the current element, the current element's index, and the entire array.
+    4. Elements that do not satisfy the condition are skipped and not included in the new array.
+    5. If the condition specified in the callback function after the "return" keyword evaluates to true, 
+        the current element will be included in the new filtered array.
+    6. If no elements pass the test, an empty array will be returned.   */
+
+
+// EXAMPLE: Filtering out only the positive numbers from an array
+const numbers = [200, -200, 340, -300, -20, 50, 400, -460];
+const positiveNumbers = numbers.filter(function(element) {
+    // Only include if condition is true
+    return element > 0;
+});
+console.log(positiveNumbers); // [200, 340, 50, 400]
+
+// Using arrow function for more concise syntax
+const positiveNumbersArrow = numbers.filter(element => element > 0);
+console.log(positiveNumbersArrow); // [200, 340, 50, 400]
+
+
+// ADDITIONAL EXAMPLES:
+
+// Filtering objects based on property values
+const people = [
+    { name: "John", age: 25 },
+    { name: "Jane", age: 20 },
+    { name: "Jim", age: 15 }
+];
+const adults = people.filter(person => person.age >= 18);
+console.log(adults); // [{ name: "John", age: 25 }, { name: "Jane", age: 20 }]
+
+// Using index and array parameters
+const firstHalf = numbers.filter((element, index, array) => index < array.length / 2);
+console.log(firstHalf); // Example output: [200, -200, 340, -300]
+
+// Best Practices:
+// 1. Use arrow functions for simpler filtering logic to improve code readability.
+// 2. filter() is best utilized when you need to create a new array based on conditional logic.
+// 3. Remember, filter() is a powerful tool in functional programming, allowing for the creation of more declarative and immutable code.
+
+/* Additional Considerations:
+- Combining map() and filter(): These methods can be chained together to perform complex transformations and filters in a concise manner.
+- Performance considerations: While filter() is efficient for most use cases, be mindful of its use in performance-critical sections, especially with large arrays.
+- filter() vs forEach(): If you're simply iterating over an array to apply some effects without needing a new array, forEach() might be more appropriate.
+*/
+
+// Example of chaining map() and filter()
+const doubledPositives = numbers
+    .filter(element => element > 0)
+    .map(positive => positive * 2);
+console.log(doubledPositives); // [400, 680, 100, 800]

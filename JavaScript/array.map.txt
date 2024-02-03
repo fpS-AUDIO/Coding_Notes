@@ -1,0 +1,62 @@
+
+
+//////////////////////////////////
+//  Data transformations: map() //
+//////////////////////////////////
+
+//  SYNTAX:   array.map(function(element, index, array) {...}, thisArg)
+
+
+/* Key Points:
+    1. It returns a new array containing all transformed elements by the callback function from all original array elements.
+    2. It loops over the original array, transforms the current element with the callback function, 
+        pushes the transformed element to the new array, and finally returns a new array with all transformed elements.
+    3. The callback function can take up to three arguments: the current element, the current index, and the whole array.
+    4. An optional second argument (thisArg) can be passed to `map()` to set the `this` value in the callback function.
+    5. The original array is not modified (immutability).
+    6. It's important to note that `map()` always returns an array of the same length as the original.  */
+
+// EXAMPLE: Multiplying each element of the original array by 2
+const testArray1 = [1, 2, 3, 4, 5];
+const resultArray1 = testArray1.map(function(element) {
+    return element * 2;
+});
+console.log(resultArray1); // [2, 4, 6, 8, 10]
+
+// Using arrow function for conciseness
+const resultArray1Arrow = testArray1.map(element => element * 2);
+console.log(resultArray1Arrow); // [2, 4, 6, 8, 10]
+
+// ADDITIONAL EXAMPLES:
+
+// Using index and array parameters
+const resultWithIndex = testArray1.map((element, index) => element * index);
+console.log(resultWithIndex); // [0, 2, 6, 12, 20] - Multiplies each element by its index
+
+// Using map() to transform objects in an array
+const people = [{ name: "John" }, { name: "Jane" }];
+const names = people.map(person => person.name);
+console.log(names); // ["John", "Jane"]
+
+// Providing a thisArg
+function multiplyBy() {
+    return this.array.map(element => element * this.multiplier);
+}
+const multiplierObject = {
+    array: [1, 2, 3],
+    multiplier: 2,
+    multiply: multiplyBy
+};
+console.log(multiplierObject.multiply()); // [2, 4, 6]
+
+// Best Practices:
+// 1. Use arrow functions for simpler callback functions to improve readability.
+// 2. Remember that map() is best used when you want to transform elements in an array into a new array of the same size.
+// 3. Consider using `forEach`, `filter`, or `reduce` for operations that don't directly map to creating a new array of the same size.
+// 4. When working with React or similar frameworks, map() is commonly used for rendering lists of elements.
+
+/* Additional Considerations:
+- `map()` is a high-order function and a key part of functional programming in JavaScript. It encourages immutability and declarative programming.
+- When not to use map(): If you're not using the array it returns, you might want to use `forEach` or another array method that fits your needs better.
+- Performance: For very large arrays or performance-critical applications, consider the implications of creating a new array and possibly look into alternatives like in-place transformations (though this goes against immutability principles).
+*/
