@@ -1,0 +1,94 @@
+
+
+
+/////////////////////////
+// Working with BigInt //
+/////////////////////////
+
+
+// Big Integer is a special data type of Integers that was introduced in 2020.
+// Since in JS the numbers are stored in binary system based on 64 digits we have some limits.
+// BigInt allows the representation of integers larger than 2^53 - 1, which is the limit for Number in JavaScript.
+// This is particularly useful for high-precision mathematics or handling large numeric IDs.
+
+
+// this is the biggest int that JS can represent safely:
+console.log(2 ** 53 - 1); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+// 2 because it's binary
+// 53 because there are 53 bits to store the number (the rest of digits are used to store position of decimal point and the sign)
+
+
+
+// ----------------- Creating BigInts ----------------- //
+
+// You can create a BigInt by appending 'n' to the end of an integer or by calling the BigInt function.
+
+// Literal syntax
+const bigIntLiteral = 1234567890123456789012345678901234567890n;
+
+// Constructor function
+const bigIntFromNumber = BigInt(123); // Converts a number to a BigInt
+const bigIntFromString = BigInt("1234567890123456789012345678901234567890"); // For very large numbers, use string
+
+console.log(bigIntLiteral); // 1234567890123456789012345678901234567890n
+console.log(bigIntFromNumber); // 123n
+console.log(bigIntFromString); // 1234567890123456789012345678901234567890n
+
+
+
+// ----------------- Operations with BigInts ----------------- //
+
+// Arithmetic operations work similarly to those with Numbers, but with some restrictions.
+// Remember that you can't mix BigInt with Numbers.
+
+// Addition, subtraction, multiplication, and division (division truncates towards zero)
+console.log(10n + 20n); // 30n
+console.log(10n - 5n); // 5n
+console.log(5n * 4n); // 20n
+console.log(10n / 3n); // 3n, not 3.333...n, because BigInts do not have decimal points
+
+// Modulo
+console.log(10n % 3n); // 1n
+
+// Exponentiation
+console.log(2n ** 4n); // 16n
+
+
+
+// ----------------- Limitations and Differences ----------------- //
+
+// Mixing BigInts and regular Numbers in arithmetic operations is not allowed and results in a TypeError.
+// For example, 10n + 5 will throw an error because one operand is a BigInt and the other is a Number.
+
+// Comparison between BigInts and Numbers is possible, but strict equality (===) considers them as different types.
+console.log(10n == 10); // true, due to type coercion
+console.log(10n === 10); // false, different types
+
+// BigInts cannot be used with Math object methods.
+// Attempting to use BigInts with Math methods like Math.sqrt(4n) will throw an error.
+
+
+
+// ----------------- Best Practices and Use Cases ----------------- //
+
+// Use BigInt for applications that require handling of integers larger than Number.MAX_SAFE_INTEGER.
+// This includes cryptographic calculations, high-precision timestamps, or IDs from large databases.
+
+// When performing operations involving both BigInts and Numbers, convert Numbers to BigInts to avoid type errors.
+const num = 5;
+const bigIntNum = BigInt(num) + 10n; // Convert Number to BigInt before the operation
+
+// Be mindful of the performance implications.
+// BigInts can consume more memory and potentially slow down computations compared to Number for small integers.
+
+
+
+// ----------------- Serialization ----------------- //
+
+// JSON.stringify does not directly support BigInt. Serializing a BigInt will throw an error.
+// A workaround is to convert BigInts to strings if you need to serialize them.
+const bigIntForJSON = 123n;
+const serializedBigInt = JSON.stringify(bigIntForJSON.toString()); // Convert to string to serialize
+
+// Remember to convert it back to BigInt after deserialization if necessary for further computations.

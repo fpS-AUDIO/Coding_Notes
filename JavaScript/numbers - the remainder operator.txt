@@ -1,0 +1,57 @@
+
+
+
+////////////////////////////
+// The Remainder Operator //
+////////////////////////////
+
+// The remainder operator (%) returns the remainder left over when one operand is divided by a second operand.
+// It gives the remainder of the division operation.
+
+// Basic Examples
+console.log(5 % 2); // 1 because 5 divided by 2 leaves a remainder of 1
+console.log(8 % 3); // 2 because 8 divided by 3 leaves a remainder of 2
+console.log(13 % 3); // 1 because 13 divided by 3 leaves a remainder of 1
+
+// The remainder operator is very useful for determining even or odd numbers:
+// - Even numbers % 2 will always equal 0.
+// - Odd numbers % 2 will always equal 1.
+
+// Practical Use Case: Checking for Even or Odd
+// Example: Alternating row styles based on their index (even or odd), and applying a special style every 3rd element.
+
+
+
+// PRACTICAL EXAMPLE:
+
+
+
+// Assuming "labelBalance" is a button or an element you click to trigger row styling in a list.
+document.querySelector(`labelBalance`).addEventListener(`click`, function (e) {
+  e.preventDefault(); // Prevents the default action of the element.
+  [...document.querySelectorAll(`.movements__row`)].forEach(function (el, i) {
+    // Reset background color
+    el.style.backgroundColor = '';
+
+    // Apply gray background to even rows
+    if (i % 2 === 0) {
+      el.style.backgroundColor = `#c7c5bf`;
+    }
+    // Additionally, darken the background of every 3rd element (index is 0-based, so it's actually every 4th element visually).
+    if (i % 3 === 0) {
+      el.style.backgroundColor = `#8c8a85`;
+    }
+  });
+});
+
+
+
+
+
+
+
+// Additional Insights:
+// - The remainder operator can be used with negative numbers as well.
+console.log(-5 % 2); // -1
+// - The result's sign is determined by the dividend (the left operand).
+// - This operator can be useful in algorithms that need to cycle through a set of values or apply periodic conditions.

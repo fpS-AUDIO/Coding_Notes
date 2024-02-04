@@ -1,0 +1,123 @@
+
+
+//////////////////////////////////
+// Dates - Creating and Methods //
+//////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+// Creating Dates
+
+
+// 1. Current Date and Time
+const now = new Date();
+console.log(now);   // Sun Nov 26 2023 15:51:49 GMT+0100 (Ora standard dell’Europa centrale)
+
+// 2. Date from a String
+const date1 = new Date('Nov 26 2023 15:54:29');
+console.log(date1);
+
+// 3. Date from Components
+// Note: Months are 0-based (January is 0, December is 11)
+// new Date(year, month, weekDay, hour, minute, second)
+const date3 = new Date(2025, 7, 28); // Year, Month, Day
+console.log(date3);
+
+// 4. Date from Unix Timestamp (Milliseconds since Jan 01, 1970)
+const date5 = new Date(1000);
+console.log(date5); // Thu Jan 01 1970 01:00:01 GMT+0100 (Ora standard dell’Europa centrale)
+
+
+
+// Handling Date Overflow
+// JavaScript automatically corrects date overflows.
+const date4 = new Date(2025, 0, 40); // January 40th becomes February 9th
+console.log(date4);
+
+// create date 3 days after the epoch. 
+// 3days * 24hours * 60minutes * 60seconds *1000milliseconds
+const date6 = new Date(3 * 24 * 60 * 60 * 1000);
+console.log(date6); // Sun Jan 04 1970 01:00:00 GMT+0100 (Ora standard dell’Europa centrale)
+
+const date6Timestamp = 3 * 24 * 60 * 60 * 1000;
+console.log(date6Timestamp); // 259200000
+
+
+// ---------------------------------------------------------------------------------------------- //
+// Date Methods
+
+const futureDate = new Date(2025, 7, 28, 10, 30);
+
+
+// ------------>>> Getting Components
+
+console.log(futureDate.getFullYear());          // 2025 (never use getYear())
+console.log(futureDate.getMonth());             // 7 (August)
+console.log(futureDate.getDate());              // 28 (day of month)
+console.log(futureDate.getDay());               // 4 (Thursday, where 0 is Sunday)
+console.log(futureDate.getHours());             // 10
+console.log(futureDate.getMinutes());           // 30
+console.log(futureDate.getSeconds());           // 0
+console.log(futureDate.getMilliseconds());      // 0
+console.log(futureDate.toISOString());          // 2025-08-28T08:30:00.000Z (UTC time)
+//                      "Z" in the ends means "UTC": Coordinated Universal Time (time without any time zone in London and without daylight savings)
+
+// Getting and Setting Unix Timestamp
+console.log(futureDate.getTime()); // Milliseconds since Jan 01, 1970
+console.log(Date.now()); // Current timestamp
+
+
+// ------------>>> Setting Components
+
+// There is also "set" version for previous methods
+
+futureDate.setFullYear(2030);
+console.log(futureDate); // Adjusted year to 2030
+
+
+// EXAMPLE:
+futureDate.setYear(2030);
+console.log(futureDate); // Wed Aug 28 2030 10:30:00 GMT+0200
+
+
+// ---------------------------------------------------------------------------------------------- //
+// Operations with Dates
+
+// Calculating Difference Between Dates
+
+const calcDaysPassed = (date1, date2) =>
+  Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+const data1 = new Date(2023, 10, 25).getTime();
+const data2 = new Date(2023, 10, 20).getTime();
+
+console.log(calcDaysPassed(data1, data2)); // 5
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+// Additional Insights and Best Practices
+
+// Always be aware of time zones when creating dates with strings or components.
+// For consistent results across different environments, consider using UTC methods for getting and setting dates, such as getUTCFullYear(), getUTCMonth(), etc.
+
+// Date Parsing Warning
+// Parsing dates from strings (especially with custom formats) can lead to inconsistencies. 
+// It's generally safer to use explicit components or a library like date-fns or Luxon for parsing and formatting dates.
+
+// Dealing with Time Zones
+// JavaScript dates are based on the user's local time zone unless explicitly handled.
+// Use toISOString() for a standardized UTC format, or libraries for specific time zone manipulation.
+
+// Alternative Libraries
+// For complex date operations, time zones, and formatting, libraries like date-fns, Luxon, or Moment.js 
+// (note: Moment.js is now considered a legacy project and not recommended for new projects) can provide more functionality and ease of use compared to the native Date object.
+
+// Example of Using UTC Methods
+const utcDate = new Date(Date.UTC(2025, 7, 28, 10, 30));
+console.log(utcDate.toISOString()); // Ensures the time is in UTC
+
+// Note on Moment.js
+// While Moment.js is mentioned, it's important to note its large bundle size and that it's no longer in active development. 
+// For new projects, consider using lighter and more modern libraries like date-fns or Luxon for date manipulation.

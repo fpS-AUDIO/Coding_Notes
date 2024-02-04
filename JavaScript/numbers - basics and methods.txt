@@ -1,0 +1,116 @@
+
+
+
+
+
+//////////////////////////////////
+// NUMBERS - BASICS AND METHODS //
+//////////////////////////////////
+
+
+
+// ----------------- Converting and Checking Numbers ----------------- //
+
+/*  JavaScript uses IEEE 754 standard for representing numbers, which includes both integers and floating-point numbers.
+    So in JS all numbers are presented internally as floating point numbers (no matter you write them is int or float)
+    For this reason we have only one data type for all numbers (28 === 28.0 // true)
+    Also numbers are stored in binary format, so it's difficul to represent some fractions (like 0.1)   */
+
+console.log(0.1 + 0.2); // 0.30000000000000004
+console.log(0.1 + 0.2 === 0.3); // false
+
+
+//  Converting strings to numbers
+// The unary plus (+) is a quick way for type coercion from string to number.
+console.log(+`28`); // 28
+
+
+//  Alternatively, use the Number constructor for explicit conversion. 
+console.log(Number(`28`)); // 28
+
+
+//    Number.parseInt(str, radix)
+// returns an integer number from a string which has to start with a number or space (can include symbols)
+// optionally you can (and should) specify the 2nd argument (radix) which is the base of the numeral system (10, 2 which binary etc)
+// this function scan the string until it encounter a character that is not a digit or a decimal point.
+// this are global function so you can call it without Number object but it's better call it on Number object because it provides its own namespace
+console.log(Number.parseInt(`2rem`, 10)); // 2
+console.log(Number.parseInt(`2.5rem`, 10)); // 2
+console.log(Number.parseInt(`rem20`, 10)); // NaN
+
+
+//    Number.parseFloat(str)
+// returns an floating point number from a string which has to start with a number or space (can include symbols)
+// this function scan the string until it encounter a character that is not a digit.
+// this are global function so you can call it without Number object but it's better call it on Number object because it provides its own namespace
+console.log(Number.parseFloat(`2.5rem`)); // 2.5
+
+
+//    Number.isNaN(value)
+// returns true if the given value is NaN (not a number)
+// it's different from the global isNaN() which can coerce types
+console.log(Number.isNaN(20)); // false
+console.log(Number.isNaN(+`20rem`)); // true
+console.log(Number.isNaN(10 / 0)); // false (because 10 / 0 = Infinity)
+
+
+//    Number.isFinite(value)
+// returns true if the given value is a finite number (NaN and Infinity are false!)
+// it's the best method to check if the value is a real number
+console.log(Number.isFinite(28)); // true
+console.log(Number.isFinite(28.1)); // true
+console.log(Number.isFinite(0)); // true
+console.log(Number.isFinite(`28`)); // false
+console.log(Number.isFinite(1 / 0)); // false   (1/0 = Infinity)
+
+
+//    Number.isInteger(value)
+// returns true if the given value is an Integer
+console.log(Number.isInteger(28)); // true
+console.log(Number.isInteger(28.0)); // true
+console.log(Number.isInteger(28.1)); // false
+console.log(Number.isInteger(`28`)); // false
+
+
+
+// ----------------- Numeric Separators ----------------- //
+
+// Numeric separator is ES2021 feature.
+// Numeric separators help make large numbers more readable.
+// They have no impact on the actual value of the number (these underscores are ignored by the JS engine).
+let billion = 1_000_000_000; // Easier to read than 1000000000
+console.log(billion); // 1000000000
+
+
+// Can't start or end with an underscore, and can't have multiple consecutive underscores.
+// Also you can't use it in strings before converting the str in a numbers (JS can't use parsing on them)
+// Correct use: 1_000, Incorrect use: 1__000, 1_000_, _1000
+console.log(Number(`256_000`)); // NaN
+
+
+
+// ----------------- Additional Methods and Properties ----------------- //
+
+// MAX_SAFE_INTEGER and MIN_SAFE_INTEGER represent the highest and lowest integers that can be accurately represented in JavaScript.
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+console.log(Number.MIN_SAFE_INTEGER); // -9007199254740991
+
+
+// EPSILON represents the smallest difference between two representable numbers.
+console.log(Number.EPSILON); // Useful for comparing floating-point numbers for equality.
+
+
+// toFixed() method formats a number using fixed-point notation, useful for rounding to a specific number of decimal places.
+console.log((0.1 + 0.2).toFixed(2)); // "0.30", returns a string
+
+
+// toPrecision() provides a string representation with a specified length of significant digits.
+console.log((1234.567).toPrecision(3)); // "1.23e+3"
+
+
+
+// ----------------- Best Practices ----------------- //
+
+// Use `Number.isFinite` when validating numeric inputs to ensure they are numbers (and not NaN or Infinity).
+// Consider using libraries like BigNumber.js or Decimal.js for precise decimal arithmetic, especially in financial applications.
+// Always be mindful of the floating-point precision issues. Use `Number.EPSILON` for comparisons or round off errors when needed.

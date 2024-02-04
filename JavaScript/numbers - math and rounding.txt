@@ -1,0 +1,104 @@
+
+
+
+///////////////////////
+// Math and Rounding //
+///////////////////////
+
+// Math object provides several methods for performing mathematical tasks on numbers.
+
+
+// ----------------- Generating Random Integers ----------------- //
+
+// Function to create a random integer between min (inclusive) and max (inclusive)
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+// ----------------- Square Roots and Exponents ----------------- //
+
+// Math.sqrt() returns the square root of a number
+console.log(Math.sqrt(25)); // 5
+// Alternative way to find square root
+console.log(25 ** (1 / 2)); // 5
+// Finding cubic root
+console.log(8 ** (1 / 3)); // 2
+
+
+// ----------------- Maximum and Minimum Values ----------------- //
+
+// Math.max() returns the largest of zero or more numbers.
+// It does type coercion, but does not parse strings with non-numeric characters
+console.log(Math.max(1, 2, 3, 4, 5, 6, 6.2)); // 6.2
+console.log(Math.max(1, 2, 3, 4, `5`)); // 5
+console.log(Math.max(1, 2, 3, 4, `5px`)); // NaN
+
+// Math.min() returns the smallest of zero or more numbers.
+// It does type coercion, but does not parse strings with non-numeric characters
+console.log(Math.min(1.2, 2, 3, 4, 5)); // 1.2
+console.log(Math.min(`1`, 2, 3, 4, 5)); // 1
+console.log(Math.min(`px`, 2, 3, 4, 5)); // NaN
+
+
+// ----------------- Constants ----------------- //
+
+// Accessing mathematical constants
+console.log(Math.PI); // 3.141592653589793
+
+
+// ----------------- Random Numbers ----------------- //
+
+// Generating a random number between 0 (inclusive) and 1 (exclusive)
+console.log(Math.random()); // Example: 0.123456789
+console.log(Math.trunc(Math.random() * 10)); // returns a random number between 0 and 9
+console.log(Math.trunc(Math.random() * 10) + 1); // returns a random number between 1 and 10
+
+
+// ----------------- Truncation ----------------- //
+
+// Math.trunc() removes the decimal part of the number (only removing)
+console.log(Math.trunc(28.753)); // 28
+console.log(Math.trunc(-28.3)); // -28
+
+
+// ----------------- Rounding Methods ----------------- //
+
+// Math.round() rounds a number to the nearest integer
+// this method also does the type coercion
+console.log(Math.round(28.2)); // 28
+console.log(Math.round(28.8)); // 29
+
+// Math.ceil() always rounds a number up to the next largest integer
+// this method also does the type coercion
+console.log(Math.ceil(28.1)); // 29
+
+// Math.floor() rounds a number down to the preceding integer
+// this method also does the type coercion
+console.log(Math.floor(28.1)); // 28
+console.log(Math.floor(28.8)); // 28
+console.log(Math.floor(-28.3)); // - 29 (in the direction of negative infinity)
+
+
+// ----------------- Decimal Precision ----------------- //
+
+// (number).toFixed(x) rounds the number to x decimal places and returns a string
+// RETURNS STRING, round and show x decimal parts of the number
+console.log((28).toFixed(2)); // "28.00"
+console.log((28.345).toFixed(2)); // "28.35"
+
+// To convert the result of toFixed() back to a number, use the unary plus (+)
+console.log(+(28.345).toFixed(2)); // 28.35
+
+
+// ----------------- Additional Notes ----------------- //
+
+// While these methods do type coercion, it's important to ensure the input is numeric to avoid unexpected NaN results.
+// Remember, (number).toFixed(x) returns a string, which can be important when performing further numeric operations.
+
+// Best Practice: Always verify the type of input when performing mathematical operations and consider edge cases such as extremely large numbers, negative numbers, and non-numeric values.
+
+
+// ----------------- Edge Cases and Best Practices ----------------- //
+
+// Be cautious with floating point precision issues when working with JavaScript numbers, especially when using methods like toFixed() which can round numbers in ways that may be unexpected due to floating point arithmetic.
+
+// For mathematical operations that require high precision (e.g., financial calculations), consider using a library designed to handle such precision.
