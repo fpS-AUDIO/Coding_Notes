@@ -1,0 +1,100 @@
+
+
+
+///////////////////////////////////////
+// INTERNATIONALIZING NUMBERS (INTL) //
+///////////////////////////////////////
+
+/**
+ * The JavaScript Internationalization API (Intl) provides constructors for number formatting
+ * that allow localization of number strings. The Intl.NumberFormat constructor is especially
+ * useful for formatting numbers, currencies, and percentages according to different locale conventions.
+ *
+ * Documentation:
+ * - Overview: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+ * - All options:  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options
+ */
+
+
+//---------------------------------------------------------------------------------------- //
+// SYNTAX:
+
+// new Intl.NumberFormat(localStr, options).format(yourNumber)
+//    `localStr` is a string with a BCP 47 language tag, or an array of such strings (like `en-US`)
+//    `options` is optional argument which expects a configuratiopn object with parameters
+
+
+// Using navigator.language to detect the user's browser language setting:
+const userLocale = navigator.language;
+console.log(userLocale); // Example: 'en-US'
+
+// Basic Number Formatting:
+const number = 123456.789;
+
+// Without any options:
+console.log(new Intl.NumberFormat('en-US').format(number)); // Example output: "123,456.789"
+
+
+//---------------------------------------------------------------------------------------- //
+// Advanced Formatting Options:
+
+const options = {
+  style: 'currency',            // 'decimal', 'currency', 'percent', 'unit'
+  currency: 'USD',              // ISO currency codes, e.g., 'EUR', 'USD', 'JPY'
+  currencyDisplay: 'symbol',    // 'symbol', 'narrowSymbol', 'code', 'name'
+  useGrouping: true,            // Boolean value for using grouping separators, such as thousands separators
+};
+
+console.log(new Intl.NumberFormat('en-US', options).format(number)); // "$123,456.79"
+
+
+// Unit Display:
+const unitOptions = {
+  style: 'unit',
+  unit: 'kilometer-per-hour',
+  unitDisplay: 'long',              // 'short', 'narrow', 'long'
+};
+
+console.log(new Intl.NumberFormat('en-US', unitOptions).format(number)); // "123,456.789 kilometers per hour"
+
+
+//---------------------------------------------------------------------------------------- //
+// Best Practices and Additional Options:
+
+// 1. Performance: For applications that format large numbers of numbers, create a NumberFormat object and reuse it.
+const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+console.log(formatter.format(number)); // Reuse this formatter for better performance.
+
+// 2. Locale Matching: The API automatically handles locale fallback if a specific locale isn't supported.
+//    For example, if 'en-GB' is requested but not available, it might fall back to 'en'.
+
+// 3. Customizing Digits: Control the minimum and maximum number of digits displayed after the decimal point.
+const digitOptions = {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 4,
+};
+
+console.log(new Intl.NumberFormat('en-US', digitOptions).format(number)); // "123,456.7890"
+
+// 4. Rounding: Number formatting includes automatic rounding.
+//    You can control rounding behavior through the options but cannot specify a custom rounding function.
+
+// Universal Function for Currency Formatting:
+const formatCurrency = (value, locale, currency) => {
+  const options = {
+    style: 'currency',
+    currency: currency,
+  };
+  return new Intl.NumberFormat(locale, options).format(value);
+};
+
+// Testing formatCurrency()
+console.log(formatCurrency(1234.56, 'de-DE', 'EUR')); // Example output: "1.234,56 €"
+
+
+
+/**
+ * The Intl.NumberFormat API is a comprehensive tool for formatting numbers, currencies,
+ * and units in a locale-sensitive manner. By utilizing the various options provided,
+ * developers can ensure their applications provide a more localized and accessible user experience.
+ */

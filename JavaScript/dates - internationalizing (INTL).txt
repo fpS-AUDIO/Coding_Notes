@@ -1,0 +1,103 @@
+
+
+
+/////////////////////////////////////
+// INTERNATIONALIZING DATES (INTL) //
+/////////////////////////////////////
+
+
+//---------------------------------------------------------------------------------------- //
+// THEORY:
+
+/**
+ * The JavaScript Internationalization API (Intl) provides powerful constructors for formatting
+ * and manipulating numbers, dates, and strings according to different locale conventions.
+ *
+ * Documentation:
+ * - Intl Overview: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
+ * - DateTimeFormat: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
+ * - All options: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+ */
+
+
+//---------------------------------------------------------------------------------------- //
+// SYNTAX:
+
+// new Intl.DateTimeFormat(localStr, options)                 --> returns formatter
+// new Intl.DateTimeFormat(localStr, options).format(date)    --> returns date in string formatted for the given country
+//    `localStr` is the language-country (like `en-US`)
+//    `options` is optional argument which expects a configuratiopn object with parameters
+
+
+// So, INTL namespace object contains several constructors.
+// One of the constuctor functions is Intl.DateTimeFormat() to work with dates.
+// Creating a DateTimeFormat object: new Intl.DateTimeFormat(locales, options)
+// - `locales` argument is a string with a BCP 47 language tag, or an array of such strings. For example, 'en-US'.
+// - `options` is an optional object that allows you to customize the formatting.
+// NOTE: also you can pass `undefined` in `localStr` to use the browser's default locale (not recomended)
+
+// Using navigator.language to detect the user's browser language setting:
+const userLocale = navigator.language;
+console.log(userLocale); // e.g., 'en-US'
+
+// Example: Basic Date Formatting
+const now = new Date();
+console.log(now); // Example output: Mon Jan 01 2024 12:00:00 GMT+0000 (UTC)
+
+// Formatting a date in the US English locale without any options:
+const dateUS = new Intl.DateTimeFormat('en-US').format(now);
+console.log(dateUS); // Output: "1/1/2024"
+
+
+//---------------------------------------------------------------------------------------- //
+// ADVANCED FORMATTING:
+
+// Customizing the output with options:
+const options = {
+  weekday: 'long',          // "narrow", "short", "long"
+  year: 'numeric',          // "2-digit", "numeric"
+  month: 'long',            // "2-digit", "numeric", "narrow", "short", "long"
+  day: '2-digit',           // "2-digit", "numeric"
+  hour: '2-digit',          // "2-digit", "numeric"
+  minute: '2-digit',        // "2-digit", "numeric"
+  second: '2-digit',        // "2-digit", "numeric"
+  timeZoneName: 'short'     // "short", "long"
+};
+
+const formattedDate = new Intl.DateTimeFormat('en-US', options).format(now);
+console.log(formattedDate); // Example output: "Monday, 01 January 2024, 12:00:00 PM GMT"
+
+
+
+//---------------------------------------------------------------------------------------- //
+// DYNAMIC LOCALE FORMATTING:
+
+// Formatting the same date in different locales with the same options:
+const dateFR = new Intl.DateTimeFormat('fr-FR', options).format(now);
+console.log(dateFR); // Output in French format
+
+const dateJP = new Intl.DateTimeFormat('ja-JP', options).format(now);
+console.log(dateJP); // Output in Japanese format
+
+
+//---------------------------------------------------------------------------------------- //
+// TIME ZONE SUPPORT:
+
+// You can specify a time zone in the options to display the date in that time zone:
+const optionsWithTimeZone = { ...options, timeZone: 'Asia/Tokyo' };
+const dateInTokyo = new Intl.DateTimeFormat('en-US', optionsWithTimeZone).format(now);
+console.log(dateInTokyo); // The output will reflect the time in Tokyo, regardless of the user's actual time zone.
+
+
+//---------------------------------------------------------------------------------------- //
+// BEST PRACTICES:
+
+// 1. Cache Intl.DateTimeFormat objects if you're formatting many dates, especially in loops, to improve performance.
+// 2. Be mindful of the user's locale and time zone preferences to ensure your date formatting is user-friendly and accessible.
+// 3. Use feature detection to ensure compatibility with older browsers that may not support all Intl features.
+
+/**
+ * The Intl.DateTimeFormat API is a powerful tool for internationalizing your web applications.
+ * By understanding and utilizing the options and locales, you can present dates and times in a way
+ * that is both meaningful and accessible to users around the world.
+ */
