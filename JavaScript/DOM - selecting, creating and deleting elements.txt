@@ -1,0 +1,106 @@
+
+
+//////////////////////////////////////////////////////
+// DOM - SELECTING, CREATING, AND DELETING ELEMENTS //
+//////////////////////////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- SELECTING ELEMENTS --- //
+
+
+// Selecting the entire document, head, and body:
+console.log(document.documentElement);  // Selects the entire HTML document
+console.log(document.head);             // Selects the head element
+console.log(document.body);             // Selects the body element
+// Note: :root in CSS is equivalent to document.documentElement in JavaScript
+
+// Other methods of selecting elements:
+document.querySelector('.header'); // Returns the first element matching the selector
+document.querySelectorAll('.section'); // Returns a NodeList containing all elements matching the selector
+document.getElementById('section--1'); // Returns the element matching the ID
+document.getElementsByTagName('button'); // Returns a live HTMLCollection of all 'button' elements
+document.getElementsByClassName('btn'); // Returns a live HTMLCollection of all elements with the 'btn' class
+// Note: HTMLCollection is live, meaning it automatically updates when the DOM changes
+// Note: NodeList is static for querySelectorAll, but can be live for certain methods like childNodes
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- CREATING ELEMENTS --- //
+
+
+// 1. insertAdjacentHTML: Directly inserts HTML into the DOM at specified positions
+// container.insertAdjacentHTML('afterbegin', htmlString);
+//  `htmlString` = variable containing the template literal string with HTML.
+//  Positions: 
+//  - 'beforebegin' -> before the html element if it has parent
+//  - 'afterbegin'  -> inside the html element before the 1st child
+//  - 'beforeend'   -> inside the html element after the last child
+//  - 'afterend'    -> after the html element if it has parent
+
+
+// 2. document.createElement: Creates a new DOM element
+// this method also returns A DOM element which is not yet in DOM but it's stored in a variable and you can do operations on it
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+message.textContent = 'We use cookies for improved functionality.';
+// To include HTML content, use innerHTML
+message.innerHTML = 'We use cookies for improved functionality. <button class="btn btn--close-cookie">Got it!</button>';
+
+// 3. Adding elements to the DOM
+container.prepend(message); // Adds message as the first child of the container
+container.append(message); // Adds message as the last child (moves it if it's already in the DOM)
+// Now this message is a life element of the DOM (it CAN'T be in different places in the document)
+// So in the example above it was positioned as 1st child, then moved as last child
+
+// 4. cloneNode: Clones the element. Use true to clone with child elements
+const messageClone = message.cloneNode(true);
+// add cloned message as the last child of the container
+container.append(message.cloneNode(true)); 
+// if argument is `true`, also the child elements will be copied
+
+
+// 5. before and after: Inserts elements before or after the target element, not as a child
+// before() insert element before HTML element (not as child)
+// after() insert element after HTML element (not as child)
+container.before(message); // Inserts message before the container
+container.after(messageClone); // Inserts the cloned message after the container
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- DELETING ELEMENTS --- //
+
+
+// 1. remove: Directly removes the element from the DOM
+message.remove();
+
+// 2. Legacy method: parentElement.removeChild(element)
+// Not recommended for new code but useful for understanding older scripts
+message.parentElement.removeChild(message);
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- EXAMPLE OF CREATING, ADDING, AND REMOVING A COOKIE DIV --- //
+
+
+const header = document.querySelector('.header');
+const cookieMessageDiv = document.createElement('div');
+cookieMessageDiv.classList.add('cookie-message');
+cookieMessageDiv.innerHTML = `We use cookies to improve functionality. <button class="btn btn--close-cookie">Got it!</button>`;
+header.before(cookieMessageDiv); // Insert before the header for visibility
+
+// Select the button after creating the cookie message element for dynamic interaction
+const btnCloseCookie = document.querySelector('.btn--close-cookie');
+btnCloseCookie.addEventListener('click', function () {
+  cookieMessageDiv.remove(); // Removes the cookie message div upon click
+});
+
+// Note on Best Practices:
+// - Consider using textContent when setting the text of an element to avoid security risks associated with innerHTML.
+// - Use event delegation for dynamically added elements or when applying the same listener to multiple elements.
+// - For performance, consider using DocumentFragment when inserting multiple elements into the DOM.
+// - Ensure to manage focus and update ARIA attributes for dynamically created content for accessibility.

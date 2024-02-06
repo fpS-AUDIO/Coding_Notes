@@ -1,0 +1,149 @@
+
+
+
+///////////////////////////////////
+// Implementing Smooth Scrolling //
+///////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- DOMRect object --- //
+
+
+/**
+ * The DOMRect object provides detailed information about the size and position of an element's bounding box.
+ * Important properties include:
+ * - top, bottom: Vertical position relative to the viewport's top.
+ * - left, right: Horizontal position relative to the viewport's left.
+ * - width, height: The size of the element.
+ * - x, y: Essentially the same as left and top, respectively.
+ * These measurements are crucial for calculating scroll positions.
+ */
+
+// Example of accessing an element's DOMRect:
+const elementRect = element.getBoundingClientRect();
+
+console.log(elementRect);
+//  EXAMPLE of DOMRect object:
+//      bottom: 3657.1875
+//      height: 2384.1875
+//      left: 0
+//      right: 641
+//      top: 1273
+//      width: 641
+//      x: 0                -> px from left of viewport
+//      y: 1273             -> px from top of viewport
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Scroll --- //
+
+
+/**
+ * Syntax:   window.scroll(x, y)    /    window.scroll(optionsObject)
+ * Scrolling the window to specific coordinates or elements.
+ * window.scroll or window.scrollTo can be used to scroll to a particular set of coordinates in the document.
+ * - You can specify the X and Y coordinates directly or use an options object.
+ * - The options object allows for specifying 'top', 'left', and 'behavior'.
+ * - 'behavior' controls the animation of the scroll, with 'smooth' providing a smooth scrolling effect.
+ */
+
+// Example of using window.scroll with options for smooth scrolling:
+window.scroll({
+  top: 100,
+  left: 0,
+  behavior: 'smooth'    // "smooth" / "instant" / "auto"
+});
+
+
+options = {
+  top: 100,
+  left: 100,
+  behavior: "smooth" / "instant" / "auto",
+}
+
+console.log(window.scrollX); // returns px of scrolling from LEFT
+console.log(window.scrollY); // returns px of scrolling from TOP
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Calculate Viewport Size --- //
+
+
+/**
+ * Understanding the viewport size is essential for responsive designs and dynamic content positioning.
+ * - The viewport's width and height can be accessed through document.documentElement.clientWidth and clientHeight.
+ */
+
+// Example of accessing the viewport's dimensions (returns px):
+const viewportHeight = document.documentElement.clientHeight;
+const viewportWidth = document.documentElement.clientWidth;
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- PRACTICAL EXAMPLE --- //
+
+
+/**
+ * Practical example of implementing smooth scrolling to a specific document section.
+ * This approach combines getting an element's position with window.scroll to achieve smooth scrolling.
+ */
+
+// Selecting elements
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.getElementById('section--1');
+
+
+btnScrollTo.addEventListener(`click`, function (event) {
+  // get the coordinates of seciton1
+  const seciton1Coordinates = section1.getBoundingClientRect();
+
+  // to get the correct coordinates you need to sum:
+  //  1. px from top of viewport
+  //  2. current scroll position
+  // like this:
+  const sect1X = seciton1Coordinates.x + window.scrollX;
+  const sect1Y = seciton1Coordinates.y + window.scrollY;
+
+  // creating the object with options for scroll()
+  const scrollOptions = {
+    top: sect1Y,
+    left: sect1X,
+    behavior: `smooth`,
+  };
+
+  // scroll to the correct position
+  window.scroll(scrollOptions);
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Modern Approach --- //
+
+
+/**
+ * Modern approach to smooth scrolling using scrollIntoView.
+ * The scrollIntoView method provides a straightforward way to scroll an element into view, with an option for smooth scrolling.
+ */
+
+// Example of smooth scrolling to an element using scrollIntoView:
+const section1 = document.getElementById('section--1');
+section1.scrollIntoView({ behavior: 'smooth' });
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Best Practices and Considerations --- //
+
+
+/**
+ * - Compatibility: Verify browser support for scrollIntoView's smooth behavior, using polyfills if necessary for older browsers.
+ * - Performance: Be mindful of performance implications on complex pages or lower-powered devices.
+ * - Accessibility: Ensure smooth scrolling does not hinder accessibility. Provide options to disable smooth scrolling for users who prefer or require standard scrolling behavior.
+ */
+

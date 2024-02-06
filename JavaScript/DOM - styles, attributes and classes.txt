@@ -1,0 +1,97 @@
+
+
+
+////////////////////////////////////
+// Styles, Attributes, and Classes //
+////////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- STYLES --- //
+
+
+// Change style properties - This adds styles inline
+// Syntax: element.style.camelCasePropertyName = `value`;
+cookieMessageDiv.style.backgroundColor = `#37383d`;
+cookieMessageDiv.style.width = `120%`;
+
+// Read style properties set inline
+// Note: This only works for inline styles, not those applied by external or internal CSS
+console.log(cookieMessageDiv.style.width); // Outputs: 120%
+console.log(cookieMessageDiv.style.height); // Outputs: nothing, because it's not an inline style
+
+// Get the computed style of an element (all styles applied)
+// Syntax: getComputedStyle(element).propertyName
+// Useful for reading values set by CSS sheets
+console.log(getComputedStyle(cookieMessageDiv)); // Outputs a CSSStyleDeclaration object with all styles
+console.log(getComputedStyle(cookieMessageDiv).height); // Outputs the computed height, e.g., "75px"
+
+// Modify CSS Custom Properties (CSS Variables)
+// Syntax: document.documentElement.style.setProperty(`--variableName`, `newValue`);
+document.documentElement.style.setProperty(`--color-primary`, `#52a064`);
+
+// Example: Adjusting an element's height based on its computed style
+cookieMessageDiv.style.height =
+  Number.parseFloat(getComputedStyle(cookieMessageDiv).height, 10) + 30 + `px`;
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- ATTRIBUTES --- //
+
+
+// Standard HTML attributes include src, alt, id, href, etc.
+// Different elements support different standard attributes
+
+// Accessing and setting standard attributes directly
+console.log(logoIMG.src); // Outputs the absolute URL, e.g., "http://127.0.0.1:5500/img/logo.png"
+console.log(logoIMG.alt); // Outputs the alt text, e.g., "Bankist logo"
+console.log(logoIMG.className); // Outputs the class attribute value, e.g., "nav__logo"
+
+// Setting a new value for a standard attribute
+logoIMG.alt = `Cool Bankist App Logo`;
+
+// Accessing non-standard attributes or standard attributes in a different way
+// Syntax get: element.getAttribute(`attributeName`)
+// Syntax set: element.setAttribute(`attributeName`, `newValue`)
+console.log(logoIMG.getAttribute(`src`)); // Outputs the relative URL, e.g., "img/logo.png"
+logoIMG.setAttribute(`coder`, `Alex New Attribute`);
+
+// Data attributes: Use dataset for accessing custom data attributes
+// Syntax: element.dataset.camelCaseDataAttributeName
+// get or set data attribute from `dataSet` object
+// NOTE:  there is a special type of attributes called `data attributes`
+//        data attributes always starts with `data-`
+//        you need to transform the name in camelCase without 1st word `data-` like below
+//        example: data-version-number-actual="3.0"   --> versionNumberActual
+console.log(logoIMG.dataset.versionNumber); // Access data-version-number="3.0"
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- CLASSES --- //
+
+
+// Manipulating CSS classes using the classList API
+// Add, remove, toggle, and check for classes
+element.classList.add(`new-class`);
+element.classList.remove(`existing-class`);
+element.classList.toggle(`toggle-class`);
+element.classList.contains(`query-class`); // Returns true or false
+
+// Note: Directly setting className replaces all existing classes
+// Bad practice for adding a single class since it overrides existing ones
+element.className = `new-class-name`; // Overwrites all existing classes
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Best Practices and Notes --- //
+
+
+// 1. Prefer classList methods over direct className manipulation for adding or removing classes to avoid unintentional overrides.
+// 2. Use getComputedStyle for dynamic style calculations or when needing values not set inline.
+// 3. For manipulating styles, consider potential reflows and repaints for performance implications, especially in animations or high-frequency updates.
+// 4. When accessing attributes, differentiate between attributes that might have different relative (getAttribute) and absolute (direct property access) values.
+// 5. Utilize data attributes (`data-*`) for custom data storage in HTML elements, accessible via the dataset property for cleaner, more semantic JavaScript code.
