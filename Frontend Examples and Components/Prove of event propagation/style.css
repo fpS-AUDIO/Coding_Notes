@@ -1,0 +1,49 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper h1 {
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 2rem;
+}
+
+.grandmother {
+  width: 50vw;
+  height: 50svh;
+  background-color: #465362;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grandmother .mother {
+  width: 25vw;
+  height: 25svh;
+  background-color: #82a3a1;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grandmother .mother .daughter {
+  width: 12vw;
+  height: 12svh;
+  background-color: #9fc490;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

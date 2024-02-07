@@ -1,0 +1,58 @@
+
+
+///////////////////////////////////////////////
+// Event Propagation: Bubbling and Capturing //
+///////////////////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Theory --- //
+
+
+// Basics:
+// Event propagation in JavaScript has two main phases: capturing and bubbling.
+// Understanding these phases is crucial for sophisticated event handling.
+
+// Event Flow:
+// 1. Capturing phase: The event starts from the window, goes down to the target element through its ancestors.
+// 2. Target phase: The event reaches the target element, where event listeners can be directly triggered.
+// 3. Bubbling phase: After reaching the target, the event bubbles up to the window through the ancestors again.
+
+// Note:    
+// Not all events go through the capturing phase, but most do bubble. 
+// For example, the 'focus' event does not bubble.
+
+// Performance:
+// Bubbling is beneficial as it enables you to assign a single event listener to a parent element, 
+// thereby capturing events from all its child elements. 
+// This approach eliminates the need to apply individual event listeners to each child, 
+// enhancing performance by reducing the number of listeners needed.
+
+// Stopping Event Propagation:
+// You can stop the event propagation (parent elements don't handel events of children)
+// To prevent an event from bubbling up or capturing down, use `event.stopPropagation()`.
+// However, use it sparingly as it can make debugging difficult and interfere with other event listeners.
+
+// `event.target` vs `event.currentTarget`:
+// - `event.target` is the element that triggered the event.
+// - `event.currentTarget` is the element that the event listener is attached to.
+// In practice, `event.currentTarget` is equivalent to `this` within the listener function.
+
+// Listening During Capturing Phase:
+// By default, event listeners are executed in the bubbling phase (boolean === false)
+// To catch events during the capturing phase, set the third parameter of `addEventListener` to true.
+// element.addEventListener(`event`, callback, boolean)
+document.addEventListener('click', function(event) {
+  console.log('Capturing phase: ', event.target);
+}, true); // This listener will trigger during the capturing phase.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Important Considerations --- //
+
+
+// - Use `event.stopPropagation()` judiciously to avoid unexpected behavior in event handling.
+// - The use of capturing by setting the third parameter of `addEventListener` to true is rare in practice but can be useful in specific scenarios, such as intercepting events before they reach their target.
+// - Always consider the event flow (capturing down, target, and bubbling up) when designing your event handling logic to ensure your application behaves as expected.

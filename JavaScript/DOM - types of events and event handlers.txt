@@ -1,0 +1,87 @@
+
+
+
+
+//////////////////////////////////////////
+// Types of Events and Event Handlers //
+//////////////////////////////////////////
+
+// Events in the DOM represent actions that occur, such as user interactions (clicks, mouse movements, keyboard input) 
+// or browser triggers (load, resize). Understanding how to work with events is crucial for dynamic web applications.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Main Methods to Add Event Listeners --- //
+
+
+// 1. Using the on-event property directly on the DOM element:
+// This method is straightforward but less flexible as it allows only one event handler per event type per element.
+element.onclick = function() {
+  console.log('Clicked!');
+};
+// However, it's considered an outdated approach due to its limitations, 
+// especially the inability to easily remove the event listener and assign multiple listeners for the same event.
+
+
+// 2. Inline event handlers in HTML:
+// Example: <button onclick="alert('Button clicked!')">Click me!</button>
+// Inline handlers mix JavaScript with HTML, making the code harder to read and maintain. 
+// It's a practice generally discouraged in modern web development due to concerns about separation of concerns and security (e.g., XSS attacks).
+
+
+// 3. Using element.addEventListener():
+// The preferred method for handling events. It allows adding multiple event handlers for the same event on a single element, 
+// provides fine control over event capturing and bubbling, and the handlers can be removed if necessary.
+element.addEventListener('click', function(event) {
+  console.log('Element clicked!', event);
+});
+// To remove an event listener, you need a reference to the original handler function:
+element.removeEventListener('click', functionName);
+// you can remove it in setTimeout() or, for example, in the end of the callback to execute is once
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Event Types --- //
+
+
+// The DOM API supports numerous event types, covering user interactions, browser state changes, network activities, etc. Some common categories include:
+// - Mouse events: click, mousedown, mouseup, mouseenter, mouseleave
+// - Keyboard events: keydown, keyup, keypress
+// - Form events: submit, change, input
+// - Window events: load, resize, scroll
+
+// Event Object:
+// When an event occurs, the browser passes an event object to the event handler. 
+// This object contains all information about the event, including the type of event, the target element, and methods to manipulate the event's behavior (e.g., event.preventDefault()).
+
+
+// Example with event object:
+element.addEventListener('click', function(event) {
+  console.log('Clicked element:', event.target);
+  event.preventDefault(); // Prevent default action (e.g., following a link)
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- More --- //
+
+
+// Event Propagation: Events propagate in two phases - capturing and bubbling.
+// - Capturing phase: The event travels from the document root down to the target element.
+// - Bubbling phase: After reaching the target, the event bubbles up to the document root.
+// By default, event listeners are executed in the bubbling phase.
+// To listen during the capturing phase, set the third argument of addEventListener to true.
+document.addEventListener('click', function() {
+  console.log('Document clicked!');
+}, true); // Capturing phase
+
+
+// Best Practices:
+// - Use addEventListener for its flexibility and capabilities.
+// - Avoid inline JavaScript in HTML attributes for cleaner code and separation of concerns.
+// - Remove event listeners when they are no longer needed to prevent memory leaks.
+// - Be mindful of event propagation to prevent unintended side effects. Use event.stopPropagation() to stop propagation if necessary.
+// - Consider debouncing or throttling high-frequency events (e.g., scroll, resize) to improve performance.
