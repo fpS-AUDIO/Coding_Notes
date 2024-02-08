@@ -1,0 +1,111 @@
+
+
+
+////////////////////
+// DOM Traversing //
+////////////////////
+
+
+/*  DOM traversing allows you to navigate and select elements in the DOM tree relative to a starting element. 
+    This includes moving through an element's parents, children, and siblings. 
+    This capability is crucial for dynamic page manipulation and interaction.   */
+
+
+const h1 = document.querySelector('h1');
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- CHILDREN --- //
+
+
+// element.querySelectorAll(selector)
+// Returns a NodeList containing all descendants matching the selector, regardless of their depth.
+console.log(h1.querySelectorAll('.highlight'));
+
+// element.childNodes
+// Returns a NodeList of all direct children nodes, including text nodes, comment nodes, and elements.
+console.log(h1.childNodes);
+
+// element.children
+// Returns an HTMLCollection (live collection) of child real elements (excluding text and comment nodes).
+console.log(h1.children);
+
+// element.firstElementChild
+// Returns the first child element of HTMLCollection.
+console.log(h1.firstElementChild);
+h1.firstElementChild.style.color = 'white'; // Example of setting style
+
+// element.lastElementChild
+// Returns the last child element of HTMLCollection.
+console.log(h1.lastElementChild);
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- PARENTS --- //
+
+
+// element.parentNode
+// Returns the parent node/element (can be any type of node).
+console.log(h1.parentNode);
+
+// element.parentElement
+// Returns the parent element (excludes non-element nodes like text or comment nodes).
+console.log(h1.parentElement);
+
+// element.closest(selector)    // (`.container/#section1/h1`)
+// Returns the nearest ancestor that matches the selector (doesn't matter how up), or the element itself if it matches.
+console.log(h1.closest('header'));
+console.log(h1.closest('h1')); // Returns the element itself if it matches the selector
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- SIBLINGS --- //
+
+
+// element.previousElementSibling
+// Returns the previous sibling element (ignores text and comment nodes).
+console.log(h1.previousElementSibling);
+
+// element.nextElementSibling
+// Returns the next sibling element.
+console.log(h1.nextElementSibling);
+
+// element.previousSibling and element.nextSibling refer to any type of node, including text and comment nodes.
+// Correct usage for element siblings:
+console.log(h1.previousSibling); // Returns the previous node (including text, comment nodes)
+console.log(h1.nextSibling); // Returns the next node
+
+// element.parentElement.children
+// Returns an HTMLCollection of all sibling elements (including the element itself).
+console.log(h1.parentElement.children);
+
+// Iterate over all siblings excluding the element itself
+[...h1.parentElement.children].forEach(function(el) {
+  if (el !== h1) {
+    el.style.color = 'blue'; // Example action: changing color
+  }
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Additional Notes and Best Practices --- //
+
+
+/* 1. Understanding the difference between NodeList and HTMLCollection:
+    - NodeList is static by default (except when returned by element.childNodes), whereas HTMLCollection is live.
+    - querySelectorAll returns a NodeList, which does not update if the DOM changes.
+    - children returns an HTMLCollection, which updates automatically as the DOM changes.
+
+2. Use of `closest` for flexible ancestor selection:
+    - The closest method is very useful for event delegation patterns, allowing you to target a specific ancestor of an event target.
+
+3. Performance considerations:
+    - While traversing the DOM, be mindful of reflow and repaint costs, especially when applying styles or manipulating elements in a loop.
+
+4. Accessibility concerns:
+    - When manipulating the DOM, ensure that dynamic changes are communicated to assistive technologies through appropriate ARIA attributes or by managing focus.   */
+

@@ -1,0 +1,87 @@
+
+
+////////////////////////////////////////////////////
+// Event delegation: Implementing Page Navigation //
+////////////////////////////////////////////////////
+
+
+/*  Event delegation is a technique that takes advantage of the bubbling phase of the event propagation model.
+    It allows us to attach a single event listener to a parent element that can handle events for multiple child elements.
+    This is particularly useful for improving performance and managing dynamic elements.    */
+
+
+
+//---------------------------------------------------------------------------------
+// LESS EFFICIENT WAY: Directly attaching event listeners to each child element
+//---------------------------------------------------------------------------------
+
+
+/*  Directly attaching event listeners to each element is not efficient, especially when dealing with a large number of elements.
+    It can lead to performance issues due to the memory overhead of maintaining multiple event listeners.   */
+
+// Attach event listener to each `.nav__link` element individually
+document.querySelectorAll('.nav__link').forEach(function (element) {
+  element.addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    const id = element.getAttribute('href'); // Get the href attribute
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+  });
+});
+
+
+
+//---------------------------------------------------------------------------------
+// MORE EFFICIENT WAY: Using Event Delegation
+//---------------------------------------------------------------------------------
+
+
+/*  Using event delegation, we attach a single event listener to a common parent element.
+    This listener can manage events for all its child elements that match a specified selector.
+    This approach is more memory-efficient and simplifies the management of dynamic elements.   */
+
+// Attach a single event listener to the common parent `.nav__links`
+document.querySelector('.nav__links').addEventListener('click', function (event) {
+  event.preventDefault(); // Prevent default behavior
+  
+  // Determine the element that originated the event
+  const eventElement = event.target;
+  
+  // Check if the event originated from an element with the `.nav__link` class
+  if (eventElement.classList.contains('nav__link')) {
+    const idHref = eventElement.getAttribute('href'); // Get the href attribute
+    document.querySelector(idHref).scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+  }
+});
+
+
+
+//---------------------------------------------------------------------------------
+// Additional Considerations and Best Practices
+//---------------------------------------------------------------------------------
+
+
+/*  1. Event Propagation: 
+    Remember that events bubble up from the target element up through the parent elements. 
+    This is the principle that event delegation leverages. 
+    Understanding the capturing phase can also be useful in certain scenarios.
+
+    2. Dynamic Content: 
+    Event delegation is particularly useful for handling events on dynamic content 
+    (elements that are added to the DOM after the initial page load), 
+    as you don't need to attach new event listeners to each new element.
+
+    3. Selector Matching: 
+    In more complex scenarios, you might need to perform additional checks to ensure the 
+    target element matches specific criteria beyond just checking its classList. 
+    In such cases, methods like `Element.matches(selector)` can be very useful.
+
+    4. Memory Management: 
+    While event delegation helps reduce memory usage by reducing the number of event listeners, 
+    it's still important to remove event listeners from the parent element 
+    if it's removed from the DOM or no longer needed to prevent memory leaks.
+
+    5. Accessibility: 
+    Ensure that the implementation of custom navigation or interactive features via JavaScript
+    does not impair accessibility. Use semantic HTML elements and manage focus appropriately 
+    to ensure compatibility with screen readers and other assistive technologies. */
+
