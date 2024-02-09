@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabble component</title>
+    <meta name="description" content="An example of tabbed component" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="section" id="section--1">
+      <div class="section__title">
+        <h2 class="section__description">Title of tab component</h2>
+        <h3 class="section__header">
+          I'm a brief description of a tabbed component
+        </h3>
+      </div>
+
+      <div class="operations">
+        <div class="operations__tab-container">
+          <button
+            class="btn operations__tab operations__tab--1 operations__tab--active"
+            data-tab="1"
+          >
+            <span>01</span>lorem content
+          </button>
+          <button class="btn operations__tab operations__tab--2" data-tab="2">
+            <span>02</span>content lorem
+          </button>
+          <button class="btn operations__tab operations__tab--3" data-tab="3">
+            <span>03</span>con lorem tent
+          </button>
+        </div>
+        <div
+          class="operations__content operations__content--1 operations__content--active"
+        >
+          <h5 class="operations__header">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+            doloremque cum dolorum, eius sit, at odio sequi reprehenderit
+            pariatur laborum architecto omnis accusamus repudiandae molestiae
+            modi? Illum deleniti quaerat atque?
+          </p>
+        </div>
+
+        <div class="operations__content operations__content--2">
+          <h5 class="operations__header">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h5>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
+            iusto, iure blanditiis totam repellat explicabo incidunt eos itaque
+            eum possimus ut pariatur architecto? Velit asperiores magni
+            voluptatum sunt, voluptas facere?
+          </p>
+        </div>
+        <div class="operations__content operations__content--3">
+          <h5 class="operations__header">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+            aspernatur officia vitae temporibus expedita odio nam praesentium
+            excepturi ipsum quis. Debitis, quam? Aut nostrum iusto et iste atque
+            nesciunt. Nesciunt?
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </body>
+  <script src="./script.js"></script>
+</html>
