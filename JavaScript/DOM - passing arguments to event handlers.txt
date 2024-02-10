@@ -1,0 +1,115 @@
+
+
+
+/////////////////////////////////////////
+// Passing Arguments to Event Handlers //
+/////////////////////////////////////////
+
+
+/*  Note:
+    - `mouseover` and `mouseout` events bubble, meaning an event triggered on an element
+        can propagate up through its ancestors in the DOM tree.
+
+    - `mouseenter` and `mouseleave` events do not bubble. They are triggered when the mouse
+        pointer enters or leaves the element's bounds, respectively, without considering child elements.
+*/
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Basic Solution --- //
+
+
+/*
+ * Example: Changing Opacity of Navigation Items
+ * This example demonstrates handling mouseover and mouseout events
+ * to change the opacity of navigation links and a logo image.
+ */
+
+
+const changeOpacityNav = function(event, opacity) {
+  const eventTrigger = event.target; // Element that triggered the event
+
+  // Check if the eventTrigger is an <a> element with the "nav__link" class
+  if (eventTrigger.classList.contains('nav__link')) {
+    // Get all sibling elements and the logo image (indeed including eventTrigger)
+    const navContainer = eventTrigger.closest('.nav');
+    const siblingLinks = navContainer.querySelectorAll('.nav__link');
+    const logoImage = navContainer.querySelector('img');
+
+    // Change opacity for all sibling links except the event trigger
+    siblingLinks.forEach(sibling => {
+      if (sibling !== eventTrigger) sibling.style.opacity = opacity;
+    });
+
+    // Change also the logo image's opacity
+    logoImage.style.opacity = opacity;
+  }
+};
+
+// Event listener setup
+const navBar = document.querySelector('.nav');
+navBar.addEventListener('mouseover', event => changeOpacityNav(event, 0.5));
+navBar.addEventListener('mouseout', event => changeOpacityNav(event, 1));
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Best Solution --- //
+
+
+/*
+ * Best Solution for Passing Arguments:
+ * - Utilizing the `bind` method allows us to preset arguments for the event handler function.
+ * - This technique enables setting the `this` value and passing additional arguments to the function.
+ * - Note: Event handler functions intrinsically accept a single argument: the event object.
+ *         To pass additional data, `bind` can be used to pre-configure these values.
+ */
+
+
+// Revised example using `bind` for argument passing
+
+const navBar = document.querySelector(`.nav`);
+
+const changeOpacityNavWithBind = function(event) {
+  const eventTrigger = event.target;
+
+  if (eventTrigger.classList.contains('nav__link')) {
+    const navContainer = eventTrigger.closest('.nav');
+    const siblingLinks = navContainer.querySelectorAll('.nav__link');
+    const logoImage = navContainer.querySelector('img');
+
+    siblingLinks.forEach(sibling => {
+      if (sibling !== eventTrigger) sibling.style.opacity = this.opacity;
+    });
+
+    logoImage.style.opacity = this.opacity;
+  }
+};
+
+// Using `bind` to set `this` context and pass additional data
+navBar.addEventListener('mouseover', changeOpacityNavWithBind.bind({opacity: 0.5}));
+navBar.addEventListener('mouseout', changeOpacityNavWithBind.bind({opacity: 1}));
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Additional Notes --- //
+
+
+/*
+ * - Arrow functions do not have their own `this` but inherit from the enclosing lexical context,
+ *   making `bind` ineffective in directly manipulating `this` inside arrow functions.
+ * - Alternatives to `bind` include using closures to encapsulate additional parameters or leveraging
+ *   data attributes on elements to store and retrieve data within event handlers.
+ */
+
+// Example using a closure to pass additional parameters
+navBar.addEventListener('mouseover', event => changeOpacityNav(event, 0.5));
+navBar.addEventListener('mouseout', event => changeOpacityNav(event, 1));
+
+/**
+ * Remember, JavaScript's flexibility with functions and event handling offers multiple ways
+ * to achieve similar outcomes. The choice of technique often depends on specific requirements,
+ * readability, and maintainability of the code.
+ */
