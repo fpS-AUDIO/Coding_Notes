@@ -1,0 +1,156 @@
+
+
+///////////////////////////////////
+// The intersection Observer API //
+///////////////////////////////////
+
+
+// This API allows our code to basically observe changes to the way that a certain target element
+// intersects another element, or the way it intersects the viewport.
+
+
+
+// ---------------------------------------------------------------------------------------------------- //
+// --- steps and syntax to make it work ---
+
+
+1.  Define the callback function.
+  This callback function will be called each time that the observed (target) element
+  is intersecting the `root` element at the defined `threshold`.
+  So the callback functions is called no matter you're scrolling up or down.
+
+  SYNTAX:
+  const obsCallback = function (entries, observer) {
+    // `entries` parameter is an array of the threshold entries.
+    // `observer` optional parameter is the entire observer object itself.
+
+    // looping over the array of entries (i.e. all thresholds)
+    entries.forEach(entry => {
+      console.log(entry);
+    });
+  };
+
+
+
+2.  Create object with options.
+  The propreties of the this options object are:
+    - `root` is the element that the target is intersecting (null is the viewport)
+    - `threshold` is the % of intersection at which the observer callback will be called (1 = 100%, 0.1 = 10%)
+      you can specify a single value or an array of thresholds to call the callback function more often.
+    - `rootMargin` is optional margin (in pixels or percent) which will be applied outside the target element usufull,
+      for example, for dinamically calculate the height of navbar and call the callback function calculating also that amount of pixels.
+
+  SYNTAX:
+  const optionsObject = {
+    root: null,
+    threshold: [0, 0.2],
+  };
+
+
+
+3.  Create an intersection Observer.
+
+  SYNTAX: 
+  const observer = new IntersectionObserver(obsCallback, optionsObject)
+
+
+
+4.  Use observer to observe a certain target.
+
+  SYNTAX: 
+  observer.observe(targetElement)
+
+
+
+// ---------------------------------------------------------------------------------------------------- //
+// --- Entry Object ---
+
+Since the 1st parameter of the callback function of obersver is an array of the `threshold` entries, 
+it has different elements, called entries. If you console.log an entry you can obtain an object like this:
+
+
+exampleEntry: {
+  boundingClientRect: DOMRectReadOnly {x: 0, y: 1057, width: 755, height: 1947.1875, top: 1057, …},
+  intersectionRatio: 0.10014444589614868,
+  intersectionRect: DOMRectReadOnly {x: 0, y: 1057, width: 755, height: 195, top: 1057, …},
+  isIntersecting: true,
+  isVisible: false,
+  rootBounds: DOMRectReadOnly {x: 0, y: 0, width: 755, height: 1252, top: 0, …},
+  target: section#section--1.section,
+  time: 50594.699999999255,
+  [[Prototype]]: IntersectionObserverEntry,
+}
+
+
+Properties of the entry object:
+  - intersectionRatio is the `threshold` defined in the options object
+  - isIntersecting is boolean if target is intersecting the root element 
+    (so if `threshold` % is visible)
+  - target is the target element itself
+  ...
+
+
+// ---------------------------------------------------------------------------------------------------- //
+// --- Real world Example ---
+
+
+// making an oberver which obsevre the .header element
+// and adds the .sticky class to the .nav when .header is not visible
+
+// Remember (defined before):
+// const header = document.querySelector(`.header`);
+// const navBar = document.querySelector(`.nav`);
+
+// defining the callback for headerObserver
+const addRemoveSticky = function (entries) {
+  // same as "const entry = entries[0]" but using destructuring
+  const [entry] = entries;
+  console.log(entry);
+  // if header is not intersecting the viewport add .sticky class to the .nav
+  // else remove the .sticky class from the .nav
+  if (!entry.isIntersecting) navBar.classList.add(`sticky`);
+  else navBar.classList.remove(`sticky`);
+};
+
+// calculate the height of navBar to the dinamically add margin to the options object
+const navbarHeight = navBar.getBoundingClientRect().height;
+
+// defining options object for headerObserver
+const headerObserverOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navbarHeight}px`,
+};
+
+// defining the observer
+const headerObserver = new IntersectionObserver(addRemoveSticky, headerObserverOptions);
+
+// start observing the .header
+headerObserver.observe(header);
+
+
+
+
+
+
+// ---------------------------------------------------------------------------------------------------- //
+// --- OLD BAD SOLUTION ---
+
+
+// REMEMBER:
+// const navBar = document.querySelector(`.nav`);
+// const section1 = document.getElementById(`section--1`);
+
+// calculate the coordinates of section1
+const seciton1Coordinates = section1.getBoundingClientRect();
+
+// scroll events fires a lot of time on each scroll 
+// so it's not effience and should be avoided
+window.addEventListener(`scroll`, function () {
+  //scrollY = point from top of viewport to the top of the page
+  if (window.scrollY > seciton1Coordinates.top) {
+    navBar.classList.add(`sticky`);
+  } else {
+    navBar.classList.remove(`sticky`);
+  }
+});
