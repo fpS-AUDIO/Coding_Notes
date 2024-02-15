@@ -1,0 +1,108 @@
+
+
+///////////////////////////////
+// Regular Expressions in JS //
+///////////////////////////////
+
+// Regular expressions (regex) are powerful tools for performing pattern searches & replacements in text.
+
+
+// ---------------------------------------------------------------------------------------------- //
+// --- Creating Regular Expressions and Syntax --- 
+
+
+// Regex objects in JavaScript can be created in two main ways: 
+
+// 1. Using a regular expression literal:
+const regexLiteral = /pattern/flags;
+
+// 2. Using the RegExp constructor function:
+const regexConstructor = new RegExp("pattern", "flags");
+
+
+// 'pattern' is the text pattern, and 'flags' are optional modifiers that change the search pattern.
+// Common flags include:
+// g - global search: find all matches rather than stopping at the first one
+// i - case-insensitive search
+// m - multi-line search
+// u - unicode; treat a pattern as a sequence of unicode code points
+// y - sticky; match starting at the current position in the target string
+
+// ---------------------------------------------------------------------------------------------- //
+// --- Methods and Properties ---
+
+// test() - Tests for a match in a string. Returns true or false.
+const regexTest = /hello/i;
+console.log(regexTest.test('Hello world')); // true, case-insensitive match
+
+// match() - Returns an array containing all of the matches, including capturing groups, or null if no match is found.
+const matchResult = 'hello HELLO HeLlO'.match(/hello/ig);
+console.log(matchResult); // ['hello', 'HELLO', 'HeLlO'], case-insensitive and global match
+
+// matchAll() - Returns an iterator of all matches, including capturing groups.
+const matchAllResult = 'test1 test2'.matchAll(/test\d/g);
+console.log(Array.from(matchAllResult)); // Array of matches with details
+
+// replace() - Executes a search for a match in a string, and replaces the matched substring with a replacement substring.
+const replaceResult = 'abcabc'.replace(/a/g, 'x');
+console.log(replaceResult); // 'xbcxbc'
+
+// replaceAll() - Replaces all matches in the string (not just the first).
+const replaceAllResult = 'abcabc'.replaceAll('a', 'x');
+console.log(replaceAllResult); // 'xbcxbc'
+
+// search() - Tests for a match in a string. Returns the index of the match, or -1 if the search fails.
+const searchResult = 'hello world'.search(/world/);
+console.log(searchResult); // 6
+
+// split() - Uses a regular expression or a fixed string to break a string into an array of substrings.
+const splitResult = '2020-04-30'.split(/-/);
+console.log(splitResult); // ['2020', '04', '30']
+
+// ---------------------------------------------------------------------------------------------- //
+// --- Flags and Their Meanings ---
+
+/* 
+Flags are used to control how the search is performed. Here are the common flags:
+
+g - Global search: find all matches rather than stopping at the first match
+i - Case-insensitive search: matches both upper and lower cases
+m - Multi-line search: ^ and $ match start and end of line, not just start and end of string
+u - Unicode: treat pattern as a sequence of Unicode code points
+y - Sticky: match starting at the current position in the target string
+
+*/
+
+// ---------------------------------------------------------------------------------------------- //
+// --- Special Characters and Sequences ---
+
+/*
+Regex in JavaScript supports special characters and sequences that enable powerful search patterns:
+
+. (dot) - Matches any single character except newline characters
+^ - Matches the beginning of the string, or the beginning of a line if the multiline flag (m) is enabled
+$ - Matches the end of the string, or the end of a line if the multiline flag (m) is enabled
+* - Matches the preceding expression 0 or more times
++ - Matches the preceding expression 1 or more times
+? - Matches the preceding expression 0 or 1 time, also used to denote non-greedy matches
+\d - Matches any digit (equivalent to [0-9])
+\w - Matches any word character (alphanumeric & underscore)
+\s - Matches any whitespace character (spaces, tabs, line breaks)
+
+// Example:
+const pattern = /\d+/g; // Matches one or more digits globally
+*/
+
+// ---------------------------------------------------------------------------------------------- //
+// --- Best Practices ---
+
+/*
+1. When possible, use literal notation unless the pattern changes dynamically.
+2. Escape special characters when you want them to be treated as literal characters.
+3. Use flags to make your search more precise and avoid unnecessary iterations.
+4. For complex patterns, consider breaking them into smaller parts or using comments in extended mode (/x) for readability.
+5. Test your regex patterns with various inputs to ensure they behave as expected.
+6. Consider performance implications of complex patterns, especially when processing large strings or datasets.
+*/
+
+// Adding more detailed examples or explanations of specific methods, patterns, or use cases can enhance your notes further. Regular expressions are a vast topic, and mastering them requires practice and experience with real-world scenarios.
