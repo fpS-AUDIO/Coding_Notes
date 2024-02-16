@@ -1,0 +1,93 @@
+
+
+
+////////////////////////////////
+// Ways of Loading the Script // 
+////////////////////////////////
+
+// Understanding different methods to load JavaScript is crucial for optimizing page load time and execution.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- REGULAR (Placing the script at the end of <body>) ---
+
+// Traditionally, scripts were placed just before the closing </body> tag. This approach ensures
+// that the HTML is parsed before the script is loaded and executed, minimizing the impact on
+// the loading time of the HTML content.
+
+/* What happens:
+ 1. Parsing HTML
+ 2. Reach script tag at the end of <body>
+ 3. Fetch script
+ 4. Execute script
+ 5. DOMContentLoaded event fires after script execution
+*/
+
+// Example:
+// <script src="example.js"></script>
+// </body>
+
+// While this method ensures compatibility with older browsers, it does not leverage modern browser capabilities
+// to load scripts more efficiently.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- ASYNC ---
+
+// The async attribute allows the script to be downloaded in the background without blocking the
+// parsing of the HTML. However, once downloaded, the script is executed immediately, potentially
+// blocking the HTML parsing if the script download finishes before the HTML parsing does.
+
+/* What happens:
+ 1. Parsing HTML
+    - Fetch script asynchronously
+ 2. If script is downloaded:
+    - Pause HTML parsing
+    - Execute script
+ 3. Continue parsing HTML
+ 4. DOMContentLoaded event fires after HTML parsing completes, regardless of async script execution status
+*/
+
+// Example:
+// <script async src="example.js"></script>
+
+// Best used for scripts that don't depend on DOM readiness or other scripts, such as third-party analytics.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- DEFER ---
+
+// Similar to async, defer downloads the script in the background. The difference lies in when the
+// script is executed: defer ensures that the script execution is delayed until after the HTML parsing
+// has completed. Scripts with defer are also guaranteed to execute in the order they appear in the document.
+
+/* What happens:
+ 1. Parsing HTML
+    - Fetch script asynchronously
+ 2. Complete HTML parsing
+ 3. Execute deferred scripts in the order they were encountered
+ 4. DOMContentLoaded event fires after deferred scripts have executed
+*/
+
+// Example:
+// <script defer src="example.js"></script>
+
+// This is the preferred option for scripts that need to interact with the fully parsed DOM or rely on the
+// execution order, such as scripts that depend on other libraries.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// Additional Considerations:
+
+// - Inline scripts and scripts without async or defer attributes block the HTML parser. Use async or defer
+//   to avoid blocking unless the script needs to interact with the DOM immediately as it is parsed.
+// - Scripts with async or defer attributes must have a src attribute; these attributes have no effect on inline scripts.
+// - When combining scripts, consider the dependencies between them. If order matters, defer ensures execution
+//   in the correct sequence.
+
+// By choosing the appropriate script loading strategy, you can enhance page performance, improve user experience,
+// and ensure compatibility across different browsers and devices.

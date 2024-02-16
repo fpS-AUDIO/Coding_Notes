@@ -1,0 +1,80 @@
+
+
+
+//////////////////////////
+// Lifecycle DOM Events // 
+//////////////////////////
+
+
+// Lifecycle refers to the series of events from loading the page to leaving the page.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- DOMContentLoaded ---
+
+// This event is fired by the document when the HTML document has been completely parsed.
+// This means the HTML has been fully loaded and converted into the DOM tree, and all scripts
+// that are marked with defer attribute have been executed. Scripts without defer or async
+// attributes block parsing. This event does not wait for images, CSS, and other external
+// resources to load.
+
+document.addEventListener('DOMContentLoaded', function(e) {
+    // Your code to initialize the page goes here.
+    console.log('DOMContentLoaded:', e);
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- load ---
+
+// This event is fired by the window object when the entire page has finished loading,
+// including all dependent resources such as stylesheets and images. It is a good point to
+// initialize code that depends on the sizes of these elements or other properties that
+// might change as they load.
+
+window.addEventListener('load', function(e) {
+    // Your code for operations that require all resources to be fully loaded goes here.
+    console.log('load:', e);
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- beforeunload ---
+
+// This event is fired by the window object when the user is about to leave the page.
+// It can be used to alert the user about unsaved changes or to clean up resources.
+
+window.addEventListener('beforeunload', function(e) {
+    // To prevent accidental navigation. Note: Custom messages are mostly ignored in modern browsers.
+    e.preventDefault(); // For compatibility with some browsers
+    e.returnValue = ''; // Some browsers require setting returnValue to trigger the confirmation dialog.
+    // Note: Custom messages are not supported in most modern browsers due to security reasons.
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- unload ---
+
+// It's worth mentioning another event, 'unload', which is fired after 'beforeunload' if the user proceeds to leave.
+// This can be used for cleaning up resources, but avoid setting large tasks here as it can delay the page unload.
+
+window.addEventListener('unload', function(e) {
+    // Clean up session, close connections, etc. Keep it light.
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Best Practices ---
+
+// 1. Use 'DOMContentLoaded' for initializing DOM-dependent scripts.
+// 2. Use 'load' for actions that depend on the fully loaded resources like images.
+// 3. Use 'beforeunload' sparingly, primarily for alerts about unsaved changes.
+// 4. Avoid heavy tasks in 'unload' to prevent delays in navigating away.
+
+// Note: The 'async' attribute on <script> tags allows the browser to continue parsing while scripts load, 
+// potentially affecting when 'DOMContentLoaded' fires for scripts that depend on those tags.
