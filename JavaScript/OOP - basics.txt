@@ -1,0 +1,83 @@
+
+
+
+
+/////////////////////////////////////////////////////
+// Object-Oriented Programming (OOP) in JavaScript // 
+/////////////////////////////////////////////////////
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Very Basics ---
+
+/*  OOP:
+
+    -   Is a programming paradigm (style of writing) based on the concept of objects.
+    -   Objects are used to model (describe) real-world or abstract features.
+    -   Objects can contain data (properties) and functions (methods).
+        So, objects are used to pack data and the corresponding behavior into one block.
+    -   In OOP, objects are self-contained pieces-blocks of code.
+    -   Objects are building blocks of applications, and they can interact between them.
+    -   These interactions happen thanks to a public interface (API):
+        methods that the code outside of the object can access and use to communicate with the object.
+    -   This paradigm was developed to organize the code and make it easier and more flexible to maintain. 
+*/
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Fundamental Principles of OOP ---
+
+
+/* Principles:
+
+ 1. Abstraction =   Ignoring or hiding details that don't matter, so you get an overview perspective
+                    of what you are implementing, instead of focusing on details that don't really matter.        
+
+ 2. Encapsulation = Keeping properties and methods private inside the class, so they cannot 
+                    be accessed from outside that class. Thanks to the API, you leave only essential methods public. 
+
+ 3. Inheritance =   Making all properties and methods of a certain class available to a child class,
+                    forming a hierarchical relationship between classes. 
+                    This also allows for the reuse of common logic and to model real-world relationships. 
+
+ 4. Polymorphism =  ("many shapes" in Greek) means that a child class can overwrite a method or a property
+                    inherited from the parent class.
+*/
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Prototypal Inheritance ---
+
+
+// Instantiation = The process of creating child objects (instances) from a parent class.
+
+
+/*  OOP in JavaScript:
+
+ -  Objects (instances) are linked to a prototype object (class).
+ -  The prototype object contains methods and properties that all the objects linked
+    to that prototype can access and use.
+ -  This behavior is called prototypal inheritance (delegation):
+    the prototype contains methods that are accessible to all objects linked to that prototype.
+ -  This inheritance is different from classic OOP inheritance where one class inherits (copies) 
+    methods from another class, while in JS objects delegate behavior (methods) to one prototype without copying them.
+*/
+
+
+/*  3 ways of implementing prototypal inheritance in JS:
+
+ 1. Constructor functions
+    - Technique to create objects from a function.
+    - This is how built-in objects like Arrays, Maps, Sets, etc., are implemented.
+
+ 2. ES6 Classes
+    - A modern alternative to constructor function syntax.
+    - Behind the scenes, ES6 classes work exactly like constructor functions.
+    - ES6 classes don't behave like classical OOP classes.
+
+ 3. Object.create()
+    - The easiest way of linking an object to a prototypal object.
+    - Less used.
+*/

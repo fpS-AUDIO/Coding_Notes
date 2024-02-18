@@ -1,8 +1,9 @@
-"use strict";
+
 
 ///////////////////////////
 // Constructor functions //
 ///////////////////////////
+
 
 // ---------------------------------------------------------------------------------------- //
 // --- syntax, new and instanceof ---
@@ -49,6 +50,8 @@ console.log(roman); // Person {firstName: 'Roman', birthYear: 1998}
 // you can also check this:
 console.log(alex instanceof Person); // true
 
+
+
 // ---------------------------------------------------------------------------------------- //
 // --- prototypes ---
 
@@ -86,5 +89,3 @@ console.log(alex.species); // human
 // or it's a property of that single instance
 console.log(alex.hasOwnProperty(`firstName`)); // true
 console.log(alex.hasOwnProperty(`species`)); // false
-
-console.log(`--- prototypes ---`);
