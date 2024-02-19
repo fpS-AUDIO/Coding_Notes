@@ -1,8 +1,11 @@
-"use strict";
+
+
 
 ///////////////////
 // Classes in JS //
 ///////////////////
+
+
 
 /* Theory:
  -  Classes in JS are not working like traditional classes in other programming languages
@@ -14,11 +17,14 @@
  -  Body of class is always executed in strict mode
 */
 
+
+
 // ---------------------------------------------------------------------------------------- //
 // --- syntax ---
 
+
 // class expression
-// const PersonClass = class {};
+const PersonClass = class {};
 
 // class declaration
 class PersonClass {
@@ -40,14 +46,20 @@ class PersonClass {
   }
 }
 
+
 // when we create a new istance of class the constructor() is called automatically
 const alex = new PersonClass(`Alexander`, 1996);
 console.log(alex); // PersonClass {firstName: 'Alexander', birthYear: 1996}
 console.log(alex.calcAge()); // 28
 console.log(alex.hello()); // Hello Alexander
 
+
 // proof that class acts like any function constructor
 console.log(alex.__proto__ === PersonClass.prototype); // true
 
+
+
 // ---------------------------------------------------------------------------------------- //
 // --- setters and getters ---
+
+

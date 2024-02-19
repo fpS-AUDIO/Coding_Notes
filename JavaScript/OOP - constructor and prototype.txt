@@ -89,3 +89,27 @@ console.log(alex.species); // human
 // or it's a property of that single instance
 console.log(alex.hasOwnProperty(`firstName`)); // true
 console.log(alex.hasOwnProperty(`species`)); // false
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- prototypal chain ---
+
+console.log(`--- prototypes ---`);
+
+console.log(alex.__proto__); // prototype property of `Person`
+console.log(alex.__proto__.__proto__); // prototype property of Object()
+console.log(alex.__proto__.__proto__.__proto__); // null (because Object is top level of chain)
+
+console.dir(Person.prototype.constructor); // `constructor` property of prototype will point back to `Person` constr. function itself
+
+const arr = [1, 1, 2, 2, 3, 3];
+
+// you can add a gloabal method to the prototype (e.g. for Array)
+// then you can use this method on any array
+// but indeed you should NEVER do this
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique()); // [1, 2, 3]
+
