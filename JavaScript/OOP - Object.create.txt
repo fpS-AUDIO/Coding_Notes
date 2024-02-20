@@ -1,0 +1,38 @@
+
+
+/////////////////////
+// Object.create() //
+/////////////////////
+
+/*
+ -  SYNTAX: Object.create(prototype)
+ -  you can create a prototypal inheritance (delegation) using Object.create()
+    instead of using constructor function or class function
+ -  you use Object.create() to manually set the prototype of an object
+*/
+
+
+// first create a prototype (simple object)
+const PersonPrototype = {
+  // set the prototype method which will be inherited to all the instances
+  calcAge() {
+    console.log(2024 - this.birthYear);
+  },
+
+  // creating a method which will set the propreties
+  // convensionally it's called `init`, but you can call is as you want
+  init(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
+  },
+};
+
+// creating the object
+const alex = Object.create(PersonPrototype);
+
+// calling `init` method to set the properties
+alex.init(`Alexander`, 1996);
+
+// this object indeed has access of methods of its prototype
+alex.calcAge(); // 28
+

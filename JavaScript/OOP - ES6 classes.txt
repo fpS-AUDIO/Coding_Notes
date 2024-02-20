@@ -63,3 +63,84 @@ console.log(alex.__proto__ === PersonClass.prototype); // true
 // --- setters and getters ---
 
 
+/*
+ -  keywords: `set` and `get`
+ -  objects and classes have getters and setters
+ -  you can access them like a dynamic property, so you don't need to call them like functions
+ -  setter should accept only ONE argument
+ -  you can specify setter of getter or both of them with same name
+ -  if constructor() and setter both try to set the exact same property name you get the error,
+    to avoid that error you can add an underscore `_` before the property name in setter (it's a convension).
+    But in this way you will have a new variable with its value for this property, so to hace access on that
+    property you should also create a getter (example below with `_name`)
+*/
+
+// create just a simple example class: `Animal`
+class Animal {
+  // this time using object with arguments: `options`
+  constructor(options) {
+    this.species = options.species;
+    this.age = options.age;
+    this.name = options.name;
+  }
+
+  // create getter
+  get ageInfo() {
+    // imagine that real age is (age * 7)
+    return this.age * 7;
+  }
+
+  // create setter
+  set ageInfo(newAge) {
+    this.age = newAge;
+  }
+
+  // set a property that already exists
+  set name(newName) {
+    // here you can specify a validator like: if (newName === blablabbla) so this._name = newName;
+    this._name = newName;
+  }
+
+  get name() {
+    return this._name;
+  }
+}
+
+const dog1 = new Animal({ species: `dog`, age: 3, name: `Sharik` });
+console.log(dog1);
+
+// you can access to getter `ageInfo` like a property, so don't need to call it
+// property is calculated dinamically
+console.log(dog1.ageInfo); // 21
+
+// and you can set `ageInfo` like property without calling it with arguments
+dog1.ageInfo = 4;
+console.log(dog1.ageInfo); // 28
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- static methods ---
+
+
+/*
+ -  you can create a static method using the keyword `static`
+ -  static method is a method not inherited by instances (access to prototype)
+    but it's simply a method of that class like
+    Array.from()      ->  from() is static method of Array constructor
+    [1, 2, 3].from()  ->  you CAN'T call a static method on instances
+*/
+
+class Dog {
+  constructor(options) {
+    this.name = options.name;
+    this.age = options.age;
+  }
+
+  // create a static method
+  static hello() {
+    console.log(`Hello World!`);
+  }
+}
+
+Dog.hello(); // Hello World!

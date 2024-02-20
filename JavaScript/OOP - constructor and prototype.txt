@@ -113,3 +113,26 @@ Array.prototype.unique = function () {
 };
 console.log(arr.unique()); // [1, 2, 3]
 
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- static methods ---
+
+/*
+ -  you can create a static method in constructor function by attaching a method on it
+ -  static method is a method not inherited by instances (access to prototype)
+    but it's simply a method of that class like
+    Array.from()      ->  from() is static method of Array constructor
+    [1, 2, 3].from()  ->  you CAN'T call a static method on instances
+*/
+
+
+const Dog = function (options) {
+    this.name = options.name;
+    this.age = options.age;
+}
+
+// creating a static method
+Dog.hello = function() {
+  console.log(`Hello World!`);
+}
