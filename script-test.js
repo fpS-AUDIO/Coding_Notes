@@ -42,101 +42,55 @@
 
 // ---------------------------------------------------------------------------------------- //
 
-// const Car = function (options) {
-//   this.make = options.make;
-//   this.speed = options.speed;
-// };
+class CarCl {
+  constructor(options) {
+    this.make = options.make;
+    this.speed = options.speed;
+  }
+  accelerate() {
+    this.speed += 10;
+    console.log(`Car is accelering...`);
+    return this;
+  }
+  brake() {
+    this.speed -= 5;
+    console.log(`Car is braking...`);
+    return this;
+  }
+}
 
-// Car.prototype.accelerate = function () {
-//   this.speed += 10;
-//   return this.speed;
-// };
+class EVCl extends CarCl {
+  #charge;
+  constructor(options) {
+    super(options);
+    this.#charge = options.charge;
+  }
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+  accelerate = function () {
+    this.speed += 20;
+    this.#charge -= 1;
+    console.log(
+      `${this.make} is going at ${this.speed} and has a charge of ${
+        this.#charge
+      }`
+    );
+    return this;
+  };
+}
 
-// Car.prototype.brake = function () {
-//   this.speed -= 5;
-//   return this.speed;
-// };
-
-// const EV = function (options) {
-//   Car.call(this, options);
-//   this.charge = options.charge;
-// };
-
-// EV.prototype = Object.create(Car.prototype);
-// EV.prototype.constructor = EV;
-
-// EV.prototype.chargeBattery = function (chargeTo) {
-//   this.charge = chargeTo;
-// };
-
-// EV.prototype.accelerate = function () {
-//   this.speed += 20;
-//   this.charge -= 1;
-//   console.log(
-//     `${this.make} is going at ${this.speed} and has a charge of ${this.charge}`
-//   );
-// };
-
-// const tesla = new EV({
-//   make: `Tesla`,
-//   speed: 120,
-//   charge: 45,
-// });
-
-// tesla.accelerate(); // Tesla is going at 140 and has a charge of 44
-// console.log(tesla.brake()); // 135
-// tesla.chargeBattery(90);
-// console.log(tesla.charge); // 90
-// tesla.accelerate(); // Tesla is going at 155 and has a charge of 89
-
-// console.dir(tesla);
-
-///////////////////////////////////////
-// OOP - INHERITANCE BETWEEN CLASSES //
-///////////////////////////////////////
-
-// Steps to manipulate the prototype chain using Object.create():
-
-// first create parent a prototype (simple object)
-const PersonPrototype = {
-  // set the prototype method which will be inherited to all the instances
-  calcAge() {
-    console.log(2024 - this.birthYear);
-  },
-
-  // creating a method which will set the propreties
-  // convensionally it's called `init`, but you can call is as you want
-  init(options) {
-    this.name = options.name;
-    this.birthYear = options.birthYear;
-  },
-};
-
-// creating the object which will inherit from `PersonPrototype`
-// this is gonna be the child prototype
-const StudentPrototype = Object.create(PersonPrototype);
-
-// overwriting the `init` method
-StudentPrototype.init = function (options) {
-  // use the same trick as in constructor functions
-  PersonPrototype.init.call(this, options);
-  this.study = options.study;
-};
-
-// create an object instance of `StudentPrototype`
-const alex = Object.create(StudentPrototype);
-alex.init({
-  name: `Alex`,
-  birthYear: 1996,
-  study: `Coding`,
+const tesla = new EVCl({
+  make: `Tesla`,
+  speed: 120,
+  charge: 45,
 });
 
-console.log(alex); // {name: 'Alex', birthYear: 1996, study: 'Coding'}
-alex.calcAge(); // 28
+tesla.accelerate(); // Tesla is going at 140 and has a charge of 44
+tesla.brake(); // Car is braking...
+tesla.chargeBattery(90);
+tesla.accelerate(); // Tesla is going at 155 and has a charge of 89
 
-// indeed you can also overwrite the `calcAge()` method
-StudentPrototype.calcAge = function () {
-  console.log(`I feel older then ${2024 - this.birthYear}`);
-};
-
-alex.calcAge(); // I feel older then 28
+// test chaining
+tesla.accelerate().brake().chargeBattery().accelerate(); // OK

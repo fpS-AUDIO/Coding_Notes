@@ -1,0 +1,157 @@
+
+///////////////////
+// ENCAPSULATION //
+///////////////////
+
+
+/* Encapsulation:
+ -  Means to keep some properties and methods private inside the class
+    so they're not accessible outside of that class.
+ -  The rest is public interface (API)
+ -  Need to be implemented for 2 main resons:
+    1.  to prevent code from outside of a class to accidentally manipulate the data inside the class.
+    2.  exposing only a small public interface (few API methods) then we can change all 
+        the other internal methods with more confidence.
+*/
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- (PROTECED) CONVENTION ---
+
+// By convention programmers use the underscore before the property key: _
+// Sicce it's not truly pivat but only a convention we call it `protected` (also a convention)
+// So who can see `_` before a property know he should not touch it outside a class
+
+class Account {
+  constructor(options) {
+    this.owner = options.owner;
+    this.currency = options.currency;
+    this._movements = [];
+    this.language = navigator.language;
+  }
+  _approveLoan(value) {
+    // some logic if approve or not
+    return true;
+  }
+
+  // public interface
+  deposit(depoValue) {
+    this._movements.push(depoValue);
+  }
+
+  withdraw(withdrawValue) {
+    this._movements.push(-withdrawValue);
+  }
+
+  requestLoan(value) {
+    if (this._approveLoan(value)) {
+      this.deposit(value);
+    }
+  }
+}
+
+const account01 = new Account({
+  owner: `Alexander`,
+  currency: `EUR`,
+});
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- PRIVAT FIELDS ---
+
+
+/*
+Encapsulation is a core concept in object-oriented programming (OOP) that 
+restricts direct access to some of an object's components, which is essential 
+for hiding the internal state and behavior from the outside world. 
+JavaScript supports encapsulation through the use of private fields and methods in classes.
+
+Private fields and methods in JavaScript:
+- Introduced in ECMAScript 2022 (ES12), private class fields and 
+  methods provide a way to encapsulate data and functionality within
+  a class, making them accessible only to the class itself.
+- This feature brings JavaScript classes closer to the encapsulation 
+  capabilities found in traditional OOP languages like Java and C++.
+
+Key Points:
+- Public fields: 
+    . Properties that instances inherit (not prototype).
+    . They are declared directly within the class body without `var`, `let`, or `const`.
+    . They can be accessed via the `this` keyword.
+    . They finish fish `;` (unlike methods).
+- Private fields: 
+    . Prefixed with `#`, private fields cannot be accessed or modified from outside the class.
+- Private methods: 
+    . Also prefixed with `#`, these methods are only callable within the class body.
+- Static versions: 
+    . Both public and private fields and methods can be declared as `static`,
+      meaning they are associated with the class constructor itself rather than instances of the class.
+
+Usage Examples and Best Practices:
+*/
+
+class Account {
+  // Public field:
+  language = navigator.language; // Not on the prototype, but each instance gets its own copy.
+
+  // Private fields:
+  #movements = [];
+  #password;
+
+  constructor(options) {
+    this.owner = options.owner;
+    this.currency = options.currency;
+    // Private fields must be declared before they can be used.
+    this.#password = options.password;
+  }
+
+  // Private method:
+  #approveLoan(value) {
+    // Logic to determine loan approval
+    return true;
+  }
+
+  // Public methods:
+  deposit(value) {
+    this.#movements.push(value);
+    return this; // return the current object to enable method chaining
+  }
+
+  withdraw(value) {
+    this.deposit(-value); // Reusing the deposit method for withdrawal
+    return this; // return the current object to enable method chaining
+  }
+
+  requestLoan(value) {
+    if (this.#approveLoan(value)) {
+      this.deposit(value);
+      console.log("Success!");
+      return this; // return the current object to enable method chaining
+    }
+  }
+}
+
+// Example usage:
+const account01 = new Account({
+  owner: "Alexander",
+  currency: "EUR",
+  password: "aB12234a",
+});
+
+console.log(account01);
+// Accessing a private field from outside the class results in a SyntaxError:
+// console.log(account01.#password); // SyntaxError: Private field '#password' must be declared in an enclosing class
+
+account01.requestLoan(100); // Outputs: Success!
+
+// chaining test
+account01
+  .deposit(100)
+  .deposit(300)
+  .withdraw(250)
+  .requestLoan(13000)
+  .withdraw(6000);
+
+console.log(account01.showMovements()); // [100, 100, 300, -250, 13000, -6000]
