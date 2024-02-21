@@ -1,0 +1,186 @@
+
+
+
+///////////////////////////////////////
+// OOP - INHERITANCE BETWEEN CLASSES //
+///////////////////////////////////////
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- USING CONSTRUCTOR FUNCTIONS ---
+
+
+/*  Steps to manipulate the prototype chain manually:
+
+ -  Below we have created `Person` class as parent class and `Student` as child class
+
+ -  Usually the child class accepts same arguments (firstName, berthYear ) + some additional (study)
+
+ -  Inside the child class you need to call the parent function, but if you call it as a regular function call,
+    so without the `new` operator, the `this` keyword will be set to undefined.
+    To solve this, you need to manually set the `this` keyword using call() method
+    EXAMPLE: Person.call(this, firstName, berthYear);
+
+  - Right after defining the child class you need to link the connection of prototype objects using Object.create()
+    So you need make inheritance and NOT just poiniting to the SAME object like: Student.prototype = Person.prototype;
+    EXAMPLE: Student.prototype = Object.create(Person.prototype);
+
+    NOTE:   you need to create this connection before defining the methods of prototype object
+            of child class (Student) because Object.create() will return an empty object, so
+            if you defined methods before this point Object.create() will overwrite these methods.
+
+ -  `childClass.prototype.constructor` should point on the same `childClass`, 
+    but since we manually set the prototype property of `childClass` (Student) using Object.create()
+    now the constructor childClass (Student) is still parentClass (Person).
+    You need to fix this because sometimes it's important to rely on this constructor property.
+    It's easy to do: childClass.prototype.constructor = childClass;
+    EXAMPLE: Student.prototype.constructor = Student;
+*/
+
+
+// define the Person class
+const Person = function (firstName, berthYear) {
+  this.firstName = firstName;
+  this.berthYear = berthYear;
+};
+
+// also define method of Person.prototype
+Person.prototype.calcAge = function () {
+  return 2024 - this.berthYear;
+};
+
+// define Student class
+const Student = function (firstName, berthYear, study) {
+  // manually setting the `this` keyword to `this` which will be the new object when will use `new`
+  Person.call(this, firstName, berthYear);
+  this.study = study;
+};
+
+// after defining the child class make the prototype connection inheritance
+Student.prototype = Object.create(Person.prototype);
+
+// adjust the constructor of Student
+Student.prototype.constructor = Student;
+
+// define method of Student.prototype
+Student.prototype.sayHello = function () {
+  console.log(`Hello, my name is ${this.firstName} and I study ${this.study}`);
+};
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- USING CLASSES ---
+
+
+/*  Steps to manipulate the prototype chain using ES6 Classes:
+
+ -  Below we have created `PersonCl` class as parent class and `StudentCl` as child class
+
+ -  To implement inheritance between ES6 classes just use `extends` keyword
+    `extends` links to prototypes behind the scenes
+    EXAMPLE:  class StudentCl extends PersonCl {...}
+
+  - You always need the constructor with same arguments (or objects) + additional arguments if you need
+    EXAMPLE:  constructor(options) {}
+    
+  - Inside the constructor, as FIRST statement, you need to call super()
+    because it's resposible of creating the `this` keyword in this child class.
+    super() is the automatical constructor function of parent class, 
+    and you don't need to specify the parent twice because you alredy specified it before (during `extends`)
+    super() accepts the arguments of the parent class (or object of arguments)
+    EXAMPLE:    super(options);
+*/
+
+
+// create parent class
+class PersonCl {
+  constructor(options) {
+    this.firstName = options.firstName;
+    this.birthYear = options.birthYear;
+  }
+
+  calcAge() {
+    return 2024 - this.birthYear;
+  }
+}
+
+
+// create the child class
+class StudentCl extends PersonCl {
+  constructor(options) {
+    // always call super() first to create `this`
+    super(options);
+    this.study = options.study;
+  }
+
+  // overwrite method (shadowing)
+  calcAge() {
+    return `I feel older then ${2024 - this.birthYear}`;
+  }
+}
+
+const alex = new StudentCl({
+  firstName: `Alex`,
+  birthYear: 1996,
+  study: `Coding`,
+});
+
+console.log(alex);
+console.log(alex.calcAge()); // I feel older then 28
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- USING Object.create() ---
+
+
+// Steps to manipulate the prototype chain using Object.create():
+
+// first create parent a prototype (simple object)
+const PersonPrototype = {
+  // set the prototype method which will be inherited to all the instances
+  calcAge() {
+    console.log(2024 - this.birthYear);
+  },
+
+  // creating a method which will set the propreties
+  // convensionally it's called `init`, but you can call is as you want
+  init(options) {
+    this.name = options.name;
+    this.birthYear = options.birthYear;
+  },
+};
+
+
+// creating the object which will inherit from `PersonPrototype`
+// this is gonna be the child prototype
+const StudentPrototype = Object.create(PersonPrototype);
+
+
+// overwriting the `init` method
+StudentPrototype.init = function (options) {
+  // use the same trick as in constructor functions
+  PersonPrototype.init.call(this, options);
+  this.study = options.study;
+};
+
+
+// create an object instance of `StudentPrototype`
+const alex = Object.create(StudentPrototype);
+alex.init({
+  name: `Alex`,
+  birthYear: 1996,
+  study: `Coding`,
+});
+
+console.log(alex); // {name: 'Alex', birthYear: 1996, study: 'Coding'}
+alex.calcAge(); // 28
+
+// indeed you can also overwrite the `calcAge()` method
+StudentPrototype.calcAge = function () {
+  console.log(`I feel older then ${2024 - this.birthYear}`);
+};
+
+alex.calcAge(); // I feel older then 28
