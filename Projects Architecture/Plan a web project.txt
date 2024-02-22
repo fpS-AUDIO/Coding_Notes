@@ -1,0 +1,64 @@
+
+
+///////////////////////////////
+// How To Plan a Web Project //
+///////////////////////////////
+
+Steps:
+    1.  User Stories
+    2.  Features
+    3.  Flowchart
+    4.  Architecture
+    5.  Development
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- User Stories ---
+
+It's a description of the functionality of the application from user's perspective.
+All user stories put together describe the entire application.
+
+Common format of a story:
+As [type of user], I want [an action] so that [benefit].
+So we can understand Who? What? Why?
+
+Example:
+    -   "As a user, I want to log my running workouts with location, time, distance,
+        so I can keep a log of my running".
+    -   "As a user, I want to see all my workouts when I leave the app and come back
+        later to keep history of my progress"
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Features ---
+
+Basing on user stories you need to understand the main features of the application.
+
+Example:
+    -   Clickable map
+    -   Geolocation
+    -   Display workout list
+    -   Store the data of user
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Flowchart ---
+
+What we build?
+
+Flowchart should contain the features and how different parts of app will 
+interact with each other, which event makes sense to implement, and also 
+how data flows across the application.
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Architecture ---
+
+How we build it?
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- User Stories ---
+
+Writing code.
