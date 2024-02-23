@@ -1,0 +1,109 @@
+
+
+
+
+
+>>>>>>>>>>> Regular Expressions! <<<<<<<<<<<
+
+
+
+
+
+Regular Expressions =>  modo per cercare la coincidenza di un modello (pattern) con il testo
+import re in Python per lavorare con espressioni regolari
+
+
+
+------------------------------------------------------------------------------------------------
+PATTERN E METASIMBOLI
+
+.       qualsiasi 1 simbolo
+
+[]      1 qualsiasi simbolo dentro le parentesi oppure range 
+        (es: [mM] o [a-f] o [3-6])
+
+$       fine di una riga
+
+^       inizio di una riga 
+        (es: ^T per cercare inizio di una che inizia con "T")
+
+
+\       carattere di escape 
+        (es: \.$ per cercare il punto alla fine di una riga)
+
+[^b]    non "b" 
+        (es: ^[^b] per cercare inizio di una riga che non inizia con b)
+        (es: 12[^123] per non cercare 121, 122, 123)
+
+[^!.?]  se il metodo del modulo re (tipo findall) torna il risultato trovato, togliera': "! . ?"
+
+\d      qualsiasi numero 
+        (es: \d\d\d = [0-9][0-9][0-9] )
+
+\D      qualsiasi cosa ma non i numeri
+        (anche inizio di riga nuova)
+
+\s      spazio 
+        (es: en\s per cercare tutte le parola che finiscono con "en") 
+        (non inizio di una riga nuova)
+
+\S      tutto ma non spazio
+
+\w      qualsiasi lettera
+        (es: \s\w\w\w\s per cercare una parola formata da 3 lettere non proprio corretto)
+
+\W      qualsiasi cosa ma non lettera
+
+\b      bordo di una parola
+        (es: \b\w\w\w\b per cercare una parola formata da 3 lettere in modo corretto)
+
+\B      tutto ma non bordo di una parola
+
+{}      quantificazione avido perche' cerca sempre di trovare il numero piu' alto
+        (es: \w{4} per cercare 4 qualsiasi lettere di fila)
+        (es: \b\w{4,6}\b per cercare una parola formata da 4 a 6 qualsiasi lettere di fila)
+        (es: {4,} = da 4 in su)
+
+{}?     quantificatore pigro cerca sempre di trovare il numero piu' basso
+
+*       da zero in su (*? per farlo diventare pigro)
+        (es: be* per cercare tutti i simboli "b" e "beeeeeeeeee....." con qualsiasi quantita' di "e")
+
++       da 1 in su (+? per farlo diventare pigro)
+        (es: be+ per cercare tutti i simboli da "be" a  "beeeeeeeeeee...." con qualsiasi quantita' di "e")
+
+?       zero oppure 1 (?? per farlo diventare pigro)
+        (es: be? per cercare "b" oppure "be")
+
+()      raggruppamento di pattern
+        (per creare un nome gruppo (?P<Nome_Gruppo>Pattern) es: (?P<test>\D) )
+        (per cercare lo stesso risultato del gruppo "test" (?P=test) )
+        ( \2 per chiamare il gruppo numero 2)
+
+|       uno oppure altro
+
+(|)     uno oppure altro
+        (es: (\s|-) per cercare o spazio o simbolo "-" )
+        (stessa cosa si poteva scrivere [\s-] ) 
+
+(?#comment)     comment group
+
+(?:)    non capturing group (non prende simboli)
+
+(?=Simbolo_che_deve_seguire)    look ahead
+        (es: [a-zA-Z]{4}(?= ) per cercare tutte parole formate da 4 lettere che finiscono con lo spazio)
+
+(?!Simbolo_che_deve_seguire)   look ahead negativo
+        (uguale ma cerca tutto a parte quel simbolo)
+
+(?<=Simbolo_che_deve_anticipare)    look behind
+        (es: (?<= )[a-zA-Z]{4} per cercare tutte parole formate da 4 lettere che si trovato dopo spazio) 
+
+(?<!Simbolo_che_deve_anticipare)    look behind negativo
+        uguale ma cerca tutto a parte quel simbolo
+
+(text)(?(Numero_gruppo)is true|is false)
+        (spegazione: se trovate "text" nel numero_gruppo torna il primo (is true) altrimenti torna is false)
+
+(?<nome_gruppo> )
+

@@ -1,0 +1,97 @@
+
+
+USEFUL WEBSITES FOR WEB DEVELOPMENT:
+
+	- General Development Resources
+	- CSS Resources
+	- Fonts and Typography
+	- APIs for Development
+	- Coding Challenges and Practice
+	- JavaScript Libraries and Frameworks
+	- CSS Frameworks
+
+
+
+## General Development Resources
+
+- JSON Official Website: [https://www.json.org/](https://www.json.org/)
+- MongoDB Official Website: [https://www.mongodb.com/](https://www.mongodb.com/)
+- Erlang Official Website: [https://www.erlang.org/](https://www.erlang.org/)
+- Python Official Website: [https://www.python.org/](https://www.python.org/)
+- Python Package Manager (PyPI): [https://pypi.org/](https://pypi.org/)
+- RabbitMQ Official Website: [https://www.rabbitmq.com/](https://www.rabbitmq.com/)
+- Test Regular Expressions: [https://regex101.com/](https://regex101.com/)
+- Learn Programming for Free: [https://www.programiz.com/](https://www.programiz.com/)
+- The Python Standard Library: [https://docs.python.org/3/library/index.html](https://docs.python.org/3/library/index.html)
+- Mozilla Developers Network (MDN): [https://developer.mozilla.org/en-US/](https://developer.mozilla.org/en-US/)
+- Online Tool Hash Calculator: [https://xorbin.com/](https://xorbin.com/)
+- Managing Conda Environments: [https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+- Django Documentation v4.1: [https://docs.djangoproject.com/en/4.1/](https://docs.djangoproject.com/en/4.1/)
+- Webpack Official Website: [https://webpack.js.org/](https://webpack.js.org/)
+- Vue.js Documentation: [https://vuejs.org/](https://vuejs.org/)
+- React Official Website: [https://reactjs.org/](https://reactjs.org/)
+- Angular Official Site: [https://angular.io/](https://angular.io/)
+- Svelte Official Site: [https://svelte.dev/](https://svelte.dev/)
+
+
+
+## CSS Resources
+
+- Google Color Picker: [https://g.co/kgs/chb2sC]
+- Choose a Color Palette: [https://coolors.co/]
+- Check Browser Compatibility: [https://caniuse.com/]
+- CSS Gradient: [https://cssgradient.io/]
+- CSS Validator (W3C): [https://jigsaw.w3.org/css-validator/]
+- Online Code Editor for Frontend: [https://codepen.io/]
+- SVG to XML Converter: [http://inloop.github.io/svg2android/]
+- Free SVG Background Generator: [https://bgjar.com/]
+- Open-source Illustrations: [https://undraw.co/], [https://storyset.com/]
+- Favicon Generator: [https://favicon.io/favicon-generator/]
+
+
+
+## Fonts and Typography
+
+- Google Fonts: [https://fonts.google.com/]
+- Font Library: [https://fontlibrary.org/]
+- Fonts in Use: [https://fontsinuse.com/]
+- Typography Tools and Inspiration: [https://typewolf.com/]
+
+
+
+## APIs for Development
+
+- QR Code API: [https://goqr.me/api/]
+- Quotes API: [https://api-ninjas.com/api/quotes]
+- REST Countries: [https://restcountries.com/]
+- JSONPlaceholder (Fake Online REST API): [https://jsonplaceholder.typicode.com/]
+
+
+
+## Coding Challenges and Practice
+
+- HackerRank: [https://www.hackerrank.com/]
+- Codewars: [https://www.codewars.com/]
+- LeetCode: [https://leetcode.com/]
+- CodeChef: [https://www.codechef.com/]
+- Exercism: [https://exercism.io/]
+
+
+
+## JavaScript Libraries and Frameworks
+
+- jQuery Official Website: [https://jquery.com/]
+- React Documentation: [https://reactjs.org/docs/getting-started.html]
+- Angular Learning Platform: [https://angular.io/start]
+- Vue.js Guide: [https://vuejs.org/v2/guide/]
+- Svelte Tutorial: [https://svelte.dev/tutorial]
+
+
+
+## CSS Frameworks
+
+- Bootstrap Official Website: [https://getbootstrap.com/]
+- Tailwind CSS: [https://tailwindcss.com/]
+- Foundation by ZURB: [https://get.foundation/]
+- Materialize CSS: [https://materializecss.com/]
+

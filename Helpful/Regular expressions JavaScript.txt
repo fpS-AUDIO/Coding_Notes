@@ -1,0 +1,89 @@
+
+
+
+// Regular Expressions Notes for JavaScript
+
+// Use regular expressions for pattern matching and text manipulation
+// Example: const regex = /pattern/flags;
+
+
+
+// ------------------------------------------------------------------------------------------------
+// PATTERN AND METACHARACTERS
+
+// '.' Matches any single character except newline
+// Example: 'abc'.match(/./g); // ['a', 'b', 'c']
+
+// '[]' Matches any single character contained within the brackets
+// Example: 'abc'.match(/[a-c]/g); // ['a', 'b', 'c']
+// Negation: 'abcxyz'.match(/[^a-c]/g); // ['x', 'y', 'z']
+
+// '$' Matches the end of a string
+// Example: 'sentence end'.match(/end$/); // 'end'
+
+// '^' Matches the start of a string
+// Example: 'start of sentence'.match(/^start/); // 'start'
+
+// '\' Escapes a special character
+// Example: 'end.'.match(/\./); // '.'
+
+// '\d' Matches any digit [0-9]
+// Example: 'number 5'.match(/\d/); // '5'
+
+// '\D' Matches any non-digit
+// Example: 'number 5'.match(/\D/g); // ['n', 'u', 'm', 'b', 'e', 'r', ' ']
+
+// '\s' Matches any whitespace character
+// Example: 'sentence end'.match(/\sen/); // ' en'
+
+// '\S' Matches any non-whitespace character
+// Example: 'a b'.match(/\S/g); // ['a', 'b']
+
+// '\w' Matches any alphanumeric character [a-zA-Z0-9_]
+// Example: 'word_123'.match(/\w/g); // ['w', 'o', 'r', 'd', '_', '1', '2', '3']
+
+// '\W' Matches any non-alphanumeric character
+// Example: 'word, 123.'.match(/\W/g); // [',', ' ', '.']
+
+// '\b' Matches the boundary of a word
+// Example: 'a word,'.match(/\bword\b/); // 'word'
+
+// '\B' Matches the non-boundary of a word
+// Example: 'a word'.match(/\B...\B/); // 'wor'
+
+// '{}' Specifies a specific number of repetitions
+// Example: '123 1234 12345'.match(/\d{2,4}/g); // ['123', '1234', '1234']
+
+// '*' Matches 0 or more repetitions of the preceding element
+// Example: 'wooooow'.match(/wo*/); // 'wooooow'
+
+// '+' Matches 1 or more repetitions of the preceding element
+// Example: 'wooooow'.match(/wo+/); // 'wooooow'
+
+// '?' Matches 0 or 1 repetitions of the preceding element
+// Example: 'wooooow'.match(/wo?/); // 'wo'
+
+// '|' Alternation, matches either the pattern to its left or its right
+// Example: 'cat and dog'.match(/cat|dog/g); // ['cat', 'dog']
+
+// '()' Groups together the expressions contained inside
+// Example: 'wowowow'.match(/(wo)+/g); // ['wowowow']
+
+// Non-Capturing Group: '(?:)'
+// Example: 'wowowow'.match(/(?:wo)+/); // 'wowowow'
+
+// Positive Lookahead: '(?=)'
+// Example: '1.'.match(/\d(?=\.)/); // '1'
+
+// Negative Lookahead: '(?!)'
+// Example: '1a 2.'.match(/\d(?!\.)/g); // ['2']
+
+// Positive Lookbehind: '(?<=)' (Not supported in all JavaScript environments)
+// Example: 'cab'.match(/(?<=a)b/); // 'b'
+
+// Negative Lookbehind: '(?<!)' (Not supported in all JavaScript environments)
+// Example: 'cb db'.match(/(?<!a)b/g); // ['b']
+
+// Note: JavaScript's regex engine does not support lookbehind in all environments. 
+// This includes most notably, certain versions of Node.js and some browsers. 
+// Always test your regex patterns in the specific JavaScript environment you are targeting.
