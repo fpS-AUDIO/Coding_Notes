@@ -1,0 +1,83 @@
+
+
+
+///////////////////////
+// HOW THE WEB WORKS //
+///////////////////////
+
+
+// ----- Access the Web service ----- //
+
+Request-response model (or Client-server architechture):
+    is the process to access a webpage (or web API)
+    so it's a process about of exchanging data between web
+
+1.  Client (e.g. Browser) enter the URL and makes a request to a DNS
+    Example URL:    https://github.com/fpS-AUDIO
+
+    Protocol:       HTTPS or HTTPS
+    Domain name:    github.com
+    Resource:       fpS-AUDIO
+
+    DNS sends response with the real IP adress
+    DNS (Domain Name Server) are a special kind of server (they are like the phone books of the Internet)
+    DNS match the web address of the URL to the server's real IP address.
+    (this all happens through Internet service provider)
+    Example IP:     https://104.27.142.889:443
+
+    Protocol:       HTTPS or HTTPS
+    IP adress:      104.27.142.889
+    Port Number:    :443 (Default is: 443 for HTTPS and 80 for HTTP)
+                    Port is used identify the specific service which is running on the server
+
+
+2.  TCP/IP socket connection is established between the browser and the server (so they're connected)
+    This connection usually stay alive for the entire time that it takes to transfer all files of the Website or all data.
+
+    TCP is the Transmission Control Protocol
+    IP is the Internet Protocol
+    Together they are communication protocols that define exactly how data travels across the Web (rules).
+
+    TCP breaks the requests and responses down into thousands of small packets before they're sent.
+    Once the small packets arrive at their final destination, TCP will reassemble all the packets into the original request or response.
+    This wat each packet can take a different route through the Internet (it's faster)
+
+    IP protocol sends and routes these packets through the Internet
+    (it ensures that they arrive at the destination using IP addresses on each packet)
+
+3.  Clients makes HTTP request
+    HTTP is Hypertext Transfer Protocol (another communication protocol, rules)
+    HTTPS is encrypted using TLS or SSL (protocols)
+    HTTP methods: GET, POST, PUT and PATCH
+    Typical request message:
+
+    GET /fpS-AUDIO HTTP/1.1         --> start line: HTTP method + request target + HTTP version
+
+    Host: www.google.com            --> HTTP request headeres (infos about request)
+    User-Agent: Mozilla/5.0         
+    Accept-Language: en-User       
+
+    <BODY>                          --> Request body (only when sending data to server e.g. POST)
+
+
+4.  Web Server sending HTTP response
+    Typical response message:
+
+    HTTP/1.1 200 OK                 --> start line: HTTP version, status code, status message
+
+    Date: Mon, 26 FEB 2024          --> HTTP request headeres
+    Content-Type: text/html
+    Transfer-Encoding: chuncked
+
+    <BODY>                          --> Request body: usually contains JSON data or html of a webpage
+
+
+
+5.  Usually there only one request and one response when we're working with an API.
+
+    While working with a web page there are many more requests and responses:
+    The 1st request is to obtain the initial html file.
+    Then scanning for assest like JS, CSS, Images etc...
+    And process is repeated for each file.
+
+

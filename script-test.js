@@ -1,38 +1,8 @@
 "use strict";
 
 // ---------------------------------------------------------------------------------------- //
+// ---  --- //
 
-/////////////////////
-// GEOLOCATION API //
-/////////////////////
-
-// Geolocation API is a browser API like internationalization
-
-// SYNTAX:
-// navigator.geolocation.getCurrentPosition(successCallback(position), failCallback)
-
-// define the callback function in case of success of getting position
-// this callback accepts the parameter `position` (convention name)
-const successGetPosition = function (position) {
-  console.dir(position); // show position object
-
-  // get the latitude and longitude out of the position object
-  // same as wiritng: const {latitude} = position.coords;
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-
-  // create the google maps link
-  console.log(`YOUR CURRENT LOCATION:`);
-  console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
-};
-
-// define the callback function in case of fail of getting position
-const failGetPosition = function () {
-  alert(`To use application please allow the access to your position 📌`);
-};
-
-// to avoid errors in old browser let's check if the `navigator.geolocation` exists
-if (navigator.geolocation) {
-  // if geolocation exists in browser let's use the actual api
-  navigator.geolocation.getCurrentPosition(successGetPosition, failGetPosition);
-}
+//////////////////////////////
+// ASYNCHRONOUS JS - BASICS //
+//////////////////////////////

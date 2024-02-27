@@ -1,0 +1,96 @@
+
+
+
+
+///////////////////////
+// Local Storage API //
+///////////////////////
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Basics ---
+
+
+/**
+ * The Local Storage API allows web applications to store and access data on a user's browser.
+ * Data stored using Local Storage is specific to the protocol of the page.
+ * Unlike cookies, Local Storage data is not sent to the server with every HTTP request.
+ * Data stored in Local Storage is accessible across browser sessions and tabs with the same origin.
+ * The keys and values are always stored as strings. You need to manually convert them when working with other types.
+ */
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Methods and Attributes ---
+
+
+// Setting an item
+// Stores the value 'Tom' under the key 'myCat'.
+localStorage.setItem('myCat', 'Tom');
+
+
+// Getting an item
+// Retrieves the value stored under 'myCat'.
+const cat = localStorage.getItem('myCat'); // 'Tom'
+
+
+// Removing an item
+// Removes the item stored under 'myCat'.
+localStorage.removeItem('myCat');
+
+
+// Clearing all storage
+// Clears all data stored in Local Storage for the current origin.
+localStorage.clear();
+
+
+// Length property
+// Returns the number of key/value pairs currently present in the Local Storage.
+const numberOfItems = localStorage.length;
+
+
+// Key function
+// Retrieves the name of the nth key in the storage.
+const firstKeyName = localStorage.key(0);
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Best Practices and Important Notes ---
+
+
+/**
+ * When using Local Storage, it is important to handle exceptions for browsers in private mode or when the user's storage is full.
+ * Also, because Local Storage is synchronous, accessing it frequently or with large amounts of data can affect your application's performance.
+ * Use JSON.stringify() and JSON.parse() to store and retrieve non-string types.
+ */
+
+
+
+// Example: Storing and retrieving an object
+const myObj = { name: 'Tom', age: 5 };
+localStorage.setItem('myObj', JSON.stringify(myObj)); // Storing an object as a string
+
+const storedObj = JSON.parse(localStorage.getItem('myObj')); // Retrieving the object
+
+// Handling exceptions
+try {
+  localStorage.setItem('item', 'value');
+} catch (e) {
+  console.error('Error saving to localStorage', e);
+}
+
+/**
+ * Consider using libraries or frameworks that provide a more convenient API for working with Local Storage and other storage mechanisms,
+ * and that can automatically handle serialization and provide asynchronous access to storage to avoid blocking the UI thread.
+ */
+
+/**
+ * Remember that Local Storage is limited to about 5MB per origin. This limit can vary by browser.
+ * For applications needing more storage, consider IndexedDB or WebSQL (deprecated).
+ */
+
+/**
+ * Security Considerations:
+ * - Data stored in Local Storage is accessible to any script loaded on the page. Therefore, it should not be used for sensitive information.
+ * - Be cautious of XSS attacks as malicious scripts can access Local Storage. Always sanitize and validate input from untrusted sources.
+ */

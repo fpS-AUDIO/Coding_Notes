@@ -1,0 +1,54 @@
+
+
+
+//////////////////////////////
+// ASYNCHRONOUS JS - BASICS //
+//////////////////////////////
+
+
+/*  ----- Synchronous:
+ -  is executed line by line
+ -  each line of code is waiting for previous line to finish
+ -  it's blocking code (like alert) are blocking the code
+ -  callbacks alone and eventListeners alone are not making code asynchronous
+ -  setTimeout + callback make code asynchronous */
+
+
+/* ----- Asynchronous:
+ -  means not working in a linear timeline
+ -  it's not blocking code, so execution move to the next line without waiting the code */
+
+
+/* ----- AJAX calls:
+ -  probably the most important use case of asynchronous JS.
+ -  means: Asynchronous JavaScript And XML
+ -  allows us to communicate with remote web servers in an asynchronous way.
+    Thanks to AJAX calls you can request data from web servers dynamically,
+    and dynamically means without reloading the page.
+ -  wih AJAX a client (browser) can make HTTP request from server.
+    then server can make a response with requested data.
+    This all happens asynchronously
+ -  there are different methods to make request (GET to recieve, POST to send)
+ -  usually when you request data from the server, server has API which contains data */
+
+
+/* ----- API:
+ -  Application Programming Interface
+ -  it's a piece of software that can be used by another piece of software to
+    allow applications comunicate with each other.
+ -  there are a lot of API like DOM, Geolocation, LoacalStorage etc and online API
+ -  Online API (web API): 
+    application running on a server, that receives requests for data and sends data back as a response.
+ -  XML is a data format used in the past but not used anymore today byt APIs.
+ -  people call AJAX even if they don't use XML (they're used to), but todate they use JSON
+ -  most APIs use JSON format: JavaScript Object Notation (object converted to a string) */
+
+
+/* ----- Public APIs:
+ -	https://github.com/public-apis
+ -	Auth: need or not authentication
+ -	HTTPS: good one
+ -	CORS: Cross Origin Resource Sharing and should be yes or Unknown 
+ 	without CORS, we cannot access a third party API 
+ -	You need API Enpoint which is the URL of API which you can use */
+

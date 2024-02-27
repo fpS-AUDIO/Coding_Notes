@@ -22,21 +22,40 @@
 
 /*  EXAMPLAIN CODE:
 
- //  L  -> the namespace provided by the library with its own methods
- //  L.map(`idDiv`)  -> is the function which accepts id of a Div where to insert the map
+ //  L  -> Layer, the namespace provided by the library with its own methods
+
+
+ //  L.map(`id_Of_Div`)  -> is the function which accepts id of a Div where to insert the map
  //  .setView([latitude, longitude], zoomValue)  -> is to focus the on the given arrey of coordinates
  >>> EXAMPLE: const map = L.map('map').setView([51.505, -0.09], 13);
 
 
-
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+ // L.tilelayer(`StringUrlTemplate`, options)  -> set the layer (tiles are squares when map appears)
+ // .addTo(map)  -> adding to mapObject
+ >>> EXAMPLE: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-L.marker([51.5, -0.09])
+
+ // mapObject.on(`evenType`, callback(event))  -> custom event listner if Leaflet
+ >>> EXAMPLE:   map.on(`click`, function(mapEvent) {})
+
+
+ // https://leafletjs.com/reference.html#marker
+ // L.marker([latitude, longitude], {options}) -> add marker on layer with options
+ // .addTo(map)  -> add the marker to the map Object
+ // .bindPopup(popupContent)  -> create and bind the pop-up to marker with custom text
+ //     Inside the bindPopup() you can create a new object with options
+        L.popup({options})  -> return a new popuo object https://leafletjs.com/reference.html#popup-option
+ // .openPopup()  -> open pop-up
+ // .setPopupContent(<String|HTMLElement|Popup> content)  -> Sets the content of the popup bound to this layer.
+ >>> EXAMPLE: L.marker([51.5, -0.09], {opacity: 0.8})
   .addTo(map)
-  .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+  .bindPopup('<p>Hello world!<br />This is a nice popup.</p>')
   .openPopup();
 
+
 */
+
+
