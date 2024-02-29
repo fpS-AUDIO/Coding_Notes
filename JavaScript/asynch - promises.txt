@@ -1,0 +1,232 @@
+
+
+
+////////////////////////////////
+// ASYNCHRONOUS JS - PROMISES //
+////////////////////////////////
+
+
+- Fetch API and Promises Basics
+- Consuming Promises:               then()  +  json()
+- Chaining Promises:                then().then(return fetch).then().then()
+- Handle rejected promises:         2nd callback  +  catch()
+- finally() 
+- Throwing Errors Manually          throw new Error(`I'm an error string`)
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Fetch API and Promises Basics ---
+
+
+/* ----- Fetch API:
+ -> by using it you can replace the old XML HTTP request function with modern wat of making AJAX calls
+ -> fetch function also accepts an object of options but the only obligatory parameter is an endpoint url */
+
+// here we're creating a request, opening it and sending it with one function
+const promise = fetch(`https://restcountries.com/v3.1/name/Italy`);
+console.log(promise); // return a promise
+
+
+/* ----- Promise:
+ -> it's an object used as a placeholder for future result of an asynchronous operation
+ -> so it's like a container where we'll recieve a value asynchronously
+ -> by using them you don't need to rely on events and callbacks passed inside the 
+    event handlers to handle the ascynchronous result
+ -> also you don't need to make nesting callback anymore because you can chain promises
+    and make a sequence of asynchronous operations escaping the callback hell
+ -> they're an ES6 feature (2015) and now they're widly used
+ -> they can be settled(↓) only once
+ -> once settled(↓) you need to "consume a promise" to get a result
+
+ -> they're time sensitive (change over time), this is their lifecycle:
+ ----> pending - before any value from asynchronous task is available
+                during this time asynch task is still doing its work
+ ----> settled - asynch task is finished and there're 2 types of a settled promise:
+ --------> fulfilled - successfully resulted in a value
+ --------> rejected - there has been an error during the asynchronous task */
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Consuming Promises ---
+
+
+/* ----- Explaining:
+ 1.   returning a promise using fetch()
+      SYNTAX: const promise = fetch(`endpointURL`);
+
+ 2.   when result is available, handling the fulfilled state using then(callbackFunc)  
+      callback riceves response Object as argument with status, body, headers etc...
+      SYNTAX: promise.then(callbackFunction(responseObject))
+
+ 3.   now you need to get data from response object using json()
+      json() is an asynch function, so it returns a new promise,
+      so you need to return this promise from callback to handle it
+      SYNTAX: responseObject.json()
+
+ 4.   so now you need to handle the new promise using then()
+      SYNTAX: promise2.then(callbackFunction(data))
+*/
+
+
+// creating a function which shows data about given country
+const getCountryCard = function (contry) {
+  // fetch returing a promise
+  fetch(`https://restcountries.com/v3.1/name/${contry}`)
+    .then((responseValue) => responseValue.json()) // handling promise using then() and reading data using json()
+    .then((data) => console.log(data)); // json() returned a new promise which handled using then() again with its callback with actual data
+};
+getCountryCard(`Italy`);
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Chaining Promises ---
+
+
+/* ----- Explaining:
+ -  instead of callback hello you can use a flat chain of promises
+ -  to do that you can return promise and chain the returned promises using .then() again
+ -  instead of returning it you can chain inside the callback, but then you'll get callback hell again */
+
+
+// creating a function which shows data about the given country
+const getCountryCardandNeighbour = function (contryStr) {
+  // fetch returing a promise
+  fetch(`https://restcountries.com/v3.1/name/${contryStr}`)
+    .then((responseValue) => responseValue.json()) // handling promise using then() and reading data using json()
+    .then((data) => {
+      // json() returned a new promise which handled using then() again with its callback with actual data
+      const [destructuredData] = data;                   // destructuring
+      renderHtmlCard(destructuredData);                  // update UI
+      const neighbour = destructuredData.borders?.[0];   // find neighbour
+      if (!neighbour) return;
+
+
+      // return new promise to allow chaining
+      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+    }) // just chaining
+    .then((response) => response.json())
+    .then((data) => {
+      const [destructuredData] = data;
+      renderHtmlCard(destructuredData, `neighbour`);
+    });
+};
+
+getCountryCardandNeighbour(`Italy`);
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Handle rejected promises ---
+
+
+/* ----- Explaining:
+ -  you can catch an error in two different ways:
+    1.  specify the second callback function inside .then(1, 2) i.e. second parameter of .then() and it's specific for that then()
+    2.  don't specify second parameter inside every .then() but end 
+        last .then() of chain using catch() method which will handle all errors of entire chain
+        the callback function of catch() accepts error itself and also return a promise
+
+         IMPORTANT:  the fetch promise only rejects when there is no internet connection
+                     but a 404 is not a real error and the fetch promise is still get fulfilled
+                     so our catch handler cannot pick up on this error.
+                     to handle this you need to throw errors manually
+
+        Note: error.message return only the message of that error
+        SYNTAX: ...then().then().then().catch(callback(error)) */
+
+
+// example function of updatin UI
+const renderError = function (error) {
+  countriesContainer.insertAdjacentText(
+    `beforeend`,
+    `There was an error: ${error}.`
+  );
+  countriesContainer.style.opacity = 1;
+};
+
+
+const getCountryCardandNeighbour = function (contryStr) {
+  // fetch returing a promise
+  fetch(`https://restcountries.com/v3.1/name/${contryStr}`)
+      ...
+      ...
+      ...
+    .then((data) => {
+      const [destructuredData] = data;
+      renderHtmlCard(destructuredData, `neighbour`);
+    })
+    .catch((error) => {                               // CATCHING ALL ERRORS OF ENTIRE CHAIN OF .THEN()
+      console.log(`There was and error: ${error}`);
+      renderError(error.message);
+    });
+};
+
+
+// on button click update UI with given county
+// simulating catching errors of promises by getting offline before click the btn
+btn.addEventListener(`click`, function () {
+  getCountryCardandNeighbour(`usa`);
+});
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- finally() ---
+
+/* ----- Explaining:
+ -  SYNTAX: finally(callback)*
+ -  in the very end of the .then() chain and after .catch() you can also put .finally()
+ -  finally() will be called always in any case (no matter if the promise is fulfilled or rejected)
+ -  usually it's used to hide a loading spinner (e.g. rotating circles)
+ -  EXAMPLE: .then.catch().finally(() => (countriesContainer.style.opacity = 1)); */
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Throw Errors Manually ---
+
+/* ----- Explaining:
+ -  since errors are propageted to all chain until .catch() method can handle them
+ -  and since the fetch promise only rejects (throw real error) when there is no internet connection 
+    and you need to throw errors manually for handling fulfilled promises with 404 status response objects
+ -  you need to throw errors manually so .catch() method can take different message basing on string of manual throwed error
+ -  `throw` keyword immediatly terminates the current function (like return)
+ -  but the fact of creating and returing an error inside the .then() method makes the promise rejected
+    so that rejection can propagate to the .catch() method which will handle it
+ -  SYNTAX: throw new Error(`I'm an error string`) */
+
+/*  ----- EXAMPLE OF A RESPONSE VALUE (before applying json() method to get actual data)
+>>>console.log(responseValue);
+
+Response {
+body: (...)
+bodyUsed: true
+headers: Headers {}
+ok: true
+redirected: false
+status: 200
+statusText: "OK"
+type: "cors"
+url: "https://restcountries.com/v3.1/name/usa"
+} */
+
+// basing on these properties you can:
+// 1. throw an error manually if (!responseValue.ok)
+// 2. show real status on user interface taking it from responseValue.status
+
+//  NOTE:
+//  you should create a helper function outside the scope block to keep code DRY and throw errors using that function
+
+// Example of manually throwing errors based on response status
+fetch('https://restcountries.com/v3.1/name/Italy')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Country not found (${response.status})`);
+    }
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
