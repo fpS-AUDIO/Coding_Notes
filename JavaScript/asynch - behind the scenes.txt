@@ -1,0 +1,41 @@
+
+
+
+/////////////////////////////////////////////////////////////
+// ASYNCHRONOUS JS - HOW IT REALLY WORKS NEHIND THE SCENES //
+/////////////////////////////////////////////////////////////
+
+/* JS Runtime:
+
+----> JS Engine
+--------> Memory Heap
+--------> Callback Stack
+----> Web APIs
+----> Callback Queue
+----> Microtasks Queue
+----> Event Loop
+
+
+ -  Runtime is like a container with all different piece necessary to execute JavaScript code.
+ -  JS Engine is like heart 
+ -  Memory Heap is memory where all objects are store
+ -  Callback Stack is where the code is executed in one main thread (1 thing at a time)
+ -  Web APIs environment is provided to engine but they're not part of JS language
+ -  Callback Queue is the data structer which stores ready to execute callback functions
+ -  Event Loop takes the callback from Callback Queue an put it in Callback Stack to be executed
+    so event loop allow us to have non blocking concurrency model in JavaScript
+    (concurrency model = how language handles multiple tasks happening in the same time)
+ -  Microtasks Queue have priority over the normal callback queue
+
+(!!!) SO:
+All asynchronous tasks are executed in the web APIs environment and not in normal JS callstack main thread,
+overwise these tasks will block the callstack and code wait till they finish.
+When they're ready to be executed the go on queue in Callstack Queue and event loop 
+will put them inside the callstack when it's their turn in queue.
+Event loop tick = each time the event loop takes a callback from the callback queue.
+JS has no sense of time, so timer of 5 seconds will not happen before 5 seconds, but it has to wait
+for its turn in callback queue which make take time...
+Promises goes not to normal callback queue but inside the Microtasks callback queue which has priority over normal queue.
+So first is executed global code, then Microtasks and then callback queue.
+*/
+

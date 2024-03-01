@@ -12,6 +12,7 @@
 - Handle rejected promises:         2nd callback  +  catch()
 - finally() 
 - Throwing Errors Manually          throw new Error(`I'm an error string`)
+- Building Promises
 
 
 
@@ -230,3 +231,80 @@ fetch('https://restcountries.com/v3.1/name/Italy')
   })
   .then(data => console.log(data))
   .catch(error => console.error(error));
+
+
+
+// ---------------------------------------------------------------------------------------- //
+// --- Building Promises --- //
+
+
+/* ----- Creating a promise:
+ SYNTAX: const variable = new Promise(executorFn(resolve, reject));
+
+ -> executorFn is automatically executed right after promise contructor runs
+    also this executor function contains asynchronous behavior and it should produce a value
+    executor function accepts 2 arguments: 
+ ---->  resolve(fulfilledValue) 
+        resolve() is function which will be called in fulfilled promise and it
+        accepts the fulfilled value which will be consumed later by .then() method
+ ---->  reject(errorMessage)
+        reject() is function which will be called in a rejected promise (optional)
+        and the .catch() method will handle it, indeed you can create new Error inside its body 
+
+
+NOTE:
+-> Promisifying = means to convert callback based asynchronous behavior to promise based.
+-> Promise.resolve(resolvedValue)  -> static method to resolve immediatly a promise
+-> Promise.reject(errorValue)      -> static method to reject immediatly a promise
+*/
+
+
+// ----- EASY EXAMPLE:
+// creating a promise simulating a lottery to use both resolve and reject functions
+const lotteryPromise = new Promise(function (resolve, reject) {
+  // creating a random number between 0 and 1
+  if (Math.random() >= 0.5) {
+    resolve(`You win lottery`);
+  } else {
+    reject(new Error(`You lost lottery`));
+  }
+});
+
+// consuming promise
+lotteryPromise
+  .then((resolvedValue) => console.log(resolvedValue))
+  .catch((err) => console.error(err));
+
+
+// ----- EXAMPLE of promisifying a setTimeout function:
+const wait = function (seconds) {
+  // returning promise to be able to handle it later using .then
+  return new Promise(function (resolve) {
+    // only resolve() because there is no reject in a simple timer which can't fail
+    // so just resolve() after given seconds
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+// calling wait() and consuming promise (which automatically resolve after 2 seconds)
+wait(2)
+  .then(() => {
+    console.log(`2 seconds timer is finished`);
+    // return new promise to allow chaining
+    return new wait(2);
+  })
+  .then(() => {
+    console.log(`2 seconds timer is finished`);
+    // return new promise to allow chaining
+    return new wait(2);
+  })
+  .then(() => {
+    console.log(`2 seconds timer is finished`);
+    // return new promise to allow chaining
+    return new wait(2);
+  });
+
+
+// ----- EXAMPLE of using static methods of Promise:
+Promise.resolve(`Resolver Promise`).then((val) => console.log(val));
+Promise.reject(new Error(`Rejected Promise`)).catch((err) => console.error(err));
