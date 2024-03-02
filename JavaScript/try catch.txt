@@ -1,0 +1,88 @@
+
+
+
+
+
+/////////////////
+// TRY / CATCH //
+/////////////////
+
+/**
+ * The try...catch statement marks a block of statements to try, and specifies
+ * a response, should an exception be thrown.
+ * 
+ * Best practices and additional features:
+ * - Always use try...catch blocks when you know an operation may fail due to reasons
+ *   beyond your control (e.g., API calls, file operations, parsing operations).
+ * - It's also useful in async/await functions to handle rejected promises.
+ * - The catch block can exist without a try block only in async functions.
+ * - You can rethrow errors if you want to escalate the exception handling up the call stack.
+ * - Use finally block to execute code after try and catch regardless of the result.
+ * - Consider using Error objects or custom error types for more detailed error handling.
+ */
+
+// Simple EXAMPLE:
+try {
+  // Code to try goes here.
+  const x = 1;
+  // This will cause a TypeError because x is a constant.
+  x++;
+} catch (err) {
+  // Code to execute if an error occurs goes here.
+  console.log(err); // Logs: TypeError: Assignment to constant variable.
+} finally {
+  // Code that will execute regardless of the try / catch result goes here.
+  console.log("This always runs.");
+}
+
+// ASYNC FUNCTION EXAMPLE:
+async function fetchData(url) {
+  try {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data; // Process data.
+  } catch (err) {
+    console.error("Fetching error:", err); // Handle errors like network issues.
+  } finally {
+    console.log("Fetch attempt finished."); // Always runs: cleanup, logging, etc.
+  }
+}
+
+/**
+ * Rethrowing Exceptions:
+ * - Sometimes, you might want to catch an error to add additional logging or perform
+ *   certain actions, and then rethrow it for further handling up the call chain.
+ */
+try {
+  try {
+    throw new Error("An error occurred");
+  } catch (err) {
+    console.error("Caught an error:", err.message);
+    throw err; // Rethrow the error after logging it.
+  }
+} catch (err) {
+  console.error("Handled higher up:", err.message);
+}
+
+/**
+ * Custom Error Handling:
+ * - You can define custom error types by extending the Error class. This is useful for creating
+ *   more specific error categories for your application's logic.
+ */
+class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "ValidationError";
+  }
+}
+
+try {
+  // Simulate a validation failure.
+  throw new ValidationError("Invalid email address.");
+} catch (err) {
+  if (err instanceof ValidationError) {
+    console.error("Custom error caught:", err.message);
+  } else {
+    throw err; // Unrecognized errors are thrown again.
+  }
+}

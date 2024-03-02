@@ -1,0 +1,71 @@
+
+
+
+/////////////////////////////////////
+// ASYNCHRONOUS JS - ASYNC / AWAIT //
+/////////////////////////////////////
+
+// --------------------------------------------------------------------------------- //
+// --- ASYNC / AWAIT ---
+
+/*
+ -  async/await is ES2017 feature to consume promises
+ -  `async` keyword before `function` makes it an asynchronous function (run in background)
+ -  `await` statement is put before something which will return a promise
+    so you can use one or more awaits in the same function to wait for a result of a promise
+    and thanks to `await` you don't need to use .then() to consume a promise
+ -  `await` will stop only async function until the promise is fulfilled, and normal code continues running in the main thread
+ -  async/await is syntactic sugar over the .then() method in premises (so we still use promises)
+*/
+
+// creating async function
+const whereAmI = async function (countryCode) {
+
+  // await for fulfilled promise returned from fetch() and store it in `response` variable
+  const response = await fetch(
+    `https://restcountries.com/v3.1/alpha/${countryCode}`
+  );
+
+  // await for json out of the response, json() also returns a promise, so use await
+  const data = await response.json();
+  console.log(data);
+};
+
+// call async function
+whereAmI(`IT`);
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Erros handling ---
+
+/*
+ -  since the try...catch method will take only real errors like connection problems
+ -  to manage the the negative, but still fulfilled result like 404 you can manually throw errors
+ -  for example put guard statement and check the `status` or `ok` properties of response object
+ -  EXAMPLE BELOW
+ */
+
+// creating async function
+const whereAmI = async function (countryCode) {
+  // try block where we throw error manually basing on the status of the result
+  try {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha/${countryCode}`
+    );
+
+    // check the status of response to manually throw errors
+    if (!response.ok) {
+      throw new Error(`The Country Code Doesn't Exist`);
+    }
+
+    // await for json out of the response, json() also returns a promise, so use await
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.log(`Something went wrong: ${err}`);
+  }
+};
+
+// calling the async func with unexisting country code
+whereAmI(`XDX`); // Something went wrong: Error: The Country Code Doesn't Exist
