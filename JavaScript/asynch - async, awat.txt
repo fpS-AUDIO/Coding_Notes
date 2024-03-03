@@ -5,8 +5,16 @@
 // ASYNCHRONOUS JS - ASYNC / AWAIT //
 /////////////////////////////////////
 
+- ASYNC / AWAIT basics
+- Erros handling
+- Returning values from async functions
+- Running promises in parallel Promise.all()
+- Other Promise combinators: race, allSettled, all, any
+
+
+
 // --------------------------------------------------------------------------------- //
-// --- ASYNC / AWAIT ---
+// --- ASYNC / AWAIT basics ---
 
 /*
  -  async/await is ES2017 feature to consume promises
@@ -69,3 +77,200 @@ const whereAmI = async function (countryCode) {
 
 // calling the async func with unexisting country code
 whereAmI(`XDX`); // Something went wrong: Error: The Country Code Doesn't Exist
+
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Returning values from async functions ---
+
+
+/* Two ways of returning a value from async
+  1.  Since the value returned (return) from an async function is always a promise you can use 
+      .then() method to get the returned value and not just store them in variable (will store a promise).
+
+      In case of an error the `undefined` will be returned by the promise and not an error (beacuse it won't be rejected)
+      Because in case of an error inside the try{} block the `return` will never be reached and
+      the code will jump to catch() block.
+
+      To solve this, and catch the errors, you need to manually rethrow the error inside the .catch() block of
+      the first async function, you should do it by passing the riceved argument inside the .catch() block
+      and throw thisErrorArgument. Then you need to catch that error in outer .catch() block
+      
+      In this way you're mixing the new syntax with old syntax...
+      
+  2.  Using IIFE (immediately-invoked function expressions)
+*/
+
+
+// EXAMPLE OF AN ASYNC FUNTION
+const whereAmI = async function (countryCode) {
+  try {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha/${countryCode}`
+    );
+    if (!response.ok) {
+      throw new Error(`The Country Code Doesn't Exist`);
+    }
+    const data = await response.json();
+    // RETURNING NEW PROMISE CONTAING THE ACTUAL VALUE
+    return [data[0]];
+  } catch (err) {
+    console.log(`Something went wrong: ${err}`);
+    // rethrowing the error again and reject the promise grom async function
+    throw err;
+  }
+};
+
+
+// ----- 1. EXAMPLE OF MIXING SYNTAXES
+
+// In this way you'll just store the promise in the variable `countryData`
+// const countryData = whereAmI(`RU`);
+// console.log(countryData); // Promise {<pending>}
+
+// If you want to store the actual value (not promise) you need to use .then()
+whereAmI(`RU`).then((countryData) => console.log(countryData)); // OK#
+
+// calling with error
+whereAmI(`ITAS`)
+  .then((countryData) => console.log(countryData))
+  .catch((err) => console.log(err.message))
+  .finally(() => console.log(`I'm executed no matter what`));
+
+// OUTPUT:  Something went wrong: Error: The Country Code Doesn't Exist
+//          The Country Code Doesn't Exist
+//          I'm executed no matter what
+
+
+
+// ----- 2. USING async IIFE
+
+(async function () {
+  try {
+    const countryData = await whereAmI(`ITAS`);
+    console.log(countryData);
+  } catch (err) {
+    console.log(err);
+  }
+  console.log(`I'm executed no matter what`);
+})();
+
+// OUTPUT:  Something went wrong: Error: The Country Code Doesn't Exist
+//          The Country Code Doesn't Exist
+//          I'm executed no matter what
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Running promises in parallel Promise.all() ---
+
+/* 
+ -  If you need to make multiple async operations which not depends on one another you  
+    should always make them in parallel (in the same time) to save the load time
+ -  To do that you can use the static method Promise.all(arrayOfPromises)
+ -  So Promise.all() combinator function accepts an array of promises and return a new promise in an array 
+ -  Remember, if only one the given promises rejects, the whole Promise.all() will be rejected
+*/
+
+
+// just a helper function which returns a promise
+const getJsonOrError = function (url, errorMSG = `somethig went wrong...`) {
+  // first fetch a promise
+  return fetch(url).then((responseValue) => {
+    if (!responseValue.ok) {
+      throw new Error(`${errorMSG}: ${responseValue.status}`);
+    }
+    return responseValue.json();
+  }); // handling promise using then() and reading data using json()
+};
+
+// function where different async tasks run in parallel
+const get3Capitals = async function (c1, c2, c3) {
+  try {
+    const countries = await Promise.all([
+      getJsonOrError(`https://restcountries.com/v3.1/alpha/${c1}`),
+      getJsonOrError(`https://restcountries.com/v3.1/alpha/${c2}`),
+      getJsonOrError(`https://restcountries.com/v3.1/alpha/${c3}`),
+    ]);
+    console.log(countries); // [Array(1), Array(1), Array(1)]
+    countries.forEach((country) => {
+      console.log(
+        `The capital of ${country[0].name.common} is ${country[0].capital[0]}`
+      );
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// calling
+get3Capitals(`ita`, `rus`, `usa`); // The capital of Italy is Rome etc...
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Other Promise combinators: race, allSettled, all, any ---
+
+/* 
+Promise combinators are functions that manage multiple promises together. These functions help in handling the asynchronous operations more efficiently by providing different ways to wait for multiple promises.
+
+- Promise.race(iterable): Accepts an iterable of promises and returns a single Promise that resolves or rejects as soon as one of the promises in the iterable resolves or rejects, with the value or reason from that promise.
+  - Useful for timeout functionality or returning the result from the fastest promise.
+  - Short-circuits when the first promise settles (either resolves or rejects).
+
+- Promise.allSettled(iterable): Introduced in ES2020, it takes an iterable of promises and returns a promise that resolves after all of the given promises have either resolved or rejected, with an array of objects that each describes the outcome of each promise.
+  - Useful for when you want to wait for all promises to settle regardless of the outcome.
+  - Each object in the returned array has either { status: 'fulfilled', value: resultValue } for resolved promises, or { status: 'rejected', reason: rejectionReason } for rejected ones.
+
+- Promise.all(iterable): Takes an iterable of promises and returns a single Promise that resolves when all of the promises in the iterable have resolved, or rejects with the reason of the first promise that rejects.
+  - Useful for aggregating results of multiple promises.
+  - Short-circuits and rejects immediately upon any of the input promises rejecting.
+
+- Promise.any(iterable): Introduced in ES2021, it takes an iterable of Promise objects and, as soon as one of the promises in the iterable fulfills, returns a single promise that resolves with the value from that promise.
+  - If all of the passed-in promises reject, Promise.any throws an AggregateError - a new error type that groups together individual errors.
+  - Useful for accepting the first promise that succeeds, ignoring any failures unless all promises fail.
+
+Best Practices:
+- Always handle possible rejections in promises to avoid unhandled promise rejections.
+- Consider using `allSettled` for cases where you need to perform actions on all promises, regardless of their individual outcomes.
+- Use `race` with caution, especially for cleanup or cancellation tasks, as only the first settled promise will affect the race outcome.
+- `any` can be particularly useful when querying multiple sources where the response from any source is sufficient.
+
+*/
+
+// custom function which returns rejected promise after given seconds
+const timeoutPromise = function (seconds) {
+  return new Promise(function (_, reject) {
+    setTimeout(
+      () => reject(new Error(`request took too long`)),
+      seconds * 1000
+    );
+  });
+};
+
+//  Promise.race()
+(async function () {
+  try {
+    const firstSettledPromise = await Promise.race([
+      getJsonOrError(`https://restcountries.com/v3.1/alpha/ita`),
+      getJsonOrError(`https://restcountries.com/v3.1/alpha/rus`),
+      timeoutPromise(5),
+    ]);
+    console.log(firstSettledPromise);
+  } catch (err) {
+    console.error(err.message);
+  }
+})();
+
+
+
+
+
+
+
+
+
+
+
+
