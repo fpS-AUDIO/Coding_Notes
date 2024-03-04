@@ -10,6 +10,7 @@
 - Returning values from async functions
 - Running promises in parallel Promise.all()
 - Other Promise combinators: race, allSettled, all, any
+- top level await (2022)
 
 
 
@@ -265,7 +266,20 @@ const timeoutPromise = function (seconds) {
 
 
 
+// --------------------------------------------------------------------------------- //
+// --- top level await (2022) ---
 
+/* Theory:
+ -  starting from ES2022 we can use (in modules) `await` keyword outside of async functions
+ -  it's called top level await
+ -  the syntax is the same, but you need to use module <script type="module">
+
+(!!) IMPORTANT:
+you need to be very careful using in top level code becuase, using it 
+outside the async function, it blocks  the execution of the entire module now.
+And if you also export this module in other module, the module which will import
+the module with blocking code will also wait for this blocking code.     
+*/
 
 
 

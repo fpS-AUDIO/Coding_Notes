@@ -1,0 +1,170 @@
+
+
+
+///////////////////////////////
+// JS Development - overview //
+///////////////////////////////
+
+- Basics of Nowadays Development
+- Modules Review
+- How to Import and Export Modules
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Basics of Nowadays Development ---
+
+/*
+ -  Today the JS projects are devided in different modules.
+    Modulus share data between them and keep code organized and maintainable.
+    There are also a lot of 3rd-party open source modules called packages shared in NPM by developers.
+
+ -  NPM (Node Package Manager) contains open-source packages like React, jQuery, Leaflet etc.
+    NPM was originally developed with node.js by today is the main package manager for JS.
+    So NPM is both the repository with packages and a program that we use to install and manage these packages.
+
+ -  When the project (code) is complete it needs to go through a build process, where 1 big final JS bundle is built.
+    That's the final file which will be deployed to web server to production.
+
+ -  Bundling: join all modules into 1 big file (eliminate unsued code and compress code).
+    We need this because old browsers don't support modules and it's better for performance
+    send less files to a browser.
+
+ -  Transpilling/Polyfilling: convert modern JS back to ES5. 
+    We need this for compatibility of old browsers. 
+    Usully it's done using Babel.
+
+ -  These tools take our raw code and transform it into a JavaScript bundle.
+    These tools are also available on NPM.
+    Most common build tools available are:
+    1. webpack - is the most popular but hard and confusing to set it up. 
+    2. parcel - zero configuration bundle.
+*/
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- Modules Review ---
+
+
+/* ----- Module in programming:
+ -  is a reusable piece of code that encapsulates implementation details.
+
+ -  is usually a standalone file (but doesn't have to be)
+
+ -  has imports and exports
+    exports: you can export values out of a module (it's public API)
+    imports: this public API is consumed by importing these values in another module
+    
+ -  dependencies of importing modules are modules from which we import values,
+    because the code which is in the module can not work without code from external module.
+
+ -  Benefits of modules:
+    * Compose software: modules are small building blocks that we put together to build complex apps.
+    * Isolate components: modules can be developed in isolation without thinking about entire database.
+    * Abstract code: implement low-level code in modules and import these abstractions into other modules.
+    * Organized codebase: modules naturally lead to a more organmized codebase.
+    * Reuse code: modules allow us to easly reuse the same code, even across multiple projects.
+*/
+
+/* ----- Module in JavaScript:
+ - Before ES6 we had modules but we had to implement them ourselfs or use external libraries.
+ - Since ES6 JS has native muilt-in module system and they'restored in files, exactly one module per file.
+
+
+ Difference between old scripts and modern modules:
+ -> ES6 modules:
+   * all top level variables are scoped to the module, so they're privat to the module by default
+     (the only way an outside module can access a value that's inside of a module is by exporting that value).
+   * they're always executed in the strict mode
+   * `this` keyword is undefined in top level
+   * you can import and export values between them (need to happen in top level)
+   * all imports are hoisted
+   * <script type="module">
+   * downloading module files is always automatically happens in asynchronous way
+     (while reading is synchronous while parsing, this allows bundling an dead code elimination,
+     so the code in imported module is always executed first)
+   * the connection of exported/imported values is a life-connection (not copied by they're referenced)
+   
+ -> Normal scripts:
+   * all top level variables are always global and it can lead to problems like global namespace pollution
+   * they're executed in "sloppy" mode by default (need to activate strict mode)
+   * `this` keyword is window object in top level
+   * importing and exporting values are completly impossible
+   * downloading by default in synchronous way (unless you use async or defer attributes)
+*/
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- How to Import and Export Modules ---
+
+/* ----- Remember:
+ -  use type attr: <script defer type="module" src="./script.js"></script>
+ -  it's strict mode by defauylt
+ -  the imported module code is always executed first
+ -  the variables declared in the module are scoped to that module
+ -  you can mix default and named exports but it's a really bad practice
+ -  there are 2 types of exports:
+   1. Named exports
+   2. Default exports (when need to export only 1 thing per module)
+*/
+
+
+
+// ----- Named Exports ----- //
+
+const cart = [];
+
+// exporting function using `export` keyword
+export const addToCart = function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(`${quantity} ${product} added to cart`);
+};
+
+const price = 22.5;
+let totalQuantity = 245;
+
+// exporting multiple things and using `as` to change variable name
+export { price as totalPrice, totalQuantity };
+
+
+
+// ----- Named Imports ----- //
+
+// import entire module with its own code
+import "./testRandomModule.js";
+
+// import something declared with `export` keyword in module, write exactly same name
+// and using `as` to change variable name
+import { addToCart, totalPrice, totalQuantity as quantity} from "./testRandomModule.js";
+
+// import everything (*) as varibaleName from src
+// this will create and object containing everything exported from module
+import * as coolModule from "./testRandomModule.js";
+
+coolModule.addToCart(2, "apple");
+console.log(totalPrice);
+
+
+
+// ----- Default Exports ----- //
+
+// default export 
+// Syntax: export default value (without any name)
+export default function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(`${quantity} ${product} added to cart`);
+}
+
+
+
+// ----- Default Imports ----- //
+
+// this will import the default export with the given name, in this case we called it "addFn"
+import addFn from "./testRandomModule.js";
+
+
+
+// --------------------------------------------------------------------------------- //
+// --- ---

@@ -1,0 +1,61 @@
+
+
+////////////////////////////
+// JS Old modules pattern //
+////////////////////////////
+
+/* ----- Theory:
+ -  Defore the ES6 modules developers where implementing the modules by themselves
+    using IIFE and closures. So they implement an IIFE where they return an object
+    containing everything they want to export, then this IIFE was stored in a variables,
+    and thanks to the closures, that variable had access to its birth scope.
+ -  The problems are:
+    * you need to be very careful with the order in which you declare these own .js files in html
+    * you will have all these variables living in the global scope
+    * you also couldn't bundle them togetherusing a module bundler
+
+EXAMPLE BELOW:  */
+
+const customCartModule = (function () {
+  const cart = [];
+  const price = 22.5;
+  const totQuantity = 245;
+
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} added to cart`);
+  };
+
+  return {
+    addToCart,
+    price,
+  };
+})();
+
+customCartModule.addToCart(`car`, 2);   // 2 car added to cart
+
+
+
+// ---------------------------------------------------------------------------------------------- //
+// --- CommonJS modules ---
+
+/* 
+    Besides native ES Modules and the module pattern (above), there are also other module systems,
+    but they're relied on some external implementations.
+
+    The most common are:
+    - AMD Modules
+    - CommonJS modules
+
+    CommonJS modules have been used in node.js for almost all of its existence.
+    Almost all the modules in the npm repository still use the CommonJS module system.
+    It's because originally npm was intended for node.js but then it became the standrd repository for all JS.  */
+
+// EXAMPLE OF EXPORTING (WILL NOT WORK OUTSIDE THE NODE.JS)
+export.addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} added to cart`);
+  };
+
+// EXAMPLE OF IMPORTING (WILL NOT WORK OUTSIDE THE NODE.JS)
+const { addToCart } = require(`./path/randomModule.js`)
