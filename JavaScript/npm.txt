@@ -1,0 +1,46 @@
+
+
+////////////
+// JS NPM //
+////////////
+
+
+/* ----- Basics:
+ -  NPS is Node package Manager.
+    It's both a software on a computer and also a package repository.
+
+ -  To check if it's installed check the version, in case install node.JS
+    >>>npm -v
+
+ -  To use npm, you need to initialize it in each project (cd .../path)
+    >>>npm init
+
+ -  Then, after answering some question, npm will create `package.json` file
+    `package.json` stores the entire configuration of the project.
+
+ -  When you install a package (e.g. `npm install leaflet`) the `package.json`
+    file will be updated. The `dependecies` field will be created containing all
+    dependecies and their versions.
+
+ -  Also, inside the project folder, the `node_modules` folder will be created.
+    This folder will contain all libraries folders.
+    If you need to move the project to another computer, or share it in GIT, 
+    you should never ever include the node modules folder, because all of these files, 
+    they are already at NPM. Thanks to `package.json` file you can automatically install
+    all dependecies:
+    >>>npm install  /  npm i  (withot any package name)
+
+ -  To use most of modules it's easier with a module bundler because they're using
+    the commonJS module system.
+    For example you can use lodash-es (es modules) without commonJS and you can
+    implement a default import without any external module system.
+
+ -  when you install a dev dependecy use `--save-dev` (e.g. npm i parcel --save-dev)
+    a dev dependecy is basically like a tool that you need to build your application,
+    so it's not included in your code. 
+    The dev dependecies also appears in the new fields inside the package.json file
+    called `devDependencies`.
+
+ -  to install packages globally just add `-g` flag
+
+*/

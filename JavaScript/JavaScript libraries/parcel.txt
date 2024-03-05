@@ -1,0 +1,60 @@
+
+
+
+
+//////////////////////////
+// Parcel Module Bundle //
+//////////////////////////
+
+/*
+ -  Meanwhile the webpack is the most popular bundler, 
+    especially in React development, but it requires a lot of configuration
+
+ -  Parcel is a build tool on npm and it works out of the box without any configuration
+
+ -  first you need to install it like a devDependency
+    >>>npm install parcel --save-dev
+
+ -  when you run parcel (development step):
+    * it creates a script, so you don't need to use modules,
+      so in html <script defer src"...">   don't include type="module" for older browser compatibility
+    * while passing entry point parcel will bundle all modules together and also starts a new development server
+    * it also creates `dist` folder (distribution) and it's a production folder
+
+ -  inside the script you can activate `hot module replacement`.
+    It means whenever you change one of the modules, it'll trigger a rebuild,
+    but without triggering a whole page reload.
+    Below there is code to activate this mode, this code will not be included because it understands only parcel
+
+ -  in all module bundlers you don't need to specify the whole path while including a module.
+    for example you can simply write: "import cloneDeep from `lodash-es`" and not `./node_modules/lodash-es/cloneDeep.js`
+    it works with all kind of assets like html, css, imgs, modules, commonJS modules etc...
+            
+ -  you have 2 options to use parcel in console:
+    1.  use npx (application built into a NPM)
+        here we're passing entry point (index.html) to parcel where the script tags are included  
+        >>>npx parcel index.html 
+    2.  use npm scripts
+        inside the `package.json` file, under the `scripts` field you can specify the scripts
+        where key is the name of the script and value is the script itself
+        example script:     "start": "parcel index.html"
+        example in console: >>>npm run start
+
+ -  to build the final compressed bundle: "build": "parcel build index.html"
+    this script compresses the script making it more performant
+*/
+
+
+// ----- CODE EXAMPLES ----- //
+
+// package.json npm script
+"scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+}
+
+// activate hot module replacement
+if (module.hot) {
+    module.hot.accept();
+}
+

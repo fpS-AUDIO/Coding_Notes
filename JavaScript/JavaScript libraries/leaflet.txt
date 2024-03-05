@@ -2,7 +2,7 @@
 
 
 /////////////////////
-// Leaflet Linrary //
+// Leaflet Library //
 /////////////////////
 
 // Source:  https://leafletjs.com/

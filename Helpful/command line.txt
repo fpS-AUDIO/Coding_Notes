@@ -1,0 +1,145 @@
+
+
+
+////////////////////////////////////////////////////
+// Enhanced Windows Command Line (CMD) Commands //
+////////////////////////////////////////////////////
+
+
+// Displaying Directory Contents
+// ==============================
+// 'dir' - Lists files and directories.
+// Syntax: dir [options] [path]
+// Options:
+//  /p - Pause after each screenful.
+//  /w - Wide listing format.
+//  /s - Lists files in specified directory and subdirectories.
+//  /b - Bare format (no heading information or summary).
+//  /q - Display the owner of the file.
+// Example: dir /p
+
+
+// Changing Directories
+// ====================
+// 'cd' - Changes the current directory.
+// Syntax: cd [path] | cd.. | cd\ | cd /d [path]
+//  cd.. - Up one directory level.
+//  cd\  - To the root directory.
+//  cd /d - Change current drive in addition to changing directory.
+// Example: cd /d D:\NewFolder
+
+
+// Clearing the Terminal
+// =====================
+// 'cls' - Clears the console screen.
+// Syntax: cls
+
+
+// Creating and Deleting Directories
+// =================================
+// 'mkdir' or 'md' - Creates a new directory.
+// 'rmdir' or 'rd' - Removes a directory.
+// Syntax: mkdir [directoryName] | md [directoryName]
+//         rmdir [directoryName] /s /q | rd [directoryName] /s /q
+// Example: mkdir NewFolder
+//          rmdir /s /q OldFolder
+
+
+// Copying and Moving Files
+// ========================
+// 'copy' - Copies files.
+// 'move' - Moves or renames files.
+// Syntax: copy [source] [destination] [options]
+//         move [source] [destination]
+// Options: /y - Suppress confirmation prompt.
+// Example: copy report.txt D:\Backup\report.txt
+//          move project.docx D:\Documents
+
+
+// Viewing and Editing Text Files
+// ==============================
+// 'type' - Displays the content of a text file.
+// 'notepad' - Opens a file in Notepad.
+// Syntax: type [fileName]
+//         notepad [fileName]
+// Example: type readme.txt
+//          notepad config.txt
+
+
+// Finding Files and Content Within Files
+// ======================================
+// 'find' - Searches for a text string in a file.
+// 'findstr' - Searches for patterns in files.
+// 'where' - Locates files matching a search pattern.
+// Syntax: find "[string]" [pathToFile]
+//         findstr [options] [string] [files]
+//         where [options] pattern
+// Example: find "Error" log.txt
+//          findstr /s /i "hello" *.txt
+//          where /r C:\ *.txt
+
+
+// Network Commands
+// ================
+// 'ping' - Tests the network connection.
+// 'ipconfig' - Displays network configuration.
+// Syntax: ping [options] [hostname | IP address]
+//         ipconfig [options]
+// Example: ping www.example.com
+//          ipconfig /all
+
+
+// File and Directory Attributes
+// =============================
+// 'attrib' - Changes or views file attributes.
+// Syntax: attrib [+r|-r] [+a|-a] [+s|-s] [+h|-h] [path]
+// Example: attrib +h secret.txt
+
+
+// Environment Variables
+// =====================
+// 'set' - Sets or displays environment variables.
+// Syntax: set [variable=[value]]
+// Example: set PATH=%PATH%;C:\NewProgram\bin
+
+
+// Task Management
+// ===============
+// 'tasklist' - Lists running processes.
+// 'taskkill' - Ends one or more tasks or processes.
+// Syntax: tasklist
+//         taskkill /im [imageName] /f
+// Example: tasklist
+//          taskkill /im notepad.exe /f
+
+
+// Redirecting Command Output
+// ==========================
+// '>'  - Redirects output to a file, overwrites existing.
+// '>>' - Appends output to the end of a file.
+// Syntax: [command] > [fileName]
+//         [command] >> [fileName]
+// Example: dir > dirlist.txt
+
+
+// Piping Commands
+// ===============
+// '|' - Sends the output of one command to another.
+// Syntax: [command1] | [command2]
+// Example: dir | find "Report"
+
+
+// Comments and Scripting
+// ======================
+// REM or :: - Adds comments in batch files.
+// Example: REM This is a comment
+//          :: This is also a comment
+
+
+// Error Handling in Scripts
+// =========================
+// 'if errorlevel' - Checks the error level of the previous command.
+// Syntax: if errorlevel [number] [command]
+// Example: if errorlevel 1 exit /b %errorlevel%
+
+
