@@ -1,0 +1,51 @@
+
+/**
+ * Core-js Documentation Notes
+ * ----------------------------
+ * 
+ * Overview:
+ * Core-js is a modular standard library for JavaScript, providing polyfills for ECMAScript features,
+ * including proposals not yet finalized. It's widely used for ensuring compatibility across different browsers
+ * and environments, covering ECMAScript up to the latest versions, and even includes some cross-platform WHATWG/DOM features.
+ * 
+ * Features:
+ * - Polyfills for ECMAScript 5, 6 (ES2015), 7 (ES2016+), and future proposals.
+ * - Includes stable ECMAScript features required for modern development.
+ * - Supports web standards like DOM and WHATWG.
+ * - Modular design allows inclusion of only required features, reducing bundle size.
+ * 
+ * Installation:
+ * npm install core-js
+ * 
+ * Usage Example:
+ * // Importing entire core-js library (not recommended for production)
+ * import 'core-js';
+ * 
+ * // Importing specific features
+ * import 'core-js/es/array';
+ * import 'core-js/proposals/math-extensions';
+ * 
+ * // Using a polyfill for a specific feature (e.g., Promise)
+ * import 'core-js/features/promise';
+ * 
+ * Best Practices:
+ * - Prefer importing specific features to reduce the impact on bundle size.
+ * - Use in conjunction with a transpiler like Babel for the best browser support.
+ * - Regularly update core-js dependency to benefit from bug fixes and new features.
+ * 
+ * Configuration with Babel:
+ * Babel can be configured to use core-js for polyfilling JavaScript features based on the target environment.
+ * This ensures that only necessary polyfills are included in your bundle.
+ * 
+ * Example .babelrc configuration:
+ * {
+ *   "presets": [
+ *     ["@babel/preset-env", {
+ *       "useBuiltIns": "usage",
+ *       "corejs": 3,
+ *     }]
+ *   ]
+ * }
+ * 
+ * Note: "useBuiltIns": "usage" automatically imports only the polyfills needed for the target environment.
+ */

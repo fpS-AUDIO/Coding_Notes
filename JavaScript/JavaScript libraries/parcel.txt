@@ -42,10 +42,36 @@
 
  -  to build the final compressed bundle: "build": "parcel build index.html"
     this script compresses the script making it more performant
+
+ - parcel automatically uses Babel to transpile the code, but Babel can only transpile ES6 Syntax, 
+   and the real new features (e.g. Promise) can not be transpiled.
+   To solve this you can polyfill them using two packages below (also code is below)
+   To polyfill the code you should install 2 libraries:
+   1. >>>npm install core-js                 --> for polyfilling
+   2. >>>npm install regenerator-runtime     --> for polyfilling async functions
+
+
+NOTE:
+   *  To "transpile" code means to transform source code written in one programming language or version 
+      of a language into another language or version that has a similar level of abstraction.
+   *  A "polyfill" is a shim or fallback implementation of a feature that mimics a future API, 
+      providing backward compatibility for older browsers that do not support that feature natively.
+      core-js basically implements the new ES6 method inside the Prototype object.
 */
 
 
+
 // ----- CODE EXAMPLES ----- //
+
+
+
+// import these for polyfilling
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
+
+
+
 
 // package.json npm script
 "scripts": {
@@ -53,8 +79,12 @@
     "build": "parcel build index.html",
 }
 
+
+
 // activate hot module replacement
 if (module.hot) {
     module.hot.accept();
 }
+
+
 

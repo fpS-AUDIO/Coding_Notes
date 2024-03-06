@@ -1,0 +1,73 @@
+
+
+
+/**
+ * REVIEW: MODERN AND CLEAN CODE
+ *
+ * READABLE CODE
+ * - Write code so that others can understand it: Clear and concise code promotes collaboration and maintainability.
+ * - Write code so that you can understand it in 1 year: This means avoiding "magic numbers" and unclear shortcuts in your logic.
+ * - Avoid too “clever” and overcomplicated solutions: Simplicity is key; complex code is harder to test and maintain.
+ * - Use descriptive variable names: Choose names that reveal intent, what they contain and why they exist.
+ * - Use descriptive function names: Function names should clearly state what they do and, if applicable, what they return.
+ *
+ * GENERAL
+ * - Use DRY principle (Don't Repeat Yourself): Refactor repetitive code into reusable functions or modules.
+ * - Don't pollute the global namespace: Encapsulate functionalities within functions or modules to avoid conflicts.
+ * - Don't use 'var': Instead, use 'let' for block-scoped variables, and 'const' for variables which should not be re-assigned.
+ * - Use strong type checks (=== and !==): Prevents unexpected type coercion, making your code more predictable.
+ *
+ * FUNCTIONS
+ * - Single Responsibility Principle: Functions should do only one thing, making them easier to test and debug.
+ * - Limit function parameters: Aim for no more than 2-3 parameters. Use objects if you need more data.
+ * - Use default parameters to make functions more robust:
+ *   function greet(name = 'Guest') { console.log(`Hello, ${name}!`); }
+ * - Return same data type as received: This makes the functions' behaviors consistent and predictable.
+ * - Arrow functions: Use them for short, concise functions and when you need to preserve the 'this' context.
+ *
+ * OOP (Object-Oriented Programming)
+ * - Use ES6 classes for structure and clarity.
+ * - Encapsulate data: Keep data and the methods that affect it within the same object, and control its access.
+ * - Don't mutate objects from outside: Use setters and getters to interact with object properties.
+ * - Implement method chaining by returning 'this' in class methods.
+ *   class Car {
+ *     setColor(color) {
+ *       this.color = color;
+ *       return this;
+ *     }
+ *     setWheels(wheels) {
+ *       this.wheels = wheels;
+ *       return this;
+ *     }
+ *   }
+ * - Do not use arrow functions as methods in regular objects if you need to access other properties with 'this'.
+ *
+ * AVOID NESTED CODE
+ * - Use early return (guard clauses) to avoid deep nesting:
+ *   if (!condition) return;
+ *   // code continues here without a nested if-statement
+ * - Use ternary (conditional) or logical operators for short, simple conditions.
+ * - Prefer multiple 'if' statements over complex 'if/else-if' ladders for better clarity.
+ * - Avoid 'for' loops where possible; use array methods like 'forEach', 'map', 'filter', 'reduce' etc.
+ * - Avoid callback-based async patterns in favor of Promises and Async/Await to prevent "callback hell".
+ *
+ * ASYNCHRONOUS CODE
+ * - Use async/await for handling asynchronous code, which allows for writing asynchronous code as if it were synchronous.
+ * - When handling multiple independent promises, use 'Promise.all' to run them in parallel:
+ *   await Promise.all([asyncTask1(), asyncTask2()]);
+ * - Always handle errors and promise rejections to prevent silent failures:
+ *   try {
+ *     const data = await fetchData();
+ *   } catch (error) {
+ *     console.error('Error fetching data:', error);
+ *   }
+ *
+ * Additional Considerations:
+ * - Commenting: Good code is self-explanatory, but don't hesitate to write comments that explain the "why".
+ * - Code formatting: Use a linter and code formatter, like ESLint and Prettier, to enforce consistent code style.
+ * - Refactoring: Regularly revisit and refactor your code, taking advantage of new language features and design patterns.
+ * - Testing: Write tests for your functions and classes to ensure they work as expected and to prevent regressions.
+ * - Keep up with the latest developments in the language and ecosystem to continuously improve your code quality.
+ *
+ * Remember, clean code is not just about following rules, but about practicing writing code that is easy to read, understand, and maintain.
+ */

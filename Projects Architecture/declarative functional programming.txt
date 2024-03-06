@@ -1,0 +1,65 @@
+
+
+/**
+ * FUNCTIONAL PROGRAMMING PRINCIPLES
+ * 
+ * - Declarative programming paradigm: Focuses on 'what' to do (the logic), rather than 'how' to do it (the process).
+ * - Emphasizes writing software with pure functions, which are functions that have no side effects and do not mutate any external state.
+ * 
+ * PURE FUNCTIONS AND SIDE EFFECTS
+ * - Pure function: Given the same inputs, always returns the same outputs, and does not cause side effects.
+ * - Side effect: Any interaction with the outside world from within a function, like mutating external variables, writing to a database, or console logging.
+ * 
+ * IMMUTABILITY
+ * - State should not be mutated directly. Instead, operations on data should return new copies of the data, leaving the original data unchanged.
+ * 
+ * HIGHER-ORDER FUNCTIONS
+ * - Functions that take other functions as arguments or return functions as their result, enabling techniques like .map(), .filter(), and .reduce().
+ * 
+ * CURRYING AND PARTIAL APPLICATION
+ * - Currying: Transforming a function with multiple arguments into a sequence of functions each taking a single argument.
+ *   const add = a => b => a + b; // Curried addition
+ *   const addThree = add(3); // Partial application
+ *   console.log(addThree(4)); // Returns 7
+ * - Partial Application: Applying a few arguments to a function and returning another function that is called with the remaining arguments.
+ * 
+ * FUNCTIONAL COMPOSITION
+ * - Creating new functions by composing simpler functions, improving reusability and modularity.
+ *   const compose = (f, g) => x => f(g(x));
+ *   const multiplyByTwo = x => x * 2;
+ *   const addThree = x => x + 3;
+ *   const multiplyByTwoAndAddThree = compose(addThree, multiplyByTwo);
+ *   console.log(multiplyByTwoAndAddThree(5)); // Returns 13
+ * 
+ * DECLARATIVE SYNTAX AND STRUCTURES
+ * - Favor declarative constructs such as array methods, ternary operators, and template literals for more expressive code.
+ * 
+ * FUNCTIONAL LIBRARIES AND UTILITIES
+ * - Consider using libraries such as Lodash or Ramda that provide utility functions for common operations in a functional style.
+ * 
+ * REACTIVE PROGRAMMING
+ * - Utilize reactive programming paradigms with libraries like RxJS to handle asynchronous data streams in a functional manner.
+ * 
+ * FUNCTIONAL PROGRAMMING IN REACT AND REDUX
+ * - React embraces functional programming concepts with functional components and hooks.
+ * - Redux utilizes reducers (pure functions) to handle state transitions, which is a core concept in functional programming.
+ * 
+ * IMPERATIVE VS. DECLARATIVE CODE
+ * 
+ * - Imperative code tells the machine 'HOW' to do something: It outlines every step to achieve a result.
+ *   Example of Imperative code:
+ *   const arr = [2, 4, 6, 8];
+ *   const doubled = [];
+ *   for (let i = 0; i < arr.length; i++) {
+ *     doubled[i] = arr[i] * 2;
+ *   }
+ * 
+ * - Declarative code tells the machine 'WHAT' to do: The process is abstracted away, often using expressions.
+ *   Example of Declarative code:
+ *   const arr = [2, 4, 6, 8];
+ *   const doubled = arr.map(n => n * 2);
+ * 
+ * SUMMARY
+ * - Embracing functional programming leads to cleaner, more concise code that can be easier to reason about, debug, and test.
+ * - Incorporating these principles requires a shift in thinking to prioritize immutable data structures and operations, pure functions, and declarative expressions over imperative instructions.
+ */
