@@ -1,0 +1,73 @@
+
+
+//////////////////////////
+// the MVC architecture //
+//////////////////////////
+
+// - A perfect architecture has
+// - Every good architecture has this components
+// - The model-view-controller (MVC) architecture
+
+
+
+
+/* ----- A perfect architecture has:
+
+ -  structure:          how to organize the code
+ -  maintainability:    easly change code in future
+ -  expandability:      add new features
+*/
+
+
+
+/* ----- Every good architecture has this components:
+
+ -    business logic
+    is the code which solves the business problem,
+    so it' really related to what the business does and to what it needs.
+    example: sending messages, storing transaction, calculate food cost
+
+ -    state
+    it stores all the data about the application (applications front end)
+    and it should be `single source of truth` 
+    i.e. dinamically update UI basing on state and vice versa
+    there're many state management libraries like Redux or MobX.
+
+ -    http library
+    responsible for making and reciving AJAX requests
+
+ -    application logic (router)
+    code that is connected to the technical implementation details 
+    so it's not connected to the business problem
+    example: handling of UI events and navigation on the page
+
+ -    presentation logic (UI layer)
+    code that is connected to visible part of the application,
+    essentially displays application state
+
+NOTE:
+    every good architecture separates all these components without
+    mixing everything together in one big file.
+    one of the best architectures model is `the model-view-controller (MVC) architecture`
+*/
+
+
+
+/* ----- The model-view-controller (MVC) architecture:
+
+this architecture contains 3 big parts:
+
+  1. Model
+      is the application's data (contains state and business logic which manipulates the state)
+      it also containes http library (get data from web like API or backend)
+
+  2. Controller
+      is the application logic
+      so it's like a bridge between model and the view which don't know
+      about one another.
+      controller dispatches (separates) tasks between model and view
+
+  3. View
+      is the presentation logic (interacts with user)
+*/
+

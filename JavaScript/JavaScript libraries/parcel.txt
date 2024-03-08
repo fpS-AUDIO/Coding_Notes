@@ -13,7 +13,7 @@
  -  Parcel is a build tool on npm and it works out of the box without any configuration
 
  -  first you need to install it like a devDependency
-    >>>npm install parcel --save-dev
+    >>>npm install --save-dev parcel
 
  -  when you run parcel (development step):
     * it creates a script, so you don't need to use modules,
