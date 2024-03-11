@@ -1,0 +1,176 @@
+
+
+
+////////////////////////////
+// DOM Updating Algorithm //
+////////////////////////////
+
+/**
+ * Algorithm to Update DOM Efficiently
+ *
+ * Efficient DOM updating is essential for high-performance web applications. This involves minimizing
+ * direct manipulations of the DOM to avoid costly performance impacts. Using a Virtual DOM allows for
+ * these changes to be applied more efficiently by only updating what's necessary in the real DOM.
+ *
+ * Steps:
+ * 1. Identify Changes: Track state changes within your application to determine what has changed. This
+ *    can be done through state management patterns or libraries (e.g., Redux, MobX, Vue's reactive system,
+ *    or React's useState and useReducer hooks).
+ *
+ * 2. Update Virtual DOM: Reflect these changes in the virtual DOM by creating a new virtual tree that
+ *    represents the updated UI. This step involves rendering your components with the updated state to
+ *    produce a new virtual DOM tree.
+ *    Example:
+ *    // Illustrative example of a virtual DOM update
+ *    function virtualComponent(state) {
+ *      return { type: 'div', props: { children: state.message } };
+ *    }
+ *
+ * 3. Diffing: Use a diffing algorithm to compare the new virtual DOM tree with the previous one. This
+ *    identifies the least amount of changes needed to make the real DOM match the new virtual DOM.
+ *    The diffing algorithm typically involves a recursive depth-first traversal of the virtual DOM tree.
+ *    Example:
+ *    // Simplified diffing function example
+ *    function diff(oldVNode, newVNode) {
+ *      if (oldVNode.type !== newVNode.type) {
+ *        // Replace node
+ *      } else if (typeof newVNode === 'string') {
+ *        // Update text node
+ *      } else {
+ *        // Compare attributes and children
+ *      }
+ *    }
+ *
+ * 4. Batch Updates: Aggregate detected changes to minimize layout thrashing. This means applying all DOM
+ *    updates in a single pass to avoid unnecessary reflows and repaints. Frameworks like React automatically
+ *    batch state updates that occur within the same event loop cycle.
+ *
+ * 5. Apply Changes: Efficiently apply the computed changes to the real DOM. This usually involves directly
+ *    updating attributes, inserting or removing nodes, and updating text content based on the diffing results.
+ *    // Example applying changes (conceptual)
+ *    changes.forEach(change => applyChangeToDOM(change));
+ *
+ * 6. Re-render: The browser then re-renders the DOM. Optimizing the number of changes and using efficient
+ *    DOM update strategies can significantly reduce the performance cost of this step.
+ *
+ * Best Practices:
+ * - Minimize Direct DOM Manipulation: Prefer updating state and relying on the framework or library to
+ *   efficiently update the DOM.
+ * - Keyed Lists: Use unique keys for list items to improve the efficiency of list updates by allowing the
+ *   diffing algorithm to identify and reuse existing nodes.
+ * - Avoid Unnecessary Rerenders: Employ memoization, PureComponent, shouldComponentUpdate, or React.memo to
+ *   skip rendering for components that have not changed their props or state.
+ * - Optimize Large Lists and Tables: Implement windowing or virtualization for rendering only the visible
+ *   portion of large lists, significantly reducing the number of DOM nodes created and managed.
+ *
+ * Additional Considerations:
+ * - Event Delegation: Use event delegation to minimize the number of event handlers, by attaching a single
+ *   event listener to a parent element rather than individual listeners to each child.
+ * - CSS Animations and Transitions: Be cautious with CSS animations and transitions, as they can cause reflows
+ *   and repaints. Optimize critical animations using properties that do not trigger layout changes (e.g., transform).
+ *
+ * Conclusion:
+ * Understanding and applying these principles, developers can build smooth and responsive interfaces, even for
+ * complex applications with significant UI updates. Leveraging virtual DOM technologies and following best practices
+ * for efficient updates are key strategies for modern web development.
+ */
+
+
+
+// ----- EXAMPLE OF ALGORITHM TAKEN FROM PET PROJECT -----
+
+
+export default class View {
+  _data;
+  _errorMessage = `We could not find the recipe. Please try another one!`;
+  _message = `HELLO' I'm TEMP MESSAGE`;
+
+  _clearContainer() {
+    this._parentElement.innerHTML = ``;
+  }
+
+  render(data) {
+    if (!data || (Array.isArray(data) && data.length === 0))
+      return this.renderError();
+
+    this._data = data;
+    const markup = this._generateMarkup();
+    this._clearContainer();
+    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
+  }
+
+  // updates only text and attributes in DOM
+  update(data) {
+    // if (!data || (Array.isArray(data) && data.length === 0))
+    //   return this.renderError();
+
+    // indeed update _data (state)
+    this._data = data;
+    // as if we want to render new markup we need the new markup to compare it with the old markup
+    const newMarkup = this._generateMarkup();
+
+    // ALGORITHM TO UPDATE DOM:
+    // ========================
+    // converting the newMarkup (string) to a DOM Object:
+    //  - document.createRange() returns range
+    //  - range.createContextualFragment() converts html string to the real DOM object
+    const virtualDOM = document
+      .createRange()
+      .createContextualFragment(newMarkup);
+
+    // selecting the NodeList of all elements of virtual DOM and converting it into a real array
+    const newElements = Array.from(virtualDOM.querySelectorAll(`*`));
+
+    // selecting also all current elements of DOM to compare them and converting it into a real array
+    const currentElements = Array.from(
+      this._parentElement.querySelectorAll(`*`)
+    );
+
+    // comparing the 2 arrays of elements
+    // looping over the the array of new elements
+    newElements.forEach((newEl, indx) => {
+      // selecting the same old element (which is actual on the page)
+      const oldEl = currentElements[indx];
+
+      // SOME THEORY:
+      // nodeElement1.isEqualNode(nodeElement2) returns true if both node elements are the same
+      // nodeElement.nodeValue is property which returns content of text node (string) or null if it's other type of node (element)
+      // nodeElement.FirstChild is property the node which actually contains the text (text node)
+      // nodeElement.attributyes is property which returns NamedNodeMap (object) whoch contains all attributes
+      // nodeElement.setAttribute(nameAttr, valueAttr)
+
+      // if (!newEl.isEqualNode(oldEl))                  -> newEl is different from oldEl
+      //    &&
+      // if (newEl.firstChild.nodeValue.trim() !== ``)   -> `trimmed` text content of text node should not be empty
+      //                                                  using optional chaining because firstChild might not always exists
+
+      // updates changed text (on elements which contains text directly)
+      if (
+        !newEl.isEqualNode(oldEl) &&
+        newEl.firstChild?.nodeValue.trim() !== ``
+      ) {
+        // update text content of text nodes
+        oldEl.textContent = newEl.textContent;
+      }
+
+      // updates changed attributes
+      if (!newEl.isEqualNode(oldEl)) {
+        // converting attributes object of changed elements to an array
+        // then loop that array and change the value of all attrbiutes
+        Array.from(newEl.attributes).forEach(attribute => {
+          oldEl.setAttribute(attribute.name, attribute.value);
+        });
+      }
+    });
+  }
+
+   renderLoadingSpinner() {
+        ...
+  }
+    renderError(message = this._errorMessage) {
+        ...
+  }
+    renderMessage(message = this._message) {
+        ...
+  }
+}

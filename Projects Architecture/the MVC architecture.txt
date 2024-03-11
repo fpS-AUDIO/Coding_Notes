@@ -7,7 +7,7 @@
 // - A perfect architecture has
 // - Every good architecture has this components
 // - The model-view-controller (MVC) architecture
-
+// - Publisher-Subscriber Pattern 
 
 
 
@@ -71,3 +71,41 @@ this architecture contains 3 big parts:
       is the presentation logic (interacts with user)
 */
 
+
+
+/* ----- Publisher-Subscriber Pattern :
+
+ - According to MVC the events should be lested inside the view
+   (otherwise you need DOM elements in the controller and it's wrong)
+   and then these events should be handled inside the controller
+   (otherwise you should have the application logic inside the view and it's wrong)
+
+ - To achive this you can sue publisher-subscriber pattern
+   *  inside the view you need a Publisher:
+      a public method (e.g. 'addHandlerRender(handlerFn)') which, when called, 
+      starts listening for the given events (so it knows when to recat to event)
+   *  inside the controller you need a Subscriber:
+      a code which determinates how to react when event happens
+   *  to implement this you can create an enter point function (e.g. 'init()')
+      which will be called immediately and calls the publisher (e.g. 'addHandlerRender()')
+      and passing inside the subscriber function as argument.
+
+Example:
+
+// inside view
+// publisher
+addHandlerRender(subscriberFn) {
+   [`load`, `hashchange`].forEach(event =>
+   window.addEventListener(event, subscriberFn)
+   );
+}
+
+// inside controller
+init = function () {
+  // subscriber to view publisher
+  recipeView.addHandlerRender(controlRecipes);
+};
+
+init();
+
+*/
