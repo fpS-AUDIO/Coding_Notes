@@ -2,9 +2,9 @@
 
 
 
-///////////////////////////////////////////////
+////////////////////////////////////////////////
 // LOOPING OBJECTS: KEYS, VALUES, AND ENTRIES //
-///////////////////////////////////////////////
+////////////////////////////////////////////////
 
 // While objects in JavaScript are not iterable in the same way as arrays,
 // we can use Object.keys(), Object.values(), and Object.entries() to loop over them.
@@ -74,6 +74,29 @@ for (const [day, { open, close }] of Object.entries(restaurant.openingHours)) {
 }
 // Output: Logs opening and closing times with respective days.
 
+
+
+//--------------------------------------------
+// Object.fromEntries()
+
+/* Since ES2019 you can convert entries to an object
+ -  e.g. of entries: 
+    const dataArray = [[`key`, `value`], [`key`, `value`], [`key`, `value`]]
+
+ -  Object.fromEntries(dataArray)
+    returns a JS object with key-value pairs
+    e.g. const dataObj = Object.fromEntries(dataArray);
+
+NOTE:
+  this method is very useful while you collect data using FormData API.
+  instead of selectin all form elements one by one you can use FormData API
+  and basically collect all form data once.
+  new FormData(HTMLformElement) return a wierd form obj which you can transform in an array.
+
+  inside the eventHandler while submitting form:
+  const dataArray = [...new FormData(formElement)];
+  const dataObj = Object.fromEntries(dataArray);
+*/
 
 
 //--------------------------------------------

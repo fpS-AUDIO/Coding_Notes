@@ -1,0 +1,82 @@
+
+
+////////////
+// JSDocs //
+////////////
+
+/**
+ * JSDocs - Writing Documentation for JavaScript Functions
+ *
+ * JSDocs is a documentation syntax for JavaScript, allowing you to annotate and describe your code.
+ * This helps others understand your code's functionality and use your methods correctly.
+ * Below are key features and syntaxes used in JSDocs.
+ */
+
+/**
+ * Basic Structure
+ * The basic structure of a JSDoc comment starts with /**, followed by a series of annotations (tags),
+ * and ends with *\/ (without the backslash). Here's a simple example:
+ */
+
+/**
+ * Calculates the sum of two numbers.
+ * @param {number} a - The first number.
+ * @param {number} b - The second number.
+ * @returns {number} The sum of a and b.
+ */
+function sum(a, b) {
+    return a + b;
+}
+
+/**
+ * Tags
+ * The most commonly used tags in JSDocs include:
+ * @param {Type} name - Description of the parameter.
+ * @returns {Type} - Description of the return value.
+ * @example - Provides an example of how to use the function or method.
+ * @see - Refers to related information.
+ */
+
+/**
+ * Using @param and @returns
+ * Here's an example function with @param and @returns tags:
+ */
+
+/**
+ * Divides one number by another.
+ * @param {number} dividend - The number to be divided.
+ * @param {number} divisor - The number by which to divide.
+ * @returns {number} The quotient of dividend and divisor.
+ */
+function divide(dividend, divisor) {
+    return dividend / divisor;
+}
+
+/**
+ * Providing Examples
+ * The @example tag can be used to show how to call a function:
+ */
+
+/**
+ * Multiplies two numbers.
+ * @param {number} a - The first multiplicand.
+ * @param {number} b - The second multiplicand.
+ * @returns {number} The product of a and b.
+ * @example
+ * // returns 15
+ * multiply(3, 5);
+ */
+function multiply(a, b) {
+    return a * b;
+}
+
+/**
+ * Conclusion
+ * JSDocs is a powerful tool for documenting JavaScript code. Proper documentation using JSDocs
+ * makes your code easier to understand and use, both for you and for others.
+ */
+
+/**
+ * It's recommended to explore more tags and options as you get comfortable with the basics.
+ * Documentation and best practices can be found on the official JSDocs website.
+ */

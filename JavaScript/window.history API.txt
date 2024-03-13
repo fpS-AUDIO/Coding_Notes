@@ -1,0 +1,83 @@
+
+
+////////////////////////
+// window.history API //
+////////////////////////
+
+
+/**
+ * window.history API - Coding Notes
+ *
+ * The window.history object contains the browser's history. You can use it to manipulate
+ * the browser's session history (pages visited in the tab or frame that the current page is loaded in).
+ */
+
+
+
+/** 
+ * Properties
+ */
+
+// length - Returns the number of elements in the session history, including the currently loaded page.
+// For example, for a newly opened tab this property returns 1.
+console.log(window.history.length);
+
+
+
+/** 
+ * Methods
+ */
+
+// back() - Loads the previous URL in the history list.
+// This is equivalent to clicking the back button in your browser.
+window.history.back();
+
+// forward() - Loads the next URL in the history list.
+// Equivalent to clicking the forward button in your browser.
+window.history.forward();
+
+// go() - Loads a specific URL from the history list.
+// You can pass a positive or negative integer as a parameter.
+// Negative numbers go back, positive numbers go forward.
+window.history.go(-1); // Goes back one page
+window.history.go(1); // Goes forward one page
+
+// pushState() - Adds an entry to the history stack.
+// This doesn't cause the browser to load the new URL, but it allows you to modify the URL displayed in the browser.
+// pushState(state, title, url)
+// - state: An object associated with the new history entry.
+// - title: Currently ignored by most browsers.
+// - url: The URL of the new history entry.
+window.history.pushState({page: "another"}, "another page", "another.html");
+
+// replaceState() - Similar to pushState(), but modifies the current history entry instead of creating a new one.
+// Useful for updating the state or URL of the current history entry.
+// replaceState(state, title, url)
+window.history.replaceState({page: "another"}, "another page", "another.html");
+
+/**
+ * Note: The state object can be anything that can be serialized. Because Firefox saves state objects
+ * to the user's disk, it imposes a limitation of 640k characters on the serialized representation of a state object.
+ */
+
+/**
+ * Handling popstate event
+ * The popstate event is fired when the active history entry changes.
+ * If the user navigates to a new state, a popstate event is fired, and you can listen to this event to react accordingly.
+ */
+
+window.onpopstate = function(event) {
+    console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+};
+
+/**
+ * It's important to note that pushState() and replaceState() do not trigger a popstate event.
+ * The popstate event is only triggered by performing a browser action such as clicking on the back button
+ * (or calling history.back() or history.forward() in JavaScript).
+ */
+
+/**
+ * Conclusion
+ * The window.history API provides powerful tools for managing the browser history without full page reloads.
+ * This allows for more fluid, app-like experiences within web applications.
+ */
