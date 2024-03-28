@@ -1,0 +1,30 @@
+
+
+///////////////////////
+// Web Design Basics //
+///////////////////////
+
+
+
+
+Web designers = who creates the overall look and feel of a websie.
+Web developer = who implement design using HTML, CSS and JS.
+
+
+// ----- Difference ----- //
+
+Good design:
+    - immediatly creates good impression of the brand or product
+    - makes user trust the brand
+    - increases the user's percieived value of the brand/product
+    - gives users exactly what they're looking for when coming to website 
+      (e.g. find info / buy product)
+
+Bad design:
+    - creates impression brand doesn't care about their product or service
+    - makes user insecure about trusting the brand
+    - makes the brand/product seem "cheap"
+    - leaves users confused and hard to reach the goal
+    
+
+

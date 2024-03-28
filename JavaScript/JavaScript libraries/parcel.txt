@@ -88,3 +88,28 @@ if (module.hot) {
 
 
 
+// ----- EXAMPLE OF package.json ready to build ----- //
+
+
+
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "recipe search final app from Udemy JavaScript Course by Jonas Schmedtmann",
+  "default": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Alexander Ivanov",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0"
+  },
+  "dependencies": {
+    "core-js": "^3.36.0",
+    "fractional": "^1.0.0",
+    "regenerator-runtime": "^0.14.1"
+  }
+}

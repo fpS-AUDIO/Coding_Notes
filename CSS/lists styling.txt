@@ -2,9 +2,7 @@
 /* --- LISTS STYLING --- */
 
 
-
 /* Different list types: unordered (ul), ordered (ol), definition lists (dl, dt, dd) */
-
 
 
 /* Style for definition term (dt) */
@@ -13,12 +11,10 @@ dt {
 }
 
 
-
 /* Style for definition data (dd) */
 dd {
     margin-left: 2rem; /* Indent description items */
 }
-
 
 
 /* Styles for unordered lists (ul) */
@@ -28,12 +24,10 @@ ul {
 }
 
 
-
 /* Styles for ordered lists (ol) */
 ol {
     list-style-type: upper-alpha; /* Change numbering to uppercase letters */
 }
-
 
 
 /* Custom bullet style for unordered list items (ul li) */
@@ -46,19 +40,16 @@ ul li {
 }
 
 
-
 /* Alternative method to use images as bullets */
 ul {
     list-style-image: url('path/to/image.png'); /* Image as bullet */
 }
 
 
-
 /* Styling nested lists */
 ul ul, ol ol, ul ol, ol ul {
     padding-left: 2rem; /* Adjust padding for nested lists */
 }
-
 
 
 /* CSS counters for custom list numbering */
@@ -73,7 +64,6 @@ ol li:before {
 }
 
 
-
 /* Responsive design considerations */
 @media (max-width: 600px) {
     ul, ol {
@@ -82,11 +72,9 @@ ol li:before {
 }
 
 
-
 /* Accessibility and Semantic HTML */
 /* Ensure sufficient contrast and readability */
 /* Use semantic HTML for better accessibility and SEO */
-
 
 
 /* HTML examples for ordered list counting */

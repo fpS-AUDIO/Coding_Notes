@@ -47,6 +47,9 @@ USEFUL WEBSITES FOR WEB DEVELOPMENT:
 - Free SVG Background Generator: [https://bgjar.com/]
 - Open-source Illustrations: [https://undraw.co/], [https://storyset.com/]
 - Favicon Generator: [https://favicon.io/favicon-generator/]
+- SVG ICONS: [https://fontawesome.com/]
+- Free SVG icons: [https://icons8.com/icons]
+- Convert Png to SVG: [https://www.pngtosvg.com/]
 
 
 

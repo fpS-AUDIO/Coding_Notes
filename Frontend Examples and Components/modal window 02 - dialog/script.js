@@ -28,8 +28,8 @@ modal01.addEventListener(`click`, (event) => {
   if (
     event.clientX < dialogDimensions.left ||
     event.clientX > dialogDimensions.right ||
-    event.clientY < dialogDimensions.left ||
-    event.clientY > dialogDimensions.right
+    event.clientY < dialogDimensions.top ||
+    event.clientY > dialogDimensions.bottom
   ) {
     modal01.close();
   }

@@ -115,6 +115,9 @@ INSTALLAZIONE e SETUP DI Git
     tornare indietro ad un commit vecchio
     hash viene mostrato in log
 
+>>>git reset --hard head
+    go back in time to previus commit
+
 
 
 8.  -Caricare online-
@@ -202,7 +205,10 @@ INSTALLAZIONE e SETUP DI Git
 
 
 
-
+NOTE: 
+    create ".gitignore" file inside the project directory
+    inside specify files to be ignored by git as simple file names
+    one name per line
 
 
 
