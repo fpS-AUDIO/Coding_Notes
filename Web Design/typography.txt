@@ -1,0 +1,44 @@
+
+
+////////////////////////////
+// Web Design: typography //
+////////////////////////////
+
+
+Typography:
+    is the art and technique of arranging type to make written
+    language legible, readable and appealing when displayed.
+
+
+Typefaces:
+ 1. serif: 
+    font with small details like tails (serif) at the end of letter lines
+    for classic/tradtional look and feel and good for long text
+
+ 2. sans-serif: 
+    font without serif (decorastive lines in the boder of letters)
+    for modern and clean look, easier to choose for beginners
+
+
+
+// ----- Rules ----- //
+
+-   use only good and popular typefaces and play it safe
+    serif examples: merriweather, aleo, playfair dosplay, cormorant, cardo, lora
+    sans-serif examples: inter, open sans, roboto, montserrat, work sans, lato
+-   it's okey to use just one typeface per page (max 2)
+-   choose the right typeface for personality
+-   when choosingg font-size, limit chooices using "type-scale" tool.
+    normal: 16-32px
+    long-text: 20px+
+    heding: 50Px+ and bold (600+) depending on personality
+    never use font weight under 400
+-   use less then 75 character per line (should be 65-75)
+-   for normal-sized text use line-height 1.5-2, for big below 1.5
+    (smaller or longer text, the larger line height should be)
+-   if headline looks unnatural descrease letter spacing
+-   experiment with all caps for short titles, make them small and bold and
+    increase letter-spacing
+-   usually, don't justify text or align it to center
+
+

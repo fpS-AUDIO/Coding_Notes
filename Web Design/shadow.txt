@@ -1,0 +1,29 @@
+
+
+/////////////////////////
+// Web Design: shadows //
+/////////////////////////
+
+
+// ----- General rules ----- //
+
+ -  you don't have to use shadows, use them only if they makes sense for the personality of the Website
+ -  more serious/elegant website is, less shadows we use
+ -  more playful/fun website is, more shadows we use
+ -  use shadows in small doses, don't add shadow to every element
+ -  go light on shadows, don't make them too dark (shadows should seems natural)
+
+
+// ----- How Using ----- //
+
+ -  use small-size shadows for smaller elements that should stand out (like forms, buttons)
+ -  use medium-size shadows for larger areas that should stand out a bit more (entire sections, cards)
+ -  use large-size shadows for elements that should really float aboce the interface (like pop-ups, navigations)
+ -  experiment with changing shadows on mouse interaction (click, hover)
+ -  experiment with glows (colored shadows)
+
+
+// ----- CSS Properties ----- //
+
+- box-shadow: horizonatal, vertical, blur, scale (optional), color
+- text-shadow: horizonatal, vertical, blur, color

@@ -1,0 +1,36 @@
+
+
+////////////////////////
+// Web Design: images //
+////////////////////////
+
+
+Different types of images:
+    1. product photos (shows product)
+    2. storytelling photos (show someone using product)
+    3. Illustrations (abstract way of storytelling)
+    4. patterns (like backgorund geometrical forms / visual detalis)
+
+
+
+// ----- General Rules ----- //
+
+ -  use images to support the website's message and story (so relevant images)
+ -  prefer original images (original-looking not generic ones)
+    so images shoould look authentic and real and not like from info scammers
+ -  try to show real people to trigger user's emotions
+ -  if necessary, crop images to fit your message
+ -  experiment to combine photos, Illustrations and patterns
+ -  image should always be X2 pixels of their displayed size
+ -  compress images for a lower file size and better performance
+ -  if using images side-by-side they should have exact same dimensions
+ -  s
+
+
+
+// ----- Handling text on images ----- //
+
+Method 1:   darker or brighter image (completly or partially using gradinet)
+Method 2:   position text into neutral image area
+Method 3:   put text in a box inside the image and style the box
+Method 4:   add some shadow to text

@@ -1,0 +1,47 @@
+
+
+////////////////////////
+// Web Design: colors //
+////////////////////////
+
+
+// ----- Rules ----- //
+
+1. Main colors should match the website's personality (colors convey meaning)
+    red: draw a lot of attention, power, passion and excitement
+    orange: less aggresive, happiness, cheerfulness and creativity
+    yellow: means joy, brightness and intelligence
+    green: nature, harmony, growth and health
+    blue: peace, trustworthines, professionalism
+    purple: wealth, wisdom, magic
+    pink: represents romance, care, and affection
+    brown: nature, durability and comfort
+    black: power, elegance, minimalism, but also grief and sorrow.
+
+2. Use good color tone
+
+3. Choice the color system
+    At least 2 types of colors in color palette
+    main color of the website
+    grey color (grey is name) it's like very dark color for example for text
+    accent color
+
+4. create lighter and darker version of color palette
+    lighet = tints
+    darker = shades
+
+5. Use main colors to draw attention to the most important elements on the page
+
+6. Use colors to add intersting accents or make entire components or sections stand out 
+
+7. You can use colors strategically in images and Illustrations
+
+8. On dark colored backgrounds, try to use a tint of the background (lighter version) for text
+
+9. Text should not be completly black
+
+10. Don't make text too light. Make contrast between text and background colors.
+
+
+
+

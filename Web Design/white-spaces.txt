@@ -1,0 +1,26 @@
+
+
+//////////////////////////////
+// Web Design: white-spaces //
+//////////////////////////////
+
+
+// ----- General rules ----- //
+
+ -  the right amount of whitespace makes designs look clean, modern and polished
+ -  whitespaces communicates how different pieces of information are related to one another
+ -  whitespaces creates invisible relationships between the elements
+
+
+// ----- How to use it ----- //
+
+ -  use tons of whitespace between sections
+ -  use it between groups of elements
+ -  use it between elements
+ -  the more elements belong together, the closer they should stay and vice versa
+    (it's called "the law of proximity")
+ -  start with a lot of white space, then remove whitespace from there is best solution
+ -  match white space with other elements, if you have big icons and images,
+    then you also need big white spaces
+ -  general rule is to have some smaller size and multiplier of text size
+    e.g. 16px like: 2, 4, 8, 12, 16, 24, 32, 48, 64, 80, 96, 128 ...

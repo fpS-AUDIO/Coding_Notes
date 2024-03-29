@@ -1,0 +1,14 @@
+
+
+///////////////////////////////
+// Web Design: border-radius //
+///////////////////////////////
+
+
+// ----- General rules ----- //
+
+ -  use border-radius to increase the playfulness and fun of web design,
+    but making it less serious
+ -  typefaces have a certain roundness: make sure that border-radius matches that roundness
+ -  use it on buttons, immages, around icons, standout sections and other elements
+

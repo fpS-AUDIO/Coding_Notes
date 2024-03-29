@@ -1,64 +1,68 @@
 
 
-USEFUL WEBSITES FOR WEB DEVELOPMENT:
 
-	- General Development Resources
-	- CSS Resources
-	- Fonts and Typography
-	- APIs for Development
-	- Coding Challenges and Practice
-	- JavaScript Libraries and Frameworks
-	- CSS Frameworks
-
-
-
-## General Development Resources
-
-- JSON Official Website: [https://www.json.org/](https://www.json.org/)
-- MongoDB Official Website: [https://www.mongodb.com/](https://www.mongodb.com/)
-- Erlang Official Website: [https://www.erlang.org/](https://www.erlang.org/)
-- Python Official Website: [https://www.python.org/](https://www.python.org/)
-- Python Package Manager (PyPI): [https://pypi.org/](https://pypi.org/)
-- RabbitMQ Official Website: [https://www.rabbitmq.com/](https://www.rabbitmq.com/)
-- Test Regular Expressions: [https://regex101.com/](https://regex101.com/)
-- Learn Programming for Free: [https://www.programiz.com/](https://www.programiz.com/)
-- The Python Standard Library: [https://docs.python.org/3/library/index.html](https://docs.python.org/3/library/index.html)
-- Mozilla Developers Network (MDN): [https://developer.mozilla.org/en-US/](https://developer.mozilla.org/en-US/)
-- Online Tool Hash Calculator: [https://xorbin.com/](https://xorbin.com/)
-- Managing Conda Environments: [https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-- Django Documentation v4.1: [https://docs.djangoproject.com/en/4.1/](https://docs.djangoproject.com/en/4.1/)
-- Webpack Official Website: [https://webpack.js.org/](https://webpack.js.org/)
-- Vue.js Documentation: [https://vuejs.org/](https://vuejs.org/)
-- React Official Website: [https://reactjs.org/](https://reactjs.org/)
-- Angular Official Site: [https://angular.io/](https://angular.io/)
-- Svelte Official Site: [https://svelte.dev/](https://svelte.dev/)
-
-
-
-## CSS Resources
-
-- Google Color Picker: [https://g.co/kgs/chb2sC]
-- Choose a Color Palette: [https://coolors.co/]
-- Check Browser Compatibility: [https://caniuse.com/]
-- CSS Gradient: [https://cssgradient.io/]
-- CSS Validator (W3C): [https://jigsaw.w3.org/css-validator/]
-- Online Code Editor for Frontend: [https://codepen.io/]
-- SVG to XML Converter: [http://inloop.github.io/svg2android/]
-- Free SVG Background Generator: [https://bgjar.com/]
-- Open-source Illustrations: [https://undraw.co/], [https://storyset.com/]
-- Favicon Generator: [https://favicon.io/favicon-generator/]
-- SVG ICONS: [https://fontawesome.com/]
-- Free SVG icons: [https://icons8.com/icons]
-- Convert Png to SVG: [https://www.pngtosvg.com/]
-
-
-
-## Fonts and Typography
+// ----- Fonts and Typography ------ //
 
 - Google Fonts: [https://fonts.google.com/]
+- Font Squirrel: [https://www.fontsquirrel.com/]
+- Font-size tool: [https://typescale.com/]
 - Font Library: [https://fontlibrary.org/]
 - Fonts in Use: [https://fontsinuse.com/]
 - Typography Tools and Inspiration: [https://typewolf.com/]
+
+
+
+// ----- Colors ------ //
+
+- Color framework: [https://tailwindcss.com/]
+- Choose color tone: [https://yeun.github.io/open-color/]
+- Color palette: [https://flatuicolors.com/]
+- Color palette: [https://coolors.co/]
+- Choose the accent color (from main): [https://paletton.com/]
+- Choose lighter and darker version of colors: [https://maketintsandshades.com/]
+- Google Color Picker: [https://g.co/kgs/XAMbPWb]
+- CSS Gradient: [https://cssgradient.io/]
+
+
+
+// ----- Images and Illustrations ------ //
+
+- Images: [https://unsplash.com/]
+- Images: [https://www.pexels.com/]
+- Images: [https://www.drawkit.com/]
+- Open-source Illustrations 1: [https://undraw.co/]
+- Open-source Illustrations 2: [https://storyset.com/]
+- SVG to XML Converter: [http://inloop.github.io/svg2android/]
+- Free SVG Background Generator: [https://bgjar.com/]
+- Convert Png to SVG: [https://www.pngtosvg.com/]
+- Decrease image size: [https://squoosh.app/]
+
+
+
+// ----- Icons ------ //
+
+- icons: [https://phosphoricons.com/]
+- icons: [https://ionic.io/ionicons]
+- icons: [https://icons8.com/icons]
+- icons: [https://heroicons.com/]
+- Favicon Generator: [https://favicon.io/favicon-generator/]
+- SVG ICONS: [https://fontawesome.com/]
+
+
+
+// ----- CSS ------ //
+
+- Online Code Editor for Frontend: [https://codepen.io/]
+- Check Browser Compatibility: [https://caniuse.com/]
+- CSS Validator (W3C): [https://jigsaw.w3.org/css-validator/]
+
+
+
+
+// ----- General Development Resources ------ //
+
+- Test Regular Expressions: [https://regex101.com/]
+
 
 
 

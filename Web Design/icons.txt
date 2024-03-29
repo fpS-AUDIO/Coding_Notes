@@ -1,0 +1,37 @@
+
+
+///////////////////////
+// Web Design: icons //
+///////////////////////
+
+
+// ----- General rules ----- //
+
+ -  use good icon pack
+ -  use only one icon pack, don't mix styles
+ -  use icons in SVG or ICON formats. Don't use .jpn / .png
+ -  icons should adjust website personality
+    (roundness, weight, filled, outlined), also depends on Typography
+
+
+// ----- When using icons ----- //
+
+ -  use icons to provide visual assistance to text
+ -  use icons for product feature blocks (icon + heading + description)
+ -  use icons associated with actions and label them with text (like button/menus)
+ -  use icons as bullet points for lists
+
+
+// ----- How using icons ----- //
+
+ -  to keep them natural, use same color as text, to draw more attention use different color
+ -  don't confuse users with icons which makes no sense
+ -  don't make icons larger than what they were designed for,
+    if needed, enclose them in a shape (circle)
+ -  usually icons designed for to be big have a lot of details and have thin lines
+
+
+// ----- CSS Properties ----- //
+
+ - stroke: color;   for thin icons
+ - fill: color;     for solid icons

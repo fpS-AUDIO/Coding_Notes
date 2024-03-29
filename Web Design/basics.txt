@@ -5,10 +5,9 @@
 ///////////////////////
 
 
-
-
 Web designers = who creates the overall look and feel of a websie.
 Web developer = who implement design using HTML, CSS and JS.
+
 
 
 // ----- Difference ----- //
@@ -28,3 +27,49 @@ Bad design:
     
 
 
+// ----- Important web design ingredients ----- //
+
+ - typography
+ - colors
+ - images / illustrations
+ - icons
+ - shadows
+ - border radius
+ - white spaces
+ - visual hierarchy
+ - user experience
+ - components/layout
+
+
+
+// ----- Types of website personalities ----- //
+
+1.  Serious/Elegant:
+    for luxury and elegance, based on thin serif typefaces, goldern or pastel colors
+    and big high-quality images.
+
+2.  Minimalist/simple:
+    focus on the essential text contentr, using small or medium-size sans-serif black text,
+    lines, and few images and icons
+
+3.  Plain/neutral:
+    desing that uses neutral and small typefaces, and a very structured layout. 
+    Common for big coorporations.
+
+4.  Bold/confident:
+    makes and impact by featuring big and bold typography,
+    paired with confident use of big and bright colored blocks.
+
+5.  Calm/peacful:
+    for products and services that care, transmitted by calming pastel colors,
+    soft serif headings and matching images/illustrations.
+
+6.  Startup/upbeat:
+    widely used in startups, featuring medium-sized sans/serif typefaces, light-grey
+    text and backgrounds, and rounded elements.
+
+7.  Playful/fun:
+    colorful and rounded design, fueled by creative elements like hand drawn icons
+    or illustrations, animations and fun language.
+
+    
