@@ -1,0 +1,39 @@
+
+
+/////////////////////////////////
+// Web Design: User Experience //
+/////////////////////////////////
+
+
+"Design is not just what it looks like and feels like. Design is how it works".
+    - Steve Jobs
+
+UI = looks like and feels like
+UX = how it works
+
+UX is about:
+ - does the app feel logical?
+ - does it work intuitively?
+ - can users reach their goals?
+
+It's a part of UI, and it helps users and business align their goals.
+
+
+// ----- General rules ----- //
+
+ -  don't create overcomplicated layouts, use classic patterns (users are used to)
+ -  make call-to-action the most prominent element, and make text descriptive
+ -  use blue text and underline text only for links
+ -  animations should have a purpose and should be fast (200-500ms)
+ -  in forms, align labels and fields in a single verticle line, to make the form easier to scan
+ -  offer users good feedback for all actions: form errors, success etc...
+ -  "law of locality" - place action buttons where they will create an effect
+ 
+
+// ----- UX rules for content ----- //
+
+ -  use descriptive keyword-focused headline on your main page. Don't be vague.
+ -  only include relevant information, make content 100%, remove useless information
+ -  use simple words, avoid technical jargon and "smart-sounding" words
+ -  break up long text with sub-heading, images, block quotes, bullet points etc..
+ -  a

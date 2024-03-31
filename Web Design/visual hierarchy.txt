@@ -1,0 +1,37 @@
+
+
+//////////////////////////////////
+// Web Design: visual hierarchy //
+//////////////////////////////////
+
+
+Visual hierarchy is ab out establishing which elements of a design
+re the most important, so it's about drawing attention to these
+most important elements.
+You need to create a visual "path/road" to guide users through the page,
+and, to do that, you should use a comibnation of position, size, colors,
+spacing, borders and shadows.
+
+
+// ----- General rules ----- //
+
+ -  position important elements closer to the top of the page. where they get more attention
+ -  usu images mindfully, as they draw a lot of attention (larger images get more attention)
+ -  whitespaces creates separation, so use whitespaces strategically to emphasize the elements
+
+
+// ----- Text rules ----- //
+
+ -  use comibnation of font size, font weight, color and whitespaces to convey importance
+ -  titles, sub-titles, links. buttons, data points, icons should be emphasized
+ -  labels, secondary/additional information can be de-emphasized
+ -  emphasize importnat content using Background color, shadow and/or borders
+ -  you can de-emphasize a component to emphasize another
+ -  components to emphasize:
+    * testimonials
+    * call-to-action sections
+    * highlight sections
+    * preview cards
+    * forms
+    * pricing tables
+    * impotant columns/rows in tables

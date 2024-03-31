@@ -1,0 +1,254 @@
+
+
+///////////////////////////////////////
+// Web Design: Website Personalities //
+///////////////////////////////////////
+
+
+// ----- Types of website personalities ----- //
+
+1.  Serious/Elegant
+2.  Minimalist/simple
+3.  Plain/neutral
+4.  Bold/confident
+5.  Calm/peaceful
+6.  Startup/upbeat
+7.  Playful/fun
+    
+
+
+// -------- Serious/Elegant -------- //
+
+ - OVERWIEW
+    for luxury and elegance, based on thin serif typefaces, goldern or pastel colors
+    and big high-quality images
+
+ - INDUSTRIES
+    Real estate, high fashion, jewelry, luxury products or services
+
+ - TYPOGRAPHY
+    serif typefaces (especially heading), light font weight, small body font size
+
+ - COLORS
+    gold, pastel colors, black, dark blue, grey
+
+ - IMAGES
+    big, high-quality, used to feature expensive products
+
+ - ICONS
+    usually no icons, but thin icons and lines can be used
+
+ - SHADOWS
+    usually no shadows
+
+ - BORDER-RADIUS
+    usually no border-radius
+
+ - LAYOUT
+    creative and experimental layout is common
+
+
+
+// -------- Minimalist/simple -------- //
+
+ - OVERWIEW
+    focus on the essential text content, using small or medium-size sans-serif black text,
+    lines, and few images and icons
+
+ - INDUSTRIES
+    fashion, portfolios, minimalism companies, software startups
+
+ - TYPOGRAPHY
+    boxy/squared sans-serif typefaces, small body font sizes
+
+ - COLORS
+    usually black or dark grey, on pure white background,
+    usually one color throughout the desing
+
+ - IMAGES
+    few images which can be used to add some color to the design,
+    usually no illustrations, but if, than just black
+
+ - ICONS
+    usually no iconsm but small simple black icons may be used
+
+ - SHADOWS
+    usually no shadows
+
+ - BORDER-RADIUS
+    usually no border-radius
+
+ - LAYOUT
+    simple layout, a narrow one-column layout is common
+
+
+
+// -------- Plain/neutral -------- //
+
+ - OVERWIEW
+    desing that uses neutral and small typefaces, and a boxy, 
+    structured, condensed layout   
+    
+ - INDUSTRIES
+    well-established corporations, companies that don't want to
+    make an impact through design
+
+ - TYPOGRAPHY
+    neutral-looking sans-serif typefaces, text is usually small
+    and doesn't have visual impact
+
+ - COLORS
+    safe colors, nothing too bright or washed out. Blue and black are common
+    
+ - IMAGES
+    frequently used, but usually in a small format
+
+ - ICONS
+    usually no icons, but simple icons may be used
+
+ - SHADOWS
+    usually no shadows
+
+ - BORDER-RADIUS
+    usually no border-radius
+
+ - LAYOUT
+    structured and condensed layout, with lots of boxes and rows
+
+
+
+// -------- Bold/confident -------- //
+
+ - OVERWIEW
+    makes and impact by featuring big and bold typography,
+    paired with confident use of big and bright colored blocks
+    
+ - INDUSTRIES
+    digital agencies, software startups, travel, "strong" companies
+
+ - TYPOGRAPHY
+    boxy/squared sans-serif typefaces, big and bold typography,
+    especially headings. Uppercase headings are common
+
+ - COLORS
+    usually multiple bright colors, big color block/sections are 
+    used to draw attention
+
+ - IMAGES
+    lots of big images are usually displayed
+
+ - ICONS
+    usually no icons
+
+ - SHADOWS
+    usually no shadows
+
+ - BORDER-RADIUS
+    usually no border-radius
+
+ - LAYOUT
+    all kinds of layouts, no particular tendencies
+
+
+
+// -------- Calm/peaceful -------- //
+
+ - OVERWIEW
+    for products and services that care, transmitted by calming pastel colors,
+    soft serif headings and matching images/illustrations.
+    
+ - INDUSTRIES
+    healthcare, all products with focys on consumer well-being
+
+ - TYPOGRAPHY
+    soft serif typefaces frequently used for headings, but sans-serif heading might
+    be used too (e.g. for software products)
+
+ - COLORS
+    pastel/washed-out colors: light oranges, yellow, browns, greens, blues
+
+ - IMAGES
+    images and illustrations are usual, matching calm color palette
+
+ - ICONS
+    frequently used
+
+ - SHADOWS
+    usually no shadows, but might be used sparingly
+
+ - BORDER-RADIUS
+    some border-radius is usual
+
+ - LAYOUT
+    all kinds of layouts, no particular tendencies
+
+
+
+// -------- Startup/upbeat -------- //
+
+ - OVERWIEW
+    widely used in startups, featuring medium-sized sans-serif typefaces, 
+    light-grey backgrounds, and rounded elements
+    
+ - INDUSTRIES
+    software startups, and other modern-looking companies
+
+ - TYPOGRAPHY
+    medium-sized headings (not too larger), usually one sans-serif typeface
+    in whole design. Tendency for lighter text colors
+
+ - COLORS
+    blues, greens and purples are widely used. 
+    Lots of light backgrounds (mainly grey), gradients are also common
+
+ - IMAGES
+    images or illustrations are always used. 3D illustrations are modern.
+    Sometimes patterns and shapes add visual details
+
+ - ICONS
+    icons are frequently used
+
+ - SHADOWS
+    subtle shadows are frequent, glows are becoming modern
+
+ - BORDER-RADIUS
+    border-radius is very common
+
+ - LAYOUT
+    rows of cards and Z-patterns are usual, as well as animations
+
+
+
+// -------- Playful/fun -------- //
+
+ - OVERWIEW
+    colorful and rounded design, fueled by creative elements like 
+    hand drawn icons or illustrations, animations and fun language
+
+ - INDUSTRIES
+    child products, animal products, food
+
+ - TYPOGRAPHY
+    round and creative (e.g. handwritten), sans-serif typefaces are frequent.
+    Centered text is more common
+
+ - COLORS
+    multiple colors are frequently used to design a colorful layout,
+    all over backgrounds and text
+
+ - IMAGES
+    images, hand-drawn or 3D illustrations, and geometricla shapes
+    and patterns are all very frequently used
+
+ - ICONS
+    icons are very frequent, many times in a hand-drawn style
+
+ - SHADOWS
+    subtle shadows are quite common, but not always used 
+
+ - BORDER-RADIUS
+    border-radius is very common
+
+ - LAYOUT
+    all kinds of layouts, no particular tendencies
+

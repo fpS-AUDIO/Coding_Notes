@@ -1,5 +1,10 @@
 
 
+/////////////////////////////////////////
+// Websites for Development and Design //
+/////////////////////////////////////////
+
+
 
 // ----- Fonts and Typography ------ //
 
@@ -50,6 +55,15 @@
 
 
 
+// ----- Design Inspiration ------ //
+
+- website design: [https://land-book.com/]
+- website design: [https://onepagelove.com/]
+- website design: [https://www.awwwards.com/]
+- components design: [https://screenlane.com/]
+
+
+
 // ----- CSS ------ //
 
 - Online Code Editor for Frontend: [https://codepen.io/]
@@ -58,24 +72,7 @@
 
 
 
-
-// ----- General Development Resources ------ //
-
-- Test Regular Expressions: [https://regex101.com/]
-
-
-
-
-## APIs for Development
-
-- QR Code API: [https://goqr.me/api/]
-- Quotes API: [https://api-ninjas.com/api/quotes]
-- REST Countries: [https://restcountries.com/]
-- JSONPlaceholder (Fake Online REST API): [https://jsonplaceholder.typicode.com/]
-
-
-
-## Coding Challenges and Practice
+// ----- Coding Challenges and Practice ------ //
 
 - HackerRank: [https://www.hackerrank.com/]
 - Codewars: [https://www.codewars.com/]
@@ -85,20 +82,6 @@
 
 
 
-## JavaScript Libraries and Frameworks
+// ----- General Development Resources ------ //
 
-- jQuery Official Website: [https://jquery.com/]
-- React Documentation: [https://reactjs.org/docs/getting-started.html]
-- Angular Learning Platform: [https://angular.io/start]
-- Vue.js Guide: [https://vuejs.org/v2/guide/]
-- Svelte Tutorial: [https://svelte.dev/tutorial]
-
-
-
-## CSS Frameworks
-
-- Bootstrap Official Website: [https://getbootstrap.com/]
-- Tailwind CSS: [https://tailwindcss.com/]
-- Foundation by ZURB: [https://get.foundation/]
-- Materialize CSS: [https://materializecss.com/]
-
+- Test Regular Expressions: [https://regex101.com/]
