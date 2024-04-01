@@ -1,0 +1,15 @@
+
+
+/////////////////////////////////////////
+// Web Design: elements and components //
+/////////////////////////////////////////
+
+
+// ----- steps to build websites ----- //
+
+ 1. creation of small elements like images, buttons, paragraphs etc...
+ 2. assemple these single elements into components like feature card, feature row etc...
+ 3. take all components and build the layout using common layout patterns
+ 4. take all the layouts and assemble the final page 
+
+
