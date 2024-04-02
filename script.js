@@ -1,21 +1,33 @@
-// import entire module with its own code
-// import "./testRandomModule.js";
+"use strict";
 
-// // import something declared with `export` keyword in module, write exactly same name
-// // and using `as` to change variable name
-// import {
-//   addToCart,
-//   totalPrice,
-//   totalQuantity as quantity,
-// } from "./testRandomModule.js";
+////////////////////////////////
+//// Closures in JavaScript ////
+////////////////////////////////
+// Coding Note #55
 
-// // import everything (*) as varibaleName from src
-// // this will create and object containing everything exported from module
-// import * as coolModule from "./testRandomModule.js";
+/* Definition:
+    A closure in JavaScript is a feature that allows a function to access variables from its 
+    enclosing scope, even after the outer function has finished executing. The function retains 
+    a reference to its lexical environment, enabling it to interact with the outer function's 
+    variables. Closures are crucial for creating private variables, managing state in 
+    asynchronous programming, and implementing function factories and module patterns.
+*/
 
-// coolModule.addToCart(2, "apple");
-// console.log(totalPrice);
+// Example: Function to create an adder with a private counter
+function createCounter() {
+  let count = 0; // `count` is a private variable created by `createCounter`
+  return function () {
+    count++; // Increment and access `count` from the outer lexical environment
+    console.log(count);
+  };
+}
 
-// // this will import the default export with the given name, in this case we called it "addFn"
-// import addFn from "./testRandomModule.js";
+// Creating a counter instance
+const counterAddOne = createCounter();
 
+counterAddOne(); // Outputs: 1
+counterAddOne(); // Outputs: 2
+counterAddOne(); // Outputs: 3
+
+
+// Follow @coding_feature on Instagram for more content! 👍
