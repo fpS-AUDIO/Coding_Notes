@@ -41,6 +41,7 @@
 - Free SVG Background Generator: [https://bgjar.com/]
 - Convert Png to SVG: [https://www.pngtosvg.com/]
 - Decrease image size: [https://squoosh.app/]
+- Change file format: [https://cloudconvert.com/]
 
 
 
@@ -51,6 +52,7 @@
 - icons: [https://icons8.com/icons]
 - icons: [https://heroicons.com/]
 - Favicon Generator: [https://favicon.io/favicon-generator/]
+- png to ico: [https://convertio.co/it/png-ico/]
 - SVG ICONS: [https://fontawesome.com/]
 
 
@@ -72,6 +74,14 @@
 
 
 
+// ----- General Development Resources ------ //
+
+- Test Regular Expressions: [https://regex101.com/]
+- Copyright, trademarks search: [https://trademark-search.marcaria.com/]
+- Copyright, Italian Business Register: [https://italianbusinessregister.it/en/home]
+
+
+
 // ----- Coding Challenges and Practice ------ //
 
 - HackerRank: [https://www.hackerrank.com/]
@@ -80,8 +90,3 @@
 - CodeChef: [https://www.codechef.com/]
 - Exercism: [https://exercism.io/]
 
-
-
-// ----- General Development Resources ------ //
-
-- Test Regular Expressions: [https://regex101.com/]
