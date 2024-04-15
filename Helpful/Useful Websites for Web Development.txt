@@ -51,6 +51,7 @@
 - icons: [https://ionic.io/ionicons]
 - icons: [https://icons8.com/icons]
 - icons: [https://heroicons.com/]
+- icons pack: [https://ionic.io/ionicons]
 - Favicon Generator: [https://favicon.io/favicon-generator/]
 - png to ico: [https://convertio.co/it/png-ico/]
 - SVG ICONS: [https://fontawesome.com/]
