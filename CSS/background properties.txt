@@ -21,6 +21,16 @@ div {
     background-image: url(PATH); /* Replace PATH with the actual image path */
 
 
+    /* Background image with gradient color, like shadow for text */
+      background-image: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.9) 10%,
+            rgba(255, 255, 255, 0.1) 100%
+         ),
+         url("../img/sports/sports--cycling.webp");
+      }
+
+
     /* Background Size:
        Specifies the size of the background images.
        Values can be 'auto' (keep original size), 'contain' (scale to fit), 'cover' (scale to cover), or specific dimensions.

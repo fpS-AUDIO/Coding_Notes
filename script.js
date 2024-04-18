@@ -1,54 +1,65 @@
 "use strict";
 
-////////////////////////////
-//// window.history API ////
-////////////////////////////
-// Coding Note #56
+/////////////////////////////////////
+//// localStorage API JavaScript ////
+/////////////////////////////////////
+// Coding Note #57
 
-/*
- * The window.history object contains the browser's session history. It can be used to manipulate
- * the browser's session history (i.e., the pages visited in the tab or frame that the current page is loaded in).
+/**
+ * The Local Storage API enables web applications to store and retrieve data on a user's browser independently of the server session.
+ * Data stored is bound to the origin, which comprises the protocol, domain, and port, ensuring data isolation across different origins.
+ * Unlike cookies, Local Storage data is not included with every HTTP request, which enhances web application performance by reducing server load.
+ * Data persists across browser sessions and tabs as long as they share the same origin, allowing for consistent user experiences even after browser restarts.
+ * Local Storage stores all keys and values as strings, necessitating the conversion of non-string data using methods like JSON.stringify() and JSON.parse().
  */
 
-// back() - Navigates to the previous URL in the history list.
-// This is equivalent to the user clicking the back button in their browser.
-window.history.back();
+// ---------------------------------------------------------------------------------------- //
+// --- Methods and Attributes ---
 
-// forward() - Navigates to the next URL in the history list.
-// This is equivalent to the user clicking the forward button in their browser.
-window.history.forward();
+// Setting an item (stores the value 'pizza margherita' under the key 'myDish')
+localStorage.setItem("myDish", "pizza margherita");
 
-// go() - Navigates to a specific URL from the history list.
-// Accepts a positive (to go forward) or negative (to go back) integer as a parameter.
-window.history.go(-1); // Goes back one page
+// Getting an item (retrieves the value stored under 'myDish')
+const dish = localStorage.getItem("myDish"); // Outputs: 'pizza margherita'
 
-// pushState() - Adds an entry to the history stack.
-// This method does not cause the browser to load the new URL, but it does allow you to modify the URL displayed in the browser.
-// pushState(stateObj, title, url)
-// - stateObj: An object representing the state associated with the new history entry.
-// - title: A title for the new history entry. This parameter is currently ignored by most browsers.
-// - url: The URL of the new history entry. The browser won't navigate to this URL, but it will be displayed in the address bar.
-window.history.pushState({ page: "another" }, "another page", "another.html");
+// Removing an item (removes the item stored under the key 'myDish')
+localStorage.removeItem("myDish");
 
-// replaceState() - Similar to pushState(), but modifies the current history entry instead of creating a new one.
-// This is useful for updating the state object or URL of the current history entry without adding a new history entry.
-// replaceState(stateObj, title, url)
-window.history.replaceState(
-  { page: "another" },
-  "another page",
-  "another.html"
-);
+// Clearing all storage (clears all data stored in Local Storage for the current origin)
+localStorage.clear();
 
-// Handling popstate event
-// The popstate event is fired when the active history entry changes.
-// If the user navigates to a new state, a popstate event is fired. You can listen to this event to react accordingly.
-window.onpopstate = function (event) {
-  console.log(
-    `location: ${document.location}, state: ${JSON.stringify(event.state)}`
-  );
-};
+// Length property (returns the number of key/value pairs currently present in the Local Storage)
+const numberOfItems = localStorage.length;
 
-// Note: pushState() and replaceState() methods do not trigger a popstate event
-// The popstate event is only fired by clicking on the back button (or calling history.back() or history.forward())
+// Key function (retrieves the name of the nth key in the storage)
+const firstKeyName = localStorage.key(0);
+
+// ---------------------------------------------------------------------------------------- //
+// --- Best Practices and Important Notes ---
+
+/**
+ * Ensure exception handling for cases where Local Storage may not be available, such as in private browsing modes or when storage limits are exceeded.
+ * Be aware that Local Storage operations are synchronous and can block the main thread; excessive use can degrade performance, particularly with large data volumes.
+ * To manage non-string data, utilize JSON.stringify() to serialize before storage and JSON.parse() to deserialize upon retrieval.
+ */
+
+// Example: Storing and retrieving an object
+const myDish = { name: "pizza margherita", type: "pizza", country: "Italy" };
+localStorage.setItem("myDish", JSON.stringify(myDish)); // Storing an object as a string
+
+const storedDish = JSON.parse(localStorage.getItem("myDish")); // Retrieving the object
+
+// Handling exceptions
+try {
+  localStorage.setItem("item", "value");
+} catch (e) {
+  console.error("Error saving to localStorage", e);
+}
+
+/**
+ * Local Storage provides approximately 5MB of storage per origin, but this limit can vary between browsers.
+ * It's accessible to any script loaded on the page; avoid storing sensitive or personal information that could be exposed in XSS attacks.
+ * Sanitize and validate all inputs from untrusted sources to mitigate potential security risks.
+ */
 
 // Follow @coding_feature on Instagram for more content! 👍

@@ -1,0 +1,22 @@
+
+//////////////////////////////////////////
+// How to Hide Element with transitions //
+//////////////////////////////////////////
+
+.div.hidden{
+
+    /* allows no transitions */
+    display: none;              /* completly removing */
+
+    /* Hide Element with transitions */
+    opacity: 0;                 /* hide visually */
+    pointer-event: none;        /* make it unaccessible to mouse and keyboard */
+    visibility: hidden;         /* hide from screen readers */
+}
+
+.div.hidden{
+    opacity: 1;
+    pointer-event: auto;
+    visibility: visible;
+}
+

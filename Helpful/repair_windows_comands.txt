@@ -1,0 +1,54 @@
+
+
+///////////////////////////////////////////////////
+// Command Prompt commands to fix Windows issues //
+///////////////////////////////////////////////////
+
+>>>sfc /scannow		
+	System File Checker. It is used to scan and repair corrupted 
+	or missing system files in the Windows operating system.
+
+>>>DISM.exe /Online /Cleanup-image /Scanhealth
+	Deployment Imaging Service and Management (DISM) tool to check 
+	the health of the Windows image
+
+>>>DISM.exe /Online /Cleanup-image /Restorehealth
+	Deployment Imaging Service and Management (DISM) tool to restore 
+	the health of the Windows image
+	(automatically fix any problems using Windows Update as the repair source)
+
+>>>chkdsk C: /f /r /x
+	checks the disk for errors, locates bad sectors, and recovers readable information. 
+	Replace C: with the letter of the drive you wish to check.
+
+>>>ipconfig /release
+	release the current IP configuration
+
+>>>ipconfig /renew
+	renew the IP configuration
+
+>>>MdSched.exe
+	Windows Memory Diagnostic
+	checks your computer for memory problems. After running it, you will need 
+	to restart your computer, and the test will run as the computer boots up.
+
+>>>cleanmgr
+	Disk Cleanup Utility
+	opens the built-in Windows tool for cleaning up temporary files and 
+	other unneeded data that can clutter your system.
+
+>>>netsh winsock reset
+	Network Resets (Reset Winsock)
+>>>netsh int ip reset
+	Network Resets (Reset the TCP/IP stack)
+
+	These commands can help resolve network connectivity issues by 
+	resetting network protocols to their default settings.
+
+>>>winmgmt /verifyrepository
+	Windows Management Instrumentation (WMI)
+	checks for inconsistencies in the WMI repository. 
+	If inconsistencies are found, you might use:
+
+>>>winmgmt /resetrepository
+	This resets the repository to its default state.
