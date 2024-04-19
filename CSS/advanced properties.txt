@@ -1,0 +1,19 @@
+
+
+////////////////////////////
+// ADVANCED CSS PROPETIES //
+////////////////////////////
+
+
+
+backface-visibility: hidden;
+    make the back part of the animated element invisible for user,
+    helpful to fix little shaking during the animation.
+
+clip-path: polygon([x y], [x y], [x y], [x y]);
+    specify the polygon in which the image/element will be visibile
+
+
+will-change: [properyName: scroll-position / transform / opacity ...];
+    hinhelp browsers optimize resources by telling which property
+    will dinamically change. Don't apply to too many elements!

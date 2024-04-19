@@ -3,6 +3,7 @@
 /////////////////////////////////////////
 // Websites for Development and Design //
 /////////////////////////////////////////
+/////// 
 
 
 
@@ -72,6 +73,7 @@
 - Online Code Editor for Frontend: [https://codepen.io/]
 - Check Browser Compatibility: [https://caniuse.com/]
 - CSS Validator (W3C): [https://jigsaw.w3.org/css-validator/]
+- clip-path generator: [https://bennettfeely.com/clippy/]
 
 
 
