@@ -18,6 +18,7 @@ Styling and Sass:
 Code Writing Enhancements:
 - Auto Complete Tag: Completes HTML/XML tags and ensures proper nesting and closing.
 - Bracket Pair Colorizer: Colors matching brackets to reduce visual clutter and improve code readability.
+- Markdown Preview Enhanced: Markdown Preview Enhanced ported to vscode
 
 Navigation and Utility Tools:
 - CSS Navigation: Enables F12 (Go to Definition) for CSS classes and IDs in HTML, aiding in quick navigation.
