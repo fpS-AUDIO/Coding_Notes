@@ -31,7 +31,7 @@
 
 
 
-// ----- Images and Illustrations ------ //
+// ----- Images, Illustrations and Videos ------ //
 
 - Images: [https://unsplash.com/]
 - Images: [https://www.pexels.com/]
@@ -40,6 +40,7 @@
 - Open-source Illustrations 2: [https://storyset.com/]
 - SVG to XML Converter: [http://inloop.github.io/svg2android/]
 - Free SVG Background Generator: [https://bgjar.com/]
+- Free videos for websites: [https://coverr.co/]
 - Convert Png to SVG: [https://www.pngtosvg.com/]
 - Decrease image size: [https://squoosh.app/]
 - Change file format: [https://cloudconvert.com/]
