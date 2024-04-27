@@ -47,6 +47,13 @@
 
 
 
+// ----- Animation Generators ------ //
+
+- cubic-bezier generator: [https://cubic-bezier.com/]
+- cubic-bezier generator 2: [https://easings.net/]
+
+
+
 // ----- Icons ------ //
 
 - icons: [https://phosphoricons.com/]
@@ -73,6 +80,7 @@
 
 - Online Code Editor for Frontend: [https://codepen.io/]
 - Check Browser Compatibility: [https://caniuse.com/]
+- Check responsiveness: [https://sizzy.co/]
 - CSS Validator (W3C): [https://jigsaw.w3.org/css-validator/]
 - clip-path generator: [https://bennettfeely.com/clippy/]
 
@@ -80,6 +88,7 @@
 
 // ----- General Development Resources ------ //
 
+- Web Statistics: [https://gs.statcounter.com/]
 - Test Regular Expressions: [https://regex101.com/]
 - Copyright, trademarks search: [https://trademark-search.marcaria.com/]
 - Copyright, Italian Business Register: [https://italianbusinessregister.it/en/home]
