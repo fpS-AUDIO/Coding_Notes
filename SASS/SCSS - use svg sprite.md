@@ -30,6 +30,9 @@ Including the svg icon in the following way it's a really best choice, it allows
     // easy to style it
     height: 2rem;
     width: 2rem;
+
+    // "fill" to change color of the svg icon
+    fill: blue;
   }
 }
 ```
