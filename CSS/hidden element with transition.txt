@@ -10,13 +10,13 @@
 
     /* Hide Element with transitions */
     opacity: 0;                 /* hide visually */
-    pointer-event: none;        /* make it unaccessible to mouse and keyboard */
+    pointer-events: none;        /* make it unaccessible to mouse and keyboard */
     visibility: hidden;         /* hide from screen readers */
 }
 
 .div.hidden{
     opacity: 1;
-    pointer-event: auto;
+    pointer-events: auto;
     visibility: visible;
 }
 

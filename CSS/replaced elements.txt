@@ -36,3 +36,10 @@
     /* Example of vertical-align for inline replaced elements */
     vertical-align: middle;     /* Aligns the middle of the element with the baseline plus half the x-height of the parent. */
 }
+
+.image{
+    // removes white spaces around
+    display: block; 
+    height: 100%;
+    width: 100%;
+}
