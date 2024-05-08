@@ -32,6 +32,7 @@
 - [Free videos for websites](https://coverr.co/)
 - [Convert PNG to SVG](https://www.pngtosvg.com/)
 - [Decrease image size](https://squoosh.app/)
+- [Decrease file size](https://www.freeconvert.com/)
 - [Change file format](https://cloudconvert.com/)
 
 #### Animation Generators
@@ -73,6 +74,12 @@
 - [Test Regular Expressions: Regex101](https://regex101.com/)
 - [Copyright, trademarks search: Marcaria](https://trademark-search.marcaria.com/)
 - [Copyright, Italian Business Register](https://italianbusinessregister.it/en/home)
+
+#### React
+
+- [Documentation](https://react.dev/)
+- [SetUp 1st App](https://create-react-app.dev/)
+- [Real-world React](https://vitejs.dev/guide/)
 
 #### Coding Challenges and Practice
 
