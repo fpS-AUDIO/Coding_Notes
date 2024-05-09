@@ -34,5 +34,8 @@ Building a complex fronted with vanilla JS:
 
 You can use the pure react for fun by connecting react scripts to html via CDN, but to setup a real world React App you need to use a tool like:
 
-- **create-react-app**:
-- **vite**:
+- **create-react-app**: is good starter kit since everything is already configured (ESLint, Prettier, Jest etc), but it uses slow and outdated technologies, so it's good for studying.
+- **vite**: it's good for real life since it's a reallt fast modern tool that contains a template for setting up React applications. But you have to configure everything manually, especially ESlint.
+- use react framework like Next.js or Remix (frameworks built on top of the React library).
+
+
