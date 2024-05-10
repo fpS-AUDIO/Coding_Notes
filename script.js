@@ -1,39 +1,50 @@
 "use strict";
 
-/////////////////////////////////////
-//// Basics of OPP in JavaScript ////
-/////////////////////////////////////
-// Coding Note #58
+/////////////////////////////////////////////////
+//// OOP - Function Prototypes in JavaScript ////
+/////////////////////////////////////////////////
+// Coding Note #60
 
-/* ------ OOP Basics:
-    - Is a programming paradigm based on the concept of objects, which model real-world or abstract entities.
-    - Objects contain data (properties) and functions (methods), packaging data and its behavior into a single unit.
-    - Objects are self-contained blocks of code, serving as building blocks of applications.
-    - These objects can interact through a public interface (API) by exposing methods.
-    - OOP aims to organize code for easier and more flexible maintenance.
+/* ------ Prototypes:
+ - Every function in JavaScript has a property called `prototype`.
+ - Every object created by a constructor function gains access to all
+   methods and properties defined in the constructor's `prototype` property.
+ - Each instance object has a special internal property, `__proto__`, 
+   which references the `prototype` of the constructor function.
+   In other words, the `prototype` of the constructor becomes the `__proto__` of its instances.
 */
 
-/* ------ Fundamental Principles of OOP:
- 1. Abstraction:    Ignoring or hiding irrelevant details to gain an overview of the system.
- 2. Encapsulation:  Keeping properties and methods private within the class, exposing only essential methods via an API.
- 3. Inheritance:    Allowing a child class to inherit properties and methods from a parent class, establishing a hierarchy.
- 4. Polymorphism:   Enabling child classes to override inherited properties and methods, allowing multiple behaviors.
-*/
+// Example constructor function
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
 
-/* ------ OOP in JavaScript:
- - Objects are linked (not copied) to a prototype object, sharing its properties and methods.
- - This is called prototypal inheritance (delegation).
- - This contrasts with classic OOP inheritance where classes inherit methods by copying.
- - Instantiation is a process of Creating a child objects from a parent class or prototype.
-*/
+// Create an instance of Person
+const alex = new Person("Alexander", 1996);
 
-/* ------ There are 3 ways of implement prototypal inheritance in JS:
- 1. Constructor functions:
-    - Create objects from a function, used for built-in objects like Arrays and Maps.
- 2. ES6 Classes:
-    - A modern syntax for defining classes, though they work like constructor functions under the hood.
- 3. Object.create():
-    - Links an object to a prototype object, offering a simple, though less used, solution.
-*/
+// Access the `prototype` property of the constructor function
+console.log(Person.prototype); // {constructor: ƒ}
 
-// Follow @coding_feature on Instagram for more content! 👍
+// Add a method `changeFirstName` to the `prototype` of Person so that all instances can access it
+Person.prototype.changeFirstName = function (newFirstName) {
+  this.firstName = newFirstName;
+};
+
+// The `alex` instance now has access to this method
+alex.changeFirstName("Alex");
+
+// Access the special internal property `__proto__`
+console.log(alex.__proto__); // {changeFirstName: ƒ, constructor: ƒ}
+console.log(alex.__proto__ === Person.prototype); // true
+console.log(Person.prototype.isPrototypeOf(alex)); // true
+
+// Add a shared property to the prototype
+Person.prototype.species = "human";
+console.log(alex.species); // human
+
+// Check if a property belongs to an instance itself or is inherited from the prototype
+console.log(alex.hasOwnProperty("firstName")); // true
+console.log(alex.hasOwnProperty("species")); // false
+
+// make contnet about --- prototypal chain --- and --- static methods ---

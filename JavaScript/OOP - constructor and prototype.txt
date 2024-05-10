@@ -25,7 +25,7 @@
 
 // creating constructure functions for a person
 const Person = function (firstName, birthYear) {
-  // create a property of `this` keyword and its value from ricieved argument.
+  // create a property of `this` keyword and its value from recieved argument.
   // same property name of parameter just for convention.
   // these are instance properties:
   this.firstName = firstName;
