@@ -48,3 +48,6 @@ console.log(alex.hasOwnProperty("firstName")); // true
 console.log(alex.hasOwnProperty("species")); // false
 
 // make contnet about --- prototypal chain --- and --- static methods ---
+
+
+
