@@ -1,53 +1,48 @@
 "use strict";
 
-/////////////////////////////////////////////////
-//// OOP - Function Prototypes in JavaScript ////
-/////////////////////////////////////////////////
-// Coding Note #60
+////////////////////////////////////////////////
+//// OOP - ES6 Classes Basics in JavaScript ////
+////////////////////////////////////////////////
+// Coding Note #62
 
-/* ------ Prototypes:
- - Every function in JavaScript has a property called `prototype`.
- - Every object created by a constructor function gains access to all
-   methods and properties defined in the constructor's `prototype` property.
- - Each instance object has a special internal property, `__proto__`, 
-   which references the `prototype` of the constructor function.
-   In other words, the `prototype` of the constructor becomes the `__proto__` of its instances.
-*/
+/* ----- Some Key Points:
+ -  Classes in JavaScript are syntactic sugar over the existing prototypal inheritance, 
+    so they're not traditional classes like in other languages.
+ -  Classes are special types of functions and can be defined as expressions or declarations.
+ -  Unlike function declarations, class declarations are not hoisted.
+ -  Classes are first-class citizens: they can be passed as arguments and returned from functions.
+ -  The body of a class is always executed in strict mode.
+ */
 
-// Example constructor function
-const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
+// ---------------------------------------------------------------------------------------- //
+// Syntax Examples:
 
-// Create an instance of Person
+// Class expression syntax
+// const Person = class {};
+
+// Class declaration syntax
+class Person {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods defined here are added to the prototype and are non-enumerable
+  calcAge() {
+    return new Date().getFullYear() - this.birthYear;
+  }
+
+  greet() {
+    return `Hello ${this.firstName}`;
+  }
+}
+
+// Instantiation: The constructor is called automatically when a new instance is created
 const alex = new Person("Alexander", 1996);
 
-// Access the `prototype` property of the constructor function
-console.log(Person.prototype); // {constructor: ƒ}
+console.log(alex); // Output: Person { firstName: 'Alexander', birthYear: 1996 }
+console.log(alex.calcAge()); // Output based on current year
+console.log(alex.greet()); // Output: Hello Alexander
 
-// Add a method `changeFirstName` to the `prototype` of Person so that all instances can access it
-Person.prototype.changeFirstName = function (newFirstName) {
-  this.firstName = newFirstName;
-};
-
-// The `alex` instance now has access to this method
-alex.changeFirstName("Alex");
-
-// Access the special internal property `__proto__`
-console.log(alex.__proto__); // {changeFirstName: ƒ, constructor: ƒ}
-console.log(alex.__proto__ === Person.prototype); // true
-console.log(Person.prototype.isPrototypeOf(alex)); // true
-
-// Add a shared property to the prototype
-Person.prototype.species = "human";
-console.log(alex.species); // human
-
-// Check if a property belongs to an instance itself or is inherited from the prototype
-console.log(alex.hasOwnProperty("firstName")); // true
-console.log(alex.hasOwnProperty("species")); // false
-
-// make contnet about --- prototypal chain --- and --- static methods ---
-
-
-
+// Demonstration that the prototype of alex is Person.prototype
+console.log(alex.__proto__ === Person.prototype); // Output: true
