@@ -1,48 +1,66 @@
 "use strict";
 
-////////////////////////////////////////////////
-//// OOP - ES6 Classes Basics in JavaScript ////
-////////////////////////////////////////////////
-// Coding Note #62
+////////////////////////////////////////////////////////////////////
+//// OOP - inheritance with Constructor functions in JavaScript ////
+////////////////////////////////////////////////////////////////////
+// Coding Note #66
 
-/* ----- Some Key Points:
- -  Classes in JavaScript are syntactic sugar over the existing prototypal inheritance, 
-    so they're not traditional classes like in other languages.
- -  Classes are special types of functions and can be defined as expressions or declarations.
- -  Unlike function declarations, class declarations are not hoisted.
- -  Classes are first-class citizens: they can be passed as arguments and returned from functions.
- -  The body of a class is always executed in strict mode.
- */
+/*  Steps to manipulate the prototype chain manually:
+ -  Below we have created `Person` class as parent class and `Student` as child class
+ -  Usually the child class accepts same arguments (firstName, berthYear ) + some additional (study)
+ -  Inside the child class you need to call the parent function, but if you call it as a regular function call,
+    so without the `new` operator, the `this` keyword will be set to undefined.
+    To solve this, you need to manually set the `this` keyword using call() method
+    EXAMPLE: Person.call(this, firstName, berthYear);
+  - Right after defining the child class you need to link the connection of prototype objects using Object.create()
+    So you need make inheritance and NOT just poiniting to the SAME object like: Student.prototype = Person.prototype;
+    EXAMPLE: Student.prototype = Object.create(Person.prototype);
+    NOTE:   you need to create this connection before defining the methods of prototype object
+            of child class (Student) because Object.create() will return an empty object, so
+            if you defined methods before this point Object.create() will overwrite these methods.
+ -  `childClass.prototype.constructor` should point on the same `childClass`, 
+    but since we manually set the prototype property of `childClass` (Student) using Object.create()
+    now the constructor childClass (Student) is still parentClass (Person).
+    You need to fix this because sometimes it's important to rely on this constructor property.
+    It's easy to do: childClass.prototype.constructor = childClass;
+    EXAMPLE: Student.prototype.constructor = Student;
+*/
 
-// ---------------------------------------------------------------------------------------- //
-// Syntax Examples:
+// define the Person class
+const Person = function (firstName, berthYear) {
+  this.firstName = firstName;
+  this.berthYear = berthYear;
+};
 
-// Class expression syntax
-// const Person = class {};
+// also define method of Person.prototype
+Person.prototype.calcAge = function () {
+  return 2024 - this.berthYear;
+};
 
-// Class declaration syntax
-class Person {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  }
+// define Student class
+const Student = function (firstName, berthYear, study) {
+  // manually setting the `this` keyword to `this` which will be the new object when will use `new`
+  Person.call(this, firstName, berthYear);
+  this.study = study;
+};
 
-  // Methods defined here are added to the prototype and are non-enumerable
-  calcAge() {
-    return new Date().getFullYear() - this.birthYear;
-  }
+// after defining the child class make the prototype connection inheritance
+Student.prototype = Object.create(Person.prototype);
 
-  greet() {
-    return `Hello ${this.firstName}`;
-  }
-}
+// adjust the constructor of Student
+Student.prototype.constructor = Student;
 
-// Instantiation: The constructor is called automatically when a new instance is created
-const alex = new Person("Alexander", 1996);
+// define method of Student.prototype
+Student.prototype.sayHello = function () {
+  console.log(`Hello, my name is ${this.firstName} and I study ${this.study}`);
+};
 
-console.log(alex); // Output: Person { firstName: 'Alexander', birthYear: 1996 }
-console.log(alex.calcAge()); // Output based on current year
-console.log(alex.greet()); // Output: Hello Alexander
+//////////////////////////////////////////////////////////
+//// OOP - inheritance with ES6 Classes in JavaScript ////
+//////////////////////////////////////////////////////////
+// Coding Note #67
 
-// Demonstration that the prototype of alex is Person.prototype
-console.log(alex.__proto__ === Person.prototype); // Output: true
+//////////////////////////////////////////////////////////////
+//// OOP - inheritance with Object.create() in JavaScript ////
+//////////////////////////////////////////////////////////////
+// Coding Note #68
