@@ -1,25 +1,25 @@
 # Props
 
-**Props**:
+### What are Props
 
-- Props (properties) are used to pass data from parent components to child components (down the component tree)
-- Props are essential React tool to configure and customize components, so they're like function parameters
-- Anything can be passed as props like values, arrays, objects, functions, other components etc.
+**Props** (short for properties) are used to pass data from parent components to child components (down the component tree). Props are an essential React tool to configure and customize components, functioning like function parameters. Anything can be passed as props, such as values, arrays, objects, functions, and other components.
 
-Since components are made of data, logic and appearance, the the 2 main data are: state and props. Meanwhile the state data can be updated by component itself, the props data is coming from outside and can be updated only by the parent component. So, since the props data can't be modified by a child components we can say that props are **immutable**, so they're read-only.
+Since components are made of data, logic, and appearance, the two main data types are state and props. While the state data can be updated by the component itself, the props data comes from outside and can be updated only by the parent component. Since props data can't be modified by child components, we can say that props are **immutable** and read-only.
 
-Mutating props would affect parent components, creating **side effect**, in other words some data located outside of the current function is changing and this is not pure. So components should be **pure functions** to allow React optimize apps, avoid bugs and make predictable logic.
+Mutating props would affect parent components, creating **side effects**. In other words, some data located outside of the current function is changing, which is not pure. Therefore, components should be **pure functions** to allow React to optimize apps, avoid bugs, and ensure predictable logic.
 
-React uses **one way data flow**, so data can only be passed from parent to child components, which happens by using props. This helps:
+React uses **one-way data flow**, so data can only be passed from parent to child components through props. This helps:
 
-- apps become more predictable
-- apps are easier to debug
-- apps are more perfomant
+- Apps become more predictable
+- Apps are easier to debug
+- Apps are more performant
+
+### Example Usage
 
 ```javascript
-// 1. passing props inside parent component like html attributes, and using {} to enable js mode
-// 2. in child component function accept props parameter
-// 3. then use the data by accessing different properties from props JS object
+// 1. Passing props inside the parent component like HTML attributes, using {} to enable JS mode
+// 2. In the child component function, accept the props parameter
+// 3. Use the data by accessing different properties from the props JS object
 
 function App() {
   return (
@@ -31,14 +31,14 @@ function App() {
   );
 }
 
-// passing props as parameter to child component
+// Passing props as a parameter to the child component
 function SimpleComponent(props) {
-  // using props
+  // Using props
   return (
     <div>
       <h3>I'm a simple component</h3>
-      {/* accessing props */}
-      <p>And I recieved a {props.animal} from parent component</p>
+      {/* Accessing props */}
+      <p>And I received a {props.animal} from the parent component</p>
       <p>
         This {props.animal} is {props.age + 1} years old.
       </p>
@@ -48,7 +48,88 @@ function SimpleComponent(props) {
 
 /* Output:
 I'm a simple component
-And I recieved a dog from parent component
+And I received a dog from the parent component
 This dog is 4 years old.
 */
+```
+
+### PropTypes
+
+PropTypes are used to document the intended types of properties passed to components. This helps catch bugs and ensure the component is used correctly.
+
+```javascript
+import PropTypes from "prop-types";
+
+function SimpleComponent(props) {
+  return (
+    <div>
+      <h3>I'm a simple component</h3>
+      <p>And I received a {props.animal} from the parent component</p>
+      <p>
+        This {props.animal} is {props.age + 1} years old.
+      </p>
+    </div>
+  );
+}
+
+SimpleComponent.propTypes = {
+  animal: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+};
+```
+
+### Default Props
+
+You can define default values for props using the `defaultProps` property. This is useful when you want to ensure a component has default values if certain props are not passed.
+
+```javascript
+function SimpleComponent(props) {
+  return (
+    <div>
+      <h3>I'm a simple component</h3>
+      <p>And I received a {props.animal} from the parent component</p>
+      <p>
+        This {props.animal} is {props.age + 1} years old.
+      </p>
+    </div>
+  );
+}
+
+SimpleComponent.defaultProps = {
+  animal: "cat",
+  age: 2,
+};
+```
+
+### Destructuring Props
+
+For readability and simplicity, you can destructure props directly in the function parameter list or inside the function body.
+
+```javascript
+// Destructuring in the parameter list
+function SimpleComponent({ animal, age }) {
+  return (
+    <div>
+      <h3>I'm a simple component</h3>
+      <p>And I received a {animal} from the parent component</p>
+      <p>
+        This {animal} is {age + 1} years old.
+      </p>
+    </div>
+  );
+}
+
+// OR destructuring inside the function body
+function SimpleComponent(props) {
+  const { animal, age } = props;
+  return (
+    <div>
+      <h3>I'm a simple component</h3>
+      <p>And I received a {animal} from the parent component</p>
+      <p>
+        This {animal} is {age + 1} years old.
+      </p>
+    </div>
+  );
+}
 ```

@@ -6,54 +6,59 @@
 // Coding Note #66
 
 /*  Steps to manipulate the prototype chain manually:
- -  Below we have created `Person` class as parent class and `Student` as child class
- -  Usually the child class accepts same arguments (firstName, berthYear ) + some additional (study)
- -  Inside the child class you need to call the parent function, but if you call it as a regular function call,
-    so without the `new` operator, the `this` keyword will be set to undefined.
-    To solve this, you need to manually set the `this` keyword using call() method
-    EXAMPLE: Person.call(this, firstName, berthYear);
-  - Right after defining the child class you need to link the connection of prototype objects using Object.create()
-    So you need make inheritance and NOT just poiniting to the SAME object like: Student.prototype = Person.prototype;
+ -  Below we have created the `Person` class as the parent class and `Student` as the child class.
+ -  Usually, the child class accepts the same arguments (firstName, birthYear) plus some additional ones (study).
+ -  Inside the child class, you need to call the parent function, but if you call it as a regular function call,
+    without the `new` operator, the `this` keyword will be set to undefined.
+    To solve this, you need to manually set the `this` keyword using the call() method.
+    EXAMPLE: Person.call(this, firstName, birthYear);
+ -  Right after defining the child class, you need to link the prototype objects using Object.create().
+    This is to achieve inheritance and not just point to the SAME object like: Student.prototype = Person.prototype;
     EXAMPLE: Student.prototype = Object.create(Person.prototype);
-    NOTE:   you need to create this connection before defining the methods of prototype object
-            of child class (Student) because Object.create() will return an empty object, so
-            if you defined methods before this point Object.create() will overwrite these methods.
- -  `childClass.prototype.constructor` should point on the same `childClass`, 
-    but since we manually set the prototype property of `childClass` (Student) using Object.create()
-    now the constructor childClass (Student) is still parentClass (Person).
+    NOTE:   You need to create this connection before defining the methods on the prototype object
+            of the child class (Student) because Object.create() will return an empty object, so
+            if you define methods before this point, Object.create() will overwrite these methods.
+ -  `childClass.prototype.constructor` should point to the `childClass`, 
+    but since we manually set the prototype property of `childClass` (Student) using Object.create(),
+    the constructor of childClass (Student) is still parentClass (Person).
     You need to fix this because sometimes it's important to rely on this constructor property.
     It's easy to do: childClass.prototype.constructor = childClass;
     EXAMPLE: Student.prototype.constructor = Student;
 */
 
-// define the Person class
-const Person = function (firstName, berthYear) {
+// Define the Person class
+const Person = function (firstName, birthYear) {
   this.firstName = firstName;
-  this.berthYear = berthYear;
+  this.birthYear = birthYear;
 };
 
-// also define method of Person.prototype
+// Define a method on Person.prototype
 Person.prototype.calcAge = function () {
-  return 2024 - this.berthYear;
+  return new Date().getFullYear() - this.birthYear;
 };
 
-// define Student class
-const Student = function (firstName, berthYear, study) {
-  // manually setting the `this` keyword to `this` which will be the new object when will use `new`
-  Person.call(this, firstName, berthYear);
+// Define the Student class
+const Student = function (firstName, birthYear, study) {
+  // Manually set the `this` keyword to the new object when using `new`
+  Person.call(this, firstName, birthYear);
   this.study = study;
 };
 
-// after defining the child class make the prototype connection inheritance
+// After defining the child class, make the prototype connection for inheritance
 Student.prototype = Object.create(Person.prototype);
 
-// adjust the constructor of Student
+// Adjust the constructor of Student
 Student.prototype.constructor = Student;
 
-// define method of Student.prototype
+// Define a method on Student.prototype
 Student.prototype.sayHello = function () {
   console.log(`Hello, my name is ${this.firstName} and I study ${this.study}`);
 };
+
+// Example usage:
+const student = new Student("John", 2000, "Computer Science");
+console.log(student.calcAge()); // Calculates the age based on the birth year
+student.sayHello(); // Outputs: Hello, my name is John and I study Computer Science
 
 //////////////////////////////////////////////////////////
 //// OOP - inheritance with ES6 Classes in JavaScript ////
