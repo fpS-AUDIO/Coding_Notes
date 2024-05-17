@@ -26,7 +26,7 @@ To use state in a component you need:
 - so usually you should immediatly destructure it:
   `const [variable, setVariable] = useState(1);`
 - you should update state only using the provided function, never manually
-- also if you need to update state _based on current state_ you should use callback funtion like `setStep((step) => step - 1)` and not just `setStep(step - 1)`
+- also if you need to update state _based on current state_ you should use callback funtion like `setStep((step) => step - 1)` and not just `setStep(step - 1)` overwise sometimes it might not work as expected
 
 **example**:
 
