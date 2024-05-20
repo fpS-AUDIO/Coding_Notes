@@ -6,6 +6,15 @@
 
 When the state is updated, React automatically re-render the component, so it updates the _view of component_. All _components views_ together create _UI_. State is preserved throughout the components re-renders. When components completly disappears from the UI (called _unmounting_) then the state returns back to default.
 
+## State management
+
+**State management**:
+
+- _when_ to create a piece of state
+- _what_ types of state are necessary
+- _where_ to place each piece of state
+- _how_ dat flows through the app
+
 ## How to use state?
 
 To use state in a component you need:
@@ -13,6 +22,10 @@ To use state in a component you need:
 1. add a new state variable
 2. use it in a code and usually in JSX
 3. update the piece of state
+
+**Local state**: is ususally used by one or few child components, and you should always start with local state and pass to global only if you really need that.
+
+**Global state**: is used by many components. You can define global state by using _Contex API_ or some external library like _Redux_.
 
 ### useState
 
@@ -60,11 +73,3 @@ function App() {
 ### useReducer
 
 ### Context API
-
-## Think about state
-
-### why to use state?
-
-### where to place state?
-
-### types of state
