@@ -1,4 +1,4 @@
-# React `children` Prop
+ # React `children` Prop
 
 The `children` prop is a special prop in React that allows you to pass components or elements as children to other components. It enables you to compose components together and build more complex UIs.
 
