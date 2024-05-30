@@ -5,7 +5,7 @@ Phases to display component on the screen:
 1.  **render is triggered** for example when updating the state.
 2.  **render phase** is when react calls instances functions and think how to update DOM. So rendering in react is not updating DOM, but it's an internal process which don't produce any visual effect.
 3.  **commit phase** is when the new elements are actually placed in DOM and the older elements can be updated/removed to reflect the state of an application.
-4.  **browser** pains the screen
+4.  **browser pains** the screen
 
 ---
 
@@ -40,6 +40,20 @@ Since the work of reconcilier is asynch, it enables **concurrent features** like
 
 **Diffing** is the process of comparing elements step-by-step based on their position in the current Fiber tree (based on the new virtual DOM). When this process is finished, all the necessary DOM mutations are placed into the **list of effects**. The list of effects will be used to actually mutate the DOM (commit phase below).
 
+Diffing is base on 2 rules:
+
+1.  2 elements different types will produce different trees (same position, different elements)
+2.  elements with a stable key prop stay the same across renders (same position, same element)
+
+The **key prop** is a special prop telling the diffing algorithm that an element is unique. The key allows React to distinguish the instances of the same component.
+
+- When the key _doesn't change_ across multiple renders the element ("owner of key") will be kept in the DOM (even if position of element changes).
+- When the key _changes_ between renders, the element will be destroyed and the new one is created (even if position is the same)
+
 ---
 
 ### Commit phase
+
+During this phase the React writes (_flushes_) to the DOM all necessary updates. The commiting is **synchronous**, so DOM is updated in one go and it can't be interrupted. This ensures the consistency in UI without showing partial results. After commit the _workInProgress_ fiber tree becomes the _current_ tree for the **next render cycle**.
+
+While the render phase is done by React library and the painting to the screen the image by browser itslef, the commit phase is done by the library called **ReactDOM**.
