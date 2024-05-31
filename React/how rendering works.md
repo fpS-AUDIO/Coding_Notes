@@ -11,7 +11,7 @@ Phases to display component on the screen:
 
 ### Render is triggered
 
-The render process is triggered for entire application, and not only for 1 component (indeed without updating the DOM). Renders are not trigged immediatly but they're scheduled for when JS engine has some "free time" (talking about ms). There is aso batching of multiple setState calls in event handlers. The render can be triggered only:
+The render process is triggered for entire application, and not only for 1 component (indeed without updating the DOM). Renders are not trigged immediatly but they're scheduled for when JS engine has some "free time" (talking about ms). There is aso **batching** of multiple setState calls in event handlers. The render can be triggered only:
 
 - during the initial rendering of application
 - when state is updated which produces _re-rendering_
@@ -57,3 +57,18 @@ The **key prop** is a special prop telling the diffing algorithm that an element
 During this phase the React writes (_flushes_) to the DOM all necessary updates. The commiting is **synchronous**, so DOM is updated in one go and it can't be interrupted. This ensures the consistency in UI without showing partial results. After commit the _workInProgress_ fiber tree becomes the _current_ tree for the **next render cycle**.
 
 While the render phase is done by React library and the painting to the screen the image by browser itslef, the commit phase is done by the library called **ReactDOM**.
+
+---
+
+# Render Logic
+
+There are 2 types of logics in React:
+
+1. **Render logic**: is top level code on a component whch describes how a component should lokk like and it's executed each time the component renders.
+2. **Event handler functions**: is executed as a consequence of an event listened by a handler and this code does things like updating state, fetching data, navigate through the pages etc.
+
+Important functional programming principals in React:
+
+- **side effect**: dependency on or a modification of any data outside the function scope.
+- **pure functions**: function which has no side effect which doesn't mutate variable outside the scope and returns always same output as input. In React the **components must be pure** when it comes to the render logic.
+- in **event handlers** functions the side effects are allowed. There is also a special hook to register side effect: **useEffect**.
