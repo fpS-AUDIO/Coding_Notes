@@ -70,6 +70,7 @@
 
 #### General Development Resources
 
+- [Public APIs](https://github.com/public-apis/public-apis)
 - [Web Statistics: StatCounter](https://gs.statcounter.com/)
 - [Test Regular Expressions: Regex101](https://regex101.com/)
 - [Copyright, trademarks search: Marcaria](https://trademark-search.marcaria.com/)
@@ -100,4 +101,3 @@
 - [Generator-02](https://gprm.itsvg.in/)
 - [Generator-03](https://www.profileme.dev/)
 - [More Guides](https://github.com/rzashakeri/beautify-github-profile)
-- []()

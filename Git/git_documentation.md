@@ -40,6 +40,7 @@ git config --global user.name "your-name-here"
 git config --global user.email "yourmail@mail.com"
 ```
 
+
 ### 3. Create Local Repository
 
 In the terminal, open the directory you want to turn into a repository:
