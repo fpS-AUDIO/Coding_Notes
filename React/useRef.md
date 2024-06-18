@@ -4,14 +4,14 @@
 
 ### What is a ref?
 
-**Ref** stands for reference and the `useRef` hook is used to create a ref. Ref is like a **box** which can be used to store any data which will be **preserved during the rerenders**. In practice, when you use `useRef` hook React gives you and object with a **mutable** `.current` property, then you can write/read any data inside that property.
+**Ref** stands for reference and the `useRef` hook is used to create a ref. Ref is like a **box** which can be used to store any data which will be **preserved during the rerenders**. In practice, when you use `useRef` hook React gives you an object with a **mutable** `.current` property, then you can write/read any data inside that property.
 
 The `useRef` is useful to:
 
 1.  create a variable which stays the same during the rerenders (setTimeout id, previous state etc.)
 2.  select and store DOM elements
 
-Usually `useRef` is used to for data which is **NOT rendered tu UI** but appear in some internal logic like event handlers, effects (so usually not in JSX). Also you can **not** read or write `.current` property in render logic like state.
+Usually `useRef` is used for data which is **NOT rendered to UI** but appear in some internal logic like event handlers, effects (so usually not in JSX). Also you can **not** read or write `.current` property in render logic like state.
 
 The main **differences** between state and ref:
 
