@@ -55,14 +55,49 @@ This will create a new React project with Vite pre-configured.
   }
   ```
 
+  **Note**: or add this to `.eslintrc.cjs` in `extends` field.
+
 - configure Vite project with this `.eslintrc.json` file, so enter inside the `vite.config.js` file and inside the plugins array add eslint, something like this:
 
   ```javascript
+  import { defineConfig } from "vite";
+  import react from "@vitejs/plugin-react";
   import eslint from "vite-plugin-eslint";
+
   export default defineConfig({
     plugins: [react(), eslint()],
   });
   ```
+
+### 3.2 Steps to Bypass Prop Validation Error in ESLint
+
+Inside the `.eslintrc.cjs` disable prop validation inside the `rules` field:
+
+```cjs
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "react-app",
+  ],
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+  settings: { react: { version: "18.2" } },
+  plugins: ["react-refresh"],
+  rules: {
+    "react/jsx-no-target-blank": "off",
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
+    "react/prop-types": "off", // Disable prop-types validation
+  },
+};
+```
 
 ---
 
@@ -71,18 +106,20 @@ This will create a new React project with Vite pre-configured.
 A typical Vite React project structure looks like this:
 
 ```
+
 my-react-app
 ├── node_modules
 ├── public
-│   └── index.html
+│ └── index.html
 ├── src
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── styles.css
+│ ├── App.jsx
+│ ├── main.jsx
+│ └── styles.css
 ├── .gitignore
 ├── index.html
 ├── package.json
 └── vite.config.js
+
 ```
 
 - **public**: Static assets like images and the main `index.html` file.

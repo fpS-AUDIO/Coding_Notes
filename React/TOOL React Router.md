@@ -123,6 +123,7 @@ function Dashboard() {
   return (
     <div>
       <h2>Dashboard</h2>
+      {/* 'Outlet' will be replaced dinamically with child routes */}
       <Outlet />
     </div>
   );
@@ -141,6 +142,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="dashboard" element={<Dashboard />}>
+          {/* 'index' means if no child route matches, the index one will be displayed by default, the 'path' should not be declared */}
+          <Route index element={<Profile />} />
           <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
         </Route>
@@ -245,9 +248,3 @@ function PrivateRoute({ children }) {
   }
 />;
 ```
-
----
-
-# Conclusion
-
-This documentation provides a comprehensive guide to using React Router in your React applications. Follow best practices and keep your routing configurations simple and maintainable.
