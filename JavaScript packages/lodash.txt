@@ -1,0 +1,96 @@
+
+
+
+
+////////////////////
+// Lodash Library //
+////////////////////
+
+
+// Website: https://lodash.com/
+
+// Lodash is a comprehensive JavaScript utility library that facilitates manipulation, 
+// traversal, and management of arrays, objects, and other types through its consistent, 
+// modular, and performant API. It simplifies complex tasks in JavaScript, helping developers 
+// write cleaner and more efficient code.
+
+
+
+//// ----------- Arrays ----------- ////
+
+// _.chunk(array, [size=1])
+// Breaks up an array into chunks of a specified size.
+_.chunk(['a', 'b', 'c', 'd'], 2);
+// => [['a', 'b'], ['c', 'd']]
+
+// _.compact(array)
+// Creates an array with all falsey values removed (false, null, 0, "", undefined, and NaN are falsey).
+_.compact([0, 1, false, 2, '', 3]);
+// => [1, 2, 3]
+
+// _.concat(array, [values])
+// Concatenates the array with any additional arrays and/or values.
+_.concat([1], 2, [3], [[4]]);
+// => [1, 2, 3, [4]]
+
+
+//// ----------- Objects ----------- ////
+
+// _.assign(object, [sources])
+// Assigns own enumerable string keyed properties of source objects to the destination object. It's similar to Object.assign in vanilla JS.
+_.assign({ 'a': 1 }, { 'b': 2 }, { 'c': 3 });
+// => { 'a': 1, 'b': 2, 'c': 3 }
+
+// _.get(object, path, [defaultValue])
+// Gets the value at path of object. If the resolved value is undefined, the defaultValue is returned.
+_.get({ 'a': [{ 'b': { 'c': 3 } }] }, 'a[0].b.c', 'default');
+// => 3
+
+// _.set(object, path, value)
+// Sets the value at path of object. If a portion of path doesn't exist, it's created. Great for avoiding errors when accessing deeply nested properties.
+_.set(object, 'a[0].b.c', 4);
+// => object is { 'a': [{ 'b': { 'c': 4 } }] }
+
+
+//// ----------- Functions ----------- ////
+
+// _.debounce(func, [wait=0], [options={}])
+// Creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked. Useful for performance improvements, e.g., limiting how often a function is called on a resize or scroll event.
+window.onresize = _.debounce(calculateLayout, 150);
+
+// _.throttle(func, [wait=0], [options={}])
+// Creates a throttled function that only invokes func at most once per every wait milliseconds. Similar to debounce but ensures the function is invoked at least once in every wait period.
+window.onscroll = _.throttle(updatePosition, 100);
+
+
+//// ----------- Collections ----------- ////
+
+// _.filter(collection, [predicate=_.identity])
+// Iterates over elements of collection, returning an array of all elements predicate returns truthy for. Great for filtering arrays or objects based on specific criteria.
+var users = [
+  { 'user': 'barney', 'active': true },
+  { 'user': 'fred',   'active': false }
+];
+_.filter(users, function(o) { return !o.active; });
+// => objects for ['fred']
+
+// _.map(collection, [iteratee=_.identity])
+// Creates an array of values by running each element in collection through iteratee. Allows for transforming each item in an array or object.
+_.map([4, 8], _.square);
+// => [16, 64]
+
+
+//// ----------- Utilities ----------- ////
+
+// _.range([start=0], end, [step=1])
+// Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end. Useful for generating an array of numbers for iteration purposes.
+_.range(0, 20, 5);
+// => [0, 5, 10, 15]
+
+// _.cloneDeep(value)
+// Creates a deep copy of value. Unlike a shallow copy, deep copy means that nested objects are copied as well. Essential for avoiding unintended side-effects when objects contain nested objects.
+var objects = [{ 'a': 1 }, { 'b': 2 }];
+var deep = _.cloneDeep(objects);
+// => true for deep[0] !== objects[0] and deep[1] !== objects[1]
+
+// Note: Always consider the version of Lodash you are using as methods and their behavior might slightly change between versions. It's also good practice to import only the functions you need (e.g., using lodash.chunk instead of the whole lodash library) to keep your bundle size smaller.

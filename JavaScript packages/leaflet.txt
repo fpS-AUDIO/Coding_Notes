@@ -1,0 +1,61 @@
+
+
+
+/////////////////////
+// Leaflet Library //
+/////////////////////
+
+// Source:  https://leafletjs.com/
+
+/*  Leaflet is the leading open-source JavaScript library for mobile-friendly 
+    interactive maps. Weighing just about 42 KB of JS, it has all the mapping 
+    features most developers ever need.
+
+    Leaflet is designed with simplicity, performance and usability in mind. 
+    It works efficiently across all major desktop and mobile platforms, 
+    can be extended with lots of plugins, has a beautiful, easy to use and 
+    well-documented API and a simple, readable source code that is a joy 
+    to contribute to.   */
+
+
+
+
+/*  EXAMPLAIN CODE:
+
+ //  L  -> Layer, the namespace provided by the library with its own methods
+
+
+ //  L.map(`id_Of_Div`)  -> is the function which accepts id of a Div where to insert the map
+ //  .setView([latitude, longitude], zoomValue)  -> is to focus the on the given arrey of coordinates
+ >>> EXAMPLE: const map = L.map('map').setView([51.505, -0.09], 13);
+
+
+ // L.tilelayer(`StringUrlTemplate`, options)  -> set the layer (tiles are squares when map appears)
+ // .addTo(map)  -> adding to mapObject
+ >>> EXAMPLE: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
+
+
+ // mapObject.on(`evenType`, callback(event))  -> custom event listner if Leaflet
+ >>> EXAMPLE:   map.on(`click`, function(mapEvent) {})
+
+
+ // https://leafletjs.com/reference.html#marker
+ // L.marker([latitude, longitude], {options}) -> add marker on layer with options
+ // .addTo(map)  -> add the marker to the map Object
+ // .bindPopup(popupContent)  -> create and bind the pop-up to marker with custom text
+ //     Inside the bindPopup() you can create a new object with options
+        L.popup({options})  -> return a new popuo object https://leafletjs.com/reference.html#popup-option
+ // .openPopup()  -> open pop-up
+ // .setPopupContent(<String|HTMLElement|Popup> content)  -> Sets the content of the popup bound to this layer.
+ >>> EXAMPLE: L.marker([51.5, -0.09], {opacity: 0.8})
+  .addTo(map)
+  .bindPopup('<p>Hello world!<br />This is a nice popup.</p>')
+  .openPopup();
+
+
+*/
+
+

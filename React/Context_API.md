@@ -200,6 +200,75 @@ In this example, `MyProvider` manages a piece of state and provides it to `MyCom
 
 ---
 
+### Example of creating custom component and hook to write a cleaner code
+
+```jsx
+import { createContext, useState, useEffect, useContext } from "react";
+
+// ----- custom component with Context API and a custom hook
+
+// creating context
+const CityContext = createContext();
+
+const CITIES_API = "some randome url here";
+
+// custom component (wrapper)
+function CitiesProvider({ children }) {
+  const [cities, setCities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // effect to fetch cities list from json-server
+  useEffect(function () {
+    async function fetchCities() {
+      try {
+        setIsLoading(true);
+        const data = await fetch(`${CITIES_API}/cities`);
+
+        if (!data.ok) return new Error(`Can't fetch cities`);
+        const cities = await data.json();
+
+        setCities(() => cities);
+      } catch (err) {
+        console.log(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchCities();
+  }, []);
+
+  // returing custom component with a provided value
+  return (
+    <CityContext.Provider
+      value={{
+        cities,
+        isLoading,
+      }}
+    >
+      {children}
+    </CityContext.Provider>
+  );
+}
+
+// custom hook to get the context data (like public API)
+function useCities() {
+  // get the value from context
+  const contextValue = useContext(CityContext);
+
+  // guard clause: check if somebody tries to use it outside of context scope
+  if (contextValue === undefined)
+    throw new Error(`useCities is used outside of the CitiesProvider scope`);
+
+  return contextValue;
+}
+
+// exporting custom context component and hook
+export { CitiesProvider, useCities };
+```
+
+---
+
 ## Best Practices
 
 - **Default Values**: Always provide a sensible default value when creating a context.

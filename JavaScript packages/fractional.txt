@@ -1,0 +1,62 @@
+
+
+
+/**
+ * Fraction.js Library Coding Notes
+ * 
+ * Overview:
+ * Fraction.js is a library for handling fractions in JavaScript, enabling arithmetic operations, parsing, and conversion of fractions.
+ * 
+ * Installation:
+ * Use npm to install Fraction.js in your project:
+ * `npm install fraction.js`
+ * 
+ * Importing with Parcel:
+ * Parcel simplifies using modules by automatically resolving and bundling them. To import Fraction.js in a Parcel project, use:
+ * `import Fraction from 'fraction.js';`
+ * Ensure Parcel is installed: `npm install parcel-bundler --save-dev`
+ */
+
+
+
+// Creating Fractions
+// You can create fractions from numbers, strings, or other fractions.
+const half = new Fraction(1, 2); // From numbers
+const halfFromString = new Fraction("1/2"); // From a string
+const anotherHalf = new Fraction(half); // From another fraction
+
+// Basic Arithmetic Operations
+// Fraction.js supports addition, subtraction, multiplication, and division.
+const sum = half.add(new Fraction(1, 4)); // ¾
+const difference = half.sub(new Fraction(1, 4)); // ¼
+const product = half.mul(2); // 1
+const quotient = half.div(new Fraction(1, 4)); // 2
+
+// Other Useful Methods
+// Inverting a fraction, getting decimal representation, and converting to string.
+const inverted = half.inv(); // Inverts the fraction to 2/1
+const decimal = half.valueOf(); // Converts to decimal, e.g., 0.5
+const string = half.toString(); // Converts to string, e.g., "1/2"
+
+/**
+ * Advanced Features:
+ * 
+ * Simplifying Fractions:
+ * Fractions are automatically simplified, so `new Fraction(2, 4)` simplifies to 1/2.
+ * 
+ * Comparing Fractions:
+ * Use `equals`, `greaterThan`, and `lessThan` methods for comparison.
+ */
+const isEqual = half.equals(new Fraction(2, 4)); // true
+const isGreaterThan = half.greaterThan(new Fraction(1, 4)); // true
+const isLessThan = half.lessThan(1); // true
+
+/**
+ * Integration with Parcel:
+ * With Parcel, simply import Fraction.js as shown above. Parcel handles module resolution and bundling automatically.
+ * 
+ * Conclusion:
+ * Fraction.js provides a robust set of features for fraction arithmetic and comparison, easily integrated with modern JavaScript projects using Parcel.
+ */
+
+// Note: This file is a reference guide. Actual code implementation will vary based on your project's needs.
