@@ -4,7 +4,7 @@
 npm i redux
 ```
 
-```js
+```jsx
 // ... inside store.js ...
 
 // importing the old method to create redux store
@@ -206,7 +206,7 @@ console.log(store.getState());
 
 ---
 
-### Sepate code in different files
+### Separate code in different files
 
 Indeed you should split the code in different files following the concept of state slices, so you should separe code into features. For this example the features can be _account_ and _customer_.
 So you can create `features` directory with 2 child directories: `accounts` and `customers`.
@@ -214,7 +214,7 @@ Then in these directories you can place component and the state. State can be pl
 
 After these modification the `store.js` file can looks like this:
 
-```js
+```jsx
 import { combineReducers, createStore } from "redux";
 import AccountReducer from "./features/accounts/accountSlice";
 import CustomerReducer from "./features/customers/customerSlice";
@@ -245,7 +245,7 @@ npm i react-redux
 
 **Main file**:
 
-```js
+```jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -274,7 +274,7 @@ root.render(
 
 **inside a component**:
 
-```js
+```jsx
 // 'useSelector' hook is used to read data from Redux Store
 import { useSelector } from "react-redux";
 
@@ -284,6 +284,58 @@ function Customer() {
   // so you can import whatever you need (use keys provided into rootReducer)
   const customer = useSelector((reduxStore) => reduxStore.customer);
   return <h2>👋 Welcome, {customer.fullName}</h2>;
+}
+
+export default Customer;
+```
+
+---
+
+### Dispatch Actions from a Component
+
+```jsx
+import { useState } from "react";
+
+// remember to import the `useDispatch` Hook
+import { useDispatch } from "react-redux";
+// import action creator (helper function) too
+import { createCustomer } from "./customerSlice";
+
+function Customer() {
+  const [fullName, setFullName] = useState("");
+  const [nationalId, setNationalId] = useState("");
+
+  // useDispatch returns dispatch funcion
+  const dispatch = useDispatch();
+
+  function handleClick() {
+    if (!fullName || !nationalId) return;
+    // use disptach in standard way
+    dispatch(createCustomer(fullName, nationalId));
+  }
+
+  return (
+    <div>
+      <h2>Create new customer</h2>
+      <div className="inputs">
+        <div>
+          <label>Customer full name</label>
+          <input
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>National ID</label>
+          <input
+            value={nationalId}
+            onChange={(e) => setNationalId(e.target.value)}
+          />
+        </div>
+        <button onClick={handleClick}>Create new customer</button>
+      </div>
+    </div>
+  );
 }
 
 export default Customer;
