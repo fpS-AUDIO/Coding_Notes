@@ -67,6 +67,8 @@
 - [CSS Validator: W3C](https://jigsaw.w3.org/css-validator/)
 - [Clip-path generator: Clippy](https://bennettfeely.com/clippy/)
 - [Glass Blur effect generator](https://css.glass/)
+- [Tailwind CSS: Installation With Vite](https://tailwindcss.com/docs/guides/vite)
+- [Styled-components](https://styled-components.com/docs)
 
 #### General Development Resources
 
@@ -81,6 +83,10 @@
 - [Documentation](https://react.dev/)
 - [SetUp 1st App](https://create-react-app.dev/)
 - [Real-world React](https://vitejs.dev/guide/)
+- [Supabase Javascript Client Library](https://supabase.com/docs/reference/javascript/installing)
+- [TanStack (React) Query v4](https://tanstack.com/query/v4/docs/framework/react/overview)
+- [Recharts](https://recharts.org/en-US/examples)
+- [date-fns](https://date-fns.org/docs/Getting-Started/)
 
 #### Coding Challenges and Practice
 
