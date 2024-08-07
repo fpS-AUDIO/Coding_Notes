@@ -49,6 +49,7 @@
 - [Icons pack: Ionicons](https://ionic.io/ionicons)
 - [Icomoon: Convert to SVG or get SVG icon sprites](https://icomoon.io/)
 - [Favicon Generator](https://favicon.io/favicon-generator/)
+- [Emoji as a Favicon](https://css-tricks.com/emoji-as-a-favicon/)
 - [PNG to ICO](https://convertio.co/it/png-ico/)
 - [SVG Icons: FontAwesome](https://fontawesome.com/)
 
