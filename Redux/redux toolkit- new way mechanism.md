@@ -91,6 +91,9 @@ const accountSlice = createSlice({
 
     withdraw(state, action) {
       state.balance -= action.payload;
+
+      // featureSlice.caseReducers helps to manually call a reducer
+      // Example: accountSlice.caseReducers.deposit(state, action)
     },
 
     // by default the action creators of RTK accepts only one argument,
