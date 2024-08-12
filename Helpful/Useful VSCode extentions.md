@@ -12,6 +12,8 @@ Provides a real-time preview of your HTML content in a browser view inside VS Co
 **Settings Sync:**  
 Syncs your VS Code settings, extensions, and more across multiple devices.
 
+**vscode-icons**
+
 ---
 
 ## 🎨 Styling and Sass
@@ -22,12 +24,25 @@ Compiles Sass or SCSS files to CSS in real time, automatically upon file save.
 **SCSS Formatter:**  
 Formats your SCSS files to improve readability and maintain coding standards.
 
+**Tailwind CSS IntelliSense:**
+Tailwind CSS IntelliSense enhances the Tailwind development experience by providing Visual Studio Code users with advanced features such as autocomplete, syntax highlighting, and linting.
+
+**vscode-styled-components**
+
+**CSS Navigation**
+
 ---
 
 ## 🛠️ Code Writing Enhancements
 
+**Auto Close Tag**
+
+**Auto Rename Tag**
+
 **Auto Complete Tag:**  
 Completes HTML/XML tags and ensures proper nesting and closing.
+
+**Color Highligh**
 
 **Bracket Pair Colorizer:**  
 Colors matching brackets to reduce visual clutter and improve code readability.
@@ -38,6 +53,8 @@ Provides enhanced markdown previews ported to VS Code.
 ---
 
 ## 🚀 Navigation and Utility Tools
+
+**Markdown Preview Enhanced**
 
 **CSS Navigation:**  
 Enables F12 (Go to Definition) for CSS classes and IDs in HTML, aiding in quick navigation.
@@ -52,11 +69,11 @@ Facilitates easy switching between projects with a quick-access list of director
 
 ## ✨ Additional Extensions
 
-**Prettier:**  
-[Description about this extension goes here.]
+**CodeSnap**
 
-**ESLint Extension:**  
-[Description about this extension goes here.]
+**Prettier**
+
+**ESLint Extension**
 
 ---
 
