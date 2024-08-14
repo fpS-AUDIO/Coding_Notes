@@ -42,6 +42,7 @@
 
 #### Icons
 
+- [React Icons](https://react-icons.github.io/react-icons/)
 - [Phosphoricons](https://phosphoricons.com/)
 - [Ionicons](https://ionic.io/ionicons)
 - [Icons8](https://icons8.com/icons)
