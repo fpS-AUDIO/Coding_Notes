@@ -1,4 +1,3 @@
-
 # Fedora 40 Post-Installation Guide
 
 After installing Fedora 40, there are several steps you can take to enhance your system's performance, multimedia capabilities, and user experience. Below is a guide to help you through these steps.
@@ -111,7 +110,3 @@ sudo dnf install gnome-shell-extension*
     - Easily pick colors from anywhere on your screen.
 13. **Dash to Dock**
     - Transforms the GNOME Dash into a highly configurable dock for easier application launching and management.
-
-## Conclusion
-
-Following these steps will enhance your Fedora 40 system, making it faster, more capable with multimedia, and more customizable. Enjoy your improved Fedora experience!
